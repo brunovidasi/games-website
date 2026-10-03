@@ -1,0 +1,10 @@
+/* sims.css — the Sims page's own look: the plumbob's green for what is in the
+   collection, and the plumbob itself. The rest is css/collection.css. */
+.sims { --acc: #6fd64a; --acc-dk: #2f8a1d; --acc-glow: rgba(111,214,74,.4); }
+
+.plumbob { display: inline-block; width: .42em; height: .7em; margin-left: .12em; vertical-align: .05em;
+  background: linear-gradient(100deg, #b6f58e, var(--acc) 45%, var(--acc-dk) 55%, #1d5c12);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); filter: drop-shadow(0 0 10px var(--acc-glow));
+  animation: bob 3.2s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-.08em); } }
+@media (prefers-reduced-motion: reduce) { .plumbob { animation: none; } }
