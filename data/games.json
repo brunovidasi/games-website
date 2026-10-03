@@ -13,8 +13,17 @@
       "developer": "Massive Entertainment",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/avatar-frontiers-of-pandora.jpg",
+        "ratio": 0.7576,
+        "source": "en.wikipedia.org",
+        "ref": "Avatar: Frontiers of Pandora · Avatar_Frontiers_of_Pandora_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#29555a",
+        "#5c827c",
+        "#8ca9ae"
+      ]
     },
     {
       "id": "ps5-grand-theft-auto-v",
@@ -28,8 +37,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "ps5-hogwarts-legacy",
@@ -43,8 +61,17 @@
       "developer": "Avalanche Software",
       "genre": "Action role-playing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/hogwarts-legacy.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#44575d",
+        "#7f8887",
+        "#c3bdab"
+      ]
     },
     {
       "id": "ps5-mortal-kombat-11",
@@ -60,8 +87,17 @@
       "format": "boxed",
       "caseStyle": "ps4",
       "note": "PS4 copy, upgraded to PS5",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "ps5-mortal-kombat-1",
@@ -74,8 +110,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/mortal-kombat-1.jpg",
+        "ratio": 0.8324,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 1 · Mortal_Kombat_1_key_art.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#e8eaea",
+        "#afb1b2",
+        "#53362c"
+      ]
     },
     {
       "id": "ps4-agents-of-mayhem",
@@ -88,8 +133,17 @@
       "developer": "Volition",
       "genre": "Action",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/agents-of-mayhem.jpg",
+        "ratio": 0.8011,
+        "source": "en.wikipedia.org",
+        "ref": "Agents of Mayhem · Agents_of_Mayhem_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#daa5c1",
+        "#a76290",
+        "#19063f"
+      ]
     },
     {
       "id": "ps4-call-of-duty-advanced-warfare",
@@ -102,8 +156,17 @@
       "developer": "Sledgehammer Games",
       "genre": "Shooter",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/call-of-duty-advanced-warfare.jpg",
+        "ratio": 0.7337,
+        "source": "en.wikipedia.org",
+        "ref": "Call of Duty: Advanced Warfare · Advanced_Warfare.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#342d2d",
+        "#807265",
+        "#eceae2"
+      ]
     },
     {
       "id": "ps4-fifa-17",
@@ -116,8 +179,17 @@
       "developer": "EA Vancouver",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/fifa-17.jpg",
+        "ratio": 0.8384,
+        "source": "en.wikipedia.org",
+        "ref": "FIFA 17 · FIFA_17_cover.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#aea992",
+        "#8e8563",
+        "#d0cdb5"
+      ]
     },
     {
       "id": "ps4-grand-theft-auto-v",
@@ -130,8 +202,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "ps4-grand-theft-auto-the-trilogy-the-definitive-edition",
@@ -145,8 +226,17 @@
       "developer": "Grove Street Games",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: The Trilogy – The Definitive Edition · Grand_Theft_Auto_-_The_Trilogy_-_The_Definitive_Edition.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f8268",
+        "#d5baa6",
+        "#5b5441"
+      ]
     },
     {
       "id": "ps4-mortal-kombat-11",
@@ -159,8 +249,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "ps4-mortal-kombat-11-ultimate",
@@ -173,6 +272,7 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -187,6 +287,7 @@
       "developer": "Ghost Games",
       "genre": "Racing",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -201,8 +302,17 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/rock-band-4.jpg",
+        "ratio": 0.8571,
+        "source": "en.wikipedia.org",
+        "ref": "Rock Band 4 · Rock_band_4_cover.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#412f31",
+        "#ba716e",
+        "#efcac3"
+      ]
     },
     {
       "id": "ps4-singstar-ultimate-party",
@@ -230,8 +340,17 @@
       "developer": "Naughty Dog",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/the-last-of-us-remastered.jpg",
+        "ratio": 0.7529,
+        "source": "en.wikipedia.org",
+        "ref": "The Last of Us (video game) · Video_Game_Cover_-_The_Last_of_Us.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#80523d",
+        "#eedfd3",
+        "#302118"
+      ]
     },
     {
       "id": "ps4-the-sims-4-plus-cats-and-dogs",
@@ -1951,8 +2070,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch2/donkey-kong-bananza.jpg",
+        "ratio": 0.7048,
+        "source": "en.wikipedia.org",
+        "ref": "Donkey Kong Bananza · Donkey_Kong_Bananza_updated_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9d5e39",
+        "#c79f67",
+        "#55342f"
+      ]
     },
     {
       "id": "switch2-mario-kart-world",
@@ -1965,8 +2093,17 @@
       "developer": "Nintendo EPD",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch2/mario-kart-world.jpg",
+        "ratio": 0.7139,
+        "source": "en.wikipedia.org",
+        "ref": "Mario Kart World · Mario_Kart_World_Cover_Artwork.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#997458",
+        "#9dc1df",
+        "#daae81"
+      ]
     },
     {
       "id": "switch2-super-mario-party-jamboree-jamboree-tv",
@@ -2026,8 +2163,17 @@
       "developer": "Beenox",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/crash-team-racing-nitro-fueled.jpg",
+        "ratio": 0.6984,
+        "source": "en.wikipedia.org",
+        "ref": "Crash Team Racing Nitro-Fueled · Crash_Team_Racing_Nitro-Fueled_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#af9158",
+        "#635147",
+        "#1d99ce"
+      ]
     },
     {
       "id": "switch-cuphead",
@@ -2040,8 +2186,17 @@
       "developer": "StudioMDHR",
       "genre": "Run and gun",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/cuphead.jpg",
+        "ratio": 0.8377,
+        "source": "en.wikipedia.org",
+        "ref": "Cuphead · Cuphead_(artwork).png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#fbce0f",
+        "#865826",
+        "#b6bbb0"
+      ]
     },
     {
       "id": "switch-donkey-kong-country-tropical-freeze",
@@ -2054,8 +2209,17 @@
       "developer": "Retro Studios",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/donkey-kong-country-tropical-freeze.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Donkey Kong Country: Tropical Freeze · DKC5_box_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#865731",
+        "#a99176",
+        "#8ec4d8"
+      ]
     },
     {
       "id": "switch-donkey-kong-country-returns-hd",
@@ -2070,6 +2234,7 @@
       "genre": "Platformer",
       "format": "boxed",
       "note": "Maluma",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -2085,8 +2250,17 @@
       "developer": "Grove Street Games",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: The Trilogy – The Definitive Edition · Grand_Theft_Auto_-_The_Trilogy_-_The_Definitive_Edition.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f8268",
+        "#d5baa6",
+        "#5b5441"
+      ]
     },
     {
       "id": "switch-hogwarts-legacy",
@@ -2099,8 +2273,17 @@
       "developer": "Avalanche Software",
       "genre": "Action role-playing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/hogwarts-legacy.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#44575d",
+        "#7f8887",
+        "#c3bdab"
+      ]
     },
     {
       "id": "switch-it-takes-two",
@@ -2113,8 +2296,17 @@
       "developer": "Hazelight Studios",
       "genre": "Co-op adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/it-takes-two.jpg",
+        "ratio": 0.7865,
+        "source": "en.wikipedia.org",
+        "ref": "It Takes Two (video game) · It_Takes_Two_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ead6ae",
+        "#9a8978",
+        "#5a362b"
+      ]
     },
     {
       "id": "switch-jumanji-the-video-game",
@@ -2142,8 +2334,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2017.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2017 · Just_Dance_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#184bab",
+        "#9615a1",
+        "#b97c67"
+      ]
     },
     {
       "id": "switch-just-dance-2018",
@@ -2156,8 +2357,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2018.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2018 · Just_Dance_2018_Switch_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#cbbbe2",
+        "#2426a7",
+        "#090b16"
+      ]
     },
     {
       "id": "switch-just-dance-2019",
@@ -2171,8 +2381,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "cartridge-only",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2019.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2019 · Just_Dance_2019.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#c7cbd8",
+        "#ecedee",
+        "#ab9eb5"
+      ]
     },
     {
       "id": "switch-just-dance-2020",
@@ -2185,8 +2404,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2020.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2020 · Just_Dance_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#937294",
+        "#c66b7c",
+        "#4b4e82"
+      ]
     },
     {
       "id": "switch-just-dance-2021",
@@ -2199,8 +2427,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2021.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2021 · Just_Dance_2021.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9dacce",
+        "#f0ad35",
+        "#f02f62"
+      ]
     },
     {
       "id": "switch-just-dance-2022",
@@ -2213,8 +2450,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2022.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2022 · Just_Dance_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#1d3e93",
+        "#92b5c5",
+        "#866d82"
+      ]
     },
     {
       "id": "switch-kirby-star-allies",
@@ -2243,8 +2489,17 @@
       "developer": "Team Bondi",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/la-noire.jpg",
+        "ratio": 0.75,
+        "source": "en.wikipedia.org",
+        "ref": "L.A. Noire · LA-Noire-Box-Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#120e12",
+        "#314050",
+        "#823a22"
+      ]
     },
     {
       "id": "switch-lego-dc-super-villains",
@@ -2318,8 +2573,17 @@
       "developer": "Nintendo EPD",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-kart-8-deluxe.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Mario Kart 8 · MarioKart8Boxart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#81a48d",
+        "#3f5956",
+        "#bbc9cb"
+      ]
     },
     {
       "id": "switch-mario-party-superstars",
@@ -2347,8 +2611,17 @@
       "developer": "Ubisoft Milan",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-rabbids-kingdom-battle.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Mario + Rabbids Kingdom Battle · Mario_+_Rabbids_Kingdom_Battle.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#c9af79",
+        "#777b48",
+        "#3d9fd1"
+      ]
     },
     {
       "id": "switch-mario-rabbids-sparks-of-hope",
@@ -2362,8 +2635,17 @@
       "developer": "Ubisoft Milan",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-rabbids-sparks-of-hope.jpg",
+        "ratio": 0.6771,
+        "source": "en.wikipedia.org",
+        "ref": "Mario + Rabbids Sparks of Hope · Mario_+_Rabbids_Sparks_of_Hope_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#5272ba",
+        "#94cae1",
+        "#35216d"
+      ]
     },
     {
       "id": "switch-mortal-kombat-11",
@@ -2376,8 +2658,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "switch-moving-out",
@@ -2419,6 +2710,7 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null,
       "series": "MySims"
@@ -2434,6 +2726,7 @@
       "developer": "Stellar Entertainment",
       "genre": "Racing",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -2464,8 +2757,17 @@
       "developer": "Ghost Town Games",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/overcooked-2.jpg",
+        "ratio": 0.8348,
+        "source": "en.wikipedia.org",
+        "ref": "Overcooked 2 · Overcooked_2_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a48a51",
+        "#414747",
+        "#4499b8"
+      ]
     },
     {
       "id": "switch-overcooked-all-you-can-eat",
@@ -2583,8 +2885,17 @@
       "developer": "Ubisoft Montpellier",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/rayman-legends-definitive-edition.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Rayman Legends · Rayman_Legends_Box_Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#1e4a3a",
+        "#6a4330",
+        "#8dad89"
+      ]
     },
     {
       "id": "switch-rollercoaster-tycoon-adventures",
@@ -2630,8 +2941,17 @@
       "genre": "Simulation",
       "format": "boxed",
       "check": "Release date unknown for the Switch version.",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/rollercoaster-tycoon-classic.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "RollerCoaster Tycoon Classic · RollerCoaster_Tycoon_Classic.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b59119",
+        "#5d6526",
+        "#e8cd4e"
+      ]
     },
     {
       "id": "switch-rollercoaster-tycoon-3-complete-edition",
@@ -2673,8 +2993,17 @@
       "developer": "HexaDrive",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-bomberman-r.jpg",
+        "ratio": 0.6173,
+        "source": "en.wikipedia.org",
+        "ref": "Super Bomberman R · Super_Bomberman_R_(artwork).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#998580",
+        "#4e4451",
+        "#ba6c28"
+      ]
     },
     {
       "id": "switch-super-bomberman-r-2",
@@ -2687,8 +3016,17 @@
       "developer": "Konami",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-bomberman-r-2.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Super Bomberman R 2 · Super_Bomberman_R2_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#d3c2b1",
+        "#be6d5f",
+        "#84bfd8"
+      ]
     },
     {
       "id": "switch-super-mario-3d-all-stars",
@@ -2702,8 +3040,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-mario-3d-all-stars.jpg",
+        "ratio": 0.7139,
+        "source": "en.wikipedia.org",
+        "ref": "Super Mario 3D All-Stars · Super_Mario_3D_All_Stars.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ad8568",
+        "#d4d5bd",
+        "#2f3248"
+      ]
     },
     {
       "id": "switch-super-mario-3d-world-bowsers-fury",
@@ -2716,8 +3063,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-mario-3d-world-bowsers-fury.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Super Mario 3D World · Super_Mario_3D_World_box_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#8b772e",
+        "#c5a892",
+        "#ecefee"
+      ]
     },
     {
       "id": "switch-super-mario-bros-wonder",
@@ -2745,8 +3101,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/new-super-mario-bros-u-deluxe.jpg",
+        "ratio": 0.7072,
+        "source": "en.wikipedia.org",
+        "ref": "New Super Mario Bros. U · New_Super_Mario_Bros._U_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#37754c",
+        "#97806f",
+        "#abc7d7"
+      ]
     },
     {
       "id": "switch-super-mario-galaxy-super-mario-galaxy-2",
@@ -2817,6 +3182,7 @@
       "developer": "ArtePiazza",
       "genre": "Role-playing",
       "format": "boxed",
+      "coverMatch": "Super Mario RPG (2023 video game)",
       "cover": null,
       "colors": null
     },
@@ -2831,8 +3197,17 @@
       "developer": "Bandai Namco Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-smash-bros-ultimate.jpg",
+        "ratio": 0.648,
+        "source": "en.wikipedia.org",
+        "ref": "Super Smash Bros. Ultimate · Super_Smash_Bros._Ultimate.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a0948c",
+        "#695f58",
+        "#d3d6d7"
+      ]
     },
     {
       "id": "switch-team-sonic-racing",
@@ -2845,8 +3220,17 @@
       "developer": "Sumo Digital",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/team-sonic-racing.jpg",
+        "ratio": 0.8271,
+        "source": "en.wikipedia.org",
+        "ref": "Team Sonic Racing · Team_Sonic_Racing_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9abddc",
+        "#448acd",
+        "#a59c6d"
+      ]
     },
     {
       "id": "switch-the-legend-of-zelda-breath-of-the-wild",
@@ -2860,8 +3244,17 @@
       "developer": "Nintendo EPD",
       "genre": "Action-adventure",
       "format": "cartridge-only",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/the-legend-of-zelda-breath-of-the-wild.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "The Legend of Zelda: Breath of the Wild · The_Legend_of_Zelda_Breath_of_the_Wild.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ebd8b5",
+        "#555d68",
+        "#968b7f"
+      ]
     },
     {
       "id": "xone-fifa-19",
@@ -2874,8 +3267,17 @@
       "developer": "EA Vancouver",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/fifa-19.jpg",
+        "ratio": 0.8358,
+        "source": "en.wikipedia.org",
+        "ref": "FIFA 19 · FIFA_19_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#09afe3",
+        "#b7c4d2",
+        "#07ccf0"
+      ]
     },
     {
       "id": "xone-guitar-hero-live",
@@ -2921,8 +3323,17 @@
       "developer": "Rockstar Studios",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/red-dead-redemption-2.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Red Dead Redemption 2 · Red_Dead_Redemption_II.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#bb1012",
+        "#3f1110",
+        "#9e9791"
+      ]
     },
     {
       "id": "xone-the-sims-4",
@@ -2936,8 +3347,17 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
-      "cover": null,
-      "colors": null,
+      "cover": {
+        "file": "covers/xone/the-sims-4.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 4 · Sims4_Rebrand.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b08c7a",
+        "#99d0dc",
+        "#4b4739"
+      ],
       "series": "The Sims 4"
     },
     {
@@ -2951,8 +3371,17 @@
       "developer": "Robomodo",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/tony-hawks-pro-skater-5.jpg",
+        "ratio": 0.8509,
+        "source": "en.wikipedia.org",
+        "ref": "Tony Hawk's Pro Skater 5 · THPS5_Box_Art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#615153",
+        "#cfe4f2",
+        "#988b8a"
+      ]
     },
     {
       "id": "x360-bully-scholarship-edition",
@@ -2966,6 +3395,7 @@
       "developer": "Rockstar New England",
       "genre": "Action-adventure",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -2980,8 +3410,17 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/dance-central.jpg",
+        "ratio": 0.7067,
+        "source": "en.wikipedia.org",
+        "ref": "Dance Central (2010 video game) · Dance_Central_boxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4d555d",
+        "#252828",
+        "#9e817b"
+      ]
     },
     {
       "id": "x360-dance-central-2",
@@ -2994,8 +3433,17 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/dance-central-2.jpg",
+        "ratio": 0.7072,
+        "source": "en.wikipedia.org",
+        "ref": "Dance Central 2 · Dance_Central_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9e96b5",
+        "#714f7d",
+        "#e3dde4"
+      ]
     },
     {
       "id": "x360-dance-paradise",
@@ -3037,8 +3485,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "x360-guitar-hero-ii",
@@ -3051,6 +3508,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -3065,8 +3523,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-iii-legends-of-rock.jpg",
+        "ratio": 0.6711,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero III: Legends of Rock · Guitar-hero-iii-cover-image.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4b100c",
+        "#754334",
+        "#d8742e"
+      ]
     },
     {
       "id": "x360-guitar-hero-metallica",
@@ -3079,8 +3546,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-metallica.jpg",
+        "ratio": 0.8127,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero: Metallica · Guitar_Hero_Metallica.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#6f6a65",
+        "#201c1a",
+        "#a29f9c"
+      ]
     },
     {
       "id": "x360-guitar-hero-world-tour",
@@ -3094,8 +3570,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-world-tour.jpg",
+        "ratio": 0.8,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero World Tour · Guitar_Hero_World_Tour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4f2d24",
+        "#b2ad9c",
+        "#e8b930"
+      ]
     },
     {
       "id": "x360-guitar-hero-5",
@@ -3108,8 +3593,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-5.jpg",
+        "ratio": 0.8218,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero 5 · Guitar_Hero_5_Game_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#0d0b0c",
+        "#704c40",
+        "#3a2821"
+      ]
     },
     {
       "id": "x360-halo-wars",
@@ -3122,8 +3616,17 @@
       "developer": "Ensemble Studios",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/halo-wars.jpg",
+        "ratio": 0.7853,
+        "source": "en.wikipedia.org",
+        "ref": "Halo Wars · Halo_wars.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#3a505a",
+        "#0c1418",
+        "#233239"
+      ]
     },
     {
       "id": "x360-kinect-adventures",
@@ -3137,8 +3640,17 @@
       "developer": "Good Science Studio",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-adventures.jpg",
+        "ratio": 0.7112,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Adventures! · Kinect_Adventures_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a16e45",
+        "#8c9384",
+        "#4b3c2f"
+      ]
     },
     {
       "id": "x360-kinect-joy-ride",
@@ -3151,8 +3663,17 @@
       "developer": "BigPark",
       "genre": "Racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-joy-ride.jpg",
+        "ratio": 0.7167,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Joy Ride · Joyride.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f9074",
+        "#543a3e",
+        "#39a7d0"
+      ]
     },
     {
       "id": "x360-kinect-sports",
@@ -3165,8 +3686,17 @@
       "developer": "Rare",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-sports.jpg",
+        "ratio": 0.7091,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Sports · Kinect_Sports.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a09b81",
+        "#ededef",
+        "#ccc4c3"
+      ]
     },
     {
       "id": "x360-mortal-kombat",
@@ -3193,6 +3723,7 @@
       "developer": "Pipeworks Software",
       "genre": "Fitness",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -3207,8 +3738,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/grand-theft-auto-iv.jpg",
+        "ratio": 0.8,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto IV · Grand_Theft_Auto_IV_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#84776b",
+        "#564d49",
+        "#c1c1bb"
+      ]
     },
     {
       "id": "xbox-ice-age-2-the-meltdown",
@@ -5801,8 +6341,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims.jpg",
+        "ratio": 0.8,
+        "source": "sims.fandom.com",
+        "ref": "The Sims · TS1 boxcover.jpg"
+      },
+      "colors": [
+        "#a67759",
+        "#7c828e",
+        "#dfcbcd"
+      ]
     },
     {
       "id": "pc-the-sims-complete-collection",
@@ -5817,8 +6366,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Collection",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-complete-collection.jpg",
+        "ratio": 0.8366,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims (video game) · The_Sims_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#566456",
+        "#a36943",
+        "#8b8f85"
+      ]
     },
     {
       "id": "pc-the-sims-deluxe-edition",
@@ -5833,8 +6391,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Collection",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-deluxe-edition.jpg",
+        "ratio": 0.8366,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims (video game) · The_Sims_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#566456",
+        "#a36943",
+        "#8b8f85"
+      ]
     },
     {
       "id": "pc-the-sims-legacy-collection",
@@ -5867,8 +6434,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-livin-large.jpg",
+        "ratio": 0.6923,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Livin' Large · LivinLarge.jpg"
+      },
+      "colors": [
+        "#90a0b5",
+        "#7a6674",
+        "#d69a59"
+      ]
     },
     {
       "id": "pc-the-sims-house-party",
@@ -5883,8 +6459,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-house-party.jpg",
+        "ratio": 0.7029,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims: House Party · Sims_House_Party_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#927764",
+        "#a0a7c1",
+        "#d2b968"
+      ]
     },
     {
       "id": "pc-the-sims-hot-date",
@@ -5899,8 +6484,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-hot-date.jpg",
+        "ratio": 0.6923,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Hot Date · The Sims Hot Date Cover.jpg"
+      },
+      "colors": [
+        "#b93631",
+        "#692c31",
+        "#51738f"
+      ]
     },
     {
       "id": "pc-the-sims-vacation",
@@ -5915,8 +6509,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-vacation.jpg",
+        "ratio": 0.6981,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Vacation · SimsVacation.jpg"
+      },
+      "colors": [
+        "#edba3e",
+        "#6a6e7d",
+        "#e7d8b3"
+      ]
     },
     {
       "id": "pc-the-sims-unleashed",
@@ -5931,8 +6534,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-unleashed.jpg",
+        "ratio": 0.7038,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Unleashed · 200px-The Sims Unleased.jpg"
+      },
+      "colors": [
+        "#53c2d1",
+        "#98ccd5",
+        "#29b2c3"
+      ]
     },
     {
       "id": "pc-the-sims-superstar",
@@ -5947,8 +6559,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-superstar.jpg",
+        "ratio": 0.7038,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Superstar · The Sims EP 6.jpg"
+      },
+      "colors": [
+        "#f29153",
+        "#e8c0a6",
+        "#828188"
+      ]
     },
     {
       "id": "pc-the-sims-makin-magic",
@@ -5963,8 +6584,17 @@
       "format": "boxed",
       "series": "The Sims",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-makin-magic.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims: Makin' Magic · TSMakinMagic cover.jpg"
+      },
+      "colors": [
+        "#0b3754",
+        "#236c90",
+        "#051421"
+      ]
     },
     {
       "id": "pc-the-sims-2",
@@ -5979,8 +6609,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2.jpg",
+        "ratio": 0.7022,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 2 · The_sims_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#2e2b30",
+        "#9e7c5d",
+        "#4f6974"
+      ]
     },
     {
       "id": "pc-the-sims-2-deluxe",
@@ -6045,8 +6684,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-university.jpg",
+        "ratio": 0.6984,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 2: University · TS2U_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#6b5e54",
+        "#5ea45a",
+        "#85b67a"
+      ]
     },
     {
       "id": "pc-the-sims-2-nightlife",
@@ -6061,8 +6709,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-nightlife.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Nightlife · The Sims 2 Nightlife Cover.jpg"
+      },
+      "colors": [
+        "#5e3565",
+        "#877477",
+        "#2a3a4e"
+      ]
     },
     {
       "id": "pc-the-sims-2-open-for-business",
@@ -6077,8 +6734,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-open-for-business.jpg",
+        "ratio": 0.7077,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Open for Business · Openforbusiness2.jpg"
+      },
+      "colors": [
+        "#e46224",
+        "#9b735d",
+        "#5d463d"
+      ]
     },
     {
       "id": "pc-the-sims-2-pets",
@@ -6093,8 +6759,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-pets.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Pets · The Sims 2 Pets Cover.jpg"
+      },
+      "colors": [
+        "#4f8db1",
+        "#4b605c",
+        "#99816d"
+      ]
     },
     {
       "id": "pc-the-sims-2-seasons",
@@ -6109,8 +6784,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-seasons.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Seasons · The Sims 2 Seasons Cover.jpg"
+      },
+      "colors": [
+        "#833541",
+        "#6f6e6f",
+        "#ac9c99"
+      ]
     },
     {
       "id": "pc-the-sims-2-bon-voyage",
@@ -6125,8 +6809,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-bon-voyage.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Bon Voyage · The Sims 2 Bon Voyage Cover.jpg"
+      },
+      "colors": [
+        "#8cb5b1",
+        "#726d5c",
+        "#529d9a"
+      ]
     },
     {
       "id": "pc-the-sims-2-freetime",
@@ -6141,8 +6834,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-freetime.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: FreeTime · The Sims 2 FreeTime Cover.jpg"
+      },
+      "colors": [
+        "#8d7292",
+        "#664b51",
+        "#b190bb"
+      ]
     },
     {
       "id": "pc-the-sims-2-apartment-life",
@@ -6157,8 +6859,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-apartment-life.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Apartment Life · The Sims 2 Apartment Life Cover.jpg"
+      },
+      "colors": [
+        "#6d6161",
+        "#146595",
+        "#569dc3"
+      ]
     },
     {
       "id": "pc-the-sims-2-christmas-party-pack",
@@ -6174,8 +6885,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-christmas-party-pack.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Holiday Party Pack · The_Sims_2_Holiday_Party_Pack_Case_Front.jpg"
+      },
+      "colors": [
+        "#4f7b4a",
+        "#ba4f42",
+        "#b4afaa"
+      ]
     },
     {
       "id": "pc-the-sims-2-family-fun-stuff",
@@ -6190,8 +6910,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-family-fun-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Family Fun Stuff · The Sims 2 Family Fun Stuff Cover.jpg"
+      },
+      "colors": [
+        "#f0e799",
+        "#d7b26f",
+        "#868d77"
+      ]
     },
     {
       "id": "pc-the-sims-2-glamour-life-stuff",
@@ -6206,8 +6935,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-glamour-life-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Glamour Life Stuff · 250px-GlamourLifeStuffF.jpg"
+      },
+      "colors": [
+        "#edde8f",
+        "#855b6c",
+        "#b1a37d"
+      ]
     },
     {
       "id": "pc-the-sims-2-happy-holiday-stuff",
@@ -6223,8 +6961,17 @@
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "note": "Without its small case",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-happy-holiday-stuff.jpg",
+        "ratio": 0.71,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Happy Holiday Stuff · Happyholidaystuff.jpg"
+      },
+      "colors": [
+        "#e9d794",
+        "#a99278",
+        "#994040"
+      ]
     },
     {
       "id": "pc-the-sims-2-celebration-stuff",
@@ -6239,8 +6986,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-celebration-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Celebration! Stuff · 210px-Sims2celebrationbox.jpg"
+      },
+      "colors": [
+        "#f0e190",
+        "#7a9895",
+        "#b3beb2"
+      ]
     },
     {
       "id": "pc-the-sims-2-h-and-m-fashion-stuff",
@@ -6255,8 +7011,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-h-and-m-fashion-stuff.jpg",
+        "ratio": 0.6885,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: H&M Fashion Stuff · HMFasionPack.jpg"
+      },
+      "colors": [
+        "#ecd780",
+        "#979578",
+        "#d6433c"
+      ]
     },
     {
       "id": "pc-the-sims-2-teen-style-stuff",
@@ -6271,8 +7036,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-teen-style-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Teen Style Stuff · TeenStyle.jpg"
+      },
+      "colors": [
+        "#f4e27e",
+        "#abb375",
+        "#768165"
+      ]
     },
     {
       "id": "pc-the-sims-2-kitchen-and-bath-interior-design-stuff",
@@ -6287,8 +7061,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-kitchen-and-bath-interior-design-stuff.jpg",
+        "ratio": 0.6942,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Kitchen & Bath Interior Design Stuff · The Sims 2 Kitchen & Bath Interior Design Stuff Cover.jpg"
+      },
+      "colors": [
+        "#f6eb9d",
+        "#9ac0cb",
+        "#bbb38b"
+      ]
     },
     {
       "id": "pc-the-sims-2-ikea-home-stuff",
@@ -6303,8 +7086,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-ikea-home-stuff.jpg",
+        "ratio": 0.694,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: IKEA Home Stuff · IKEA boxart.jpg"
+      },
+      "colors": [
+        "#f0e49e",
+        "#bab186",
+        "#759080"
+      ]
     },
     {
       "id": "pc-the-sims-2-mansion-and-garden-stuff",
@@ -6319,8 +7111,17 @@
       "format": "boxed",
       "series": "The Sims 2",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-2-mansion-and-garden-stuff.jpg",
+        "ratio": 0.7115,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 2: Mansion & Garden Stuff · The Sims 2 Mansion & Garden Stuff Cover.jpg"
+      },
+      "colors": [
+        "#f7eb9e",
+        "#8d8c9a",
+        "#c2bb90"
+      ]
     },
     {
       "id": "pc-the-sims-life-stories",
@@ -6336,8 +7137,17 @@
       "format": "boxed",
       "series": "The Sims Stories",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-life-stories.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims Life Stories · The Sims Life Stories Cover.jpg"
+      },
+      "colors": [
+        "#9f9e95",
+        "#6c6f57",
+        "#c1d1da"
+      ]
     },
     {
       "id": "pc-the-sims-pet-stories",
@@ -6353,8 +7163,17 @@
       "format": "boxed",
       "series": "The Sims Stories",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-pet-stories.jpg",
+        "ratio": 0.6962,
+        "source": "sims.fandom.com",
+        "ref": "The Sims Pet Stories · The-Sims-Pet-Stories Cover.jpg"
+      },
+      "colors": [
+        "#6d6651",
+        "#9a9d9b",
+        "#c2d1db"
+      ]
     },
     {
       "id": "pc-the-sims-castaway-stories",
@@ -6370,8 +7189,17 @@
       "format": "boxed",
       "series": "The Sims Stories",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-castaway-stories.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims Castaway Stories · SimsCastwayStories-1-.jpg"
+      },
+      "colors": [
+        "#444653",
+        "#a59278",
+        "#86624b"
+      ]
     },
     {
       "id": "pc-the-sims-3",
@@ -6389,8 +7217,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3.jpg",
+        "ratio": 0.7086,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 3 · Sims3cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#8e846e",
+        "#a5a49d",
+        "#66574d"
+      ]
     },
     {
       "id": "pc-the-sims-3-world-adventures",
@@ -6408,8 +7245,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-world-adventures.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: World Adventures · The Sims 3 World Adventures Cover.png"
+      },
+      "colors": [
+        "#c29c7c",
+        "#776151",
+        "#d8cdc3"
+      ]
     },
     {
       "id": "pc-the-sims-3-ambitions",
@@ -6427,8 +7273,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-ambitions.jpg",
+        "ratio": 0.7154,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Ambitions · The Sims 3 Ambitions Cover.jpg"
+      },
+      "colors": [
+        "#949693",
+        "#616056",
+        "#afb4bb"
+      ]
     },
     {
       "id": "pc-the-sims-3-late-night",
@@ -6446,8 +7301,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-late-night.jpg",
+        "ratio": 0.6981,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Late Night · The Sims 3 Late Night Cover.jpg"
+      },
+      "colors": [
+        "#8e7f8a",
+        "#595a71",
+        "#463949"
+      ]
     },
     {
       "id": "pc-the-sims-3-generations",
@@ -6465,8 +7329,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-generations.jpg",
+        "ratio": 0.7,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Generations · The Sims 3 Generations Cover.jpg"
+      },
+      "colors": [
+        "#859f98",
+        "#60706e",
+        "#a4c1c0"
+      ]
     },
     {
       "id": "pc-the-sims-3-pets",
@@ -6484,8 +7357,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-pets.jpg",
+        "ratio": 0.7038,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Pets · The Sims 3 Pets Cover.jpg"
+      },
+      "colors": [
+        "#82887d",
+        "#a4b1b1",
+        "#5b5244"
+      ]
     },
     {
       "id": "pc-the-sims-3-showtime",
@@ -6503,8 +7385,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-showtime.jpg",
+        "ratio": 0.7442,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Showtime · The Sims 3 Showtime Cover.jpg"
+      },
+      "colors": [
+        "#3e5467",
+        "#6790ab",
+        "#b4c9d5"
+      ]
     },
     {
       "id": "pc-the-sims-3-showtime-katy-perry-collectors-edition",
@@ -6543,8 +7434,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-supernatural.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Supernatural · The Sims 3 Supernatural Cover.jpg"
+      },
+      "colors": [
+        "#7e8a78",
+        "#404a52",
+        "#a2b0ac"
+      ]
     },
     {
       "id": "pc-the-sims-3-seasons",
@@ -6562,8 +7462,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-seasons.jpg",
+        "ratio": 0.7059,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Seasons · The Sims 3 Seasons Cover.jpg"
+      },
+      "colors": [
+        "#85939a",
+        "#bfc7cb",
+        "#675b50"
+      ]
     },
     {
       "id": "pc-the-sims-3-university-life",
@@ -6581,8 +7490,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-university-life.jpg",
+        "ratio": 0.7038,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: University Life · The sims 3 university life box art.jpg"
+      },
+      "colors": [
+        "#908e83",
+        "#5d5550",
+        "#aab4b8"
+      ]
     },
     {
       "id": "pc-the-sims-3-island-paradise",
@@ -6600,8 +7518,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-island-paradise.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Island Paradise · The Sims 3 Island Paradise Cover.jpg"
+      },
+      "colors": [
+        "#7fa0ad",
+        "#c9cbcd",
+        "#b89d65"
+      ]
     },
     {
       "id": "pc-the-sims-3-into-the-future",
@@ -6619,8 +7546,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-into-the-future.jpg",
+        "ratio": 0.7077,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Into the Future · The Sims 3 Into The Future Cover.jpeg"
+      },
+      "colors": [
+        "#808680",
+        "#a5b0b4",
+        "#465954"
+      ]
     },
     {
       "id": "pc-the-sims-3-high-end-loft-stuff",
@@ -6638,8 +7574,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-high-end-loft-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: High-End Loft Stuff · Highendcover.jpg"
+      },
+      "colors": [
+        "#8eae25",
+        "#606755",
+        "#a8b2a3"
+      ]
     },
     {
       "id": "pc-the-sims-3-fast-lane-stuff",
@@ -6657,8 +7602,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-fast-lane-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Fast Lane Stuff · Fast Lane Box.jpg"
+      },
+      "colors": [
+        "#a6b796",
+        "#79b04d",
+        "#dce6d4"
+      ]
     },
     {
       "id": "pc-the-sims-3-outdoor-living-stuff",
@@ -6676,8 +7630,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-outdoor-living-stuff.jpg",
+        "ratio": 0.7115,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Outdoor Living Stuff · Sims 3 sp 3.jpg"
+      },
+      "colors": [
+        "#a9c489",
+        "#dce4d2",
+        "#73ae4a"
+      ]
     },
     {
       "id": "pc-the-sims-3-town-life-stuff",
@@ -6695,8 +7658,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-town-life-stuff.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Town Life Stuff · TS3 Town Life Stuff boxart.jpg"
+      },
+      "colors": [
+        "#a7b998",
+        "#88ab59",
+        "#677178"
+      ]
     },
     {
       "id": "pc-the-sims-3-master-suite-stuff",
@@ -6714,8 +7686,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-master-suite-stuff.jpg",
+        "ratio": 0.7068,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Master Suite Stuff · MSS Box.jpg"
+      },
+      "colors": [
+        "#a9bc8e",
+        "#7b6c79",
+        "#76b354"
+      ]
     },
     {
       "id": "pc-the-sims-3-katy-perrys-sweet-treats",
@@ -6732,8 +7713,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-katy-perrys-sweet-treats.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Katy Perry's Sweet Treats · TS3KPST.jpg"
+      },
+      "colors": [
+        "#d0c4da",
+        "#91678d",
+        "#c69d97"
+      ]
     },
     {
       "id": "pc-the-sims-3-diesel-stuff",
@@ -6751,8 +7741,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-diesel-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Diesel Stuff · The Sims 3 Diesel Stuff Cover.jpg"
+      },
+      "colors": [
+        "#9cabb2",
+        "#707f7d",
+        "#e6e7e8"
+      ]
     },
     {
       "id": "pc-the-sims-3-70s-80s-and-90s-stuff",
@@ -6770,8 +7769,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-70s-80s-and-90s-stuff.jpg",
+        "ratio": 0.708,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: 70s, 80s, & 90s Stuff · 70s80s90s.jpg"
+      },
+      "colors": [
+        "#94b56b",
+        "#d4ddcb",
+        "#5e6c52"
+      ]
     },
     {
       "id": "pc-the-sims-3-movie-stuff",
@@ -6789,8 +7797,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Stuff Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-movie-stuff.jpg",
+        "ratio": 0.7077,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Movie Stuff · The Sims 3 Movie Stuff Cover.jpg"
+      },
+      "colors": [
+        "#627c45",
+        "#9dba7b",
+        "#dee4d4"
+      ]
     },
     {
       "id": "pc-the-sims-3-create-a-sim",
@@ -6806,8 +7823,17 @@
       "mac": true,
       "series": "The Sims 3",
       "pack": "Extra",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-3-create-a-sim.jpg",
+        "ratio": 0.7115,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 3: Create a Sim · The Sims 3 Create-A-Sim cover.jpg"
+      },
+      "colors": [
+        "#ccd3de",
+        "#7894b6",
+        "#4c4344"
+      ]
     },
     {
       "id": "pc-the-sims-3-hidden-springs",
@@ -6859,8 +7885,17 @@
       "alsoDigital": true,
       "series": "The Sims Medieval",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-medieval.jpg",
+        "ratio": 0.7143,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims Medieval · The_Sims_Medieval.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#97815d",
+        "#564338",
+        "#e4d7c4"
+      ]
     },
     {
       "id": "pc-the-sims-medieval-collectors-edition",
@@ -6909,8 +7944,17 @@
       "format": "boxed",
       "series": "The Sims Medieval",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-medieval-pirates-and-nobles.jpg",
+        "ratio": 0.7058,
+        "source": "sims.fandom.com",
+        "ref": "The Sims Medieval: Pirates & Nobles · P&N Cover.jpg"
+      },
+      "colors": [
+        "#8a7155",
+        "#b29d90",
+        "#5f3a31"
+      ]
     },
     {
       "id": "pc-the-sims-4",
@@ -6928,8 +7972,17 @@
       "mac": true,
       "series": "The Sims 4",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 4 · Sims4_Rebrand.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b08c7a",
+        "#99d0dc",
+        "#4b4739"
+      ]
     },
     {
       "id": "pc-the-sims-4-get-to-work",
@@ -6948,8 +8001,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP01",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-get-to-work.jpg",
+        "ratio": 0.7077,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Get to Work · The Sims 4 Get to Work Cover Original.webp"
+      },
+      "colors": [
+        "#4d4e4a",
+        "#7fa7aa",
+        "#ecf0ec"
+      ]
     },
     {
       "id": "pc-the-sims-4-get-together",
@@ -6968,8 +8030,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP02",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-get-together.jpg",
+        "ratio": 0.7135,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Get Together · The Sims 4 Get Together Cover Original.webp"
+      },
+      "colors": [
+        "#a0a9b3",
+        "#8d7174",
+        "#503c44"
+      ]
     },
     {
       "id": "pc-the-sims-4-city-living",
@@ -6988,8 +8059,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP03",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-city-living.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: City Living · TS4_City_Living_Cover_Art_Original.webp"
+      },
+      "colors": [
+        "#8a8e86",
+        "#475360",
+        "#b8c5ca"
+      ]
     },
     {
       "id": "pc-the-sims-4-cats-and-dogs",
@@ -7007,8 +8087,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP04",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-cats-and-dogs.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Cats & Dogs · The_Sims_4_Cats_&_Dogs_Cover_2.png"
+      },
+      "colors": [
+        "#cf4882",
+        "#a91e6e",
+        "#714645"
+      ]
     },
     {
       "id": "pc-the-sims-4-seasons",
@@ -7026,8 +8115,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP05",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-seasons.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Seasons · The Sims 4 Seasons Cover 2.png"
+      },
+      "colors": [
+        "#4daeeb",
+        "#3188cd",
+        "#99613c"
+      ]
     },
     {
       "id": "pc-the-sims-4-get-famous",
@@ -7045,8 +8143,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP06",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-get-famous.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Get Famous · The Sims 4 Get Famous Cover 2.png"
+      },
+      "colors": [
+        "#4a59c9",
+        "#3a3c87",
+        "#ba8c57"
+      ]
     },
     {
       "id": "pc-the-sims-4-island-living",
@@ -7064,8 +8171,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP07",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-island-living.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Island Living · The Sims 4 Island Living Cover 2.png"
+      },
+      "colors": [
+        "#54a649",
+        "#1e683b",
+        "#b4a983"
+      ]
     },
     {
       "id": "pc-the-sims-4-cottage-living",
@@ -7083,8 +8199,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP11",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-cottage-living.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Cottage Living · The Sims 4 Cottage Living Cover 2.png"
+      },
+      "colors": [
+        "#9a7c57",
+        "#31379a",
+        "#4d5bca"
+      ]
     },
     {
       "id": "pc-the-sims-4-horse-ranch",
@@ -7102,8 +8227,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP14",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-horse-ranch.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Horse Ranch · The Sims 4 Horse Ranch Cover 2.png"
+      },
+      "colors": [
+        "#d6458a",
+        "#982464",
+        "#b53577"
+      ]
     },
     {
       "id": "pc-the-sims-4-for-rent",
@@ -7121,8 +8255,17 @@
       "series": "The Sims 4",
       "pack": "Expansion Pack",
       "packCode": "EP15",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-for-rent.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: For Rent · The Sims 4 For Rent Cover 2.png"
+      },
+      "colors": [
+        "#4a5ad0",
+        "#333a9d",
+        "#676961"
+      ]
     },
     {
       "id": "pc-the-sims-4-outdoor-retreat",
@@ -7140,8 +8283,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP01",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-outdoor-retreat.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Outdoor Retreat · The_Sims_4_Outdoor_Retreat_Cover_2.png"
+      },
+      "colors": [
+        "#57a847",
+        "#226a32",
+        "#ac7d3b"
+      ]
     },
     {
       "id": "pc-the-sims-4-spa-day",
@@ -7159,8 +8311,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP02",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-spa-day.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Spa Day · The_Sims_4_Spa_Day_Cover_2.png"
+      },
+      "colors": [
+        "#4dafec",
+        "#2d8ad4",
+        "#837663"
+      ]
     },
     {
       "id": "pc-the-sims-4-dine-out",
@@ -7178,8 +8339,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP03",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-dine-out.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Dine Out · The Sims 4 Dine Out Cover 2.png"
+      },
+      "colors": [
+        "#58b2eb",
+        "#2f8bd6",
+        "#b7987f"
+      ]
     },
     {
       "id": "pc-the-sims-4-vampires",
@@ -7197,8 +8367,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP04",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-vampires.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Vampires · The Sims 4 Vampires Cover 2.png"
+      },
+      "colors": [
+        "#8c34a7",
+        "#6e2c93",
+        "#413330"
+      ]
     },
     {
       "id": "pc-the-sims-4-parenthood",
@@ -7216,8 +8395,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP05",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-parenthood.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Parenthood · The_Sims_4_Parenthood_Cover_2.png"
+      },
+      "colors": [
+        "#cd4480",
+        "#a4206b",
+        "#5c5950"
+      ]
     },
     {
       "id": "pc-the-sims-4-jungle-adventure",
@@ -7236,8 +8424,17 @@
       "series": "The Sims 4",
       "pack": "Game Pack",
       "packCode": "GP06",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-jungle-adventure.jpg",
+        "ratio": 1,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Jungle Adventure · The_Sims_4_Jungle_Adventure_Cover 2.png"
+      },
+      "colors": [
+        "#2c6832",
+        "#59a248",
+        "#b36152"
+      ]
     },
     {
       "id": "pc-the-sims-4-luxury-party-stuff",
@@ -7255,8 +8452,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP01",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-luxury-party-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Luxury Party Stuff · The Sims 4 Luxury Party Stuff Cover.jpg"
+      },
+      "colors": [
+        "#4fc510",
+        "#9b8361",
+        "#cdd1c0"
+      ]
     },
     {
       "id": "pc-the-sims-4-perfect-patio-stuff",
@@ -7274,8 +8480,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP02",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-perfect-patio-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Perfect Patio Stuff · The Sims 4 Perfect Patio Stuff Cover.jpg"
+      },
+      "colors": [
+        "#6d4630",
+        "#c2bcb1",
+        "#3da01e"
+      ]
     },
     {
       "id": "pc-the-sims-4-cool-kitchen-stuff",
@@ -7293,8 +8508,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP03",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-cool-kitchen-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Cool Kitchen Stuff · The Sims 4 Cool Kitchen Stuff Cover.jpg"
+      },
+      "colors": [
+        "#3e502f",
+        "#57ce0f",
+        "#a47f69"
+      ]
     },
     {
       "id": "pc-the-sims-4-spooky-stuff",
@@ -7312,8 +8536,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP04",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-spooky-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Spooky Stuff · The Sims 4 Spooky Stuff Cover.jpg"
+      },
+      "colors": [
+        "#41442f",
+        "#55cb17",
+        "#97bea1"
+      ]
     },
     {
       "id": "pc-the-sims-4-movie-hangout-stuff",
@@ -7331,8 +8564,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP05",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-movie-hangout-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Movie Hangout Stuff · The Sims 4 Movie Hangout Stuff Cover.jpg"
+      },
+      "colors": [
+        "#b2805c",
+        "#53cb12",
+        "#455843"
+      ]
     },
     {
       "id": "pc-the-sims-4-romantic-garden-stuff",
@@ -7350,8 +8592,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP06",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-romantic-garden-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Romantic Garden Stuff · The Sims 4- Romantic Garden Stuff Cover.png"
+      },
+      "colors": [
+        "#374a21",
+        "#a36a50",
+        "#50cb0f"
+      ]
     },
     {
       "id": "pc-the-sims-4-kids-room-stuff",
@@ -7369,8 +8620,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP07",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-kids-room-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Kids Room Stuff · The Sims 4 Kids Room Stuff Coverart.png"
+      },
+      "colors": [
+        "#55d30f",
+        "#546c3c",
+        "#9ab1b3"
+      ]
     },
     {
       "id": "pc-the-sims-4-backyard-stuff",
@@ -7388,8 +8648,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP08",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-backyard-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Backyard Stuff · The Sims 4 Backyard Stuff Cover.png"
+      },
+      "colors": [
+        "#b1bfc8",
+        "#638f34",
+        "#58e007"
+      ]
     },
     {
       "id": "pc-the-sims-4-vintage-glamour-stuff",
@@ -7407,8 +8676,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP09",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-vintage-glamour-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Vintage Glamour Stuff · TS4VGS box.jpg"
+      },
+      "colors": [
+        "#512d1c",
+        "#419a16",
+        "#67e808"
+      ]
     },
     {
       "id": "pc-the-sims-4-bowling-night-stuff",
@@ -7426,8 +8704,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP10",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-bowling-night-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Bowling Night Stuff · BNS Boxart.png"
+      },
+      "colors": [
+        "#4f4746",
+        "#b59e85",
+        "#65e50b"
+      ]
     },
     {
       "id": "pc-the-sims-4-fitness-stuff",
@@ -7445,8 +8732,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP11",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-fitness-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Fitness Stuff · The Sims 4 Fitness Cover.jpg"
+      },
+      "colors": [
+        "#433346",
+        "#65e908",
+        "#be645e"
+      ]
     },
     {
       "id": "pc-the-sims-4-toddler-stuff",
@@ -7464,8 +8760,17 @@
       "series": "The Sims 4",
       "pack": "Stuff Pack",
       "packCode": "SP12",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/the-sims-4-toddler-stuff.jpg",
+        "ratio": 0.7096,
+        "source": "sims.fandom.com",
+        "ref": "The Sims 4: Toddler Stuff · The Sims 4 Toddler Stuff Cover.png"
+      },
+      "colors": [
+        "#9c6b48",
+        "#5cde0a",
+        "#456529"
+      ]
     },
     {
       "id": "pc-simcity-2000",
@@ -7481,8 +8786,17 @@
       "launcher": "ea",
       "series": "SimCity",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-2000.jpg",
+        "ratio": 0.8346,
+        "source": "libretro-thumbnails",
+        "ref": "SimCity 2000"
+      },
+      "colors": [
+        "#5c575a",
+        "#8c8679",
+        "#efece3"
+      ]
     },
     {
       "id": "pc-simcity-3000",
@@ -7498,8 +8812,17 @@
       "launcher": "ea",
       "series": "SimCity",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-3000.jpg",
+        "ratio": 0.8258,
+        "source": "en.wikipedia.org",
+        "ref": "SimCity 3000 · SimCity_3000_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#555249",
+        "#7e7a69",
+        "#a1a18e"
+      ]
     },
     {
       "id": "pc-simcity-4",
@@ -7516,8 +8839,17 @@
       "alsoDigital": true,
       "series": "SimCity",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-4.jpg",
+        "ratio": 0.6939,
+        "source": "en.wikipedia.org",
+        "ref": "SimCity 4 · SimCity_4_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#555148",
+        "#a57f64",
+        "#a4b6bd"
+      ]
     },
     {
       "id": "pc-simcity-societies",
@@ -7534,8 +8866,17 @@
       "alsoDigital": true,
       "series": "SimCity",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-societies.jpg",
+        "ratio": 0.7158,
+        "source": "en.wikipedia.org",
+        "ref": "SimCity Societies · SimCity_Societies_Coverart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ebf8fc",
+        "#8f8154",
+        "#d5e7f0"
+      ]
     },
     {
       "id": "pc-simcity-societies-deluxe-edition",
@@ -7586,8 +8927,18 @@
       "series": "SimCity",
       "pack": "Base game",
       "note": "The 2013 SimCity",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-2013.jpg",
+        "ratio": 0.7048,
+        "source": "en.wikipedia.org",
+        "ref": "SimCity (2013 video game) · SimCity_2013_Limited_Edition_cover.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#435058",
+        "#c3cdcc",
+        "#648795"
+      ],
+      "coverMatch": "SimCity (2013 video game)"
     },
     {
       "id": "pc-simcity-complete-edition",
@@ -7618,8 +8969,17 @@
       "format": "boxed",
       "series": "SimCity",
       "pack": "Expansion Pack",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/simcity-cities-of-tomorrow.jpg",
+        "ratio": 0.7048,
+        "source": "en.wikipedia.org",
+        "ref": "SimCity (2013 video game) · SimCity_2013_Limited_Edition_cover.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#435058",
+        "#c3cdcc",
+        "#648795"
+      ]
     },
     {
       "id": "pc-mysims",
@@ -7637,8 +8997,17 @@
       "alsoDigital": true,
       "series": "MySims",
       "pack": "Base game",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/mysims.jpg",
+        "ratio": 0.75,
+        "source": "en.wikipedia.org",
+        "ref": "MySims · Mysims_artbox.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#6e7653",
+        "#b2a07c",
+        "#d9dedd"
+      ]
     },
     {
       "id": "pc-grand-theft-auto",
@@ -7676,8 +9045,17 @@
       "genre": "Action",
       "format": "boxed",
       "note": "An expansion: it needs Grand Theft Auto to play",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-london-1969.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: London 1969 · Grand_Theft_Auto_London_1969.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4c4c77",
+        "#e2d1d2",
+        "#d65549"
+      ]
     },
     {
       "id": "pc-grand-theft-auto-iii",
@@ -7690,8 +9068,17 @@
       "developer": "DMA Design",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-iii.jpg",
+        "ratio": 0.7735,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto III · GTA3boxcover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b1b4b2",
+        "#2a1312",
+        "#6c6d69"
+      ]
     },
     {
       "id": "pc-grand-theft-auto-vice-city",
@@ -7704,8 +9091,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-vice-city.jpg",
+        "ratio": 0.7877,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: Vice City · Vice-city-cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#956d62",
+        "#37373c",
+        "#cdbfbe"
+      ]
     },
     {
       "id": "pc-grand-theft-auto-san-andreas",
@@ -7718,8 +9114,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-san-andreas.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: San Andreas · GTASABOX.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887c6e",
+        "#584e44",
+        "#cacbb3"
+      ]
     },
     {
       "id": "pc-grand-theft-auto-iv",
@@ -7733,8 +9138,17 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "launcher": "rockstar",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-iv.jpg",
+        "ratio": 0.8,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto IV · Grand_Theft_Auto_IV_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#84776b",
+        "#564d49",
+        "#c1c1bb"
+      ]
     },
     {
       "id": "pc-grand-theft-auto-episodes-from-liberty-city",
@@ -7764,8 +9178,17 @@
       "genre": "Action-adventure",
       "format": "digital",
       "launcher": "rockstar",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "pc-la-noire",
@@ -7780,8 +9203,17 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "launcher": "rockstar",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/pc/la-noire.jpg",
+        "ratio": 0.75,
+        "source": "en.wikipedia.org",
+        "ref": "L.A. Noire · LA-Noire-Box-Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#120e12",
+        "#314050",
+        "#823a22"
+      ]
     }
   ]
 }
