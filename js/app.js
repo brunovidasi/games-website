@@ -3,7 +3,18 @@
    it comes off the shelf and turns to show its cover on the way, as the record site
    carries its records between the floor and the grid. A game picked from anywhere
    lifts off the page and flies to the middle, where it can be turned round and
-   opened; closing flies it back into its place. */
+   opened; closing flies it back into its place.
+
+   A collection page (sims.html, gta.html) sets window.SHELF_PAGE before this script
+   to show only its games, grouped by game rather than by console, with its own
+   header and a fourth view, its checklist:
+     id          names what the page remembers in this browser
+     data        more JSON files to load besides data/games.json
+     games(db, …data)   the games on this page
+     group(g)    { key, label, name, order } — the game a copy belongs to
+     groupNoun   what a group is called ("game")
+     hero(games) the header's HTML
+     checklist(el, games)   draws the checklist view into el */
 
 (function () {
   const esc = Case.esc;
@@ -15,11 +26,20 @@
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ORDER = Object.fromEntries(CONSOLES.map((c, i) => [c.id, i]));
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+  const CFG = window.SHELF_PAGE || null;
 
-  /* ---------- remembered choices (this browser only) ---------- */
+  /* ---------- remembered choices (this browser only), each page its own ---------- */
+  const KEY = CFG ? `games.${CFG.id}.` : 'games.';
   const store = {
-    get(k, d) { try { const v = localStorage.getItem('games.' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem('games.' + k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } },
+    get(k, d) { try { const v = localStorage.getItem(KEY + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(KEY + k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } },
+  };
+
+  /* ---------- groups: the shelf stands its games by console, or on a collection page by game ---------- */
+  const GROUP = CFG ? 'group' : 'console';
+  const groupOf = CFG ? CFG.group : g => {
+    const c = CONSOLE_BY_ID[g.console];
+    return { key: g.console, label: c.short, name: c.name, order: ORDER[g.console], art: CONSOLE_ART[g.console] };
   };
 
   /* ---------- sorting: the menu and the list's headers set the same sort ---------- */
@@ -30,14 +50,16 @@
     region:    { label: 'Region',    value: g => g.region },
     publisher: { label: 'Publisher', value: g => g.publisher || '' },
     genre:     { label: 'Genre',     value: g => g.genre || '' },
+    // a collection page's games, each in the order its copies came out
+    group:     { label: 'Game',      value: g => String(groupOf(g).order).padStart(3, '0') + (g.released || '9999'), plain: true },
   };
   const MENU = {
-    console: { key: 'console', dir: 'asc', label: 'By console' },
+    console: { key: GROUP, dir: 'asc', label: CFG ? `By ${CFG.groupNoun}` : 'By console' },
     title: { key: 'title', dir: 'asc', label: 'Title A–Z' },
     newest: { key: 'released', dir: 'desc', label: 'Newest release first' },
     oldest: { key: 'released', dir: 'asc', label: 'Oldest release first' },
   };
-  const validSort = s => s && SORT_BY[s.key] && (s.dir === 'asc' || s.dir === 'desc') ? { key: s.key, dir: s.dir } : { key: 'console', dir: 'asc' };
+  const validSort = s => s && SORT_BY[s.key] && (s.key !== 'group' || CFG) && (s.dir === 'asc' || s.dir === 'desc') ? { key: s.key, dir: s.dir } : { key: GROUP, dir: 'asc' };
   function sortList(list, { key, dir }) {
     const { value, plain } = SORT_BY[key];
     const sign = dir === 'desc' ? -1 : 1;
@@ -50,7 +72,8 @@
     });
   }
 
-  const VIEWS = ['shelf', 'grid', 'list'];
+  const VIEWS = ['shelf', 'grid', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
+  const flat = v => v === 'list' || v === 'checklist'; // views with no cases to carry across
   const state = {
     view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
     mode: ['mixed', 'spines', 'covers'].includes(store.get('mode')) ? store.get('mode') : 'mixed',
@@ -79,7 +102,7 @@
     const years = ALL.map(g => g.released).filter(Boolean).map(r => +r.slice(0, 4));
     const regions = ['PAL', 'NTSC-U', 'NTSC-J'].filter(r => ALL.some(g => stdOf(g) === r));
     $('#shell').innerHTML = `
-      <header class="hero">
+      ${CFG ? CFG.hero(ALL) : `<header class="hero">
         <div>
           <div class="eyebrow">Bruno's Games</div>
           <h1>The Game Shelf</h1>
@@ -91,7 +114,7 @@
           <div><b>${Math.min(...years)}</b><span>Oldest</span></div>
           <div><b>${Math.max(...years)}</b><span>Newest</span></div>
         </div>
-      </header>
+      </header>`}
       <div class="filters"><div class="filters-in">
         <div class="consoles" role="toolbar" aria-label="Filter by console">
           <button class="chip all" data-all><span class="lab"><b>All</b><i data-n="all"></i></span></button>
@@ -114,6 +137,7 @@
             <button type="button" data-view="shelf">Shelf</button>
             <button type="button" data-view="grid">Grid</button>
             <button type="button" data-view="list">List</button>
+            ${VIEWS.includes('checklist') ? '<button type="button" data-view="checklist">Checklist</button>' : ''}
           </div>
           <span class="count" id="count"></span>
         </div>
@@ -176,6 +200,7 @@
     $$('#view button').forEach(x => x.classList.toggle('on', x.dataset.view === state.view));
     $$('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === state.mode));
     $('#modeWrap').hidden = state.view !== 'shelf';
+    document.body.dataset.view = state.view;
     $$('#covers button').forEach(x => x.classList.toggle('on', x.dataset.cv === state.covers));
     $('#cv-with').textContent = ALL.filter(g => g.cover).length;
     $('#cv-without').textContent = ALL.filter(g => !g.cover).length;
@@ -232,6 +257,14 @@
     const item = e.target.closest('.lrow[data-id]');
     if (item) { e.preventDefault(); Detail.open(byId.get(item.dataset.id), faceOf(item)); }
   });
+  // a case on a collection page's checklist opens here too, rather than on the shelf it links to
+  document.addEventListener('click', e => {
+    const item = state.view === 'checklist' && e.target.closest('#checklist [data-id]');
+    if (!item || e.metaKey || e.ctrlKey || e.shiftKey || !byId.has(item.dataset.id)) return;
+    e.preventDefault();
+    Detail.open(byId.get(item.dataset.id), faceOf(item));
+  });
+
   // the part of a shelf item, grid cell or list row that is the game itself
   const faceOf = item => item.querySelector('.lcase > *, .gt > *') || item.firstElementChild;
 
@@ -241,6 +274,7 @@
     host.classList.toggle('bookcase', state.view === 'shelf');
     host.classList.toggle('gridview', state.view === 'grid');
     host.classList.toggle('listview', state.view === 'list');
+    if (state.view === 'checklist') { CFG.checklist($('#checklist'), ALL); Detail.rehome(); return; }
     if (!games.length) {
       host.innerHTML = `<div class="empty-msg"><b>Nothing on this shelf</b>No games match those filters. Try another console or clear the search.</div>`;
       return;
@@ -252,10 +286,10 @@
   /* ---------- the bookcase ---------- */
   const scale = () => innerWidth < 640 ? 0.78 : innerWidth < 1000 ? 0.95 : 1.12;
 
-  // In "one cover per console", one game per console faces out: a favourite if marked, else the newest with a cover.
+  // In "one cover per console" (or game), one per console faces out: a favourite if marked, else the newest with a cover.
   function leaders() {
     const out = new Set(), by = {};
-    games.forEach(g => (by[g.console] = by[g.console] || []).push(g));
+    games.forEach(g => (by[groupOf(g).key] = by[groupOf(g).key] || []).push(g));
     for (const gs of Object.values(by)) {
       const pool = gs.filter(g => g.format === 'boxed');
       const favs = pool.filter(g => g.fav);
@@ -278,17 +312,17 @@
     // left to right, a new shelf when one is full
     const rows = [[]];
     let x = 0, last = null;
-    const grouped = state.sort.key === 'console';
+    const grouped = state.sort.key === GROUP;
     games.forEach(g => {
       const kind = kindOf(g), L = Case.layout(g, s);
-      const newGroup = grouped && g.console !== last;
+      const newGroup = grouped && groupOf(g).key !== last;
       const w = (kind === 'face' ? L.w + 12 : kind === 'loose' ? Case.cartSize(g, s * 1.6)[0] + 16 : L.d) + 2 + (newGroup && last ? 30 : 0);
       if (x + w > inner && rows[rows.length - 1].length) { rows.push([]); x = 0; }
       const row = rows[rows.length - 1];
       if (newGroup && last && row.length) row.push({ end: true });
       row.push({ g, kind, label: grouped && (newGroup || !row.some(r => r.g)) });
       x += w;
-      last = g.console;
+      last = groupOf(g).key;
     });
 
     let n = 0;
@@ -324,8 +358,8 @@
       if (plates !== lastPlates) { edge = -Infinity; lastPlates = plates; }
       const p = document.createElement('div');
       p.className = 'plate';
-      p.textContent = CONSOLE_BY_ID[g.console].short;
-      p.title = CONSOLE_BY_ID[g.console].name;
+      p.textContent = groupOf(g).label;
+      p.title = groupOf(g).name;
       plates.append(p);
       const left = Math.max(btn.offsetLeft - 14, edge + 4);
       p.style.left = left + 'px';
@@ -391,16 +425,17 @@
     const wrap = document.createElement('div');
     wrap.className = 'grid';
     wrap.style.cssText = `--cell:${G.cell}px;--stage:${G.stage}px;--gap:${G.gap}px`;
-    const grouped = state.sort.key === 'console';
+    const grouped = state.sort.key === GROUP;
     const counts = {};
-    games.forEach(g => counts[g.console] = (counts[g.console] || 0) + 1);
+    games.forEach(g => counts[groupOf(g).key] = (counts[groupOf(g).key] || 0) + 1);
     let last = null, n = 0;
     games.forEach(g => {
       const c = CONSOLE_BY_ID[g.console];
-      if (grouped && g.console !== last) {
-        wrap.insertAdjacentHTML('beforeend', `<div class="ghead"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span><b>${esc(c.name)}</b><i>${counts[g.console]} ${counts[g.console] === 1 ? 'game' : 'games'}</i></div>`);
+      const gr = groupOf(g);
+      if (grouped && gr.key !== last) {
+        wrap.insertAdjacentHTML('beforeend', `<div class="ghead">${gr.art ? `<span class="spot-art">${gr.art}</span>` : ''}<b>${esc(gr.name)}</b><i>${counts[gr.key]} ${counts[gr.key] === 1 ? 'copy' : CFG ? 'copies' : 'games'}</i></div>`);
       }
-      last = g.console;
+      last = gr.key;
       const cell = document.createElement('button');
       cell.type = 'button';
       cell.className = 'cell' + (animate ? ' enter' : '');
@@ -443,7 +478,7 @@
 
     /** Where every game on screen is now. Called just before the view is drawn again. */
     function capture() {
-      if (state.view === 'list' || reduced()) return null;
+      if (flat(state.view) || reduced()) return null;
       const spots = new Map();
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item);
@@ -464,7 +499,7 @@
 
     /** Sets the games of the view just drawn travelling from where `snap` had them. */
     function play(snap) {
-      if (!snap || snap.view === state.view || state.view === 'list' || reduced()) return;
+      if (!snap || snap.view === state.view || flat(state.view) || reduced()) return;
       stop();
       const layer = document.createElement('div');
       layer.className = 'morph';
@@ -605,12 +640,13 @@
 
     const infoAbove = g => {
       const c = CONSOLE_BY_ID[g.console];
-      return `<p class="spot-eyebrow" style="--n:0"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)} · ${esc(REGIONS[g.region]?.name || g.region)}</p><h2 style="--n:1">${esc(g.title)}</h2>`;
+      return `<p class="spot-eyebrow" style="--n:0"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)}${g.mac ? ' / Mac' : ''} · ${esc(REGIONS[g.region]?.name || g.region)}</p><h2 style="--n:1">${esc(g.title)}</h2>`;
     };
     function infoBelow(g) {
       const c = CONSOLE_BY_ID[g.console];
       const made = g.developer && g.developer !== g.publisher ? `Developed by ${g.developer}` : '';
-      const rest = [g.genre, FORMATS[g.format], g.edition, made].filter(Boolean);
+      const pack = g.pack && g.pack !== 'Base game' ? [g.pack, g.packCode].filter(Boolean).join(' ') : '';
+      const rest = [pack, g.genre, FORMATS[g.format], g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
       const q = encodeURIComponent(`${g.title} ${c.name} ${REGIONS[g.region]?.name || g.region} box art`);
       let n = 2;
       return `
@@ -677,7 +713,7 @@
     }
     // the element that shows this game now: on the shelf, in the grid or in the list
     function homeOf(g) {
-      const item = host.querySelector(`[data-id="${CSS.escape(g.id)}"]`);
+      const item = (state.view === 'checklist' ? $('#checklist') : host).querySelector(`[data-id="${CSS.escape(g.id)}"]`);
       return item ? faceOf(item) : null;
     }
     // what a flight scales against: a spine is matched by height, anything else by its size
@@ -957,13 +993,13 @@
   });
 
   /* ---------- start ---------- */
-  fetch('data/games.json')
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(db => {
-      ALL = db.games;
+  const json = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
+  Promise.all(['data/games.json', ...(CFG && CFG.data || [])].map(json))
+    .then(([db, ...more]) => {
+      ALL = CFG ? CFG.games(db, ...more) : db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
-        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition].join(' | '));
+        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
       });
       shell();
       const h = location.hash.slice(1);
@@ -971,6 +1007,13 @@
       games = list();
       sync();
       render(true);
+      // a collection page's link to one of its checklist's sections opens the checklist there
+      if (h && VIEWS.includes('checklist') && !byId.has(h) && !CONSOLE_BY_ID[h]) {
+        state.view = 'checklist';
+        sync();
+        render(false);
+        try { $('#' + CSS.escape(h))?.scrollIntoView(); } catch (e) { /* not a section */ }
+      }
       if (byId.has(h)) {
         const g = byId.get(h);
         if (!games.includes(g)) { state.sel = new Set(); games = list(); sync(); render(false); }

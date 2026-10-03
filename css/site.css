@@ -10,6 +10,9 @@
   --line: rgba(242,234,216,.14); --line-strong: rgba(242,234,216,.32);
   --shadow: 0 10px 24px rgba(0,0,0,.5);
   --page: 1320px;
+  /* how far the page starts below the top bar: the bar grows by the phone's status bar and
+     notch. A host that already pads the page by that much (the published artifact) sets it to 0 */
+  --top-inset: env(safe-area-inset-top, 0px);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -30,9 +33,14 @@ a { color: inherit; }
 .topbar { position: fixed; left: 0; right: 0; top: 0; z-index: 900; height: calc(52px + env(safe-area-inset-top, 0px)); padding: env(safe-area-inset-top, 0px) 20px 0; display: flex; align-items: center; background: linear-gradient(rgba(12,10,7,.96), rgba(12,10,7,.9)); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .brand { font: 600 17px 'Fraunces', serif; text-decoration: none; letter-spacing: -.01em; }
 .brand span { color: var(--gold); }
+/* the pages */
+.topnav { margin-left: auto; display: flex; gap: 4px; }
+.topnav a { text-decoration: none; font-size: 13px; padding: 6px 12px; border-radius: 99px; opacity: .7; }
+.topnav a:hover { opacity: 1; background: rgba(242,234,216,.08); }
+.topnav a[aria-current="page"] { opacity: 1; color: var(--ink); background: var(--gold); }
 
 /* ---------- header ---------- */
-.hero { max-width: var(--page); margin: 0 auto; padding: 84px 20px 22px; display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: flex-end; justify-content: space-between; position: relative; }
+.hero { max-width: var(--page); margin: 0 auto; padding: calc(84px + var(--top-inset)) 20px 22px; display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: flex-end; justify-content: space-between; position: relative; }
 .hero::before { content: ""; position: absolute; top: 0; bottom: -80px; left: 50%; width: 100vw; transform: translateX(-50%); z-index: -1; background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.45) 60%, transparent); pointer-events: none; }
 .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .hero h1 { font: 600 clamp(40px, 6vw, 68px)/0.95 'Fraunces', serif; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
@@ -260,7 +268,7 @@ footer a { text-decoration-color: rgba(242,234,216,.3); }
 
 @media (max-width: 820px) {
   .topbar { padding-left: 16px; padding-right: 16px; }
-  .hero { padding: 76px 16px 16px; }
+  .hero { padding: calc(76px + var(--top-inset)) 16px 16px; }
   .filters { position: relative; top: 0; }
   .filters-in { padding: 10px 16px; }
   .pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }

@@ -6,6 +6,8 @@ The game collection site, with the same dark wood, Fraunces and Space Grotesk, a
 - **The grid**: every game face out, standing on one line at its real size, with its name under it. Going between *Shelf* and *Grid* carries every case on screen across, as the record site does between its floor and its grid: each case comes off the shelf and turns from its spine to its cover on the way, and turns back to its spine on the way home.
 - **The list**: the same games as a sortable table, like the record site's list.
 - **A game up close**: click a case on the shelf, in the grid or in the list. It lifts out of its place, which stays empty, and flies to the middle of the screen with its name above it and its details below. Drag it to turn it round, or use *Front*, *Spine* and *Back*. *Open case* shows the disc, and *Take it out* lifts the cartridge out of its box. The arrows at the bottom (or the arrow keys) go to the next and previous game; closing flies it back into its place. On a phone held sideways the details stand beside it.
+- **The Sims collection** (`sims.html`): every Sims game and pack, on the same bookcase, in the same grid and list, grouped by game (The Sims, The Sims 2, The Sims Stories, The Sims 3, The Sims Medieval, The Sims 4, SimCity, MySims) rather than by console. Its *Checklist* view sorts them by game and pack, with how much of each is there and the want list. A solid case is on disc, an outline is in the EA app.
+- **Grand Theft Auto** (`gta.html`): every GTA copy on the bookcase, grouped by game. Its *Checklist* goes era by era, one row per game with its copies on every platform and a dashed outline at the real case size for each version still to find. Those outlines are the want list at the bottom.
 - **Design prototypes** (`prototypes/`): the four early designs, kept as they were.
 
 ## Running it
@@ -17,7 +19,9 @@ python3 -m http.server 8000     # or: npx serve
 # then open http://localhost:8000
 ```
 
-There is no build step. A link like `index.html#ps2` opens straight onto one console, and `index.html#ps2-final-fantasy-x` opens one game.
+There is no build step. A link like `index.html#ps2` opens straight onto one console, and `index.html#ps2-final-fantasy-x` opens one game. On the collection pages a section's name opens the checklist there: `gta.html#want-list`.
+
+The collection pages are the same shelf (`js/app.js`): each sets `window.SHELF_PAGE` with its games, how they group, its header and its checklist (see the top of `js/app.js`).
 
 ## The collection: `data/games.json`
 
@@ -44,7 +48,13 @@ One entry per copy on the shelf:
 
 To add a game, copy an entry, change it, and set `cover` and `colors` to `null`. Then fetch its cover (below).
 
-**PC games**: use `"console": "pc"` and add `"launcher"` (`steam`, `origin`, `ea`, `rockstar`, `battlenet`, `gog`, `ubisoft` or `none`). Add `"big": true` for a big-box release.
+**PC games**: use `"console": "pc"` and add `"launcher"` (`steam`, `origin`, `ea`, `rockstar`, `battlenet`, `gog`, `ubisoft` or `none`). Add `"big": true` for a big-box release, `"mac": true` when it plays on a Mac too, and `"alsoDigital": true` for a disc that is also in the launcher's library.
+
+**The Sims page** takes every game with a `"series"` (`"The Sims"`, `"The Sims 2"`, `"The Sims Stories"`, `"The Sims 3"`, `"The Sims Medieval"`, `"The Sims 4"`, `"SimCity"` or `"MySims"`), on any console. `"pack"` says what it is (`Base game`, `Collection`, `Expansion Pack`, `Game Pack`, `Stuff Pack`, `Kit`, `World` or `Extra`) and `"packCode"` gives The Sims 4's numbering (`EP01`, `GP04`, `SP12`). Serial keys are never kept here.
+
+**The GTA page** reads `data/gta.json`: the eras, and in each its games with `copies` (ids from `games.json`) and `missing` (console ids, plus `psp` and `xsx` for Xbox Series X|S). When a missing version comes home, add it to `games.json` and move its id from `missing` to `copies`.
+
+**The Sims want list** is `data/sims-wants.json`: the games and packs not in the collection yet, with the same `series`, `pack` and `packCode`, plus `platform` and an optional `note`. When one comes home, delete it there and add it to `games.json`.
 
 ## Cases and cartridges
 
@@ -75,6 +85,8 @@ If it picks the wrong one, or finds nothing, set `"coverMatch"` on the game:
 - a PS3 serial, for example `"BLES00229"`
 - a PS2 serial, for example `"SLES-52047"`
 
+PC games come from the box art on the game's page on [the Sims Wiki](https://sims.fandom.com), then Wikipedia, then libretro-thumbnails' DOS boxes (the first Grand Theft Auto). `"coverMatch"` names the page when the title doesn't find it. This needs `sims.fandom.com`, `static.wikia.nocookie.net`, `en.wikipedia.org` and `upload.wikimedia.org` to be reachable.
+
 None of these collections cover PS4, PS5, Switch, Switch 2, Xbox One or most Xbox 360 games. Those show a printed title card in the right case until they have a cover. The details of every game without a cover have a *Find the cover on Google Images* link that searches for the title, console and region. To add a cover by hand:
 1. Save the image as `covers/<console>/<name>.jpg`.
 2. Set `"cover": { "file": "covers/…", "source": "manual" }` on the game.
@@ -88,6 +100,10 @@ The script never replaces covers marked `manual`. A source with an API key, such
 - `css/cases.css`, `js/cases.js`: each console's case, spine, back, disc and cartridge
 - `js/consoles.js`: the consoles with their real case sizes, the regions and the PC launchers
 - `js/console-art.js`: the console drawings in the filter
+- `css/collection.css`, `js/collection.js`: what the collection pages' checklists share: the cases on their stretches of shelf, the meters, the want cards
+- `sims.html`, `css/sims.css`, `js/sims.js`: the Sims collection page
+- `data/sims-wants.json`: the Sims want list
+- `gta.html`, `css/gta.css`, `js/gta.js`, `data/gta.json`: the Grand Theft Auto page
 - `data/games.json`: the collection
 - `covers/`: box art, one folder per console
 - `tools/`: the cover fetcher
