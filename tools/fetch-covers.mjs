@@ -170,13 +170,27 @@ const getJSON = async url => {
   return null;
 };
 
-// The infobox's "image = [[File:The Sims 2 Apartment Life Cover.jpg|250px]]".
-async function findSimsWiki(page) {
+// The infobox's "image = [[File:The Sims 2 Apartment Life Cover.jpg|250px]]". A page with
+// several boxes puts them in tabs ("Modernised=[[File:…]] |-| Original=[[File:…]]"): a box
+// on the shelf takes the original one, a pack in the EA app the first, which is today's art.
+function infoboxFile(text, digital) {
+  const tabs = text.match(/\|\s*image\s*=\s*<tabber>([\s\S]*?)<\/tabber>/i)?.[1];
+  if (!tabs) return text.match(/\|\s*image\s*=\s*\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim();
+  const files = tabs.split('|-|').map(t => ({
+    name: t.split('=')[0].trim(),
+    file: t.match(/\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim(),
+  })).filter(t => t.file);
+  if (!files.length) return null;
+  if (digital) return files[0].file;
+  return (files.find(t => /original|1st|first/i.test(t.name)) || files[files.length - 1]).file;
+}
+
+async function findSimsWiki(page, g) {
   const api = 'https://sims.fandom.com/api.php';
   const j = await getJSON(`${api}?action=parse&format=json&redirects=1&prop=wikitext&section=0&page=${encodeURIComponent(page)}`);
   const text = j?.parse?.wikitext?.['*'];
   if (!text) return null;
-  const file = text.match(/\|\s*image\s*=\s*\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim();
+  const file = infoboxFile(text, g.format === 'digital');
   if (!file) return null;
   const info = await getJSON(`${api}?action=query&format=json&prop=imageinfo&iiprop=url&titles=${encodeURIComponent('File:' + file)}`);
   const url = Object.values(info?.query?.pages || {})[0]?.imageinfo?.[0]?.url;
@@ -185,7 +199,8 @@ async function findSimsWiki(page) {
 
 async function findWikipedia(page) {
   const j = await getJSON(`https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages&piprop=original&pilicense=any&titles=${encodeURIComponent(page)}`);
-  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source);
+  // A box is a scan, never a drawing: an .svg page image is the game's logo.
+  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source && !/\.svg(\?|$)/i.test(p.original.source));
   if (!p) return null;
   const img = p.original.source;
   return { url: img, source: 'en.wikipedia.org', ref: `${p.title} · ${decodeURIComponent(img.split('/').pop())}` };
@@ -195,7 +210,7 @@ async function findWiki(g) {
   const page = g.coverMatch || g.title;
   for (const find of [findSimsWiki, findWikipedia]) {
     try {
-      const hit = await find(page);
+      const hit = await find(page, g);
       if (hit) return hit;
     } catch (e) { /* that wiki can't be reached: try the next */ }
   }
