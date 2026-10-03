@@ -31,14 +31,15 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.45);
   overflow: hidden; isolation: isolate;
 }
+/* where the printed cover sits: worked out per game (js/cases.js), so a scan is never cut */
 .cv .ins, .bk .ins {
   position: absolute; overflow: hidden; background: #222;
-  inset: calc(var(--w) * .018) calc(var(--w) * .018) calc(var(--w) * .018) calc(var(--w) * .045);
+  left: var(--ix); top: var(--iy); width: var(--iw); height: var(--ih);
   border-radius: 1px;
 }
-.kind-jewel.cv .ins, .kind-jewel.bk .ins { inset: calc(var(--w) * .012); }
 .kind-box.cv, .kind-box.bk { border-radius: 2px; }
-.kind-box.cv .ins, .kind-box.bk .ins { inset: 0; }
+/* the bare plastic above a Blu-ray sleeve */
+.cv.k-ps3, .cv.k-ps4, .cv.k-ps5, .cv.k-xone { background-image: linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,0) 9%); }
 /* the hinge ridge on keep cases */
 .kind-keep.cv::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--w) * .045); z-index: 3;
   background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(0,0,0,.25) 40%, rgba(255,255,255,.08) 70%, rgba(0,0,0,.3)); }
@@ -76,9 +77,11 @@
 .joy b:first-child { background: currentColor; }
 .k-wii .band, .k-wiiu .band { height: 9%; justify-content: center; }
 .k-wii .band em, .k-wiiu .band em { font-family: 'Arial Rounded MT Bold', 'Nunito', 'Space Grotesk', sans-serif; font-size: 1em; letter-spacing: .02em; font-weight: 700; }
-.k-ds .band, .k-3ds .band { height: 8.5%; }
-.k-ds .band em, .k-3ds .band em { font-size: .52em; letter-spacing: .14em; }
-.k-ds .band em b, .k-3ds .band em b { font-size: 1.6em; margin-left: .25em; letter-spacing: .02em; }
+/* DS and 3DS covers carry the logo down a white strip on the left */
+.k-ds .band, .k-3ds .band { top: 0; bottom: 0; right: auto; width: 11%; height: auto; padding: .5em 0; justify-content: center; }
+.k-ds .band em, .k-3ds .band em { writing-mode: vertical-rl; transform: rotate(180deg); font-size: .5em; letter-spacing: .14em; }
+.k-ds .band em b, .k-3ds .band em b { font-size: 1.6em; margin-top: .25em; letter-spacing: .02em; }
+.k-ds .phc, .k-3ds .phc, .k-ds .phn, .k-3ds .phn { left: 18%; }
 .k-3ds .band em b { color: #d0021b; }
 .k-snes .band, .k-gb .band { top: 4%; left: 4%; right: auto; width: auto; height: auto; padding: .3em .5em; border-radius: .15em; flex-direction: column; align-items: flex-start; gap: 0; background: rgba(40,40,48,.9); }
 .k-snes .band em, .k-gb .band em { display: flex; flex-direction: column; font-size: .5em; font-style: italic; }
@@ -161,7 +164,7 @@
 .bar { width: 3em; height: 1.4em; background: repeating-linear-gradient(90deg, #000 0 1px, #fff 1px 2px, #000 2px 4px, #fff 4px 5px, #000 5px 6px, #fff 6px 8px); border: .2em solid #fff; }
 
 /* ---------- 3D case ---------- */
-.bx { position: relative; transform-style: preserve-3d; }
+.bx { position: relative; transform-style: preserve-3d; transition: translate .9s cubic-bezier(.3,.9,.3,1), scale .9s cubic-bezier(.3,.9,.3,1); }
 .bx .fc { position: absolute; transform-style: preserve-3d; backface-visibility: hidden; }
 .bx .fc > .cv, .bx .fc > .bk, .bx .fc > .sp { box-shadow: none; }
 .bx .edge { width: 100%; height: 100%; background: var(--pl); }
@@ -183,7 +186,8 @@
 .mthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bx.open .leaf { transform: rotateY(-155deg); }
 .bx.kind-keep.open, .bx.kind-jewel.open { translate: calc(var(--w) * .42) 0; scale: .82; }
-.bx.kind-box.open { translate: 0 calc(var(--h) * .22); scale: .85; }
+/* a cardboard box sinks and shrinks while the cartridge rises out of the top, inside the closed box's outline (sizes from js/cases.js) */
+.bx.kind-box.open { translate: 0 var(--oy); scale: var(--os); }
 .bx.kind-box .f-front .leaf { transition: none; }
 .bx.kind-box.open .leaf { transform: none; }
 .bx .f-tray .tray { position: absolute; inset: 2%; border-radius: 3px; display: grid; place-items: center;
@@ -191,8 +195,9 @@
 .bx.kind-jewel .f-tray .tray { background: #121212; }
 .bx.kind-box .f-tray .tray { background: none; overflow: visible; }
 .bx.kind-box .f-tray { transform-style: preserve-3d; }
-.bx.kind-box .f-tray .cart { transition: transform .9s cubic-bezier(.3,.9,.3,1); transform: translateZ(calc(var(--d) * -.5)); }
-.bx.kind-box.open .f-tray .cart { transform: translateZ(calc(var(--d) * -.5)) translateY(calc(var(--h) * -.62)); }
+.bx.kind-box .f-tray .tray > * { transition: translate .9s cubic-bezier(.3,.9,.3,1); }
+.bx.kind-box .f-tray .cart { transform: translateZ(calc(var(--d) * -.5)); }
+.bx.kind-box.open .f-tray .tray > * { translate: 0 calc(var(--ty) * -1); }
 .bx.kind-box .f-top { transition: opacity .4s; }
 .bx.kind-box.open .f-top { opacity: 0; }
 
@@ -212,22 +217,12 @@
 .bx.open .disc { animation: spin 6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ---------- cartridges ---------- */
-.cart { position: relative; width: var(--cw); height: var(--ch); border-radius: calc(var(--cw) * .06); background: #2a2a2e; box-shadow: 0 4px 12px rgba(0,0,0,.5), inset 0 -3px 0 rgba(0,0,0,.25); flex: none; }
-.cart .clab { position: absolute; left: 10%; right: 10%; top: 10%; height: 62%; border-radius: 2px; overflow: hidden; background: linear-gradient(160deg, var(--ph1), var(--ph2)); }
-.cart .clab img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cart .clab span { position: absolute; left: 8%; right: 8%; bottom: 8%; color: var(--phf, #fff); font: 700 calc(var(--cw) * .12)/1.05 'Fraunces', serif; }
-.cart .clab img + span { display: none; }
-.c-snes { background: linear-gradient(#b9b9c0, #9a9aa3); border-radius: 6% 6% 3% 3%; }
-.c-snes::before { content: ""; position: absolute; left: 0; right: 0; bottom: 8%; height: 14%; background: repeating-linear-gradient(90deg, #8a8a94 0 4px, #a4a4ad 4px 8px); }
-.c-snes .clab { left: 14%; right: 14%; top: 8%; height: 58%; }
-.c-gb { background: linear-gradient(#a9a9a3, #93938c); }
-.c-gb .clab, .c-gbc .clab { top: 18%; height: 56%; }
-.c-gbc { background: #262626; }
-.c-gba { background: linear-gradient(#a8a8ae, #8e8e95); }
-.c-gba .clab { top: 12%; height: 60%; }
-.c-ds { background: #3a3a40; }
-.c-3ds { background: #e6e6e8; }
-.c-switch { background: #1e1e20; border-radius: 8%; }
-.c-switch .clab { left: 8%; right: 8%; top: 8%; height: 55%; }
-.c-switch .clab span, .c-ds .clab span, .c-3ds .clab span { font-size: calc(var(--cw) * .1); }
+/* ---------- cartridges and game cards (drawn in js/cases.js) ---------- */
+.cart { position: relative; width: var(--cw); height: var(--ch); flex: none; filter: drop-shadow(0 3px 5px rgba(0,0,0,.45)); }
+.cart > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.cart .clab { position: absolute; overflow: hidden; border-radius: 4% / 5%; background: linear-gradient(160deg, var(--ph1), var(--ph2)); box-shadow: 0 0 0 .5px rgba(0,0,0,.35); }
+.cart .clab img { width: var(--liw, 100%); max-width: none; height: 100%; margin-left: var(--lix, 0); object-fit: cover; object-position: var(--lp, center); display: block; }
+.cart .clab::after { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.28), rgba(255,255,255,0) 40%); pointer-events: none; }
+.cart .clab span { position: absolute; left: 9%; right: 9%; top: 50%; transform: translateY(-50%); color: var(--phf, #fff); font: 700 calc(var(--cw) * .1)/1.05 'Fraunces', serif; text-align: center; overflow-wrap: anywhere; }
+.c-snes .clab span { font-size: calc(var(--cw) * .07); }
+.c-switch .clab span, .c-switch2 .clab span { font-size: calc(var(--cw) * .13); }
