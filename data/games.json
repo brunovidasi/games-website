@@ -4234,7 +4234,7 @@
       "developer": "Nintendo",
       "genre": "Racing",
       "format": "boxed",
-      "check": "Assumed Maximum Velocity — F-Zero: GP Legend also came out on GBA.",
+      "check": "Assumed Maximum Velocity (2001). The notes say 2004, which would be F-Zero: GP Legend: check the cartridge.",
       "cover": {
         "file": "covers/gba/f-zero-maximum-velocity.jpg",
         "ratio": 1,
@@ -4586,7 +4586,6 @@
       "developer": null,
       "genre": "Rhythm",
       "format": "boxed",
-      "check": "Taken as a second, USA copy of LEGO Rock Band: there is no Lego Rock Band 2.",
       "cover": {
         "file": "covers/ds/lego-rock-band-usa.jpg",
         "ratio": 1.1034,
