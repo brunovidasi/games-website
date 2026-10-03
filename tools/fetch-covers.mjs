@@ -11,7 +11,7 @@
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
 // ".png", a PS3 serial such as "BLES00229", or a PS2 serial such as "SLES-52047". Covers you add yourself (cover.source
-// "manual") are never touched.
+// "manual") are never replaced: the script only measures their shape and colours if they are missing.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -180,14 +180,23 @@ async function save(buf, g) {
   return { rel, ratio: +(meta.width / meta.height).toFixed(4), colors: await palette(buf) };
 }
 
+// A cover added by hand keeps its image. It only gets the shape and colours the case needs.
+async function measure(g) {
+  const abs = path.join(ROOT, g.cover.file || '');
+  if ((g.cover.ratio && g.colors) || !g.cover.file || !fs.existsSync(abs)) return;
+  const meta = await sharp(abs).metadata();
+  g.cover.ratio = +(meta.width / meta.height).toFixed(4);
+  g.colors = await palette(fs.readFileSync(abs));
+}
+
 /* ---------- main ---------- */
 
 const db = JSON.parse(fs.readFileSync(DATA, 'utf8'));
 const report = { found: [], offRegion: [], missing: [], skipped: 0 };
 
 for (const g of db.games) {
+  if (g.cover && g.cover.source === 'manual') { await measure(g); report.skipped++; continue; }
   if (ONLY ? g.id !== ONLY : (g.cover && g.cover.file)) { report.skipped++; continue; }
-  if (g.cover && g.cover.source === 'manual') { report.skipped++; continue; }
   const sys = g.caseStyle || g.console;
   let hit = null, url = null, source = null;
   if (sys === 'ps2' && /^S[CL][EUP][SMD]-\d{5}$/.test(g.coverMatch || '')) {
