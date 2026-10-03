@@ -1,7 +1,9 @@
-/* app.js — the game shelf. Loads data/games.json and shows it on a bookcase or
-   in a list. A game picked from either lifts off and flies into a spotlight
-   beside the drawer, the way a record does on the music site; there it can be
-   turned round and opened, and closing flies it back to where it was. */
+/* app.js — the game shelf. Loads data/games.json and shows it on a bookcase, in a
+   grid or in a list. Going between the shelf and the grid carries every case across:
+   it comes off the shelf and turns to show its cover on the way, as the record site
+   carries its records between the floor and the grid. A game picked from anywhere
+   lifts off the page and flies to the middle, where it can be turned round and
+   opened; closing flies it back into its place. */
 
 (function () {
   const esc = Case.esc;
@@ -48,8 +50,9 @@
     });
   }
 
+  const VIEWS = ['shelf', 'grid', 'list'];
   const state = {
-    view: ['shelf', 'list'].includes(store.get('view')) ? store.get('view') : 'shelf',
+    view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
     mode: ['mixed', 'spines', 'covers'].includes(store.get('mode')) ? store.get('mode') : 'mixed',
     sort: validSort(store.get('sort')),
     sel: new Set(), region: '', q: '', covers: '',
@@ -107,6 +110,7 @@
           </select>
           <div class="seg" id="view" role="group" aria-label="View">
             <button type="button" data-view="shelf">Shelf</button>
+            <button type="button" data-view="grid">Grid</button>
             <button type="button" data-view="list">List</button>
           </div>
           <span class="count" id="count"></span>
@@ -132,9 +136,13 @@
     $('#sort').addEventListener('change', e => { if (MENU[e.target.value]) setSort(MENU[e.target.value]); });
     $$('#view button').forEach(b => b.addEventListener('click', () => {
       if (state.view === b.dataset.view) return;
+      // the shelf and the grid are the same cases laid out two ways, so they are carried across
+      const before = Morph.capture();
       state.view = b.dataset.view;
       store.set('view', state.view);
-      changed();
+      sync();
+      render(!before);
+      Morph.play(before);
     }));
     $$('#mode button').forEach(b => b.addEventListener('click', () => { state.mode = b.dataset.m; store.set('mode', state.mode); changed(); }));
     $$('#covers button').forEach(b => b.addEventListener('click', () => { state.covers = b.dataset.cv; changed(); }));
@@ -205,7 +213,7 @@
     tipEl.style.transform = `translate(${x}px,${y}px)`;
   });
 
-  // a click anywhere on a game, on the shelf or in the list, picks it up
+  // a click anywhere on a game, on the shelf, in the grid or in the list, picks it up
   host.addEventListener('click', e => {
     const head = e.target.closest('.lsort');
     if (head) {
@@ -222,18 +230,20 @@
     const item = e.target.closest('.lrow[data-id]');
     if (item) { e.preventDefault(); Detail.open(byId.get(item.dataset.id), faceOf(item)); }
   });
-  // the part of a shelf item or list row that is the game itself
-  const faceOf = item => item.querySelector('.lcase > *') || item.firstElementChild;
+  // the part of a shelf item, grid cell or list row that is the game itself
+  const faceOf = item => item.querySelector('.lcase > *, .gt > *') || item.firstElementChild;
 
   function render(animate) {
     tipEl.classList.remove('vis');
+    Morph.stop();
     host.classList.toggle('bookcase', state.view === 'shelf');
+    host.classList.toggle('gridview', state.view === 'grid');
     host.classList.toggle('listview', state.view === 'list');
     if (!games.length) {
       host.innerHTML = `<div class="empty-msg"><b>Nothing on this shelf</b>No games match those filters. Try another console or clear the search.</div>`;
       return;
     }
-    if (state.view === 'list') renderList(); else renderShelf(animate);
+    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else renderShelf(animate);
     Detail.rehome();
   }
 
@@ -366,22 +376,187 @@
     host.replaceChildren(wrap);
   }
 
-  /* ---------- the detail: drawer and spotlight ---------- */
+  /* ---------- the grid: every game standing face out on one baseline ---------- */
+  // A DVD case stands the full height of the stage and the rest keep their real size beside it,
+  // so a DS case is shorter and a Switch case narrower. Loose cartridges stand twice their size.
+  const gridSize = () => innerWidth < 640 ? { cell: 100, stage: 136, gap: 12 } : innerWidth < 1000 ? { cell: 132, stage: 172, gap: 20 } : { cell: 148, stage: 196, gap: 26 };
+  function renderGrid(animate) {
+    const G = gridSize();
+    const width = host.clientWidth;
+    const cols = Math.max(1, Math.floor((width + G.gap) / (G.cell + G.gap)));
+    const room = (width - G.gap * (cols - 1)) / cols - 6;
+    const s = G.stage / 190;
+    const wrap = document.createElement('div');
+    wrap.className = 'grid';
+    wrap.style.cssText = `--cell:${G.cell}px;--stage:${G.stage}px;--gap:${G.gap}px`;
+    const grouped = state.sort.key === 'console';
+    const counts = {};
+    games.forEach(g => counts[g.console] = (counts[g.console] || 0) + 1);
+    let last = null, n = 0;
+    games.forEach(g => {
+      const c = CONSOLE_BY_ID[g.console];
+      if (grouped && g.console !== last) {
+        wrap.insertAdjacentHTML('beforeend', `<div class="ghead"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span><b>${esc(c.name)}</b><i>${counts[g.console]} ${counts[g.console] === 1 ? 'game' : 'games'}</i></div>`);
+      }
+      last = g.console;
+      const cell = document.createElement('button');
+      cell.type = 'button';
+      cell.className = 'cell' + (animate ? ' enter' : '');
+      cell.dataset.id = g.id;
+      cell.style.setProperty('--d', Math.min(n++ * 12, 700) + 'ms');
+      cell.setAttribute('aria-label', `${g.title}, ${c.name}, ${Case.year(g)}`);
+      const tile = document.createElement('span');
+      tile.className = 'gt';
+      if (g.format === 'cartridge-only') {
+        const [w1, h1] = Case.cartSize(g, 1);
+        tile.append(Case.cart(g, Math.min(s * 2, room / w1, (G.stage * 0.8) / h1)));
+      } else {
+        const L = Case.layout(g, 1);
+        const face = Case.front(g, Math.min(s, room / L.w, G.stage / L.h));
+        if (g.format === 'digital') face.classList.add('ghosted');
+        tile.append(face);
+      }
+      const stage = document.createElement('span');
+      stage.className = 'stage';
+      stage.append(tile);
+      cell.append(stage);
+      cell.insertAdjacentHTML('beforeend', `<span class="cap"><b>${esc(g.title)}</b><small>${c.short} · ${Case.year(g)} · ${esc(g.region)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small></span>`);
+      wrap.append(cell);
+    });
+    host.replaceChildren(wrap);
+  }
+
+  /* ---------- shelf ⇄ grid: every case on screen is carried across ----------
+     As the record site carries its records between the floor and the grid, each
+     game on screen travels in an arc from where one view had it to where the other
+     stands it. Coming off the shelf a case turns from its spine to its cover on the
+     way; going back it turns to its spine again. */
+  const Morph = (() => {
+    const MAX = 72; // cases that travel; any more simply fade in
+    let run = null;
+    const onScreen = r => r.bottom > -40 && r.top < innerHeight + 40 && r.right > -40 && r.left < innerWidth + 40;
+    const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : 'front';
+    // the part of the page that waits while its case is in the air
+    const spotOf = (item, face) => face.closest('.gt') || item;
+
+    /** Where every game on screen is now. Called just before the view is drawn again. */
+    function capture() {
+      if (state.view === 'list' || reduced()) return null;
+      const spots = new Map();
+      for (const item of host.querySelectorAll('[data-id]')) {
+        const face = faceOf(item);
+        const r = face.getBoundingClientRect();
+        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind: kindOf(face) });
+      }
+      return { view: state.view, spots };
+    }
+
+    function stop() {
+      if (!run) return;
+      clearTimeout(run.timer);
+      run.layer.remove();
+      run.hidden.forEach(el => { el.style.visibility = ''; });
+      host.querySelector('.grid')?.classList.remove('morphing');
+      run = null;
+    }
+
+    /** Sets the games of the view just drawn travelling from where `snap` had them. */
+    function play(snap) {
+      if (!snap || snap.view === state.view || state.view === 'list' || reduced()) return;
+      stop();
+      const layer = document.createElement('div');
+      layer.className = 'morph';
+      document.body.append(layer);
+      const hidden = [];
+
+      // every read first, so the page is laid out once rather than once per case
+      const arrivals = [];
+      for (const item of host.querySelectorAll('[data-id]')) {
+        const face = faceOf(item);
+        const r = face.getBoundingClientRect();
+        if (onScreen(r)) arrivals.push({ item, face, r, from: snap.spots.get(item.dataset.id), kind: kindOf(face) });
+      }
+      arrivals.sort((a, b) => (a.r.top - b.r.top) || (a.r.left - b.r.left));
+      const flights = arrivals.filter(a => a.from && (a.from.kind === 'cart') === (a.kind === 'cart')).slice(0, MAX);
+      const flying = new Set(flights);
+
+      let longest = 0;
+      flights.forEach((a, i) => {
+        const g = byId.get(a.item.dataset.id);
+        const cart = a.kind === 'cart';
+        // it flies at the size it lands, so it is crisp when it gets there
+        const H = a.face.offsetHeight;
+        const s = H / (cart ? Case.cartSize(g, 1)[1] : Case.layout(g, 1).h);
+        const fly = cart ? Case.cart(g, s) : Case.slab(g, s);
+        if (g.format === 'digital') $('.cv', fly)?.classList.add('ghosted');
+        const W = cart ? Case.cartSize(g, s)[0] : Case.layout(g, s).w;
+        const cx = a.r.left + a.r.width / 2, cy = a.r.top + a.r.height / 2;
+        const wrap = document.createElement('div');
+        wrap.className = 'mf';
+        wrap.style.cssText = `left:${(cx - W / 2 + scrollX).toFixed(1)}px;top:${(cy - H / 2 + scrollY).toFixed(1)}px;width:${W.toFixed(1)}px;height:${H.toFixed(1)}px`;
+        wrap.append(fly);
+        layer.append(wrap);
+
+        const dx = a.from.cx - cx, dy = a.from.cy - cy, k = a.from.h / H;
+        const dist = Math.hypot(dx, dy);
+        const lift = 30 + Math.min(90, dist * 0.12);
+        const duration = 760 + Math.min(340, dist * 0.3);
+        const delay = Math.min(i, 48) * 14;
+        longest = Math.max(longest, delay + duration);
+        const at = (x, y, sc) => `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${sc.toFixed(3)})`;
+        const anim = wrap.animate([
+          { transform: at(dx, dy, k) },
+          { transform: at(dx / 2, dy / 2 - lift, ((k + 1) / 2) * 1.06), offset: 0.5 },
+          { transform: at(0, 0, 1) },
+        ], { duration, delay, easing: 'cubic-bezier(.35,0,.25,1)', fill: 'both' });
+        // a case turns between its spine and its cover; a loose cartridge straightens up or leans back
+        const turn = cart
+          ? [`rotate(${snap.view === 'shelf' ? -6 : 0}deg)`, `rotate(${state.view === 'shelf' ? -6 : 0}deg)`]
+          : [`rotateY(${a.from.kind === 'spine' ? 90 : 0}deg)`, `rotateY(${a.kind === 'spine' ? 90 : 0}deg)`];
+        fly.animate(turn.map(transform => ({ transform })), { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
+
+        // the game on the page waits under it until it lands
+        const spot = spotOf(a.item, a.face);
+        spot.style.visibility = 'hidden';
+        hidden.push(spot);
+        anim.onfinish = () => { spot.style.visibility = ''; wrap.remove(); };
+      });
+
+      // the rest had no place in the other view: they come in quietly
+      arrivals.filter(a => !flying.has(a)).forEach(a => {
+        spotOf(a.item, a.face).animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, delay: 350, easing: 'ease-out', fill: 'backwards' });
+      });
+      // the grid's captions come in once the cases are nearly home
+      host.querySelector('.grid')?.classList.add('morphing');
+      run = { layer, hidden, timer: setTimeout(stop, longest + 300) };
+    }
+
+    return { capture, play, stop };
+  })();
+
+  /* ---------- the spotlight: a game lifts off the page and comes to the middle ----------
+     Its place on the shelf (or in the grid or list) stays empty while it is out. It
+     stands in the middle with its name above and its details below, and can be
+     turned round and opened. Closing flies it back into its place. */
   const Detail = (() => {
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
-    const drawer = document.createElement('aside');
-    drawer.className = 'drawer';
-    drawer.setAttribute('role', 'dialog');
-    drawer.setAttribute('aria-modal', 'true');
-    drawer.setAttribute('aria-label', 'Game details');
-    drawer.innerHTML = `<button class="drawer-close" type="button" aria-label="Close">✕</button><div class="drawer-cover"></div><div class="drawer-body"></div>`;
-    document.body.append(overlay, drawer);
+    const ui = document.createElement('div');
+    ui.className = 'spot-ui';
+    ui.setAttribute('role', 'dialog');
+    ui.setAttribute('aria-modal', 'true');
+    ui.tabIndex = -1;
+    ui.innerHTML = `<button class="spot-close" type="button" aria-label="Close">✕</button>
+      <div class="spot-nav"><button type="button" data-step="-1" aria-label="Previous game">←</button><span class="spot-count"></span><button type="button" data-step="1" aria-label="Next game">→</button></div>`;
+    document.body.append(overlay, ui);
     overlay.addEventListener('click', () => close());
-    $('.drawer-close', drawer).addEventListener('click', () => close());
+    $('.spot-close', ui).addEventListener('click', () => close());
+    ui.addEventListener('click', e => { const s = e.target.closest('[data-step]'); if (s) step(+s.dataset.step); });
 
     const REST = { box: [-6, -24], flat: [-4, -14] };
-    let cur = null; // { g, source, piece, turn, obj, layer, L, rx, ry, open, closing, ... }
+    const NAV = 64; // the arrows along the bottom
+    let cur = null; // the game in the middle
+    const leaving = new Set(); // games on their way back
 
     const isOpen = () => !!cur && !cur.closing;
     const shape = g => g.format === 'cartridge-only' ? 'cart' : g.format === 'digital' ? 'card' : 'box';
@@ -410,62 +585,40 @@
       return [L.w, L.h];
     }
 
-    /* Where the spotlight stands: the page beside the drawer, the game in the middle, text above and below. */
+    /* The game in the middle of the screen, as big as the text above and below leaves room for.
+       On a wide, short screen (a phone on its side) the game stands on the left and its text on the right. */
     function layoutFor(g) {
-      const lw = innerWidth - drawer.offsetWidth;
-      const vh = innerHeight;
-      if (lw < 520 || vh < 460) return null;
+      const vw = innerWidth, vh = innerHeight;
       const [w1, h1] = sizeOf(g, 1);
-      const padX = clamp(lw * 0.07, 28, 96), margin = clamp(vh * 0.05, 20, 56);
-      const availH = vh - margin * 2 - 2 * (110 + 24);
-      if (availH < 150) return null;
-      const k = Math.min((lw - padX * 2) / (w1 * 1.25), Math.min(availH, vh * 0.52) / h1, shape(g) === 'cart' ? 7 : 3.2);
-      return { k, w: w1 * k, h: h1 * k, cx: lw / 2, cy: vh / 2 + 8, lw, padX, margin };
+      const padX = clamp(vw * 0.06, 16, 96), margin = clamp(vh * 0.04, 12, 44);
+      const cap = shape(g) === 'cart' ? 7 : 3.2;
+      if (vw >= 600 && vh < 560 && vw > vh * 1.4) {
+        const k = Math.max(0.15, Math.min((vw * 0.5 - padX * 1.5) / (w1 * 1.15), (vh - margin * 2 - NAV) / h1, cap));
+        return { k, w: w1 * k, h: h1 * k, cx: (padX + vw * 0.5) / 2, cy: (vh - NAV) / 2, vw, vh, padX, margin, side: true };
+      }
+      const text = vw < 640 ? 200 : 250; // a first guess at the text; place() measures it
+      const k = Math.max(0.15, Math.min((vw - padX * 2) / (w1 * 1.2), Math.max(vh - margin * 2 - NAV - text, 140) / h1, (vh * 0.55) / h1, cap));
+      return { k, w: w1 * k, h: h1 * k, cx: vw / 2, cy: vh / 2, vw, vh, padX, margin };
     }
 
     const infoAbove = g => {
       const c = CONSOLE_BY_ID[g.console];
       return `<p class="spot-eyebrow" style="--n:0"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)} · ${esc(REGIONS[g.region]?.name || g.region)}</p><h2 style="--n:1">${esc(g.title)}</h2>`;
     };
-    const infoBelow = g => `
-      <p class="spot-who" style="--n:2">${[Case.date(g.released, true), g.publisher].filter(Boolean).map(esc).join(' · ')}</p>
-      <p class="spot-rest" style="--n:3">${[g.genre, FORMATS[g.format], g.edition].filter(Boolean).map(esc).join(' · ')}</p>
-      ${shape(g) === 'box' ? `<div class="views" style="--n:4">
-        <button type="button" data-v="front">Front</button><button type="button" data-v="spine">Spine</button><button type="button" data-v="back">Back</button>
-        <button type="button" class="open-btn" data-v="open">${Case.layout(g, 1).kind === 'box' ? 'Take it out' : 'Open case'}</button></div>` : ''}`;
-
-    /* ---------- the drawer's text ---------- */
-    function body(g) {
-      const c = CONSOLE_BY_ID[g.console], st = CONSOLE_BY_ID[Case.styleOf(g)];
-      const R = REGIONS[g.region] || { name: g.region, long: g.region };
-      const Ln = g.launcher && LAUNCHERS[g.launcher];
-      const i = games.indexOf(g);
-      const q = encodeURIComponent(`${g.title} ${c.name} ${R.name} box art`);
-      const tags = [R.name, g.format !== 'boxed' && FORMATS[g.format], g.edition, g.genre, Ln && (g.launcher === 'none' ? 'No activation needed' : 'Activates on ' + Ln.name)].filter(Boolean);
+    function infoBelow(g) {
+      const c = CONSOLE_BY_ID[g.console];
+      const made = g.developer && g.developer !== g.publisher ? `Developed by ${g.developer}` : '';
+      const rest = [g.genre, FORMATS[g.format], g.edition, made].filter(Boolean);
+      const q = encodeURIComponent(`${g.title} ${c.name} ${REGIONS[g.region]?.name || g.region} box art`);
+      let n = 2;
       return `
-        <p class="d-eyebrow"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)}${st !== c ? ` · ${esc(st.name)} case` : ''}</p>
-        <h2>${esc(g.title)}</h2>
-        <div class="artist">${[Case.year(g), g.publisher].filter(Boolean).map(esc).join(' · ')}</div>
-        <div class="tags">${tags.map((t, n) => `<span class="tag${n ? '' : ' gold'}">${esc(t)}</span>`).join('')}</div>
-        <dl class="facts">
-          <dt>Released</dt><dd>${Case.date(g.released, true)}</dd>
-          <dt>Region</dt><dd>${esc(R.long)}</dd>
-          <dt>Publisher</dt><dd>${esc(g.publisher || '—')}</dd>
-          <dt>Developer</dt><dd>${esc(g.developer || '—')}</dd>
-          <dt>Genre</dt><dd>${esc(g.genre || '—')}</dd>
-          <dt>Console</dt><dd>${esc(c.name)}</dd>
-          <dt>Copy</dt><dd>${FORMATS[g.format]}</dd>
-          ${g.listedAs ? `<dt>On my list as</dt><dd>${esc(g.listedAs)}</dd>` : ''}
-        </dl>
-        ${g.note ? `<p class="note">${esc(g.note)}</p>` : ''}
-        ${g.cover
-          ? `<p class="credit">Cover scan: ${esc(g.cover.source)}, ${esc(g.cover.ref)}</p>`
-          : `<div class="find"><p>No cover scan for this one yet.</p><a href="https://www.google.com/search?tbm=isch&amp;q=${q}" target="_blank" rel="noopener">Find the cover on Google Images ↗</a></div>`}
-        <div class="navbtns">
-          <button type="button" data-step="-1" ${i <= 0 ? 'disabled' : ''}>← Previous</button>
-          <button type="button" data-step="1" ${i < 0 || i >= games.length - 1 ? 'disabled' : ''}>Next →</button>
-          <span>${i + 1} of ${games.length}</span>
-        </div>`;
+        <p class="spot-who" style="--n:${n++}">${[Case.date(g.released, true), g.publisher].filter(Boolean).map(esc).join(' · ')}</p>
+        ${rest.length ? `<p class="spot-rest" style="--n:${n++}">${rest.map(esc).join(' · ')}</p>` : ''}
+        ${g.note ? `<p class="spot-note" style="--n:${n++}">${esc(g.note)}</p>` : ''}
+        ${g.cover ? '' : `<a class="spot-find" style="--n:${n++}" href="https://www.google.com/search?tbm=isch&amp;q=${q}" target="_blank" rel="noopener">Find the cover on Google Images ↗</a>`}
+        ${shape(g) === 'box' ? `<div class="views" style="--n:${n++}">
+          <button type="button" data-v="front">Front</button><button type="button" data-v="spine">Spine</button><button type="button" data-v="back">Back</button>
+          <button type="button" class="open-btn" data-v="open">${Case.layout(g, 1).kind === 'box' ? 'Take it out' : 'Open case'}</button></div>` : ''}`;
     }
 
     /* ---------- turning it round ---------- */
@@ -475,16 +628,16 @@
       cur.turn.style.transform = rot([cur.rx, cur.ry]);
       const n = ((cur.ry % 360) + 360) % 360;
       const v = n > 45 && n < 135 ? 'spine' : n >= 135 && n < 225 ? 'back' : (n < 45 || n > 315) ? 'front' : '';
-      $$('[data-v]', cur.viewsHost).forEach(b => b.classList.toggle('on', b.dataset.v === v));
+      $$('[data-v]', cur.layer).forEach(b => b.classList.toggle('on', b.dataset.v === v));
     }
     function view(v) {
       if (!cur || cur.sh !== 'box') return;
-      const bx = cur.obj, isBox = Case.layout(cur.g, 1).kind === 'box';
+      const isBox = Case.layout(cur.g, 1).kind === 'box';
       if (v === 'open' || v === 'close') {
         cur.open = v === 'open';
-        bx.classList.toggle('open', cur.open);
+        cur.obj.classList.toggle('open', cur.open);
         if (cur.open) { cur.rx = -8; cur.ry = isBox ? -18 : 16; }
-        $$('.open-btn', cur.viewsHost).forEach(b => b.textContent = cur.open ? (isBox ? 'Put it back' : 'Close case') : (isBox ? 'Take it out' : 'Open case'));
+        $$('.open-btn', cur.layer).forEach(b => b.textContent = cur.open ? (isBox ? 'Put it back' : 'Close case') : (isBox ? 'Take it out' : 'Open case'));
       } else {
         if (cur.open) view('close');
         cur.rx = -5;
@@ -496,7 +649,7 @@
     function grab(el) {
       let drag = null;
       el.addEventListener('pointerdown', e => {
-        if (!cur || cur.closing || e.target.closest('.views')) return;
+        if (!cur || cur.closing || cur.piece !== el) return;
         drag = { x: e.clientX, y: e.clientY, rx: cur.rx, ry: cur.ry, moved: false };
         el.setPointerCapture(e.pointerId);
         cur.flight?.finish?.();
@@ -514,29 +667,24 @@
         drag = null;
       });
     }
-    drawer.addEventListener('click', e => {
-      const v = e.target.closest('[data-v]');
-      if (v) view(v.dataset.v);
-      const s = e.target.closest('[data-step]');
-      if (s) step(+s.dataset.step);
-    });
 
     /* ---------- where a game is on the page ---------- */
     function poseOf(el) {
       const r = el.getBoundingClientRect();
       return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w: r.width, h: r.height, seen: r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && r.width > 0 };
     }
-    // the element that shows this game now, on the shelf or in the list
+    // the element that shows this game now: on the shelf, in the grid or in the list
     function homeOf(g) {
-      if (cur && cur.source && cur.source.isConnected) return cur.source;
       const item = host.querySelector(`[data-id="${CSS.escape(g.id)}"]`);
       return item ? faceOf(item) : null;
     }
-    // what the flight scales against: a spine is matched by height, anything else by width
+    // what a flight scales against: a spine is matched by height, anything else by its size
     const scaleFrom = (el, p, w, h) => el.classList.contains('sp') ? p.h / h : Math.min(p.w / w, p.h / h);
     const piecePose = (L, cx, cy, s) => `translate(${(cx - L.w / 2).toFixed(1)}px,${(cy - L.h / 2).toFixed(1)}px) scale(${s.toFixed(4)})`;
+    // a place just off the screen on the way to (x, y)
+    const offscreen = (L, x, y) => [clamp(x, L.w / 2, L.vw - L.w / 2), y < L.vh / 2 ? -L.h * 0.75 : L.vh + L.h * 0.75];
 
-    function hide(el) { if (el) { el.style.visibility = 'hidden'; cur.hidden.push(el); } }
+    function hide(a, el) { if (el && !a.hidden.includes(el)) { el.style.visibility = 'hidden'; a.hidden.push(el); } }
     function unhide(a) { a.hidden.forEach(el => { el.style.visibility = ''; }); a.hidden = []; }
 
     /* ---------- opening ---------- */
@@ -544,44 +692,19 @@
       if (!g) return;
       if (cur) finish(cur);
       tipEl.classList.remove('vis');
-      $('.drawer-body', drawer).innerHTML = body(g);
-      $('.drawer-cover', drawer).innerHTML = '';
-      drawer.scrollTop = 0;
-      overlay.classList.add('open');
-      drawer.classList.add('open');
-      document.body.classList.add('detail-open');
       if (!fromHash) setHash(g.id, true);
+      overlay.classList.add('open');
+      ui.classList.add('open');
+      show(g, source && source.isConnected ? source : homeOf(g), 0);
+      setTimeout(() => ui.focus({ preventScroll: true }), 60);
+    }
 
+    // Stands a game in the middle. It lifts off its place when that is on screen; otherwise it
+    // comes in from the side it is on (side: 1 from the right, -1 from the left, 0 from its place).
+    function show(g, src, side, still) {
+      leaving.forEach(x => { if (x.g === g) finish(x); }); // already on its way back: it comes straight out again
       const L = layoutFor(g);
-      const a = cur = { g, source: source || null, L, rx: 0, ry: 0, open: false, closing: false, hidden: [], raf: 0, timer: 0 };
-      if (L) spotlight(a); else inDrawer(a);
-      setTimeout(() => $('.drawer-close', drawer).focus({ preventScroll: true }), 50);
-    }
-
-    // On a narrow screen the drawer has the whole width: the case sits at its top.
-    function inDrawer(a) {
-      document.body.classList.remove('spot-on');
-      drawer.classList.remove('spot-on');
-      const cover = $('.drawer-cover', drawer);
-      const w = Math.min(drawer.clientWidth || innerWidth, 440);
-      const [w1, h1] = sizeOf(a.g, 1);
-      const k = Math.min((w - 90) / w1, 250 / h1, shape(a.g) === 'cart' ? 6 : 3);
-      const { turn, obj, sh } = build(a.g, k);
-      Object.assign(a, { turn, obj, sh, viewsHost: cover });
-      const stage = document.createElement('div');
-      stage.className = 'dstage';
-      stage.append(turn);
-      cover.append(stage);
-      cover.insertAdjacentHTML('beforeend', sh === 'box' ? infoBelow(a.g).replace(/<p[\s\S]*?<\/p>/g, '') : '');
-      grab(stage);
-      [a.rx, a.ry] = REST[sh === 'box' ? 'box' : 'flat'];
-      pose(false);
-      if (!reduced()) turn.animate([{ transform: rot([a.rx, a.ry - 40]), opacity: 0 }, { transform: rot([a.rx, a.ry]), opacity: 1 }], { duration: 600, easing: 'cubic-bezier(.2,.8,.25,1)' });
-    }
-
-    // Beside the drawer: the game lifts off the page and flies over, growing as it goes.
-    function spotlight(a) {
-      const { g, L } = a;
+      const a = cur = { g, source: src || null, L, rx: 0, ry: 0, open: false, closing: false, hidden: [], raf: 0, timer: 0 };
       const layer = document.createElement('div');
       layer.className = 'spot';
       layer.innerHTML = `<div class="spot-floor"></div><div class="spot-info above">${infoAbove(g)}</div><div class="spot-info below">${infoBelow(g)}</div>`;
@@ -590,13 +713,15 @@
       const { turn, obj, sh } = build(g, L.k);
       piece.append(turn);
       layer.append(piece);
-      drawer.before(layer);
-      Object.assign(a, { layer, piece, turn, obj, sh, viewsHost: layer });
+      layer.classList.toggle('side', !!L.side);
+      if (still) layer.classList.add('still');
+      ui.before(layer);
+      Object.assign(a, { layer, piece, turn, obj, sh });
       layer.addEventListener('click', e => { const v = e.target.closest('[data-v]'); if (v) view(v.dataset.v); });
       grab(piece);
       place(a);
-      document.body.classList.add('spot-on');
-      drawer.classList.add('spot-on');
+      count(g);
+      ui.setAttribute('aria-label', g.title);
       document.body.style.setProperty('--spot-x', L.cx.toFixed(0) + 'px');
       document.body.style.setProperty('--spot-y', L.cy.toFixed(0) + 'px');
 
@@ -606,12 +731,12 @@
       piece.style.transform = rest;
       pose(false);
 
-      const src = a.source && a.source.isConnected ? a.source : null;
-      const from = src ? poseOf(src) : null;
-      if (reduced()) { hide(src); return; }
-      if (from && from.seen) {
-        hide(src);
-        const s0 = scaleFrom(src, from, L.w, L.h);
+      const from = a.source ? poseOf(a.source) : null;
+      hide(a, a.source); // its place stays empty while it is out
+      if (still || reduced()) return;
+      if (from && from.seen && !side) {
+        // off the page: it lifts from its place and flies over, turning and growing as it goes
+        const s0 = scaleFrom(a.source, from, L.w, L.h);
         const dist = Math.hypot(from.cx - L.cx, from.cy - L.cy);
         const lift = 50 + Math.min(110, dist * 0.12);
         const duration = 820 + Math.min(320, dist * 0.25);
@@ -620,58 +745,97 @@
           { transform: piecePose(L, (from.cx + L.cx) / 2, (from.cy + L.cy) / 2 - lift, (s0 + 1) / 2), offset: 0.45 },
           { transform: rest },
         ], { duration, easing: 'cubic-bezier(.3,.05,.2,1)', fill: 'backwards' });
-        turn.animate([{ transform: rot(fromPose(src)) }, { transform: rot(restPose) }], { duration: duration * 0.9, easing: 'cubic-bezier(.4,.1,.2,1)', fill: 'backwards' });
+        turn.animate([{ transform: rot(fromPose(a.source)) }, { transform: rot(restPose) }], { duration: duration * 0.9, easing: 'cubic-bezier(.4,.1,.2,1)', fill: 'backwards' });
       } else {
+        // its place is off the screen (or it has none): it comes in from that side
+        const start = side ? [L.cx + side * (L.vw / 2 + L.w * 0.8), L.cy]
+          : from ? offscreen(L, from.cx, from.cy)
+          : [L.cx, L.vh + L.h * 0.75];
+        const s0 = from && !side ? Math.max(0.3, scaleFrom(a.source, from, L.w, L.h)) : 0.9;
         a.flight = piece.animate([
-          { transform: piecePose(L, L.cx, L.cy + 70, 0.94), opacity: 0 },
-          { transform: rest, opacity: 1 },
-        ], { duration: 700, easing: 'cubic-bezier(.2,.8,.25,1)', fill: 'backwards' });
+          { transform: piecePose(L, start[0], start[1], s0) },
+          { transform: rest },
+        ], { duration: 820, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'backwards' });
+        turn.animate([{ transform: rot(from && !side ? fromPose(a.source) : [restPose[0], restPose[1] + (side || -1) * 40]) }, { transform: rot(restPose) }],
+          { duration: 820, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'backwards' });
       }
     }
 
-    // the text above and below, kept on the page: the game shrinks if the text needs the room
+    // the text above and below, kept on the screen: the game shrinks if the text needs the room
     function place(a) {
       const { L, layer } = a;
       const above = $('.spot-info.above', layer), below = $('.spot-info.below', layer);
-      const width = Math.min(Math.max(L.w * 1.6, 360), L.lw - L.padX * 2);
-      for (const info of [above, below]) {
-        info.style.left = (L.cx - width / 2).toFixed(1) + 'px';
-        info.style.width = width.toFixed(1) + 'px';
-      }
-      const room = innerHeight / 2 - L.margin - 24 - Math.max(above.offsetHeight, below.offsetHeight);
-      if (L.h / 2 > room && room > 60) {
-        const f = (room * 2) / L.h;
-        Object.assign(L, { k: L.k * f, w: L.w * f, h: L.h * f });
-        const { turn, obj, sh } = build(a.g, L.k);
-        a.piece.replaceChildren(turn);
-        Object.assign(a, { turn, obj, sh });
-      }
+      if (L.side) {
+        // the text in one column on the right, the game in the middle of the left
+        const x0 = L.vw * 0.52, width = L.vw - L.padX - x0;
+        for (const info of [above, below]) {
+          info.style.left = x0.toFixed(1) + 'px';
+          info.style.width = width.toFixed(1) + 'px';
+        }
+        const ah = above.offsetHeight, bh = below.offsetHeight;
+        const top = Math.max(L.margin, (L.vh - NAV - ah - 12 - bh) / 2);
+        above.style.top = top.toFixed(1) + 'px';
+        below.style.top = (top + ah + 12).toFixed(1) + 'px';
+        L.cy = Math.max(L.margin + L.h / 2, (L.vh - NAV) / 2);
+      } else layOut(a, above, below);
       a.piece.style.width = L.w.toFixed(1) + 'px';
       a.piece.style.height = L.h.toFixed(1) + 'px';
-      above.style.bottom = (innerHeight - (L.cy - L.h / 2) + 24).toFixed(1) + 'px';
-      below.style.top = (L.cy + L.h / 2 + 28).toFixed(1) + 'px';
       const floor = $('.spot-floor', layer);
       floor.style.left = (L.cx - L.w * 0.7).toFixed(1) + 'px';
       floor.style.width = (L.w * 1.4).toFixed(1) + 'px';
       floor.style.top = (L.cy + L.h / 2 - 12).toFixed(1) + 'px';
     }
+    function layOut(a, above, below) {
+      const L = a.L;
+      const width = Math.min(Math.max(L.w * 1.6, 360), L.vw - L.padX * 2);
+      for (const info of [above, below]) {
+        info.style.left = ((L.vw - width) / 2).toFixed(1) + 'px';
+        info.style.width = width.toFixed(1) + 'px';
+      }
+      const ah = above.offsetHeight, bh = below.offsetHeight, gapA = 22, gapB = 26;
+      const room = L.vh - L.margin * 2 - NAV - ah - bh - gapA - gapB;
+      if (L.h > room && room > 50) {
+        const f = room / L.h;
+        Object.assign(L, { k: L.k * f, w: L.w * f, h: L.h * f });
+        const { turn, obj, sh } = build(a.g, L.k);
+        a.piece.replaceChildren(turn);
+        Object.assign(a, { turn, obj, sh });
+      }
+      const top = L.margin + Math.max(0, (L.vh - NAV - L.margin * 2 - (ah + gapA + L.h + gapB + bh)) / 2);
+      L.cy = top + ah + gapA + L.h / 2;
+      above.style.top = top.toFixed(1) + 'px';
+      below.style.top = (L.cy + L.h / 2 + gapB).toFixed(1) + 'px';
+    }
 
-    /* ---------- closing: back to where it came from ---------- */
+    function count(g) {
+      const i = games.indexOf(g);
+      $('.spot-count', ui).textContent = i < 0 ? '' : `${i + 1} of ${games.length}`;
+      $('[data-step="-1"]', ui).disabled = i <= 0;
+      $('[data-step="1"]', ui).disabled = i < 0 || i >= games.length - 1;
+    }
+
+    /* ---------- closing: back to its place ---------- */
     function close(fromHash) {
       const a = cur;
       if (!a || a.closing) return;
-      a.closing = true;
       overlay.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.classList.remove('detail-open');
+      ui.classList.remove('open');
       if (!fromHash) setHash(state.sel.size === 1 ? [...state.sel][0] : '', false, a.g.id);
-      const focusTo = homeOf(a.g);
-      if (!a.layer || reduced()) { finish(a); focusTo?.closest('[data-id]')?.focus({ preventScroll: true }); return; }
+      const back = homeOf(a.g);
+      leave(a, 0);
+      setTimeout(() => back?.closest('[data-id]')?.focus({ preventScroll: true }), 30);
+    }
 
+    // Sends a game back: into its place if that is on screen, else off the screen towards it,
+    // or out of the side it is leaving by when stepping through (side -1 left, 1 right).
+    function leave(a, side) {
+      a.closing = true;
+      if (cur === a) cur = null;
+      leaving.add(a);
+      clearTimeout(a.timer);
+      if (reduced()) { finish(a); return; }
       a.layer.classList.add('leaving');
       a.obj.classList.remove('open');
-      const home = homeOf(a.g);
-      const to = home ? poseOf(home) : null;
       const L = a.L;
       // where it is right now, which is not its resting place if it was still flying in
       let from = { cx: L.cx, cy: L.cy, s: 1 };
@@ -681,38 +845,46 @@
       }
       a.piece.getAnimations().forEach(x => x.cancel());
       a.turn.getAnimations().forEach(x => x.cancel());
+      a.piece.style.transform = piecePose(L, from.cx, from.cy, from.s);
 
-      if (!to || !to.seen) {
-        // nowhere to go (scrolled away or filtered out): it sinks and fades
-        a.flight = a.piece.animate([
-          { transform: piecePose(L, from.cx, from.cy, from.s), opacity: 1 },
-          { transform: piecePose(L, L.cx, L.cy + 50, 0.94), opacity: 0 },
-        ], { duration: 450, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
-        a.flight.finished.then(() => finish(a), () => {});
-        a.timer = setTimeout(() => finish(a), 700);
+      // the page may have been drawn again since it came out
+      const home = homeOf(a.g);
+      if (home !== a.source) { unhide(a); a.source = home; hide(a, home); }
+      const to = home ? poseOf(home) : null;
+
+      if (to && to.seen) {
+        const dist = Math.hypot(to.cx - from.cx, to.cy - from.cy);
+        const lift = 40 + Math.min(100, dist * 0.1);
+        const duration = 760 + Math.min(300, dist * 0.22);
+        a.turn.style.transition = `transform ${duration * 0.85}ms cubic-bezier(.4,0,.2,1)`;
+        a.turn.style.transform = rot(fromPose(home));
+        const t0 = performance.now();
+        let goal = to;
+        // every frame aims at where its place is now, since the page can scroll meanwhile
+        const frame = now => {
+          if (a.done) return;
+          const t = clamp((now - t0) / duration, 0, 1), u = easeInOut(t);
+          if (home.isConnected) goal = poseOf(home);
+          a.piece.style.transform = piecePose(L, lerp(from.cx, goal.cx, u), lerp(from.cy, goal.cy, u) - lift * Math.sin(Math.PI * u), lerp(from.s, scaleFrom(home, goal, L.w, L.h), u));
+          if (t < 1) a.raf = requestAnimationFrame(frame); else finish(a);
+        };
+        a.raf = requestAnimationFrame(frame);
+        a.timer = setTimeout(() => finish(a), duration + 400);
         return;
       }
 
-      if (home !== a.source) { unhide(a); cur = a; hide(home); }
-      const dist = Math.hypot(to.cx - from.cx, to.cy - from.cy);
-      const lift = 40 + Math.min(100, dist * 0.1);
-      const duration = 760 + Math.min(300, dist * 0.22);
-      a.turn.style.transition = `transform ${duration * 0.85}ms cubic-bezier(.4,0,.2,1)`;
-      a.turn.style.transform = rot(fromPose(home));
-      const t0 = performance.now();
-      let goal = to;
-      // every frame aims at where the game is now, since the page can scroll meanwhile
-      const frame = now => {
-        if (a.done) return;
-        const t = clamp((now - t0) / duration, 0, 1), u = easeInOut(t);
-        if (home.isConnected) goal = poseOf(home);
-        const s1 = scaleFrom(home, goal, L.w, L.h);
-        a.piece.style.transform = piecePose(L, lerp(from.cx, goal.cx, u), lerp(from.cy, goal.cy, u) - lift * Math.sin(Math.PI * u), lerp(from.s, s1, u));
-        if (t < 1) a.raf = requestAnimationFrame(frame); else finish(a);
-      };
-      a.raf = requestAnimationFrame(frame);
-      a.timer = setTimeout(() => finish(a), duration + 400);
-      setTimeout(() => focusTo?.closest('[data-id]')?.focus({ preventScroll: true }), 30);
+      const end = side ? [L.cx + side * (L.vw / 2 + L.w * 0.8), from.cy]
+        : to ? offscreen(L, to.cx, to.cy)
+        : [from.cx, L.vh + L.h * 0.75];
+      const s1 = to && !side ? Math.max(0.3, scaleFrom(home, to, L.w, L.h)) : 0.9;
+      a.turn.style.transition = 'transform .6s cubic-bezier(.4,0,.2,1)';
+      a.turn.style.transform = rot(to && !side ? fromPose(home) : [a.rx, a.ry + (side || 1) * 40]);
+      a.flight = a.piece.animate([
+        { transform: piecePose(L, from.cx, from.cy, from.s) },
+        { transform: piecePose(L, end[0], end[1], s1) },
+      ], { duration: 650, easing: 'cubic-bezier(.5,0,.75,.4)', fill: 'forwards' });
+      a.flight.finished.then(() => finish(a), () => {});
+      a.timer = setTimeout(() => finish(a), 1000);
     }
 
     function finish(a) {
@@ -722,52 +894,38 @@
       cancelAnimationFrame(a.raf);
       a.layer?.remove();
       unhide(a);
-      if (cur === a) {
-        cur = null;
-        document.body.classList.remove('spot-on');
-        drawer.classList.remove('spot-on');
-        if (!drawer.classList.contains('open')) $('.drawer-cover', drawer).innerHTML = '';
-      }
+      leaving.delete(a);
+      if (cur === a) cur = null;
     }
 
-    // the next or previous game, without leaving the drawer
+    // the next or previous game: this one goes back as that one comes out
     function step(n) {
       if (!cur || cur.closing) return;
       const g = games[games.indexOf(cur.g) + n];
-      if (!g) return;
-      const prev = cur;
-      prev.done = true;
-      clearTimeout(prev.timer);
-      cancelAnimationFrame(prev.raf);
-      unhide(prev);
-      prev.layer?.remove();
-      cur = null;
-      $('.drawer-body', drawer).innerHTML = body(g);
-      $('.drawer-cover', drawer).innerHTML = '';
+      if (!g || games.indexOf(cur.g) < 0) return;
+      leave(cur, -n);
       setHash(g.id, false);
-      const L = layoutFor(g);
-      const item = host.querySelector(`[data-id="${CSS.escape(g.id)}"]`);
-      const a = cur = { g, source: item ? faceOf(item) : null, L, rx: 0, ry: 0, open: false, closing: false, hidden: [], raf: 0, timer: 0 };
-      if (L) {
-        spotlight(Object.assign(a, { source: null }));
-        a.source = item ? faceOf(item) : null;
-        hide(a.source);
-      } else inDrawer(a);
+      show(g, homeOf(g), n);
     }
 
-    // the page was drawn again: the game in the spotlight goes home to its new element
+    // the page was drawn again: the game in the middle belongs to its new place
     function rehome() {
-      if (!cur || cur.closing) return;
+      if (!cur) return;
       unhide(cur);
-      const item = host.querySelector(`[data-id="${CSS.escape(cur.g.id)}"]`);
-      cur.source = item ? faceOf(item) : null;
-      if (cur.layer) hide(cur.source);
+      cur.source = homeOf(cur.g);
+      hide(cur, cur.source);
+      count(cur.g);
     }
 
     let rt = 0;
     addEventListener('resize', () => {
       clearTimeout(rt);
-      rt = setTimeout(() => { if (cur && !cur.closing) { const g = cur.g, src = cur.source; finish(cur); open(g, null, true); if (cur) { cur.source = src; if (cur.layer) hide(src); } } }, 200);
+      rt = setTimeout(() => {
+        if (!cur || cur.closing) return;
+        const g = cur.g;
+        finish(cur);
+        show(g, homeOf(g), 0, true);
+      }, 200);
     });
     document.addEventListener('keydown', e => {
       if (!isOpen() || e.target.matches('input, select, textarea')) return;
