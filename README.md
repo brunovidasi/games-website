@@ -80,7 +80,7 @@ If it picks the wrong one, or finds nothing, set `"coverMatch"` on the game:
 - a PS3 serial, for example `"BLES00229"`
 - a PS2 serial, for example `"SLES-52047"`
 
-PC games come from the box art on the game's page on [the Sims Wiki](https://sims.fandom.com), then Wikipedia. `"coverMatch"` names the page when the title doesn't find it. This needs `sims.fandom.com`, `static.wikia.nocookie.net`, `en.wikipedia.org` and `upload.wikimedia.org` to be reachable.
+PC games come from the box art on the game's page on [the Sims Wiki](https://sims.fandom.com), then Wikipedia, then libretro-thumbnails' DOS boxes (the first Grand Theft Auto). `"coverMatch"` names the page when the title doesn't find it. This needs `sims.fandom.com`, `static.wikia.nocookie.net`, `en.wikipedia.org` and `upload.wikimedia.org` to be reachable.
 
 None of these collections cover PS4, PS5, Switch, Switch 2, Xbox One or most Xbox 360 games. Those show a printed title card in the right case until they have a cover. The details of every game without a cover have a *Find the cover on Google Images* link that searches for the title, console and region. To add a cover by hand:
 1. Save the image as `covers/<console>/<name>.jpg`.

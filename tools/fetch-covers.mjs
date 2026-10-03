@@ -10,6 +10,7 @@
 //   aldostools/resources — PS3 covers named by disc serial (BLES…, BLUS…), with titleid.txt
 //   xlenore/ps2-covers — PS2 covers named by disc serial (SLES-52047…), used when coverMatch is a serial
 //   The Sims Wiki, then Wikipedia — PC games: the page image of the game's page
+//   libretro-thumbnails DOS — PC games from the DOS days, when the wikis have nothing
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
 // ".png", a PS3 serial such as "BLES00229", a PS2 serial such as "SLES-52047", or for a PC game
@@ -37,6 +38,7 @@ const LIBRETRO = {
   ds: 'Nintendo_-_Nintendo_DS', '3ds': 'Nintendo_-_Nintendo_3DS', n3ds: 'Nintendo_-_Nintendo_3DS',
   gb: 'Nintendo_-_Game_Boy', gbc: 'Nintendo_-_Game_Boy_Color', gba: 'Nintendo_-_Game_Boy_Advance',
   snes: 'Nintendo_-_Super_Nintendo_Entertainment_System',
+  dos: 'DOS', // PC games from the DOS days, such as the first Grand Theft Auto
 };
 
 /* ---------- listing a repo without downloading it ---------- */
@@ -249,8 +251,8 @@ for (const g of db.games) {
     hit = await findWiki(g);
     if (hit) ({ source, url } = hit);
   }
-  if (!hit && sys !== 'pc') {
-    hit = findLibretro(g, sys);
+  if (!hit) {
+    hit = findLibretro(g, sys === 'pc' ? 'dos' : sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
   }
   if (!hit) { if (had) report.skipped++; else report.missing.push(`${g.id}  (${g.title})`); continue; }
