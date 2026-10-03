@@ -13,8 +13,17 @@
       "developer": "Massive Entertainment",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/avatar-frontiers-of-pandora.jpg",
+        "ratio": 0.7576,
+        "source": "en.wikipedia.org",
+        "ref": "Avatar: Frontiers of Pandora · Avatar_Frontiers_of_Pandora_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#29555a",
+        "#5c827c",
+        "#8ca9ae"
+      ]
     },
     {
       "id": "ps5-grand-theft-auto-v",
@@ -28,8 +37,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "ps5-hogwarts-legacy",
@@ -43,8 +61,17 @@
       "developer": "Avalanche Software",
       "genre": "Action role-playing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/hogwarts-legacy.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#44575d",
+        "#7f8887",
+        "#c3bdab"
+      ]
     },
     {
       "id": "ps5-mortal-kombat-11",
@@ -60,8 +87,17 @@
       "format": "boxed",
       "caseStyle": "ps4",
       "note": "PS4 copy, upgraded to PS5",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "ps5-mortal-kombat-1",
@@ -74,8 +110,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps5/mortal-kombat-1.jpg",
+        "ratio": 0.8324,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 1 · Mortal_Kombat_1_key_art.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#e8eaea",
+        "#afb1b2",
+        "#53362c"
+      ]
     },
     {
       "id": "ps4-agents-of-mayhem",
@@ -88,8 +133,17 @@
       "developer": "Volition",
       "genre": "Action",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/agents-of-mayhem.jpg",
+        "ratio": 0.8011,
+        "source": "en.wikipedia.org",
+        "ref": "Agents of Mayhem · Agents_of_Mayhem_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#daa5c1",
+        "#a76290",
+        "#19063f"
+      ]
     },
     {
       "id": "ps4-call-of-duty-advanced-warfare",
@@ -102,8 +156,17 @@
       "developer": "Sledgehammer Games",
       "genre": "Shooter",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/call-of-duty-advanced-warfare.jpg",
+        "ratio": 0.7337,
+        "source": "en.wikipedia.org",
+        "ref": "Call of Duty: Advanced Warfare · Advanced_Warfare.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#342d2d",
+        "#807265",
+        "#eceae2"
+      ]
     },
     {
       "id": "ps4-fifa-17",
@@ -116,8 +179,17 @@
       "developer": "EA Vancouver",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/fifa-17.jpg",
+        "ratio": 0.8384,
+        "source": "en.wikipedia.org",
+        "ref": "FIFA 17 · FIFA_17_cover.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#aea992",
+        "#8e8563",
+        "#d0cdb5"
+      ]
     },
     {
       "id": "ps4-grand-theft-auto-v",
@@ -130,8 +202,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "ps4-grand-theft-auto-the-trilogy-the-definitive-edition",
@@ -145,8 +226,17 @@
       "developer": "Grove Street Games",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: The Trilogy – The Definitive Edition · Grand_Theft_Auto_-_The_Trilogy_-_The_Definitive_Edition.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f8268",
+        "#d5baa6",
+        "#5b5441"
+      ]
     },
     {
       "id": "ps4-mortal-kombat-11",
@@ -159,8 +249,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "ps4-mortal-kombat-11-ultimate",
@@ -173,6 +272,7 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -187,6 +287,7 @@
       "developer": "Ghost Games",
       "genre": "Racing",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -201,8 +302,17 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/rock-band-4.jpg",
+        "ratio": 0.8571,
+        "source": "en.wikipedia.org",
+        "ref": "Rock Band 4 · Rock_band_4_cover.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#412f31",
+        "#ba716e",
+        "#efcac3"
+      ]
     },
     {
       "id": "ps4-singstar-ultimate-party",
@@ -230,8 +340,17 @@
       "developer": "Naughty Dog",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/ps4/the-last-of-us-remastered.jpg",
+        "ratio": 0.7529,
+        "source": "en.wikipedia.org",
+        "ref": "The Last of Us (video game) · Video_Game_Cover_-_The_Last_of_Us.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#80523d",
+        "#eedfd3",
+        "#302118"
+      ]
     },
     {
       "id": "ps4-the-sims-4-plus-cats-and-dogs",
@@ -1951,8 +2070,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch2/donkey-kong-bananza.jpg",
+        "ratio": 0.7048,
+        "source": "en.wikipedia.org",
+        "ref": "Donkey Kong Bananza · Donkey_Kong_Bananza_updated_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9d5e39",
+        "#c79f67",
+        "#55342f"
+      ]
     },
     {
       "id": "switch2-mario-kart-world",
@@ -1965,8 +2093,17 @@
       "developer": "Nintendo EPD",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch2/mario-kart-world.jpg",
+        "ratio": 0.7139,
+        "source": "en.wikipedia.org",
+        "ref": "Mario Kart World · Mario_Kart_World_Cover_Artwork.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#997458",
+        "#9dc1df",
+        "#daae81"
+      ]
     },
     {
       "id": "switch2-super-mario-party-jamboree-jamboree-tv",
@@ -2026,8 +2163,17 @@
       "developer": "Beenox",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/crash-team-racing-nitro-fueled.jpg",
+        "ratio": 0.6984,
+        "source": "en.wikipedia.org",
+        "ref": "Crash Team Racing Nitro-Fueled · Crash_Team_Racing_Nitro-Fueled_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#af9158",
+        "#635147",
+        "#1d99ce"
+      ]
     },
     {
       "id": "switch-cuphead",
@@ -2040,8 +2186,17 @@
       "developer": "StudioMDHR",
       "genre": "Run and gun",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/cuphead.jpg",
+        "ratio": 0.8377,
+        "source": "en.wikipedia.org",
+        "ref": "Cuphead · Cuphead_(artwork).png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#fbce0f",
+        "#865826",
+        "#b6bbb0"
+      ]
     },
     {
       "id": "switch-donkey-kong-country-tropical-freeze",
@@ -2054,8 +2209,17 @@
       "developer": "Retro Studios",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/donkey-kong-country-tropical-freeze.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Donkey Kong Country: Tropical Freeze · DKC5_box_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#865731",
+        "#a99176",
+        "#8ec4d8"
+      ]
     },
     {
       "id": "switch-donkey-kong-country-returns-hd",
@@ -2070,6 +2234,7 @@
       "genre": "Platformer",
       "format": "boxed",
       "note": "Maluma",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -2085,8 +2250,17 @@
       "developer": "Grove Street Games",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto: The Trilogy – The Definitive Edition · Grand_Theft_Auto_-_The_Trilogy_-_The_Definitive_Edition.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f8268",
+        "#d5baa6",
+        "#5b5441"
+      ]
     },
     {
       "id": "switch-hogwarts-legacy",
@@ -2099,8 +2273,17 @@
       "developer": "Avalanche Software",
       "genre": "Action role-playing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/hogwarts-legacy.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#44575d",
+        "#7f8887",
+        "#c3bdab"
+      ]
     },
     {
       "id": "switch-it-takes-two",
@@ -2113,8 +2296,17 @@
       "developer": "Hazelight Studios",
       "genre": "Co-op adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/it-takes-two.jpg",
+        "ratio": 0.7865,
+        "source": "en.wikipedia.org",
+        "ref": "It Takes Two (video game) · It_Takes_Two_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ead6ae",
+        "#9a8978",
+        "#5a362b"
+      ]
     },
     {
       "id": "switch-jumanji-the-video-game",
@@ -2142,8 +2334,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2017.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2017 · Just_Dance_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#184bab",
+        "#9615a1",
+        "#b97c67"
+      ]
     },
     {
       "id": "switch-just-dance-2018",
@@ -2156,8 +2357,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2018.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2018 · Just_Dance_2018_Switch_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#cbbbe2",
+        "#2426a7",
+        "#090b16"
+      ]
     },
     {
       "id": "switch-just-dance-2019",
@@ -2171,8 +2381,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "cartridge-only",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2019.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2019 · Just_Dance_2019.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#c7cbd8",
+        "#ecedee",
+        "#ab9eb5"
+      ]
     },
     {
       "id": "switch-just-dance-2020",
@@ -2185,8 +2404,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2020.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2020 · Just_Dance_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#937294",
+        "#c66b7c",
+        "#4b4e82"
+      ]
     },
     {
       "id": "switch-just-dance-2021",
@@ -2199,8 +2427,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2021.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2021 · Just_Dance_2021.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9dacce",
+        "#f0ad35",
+        "#f02f62"
+      ]
     },
     {
       "id": "switch-just-dance-2022",
@@ -2213,8 +2450,17 @@
       "developer": "Ubisoft Paris",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/just-dance-2022.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Just Dance 2022 · Just_Dance_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#1d3e93",
+        "#92b5c5",
+        "#866d82"
+      ]
     },
     {
       "id": "switch-kirby-star-allies",
@@ -2243,8 +2489,17 @@
       "developer": "Team Bondi",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/la-noire.jpg",
+        "ratio": 0.75,
+        "source": "en.wikipedia.org",
+        "ref": "L.A. Noire · LA-Noire-Box-Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#120e12",
+        "#314050",
+        "#823a22"
+      ]
     },
     {
       "id": "switch-lego-dc-super-villains",
@@ -2318,8 +2573,17 @@
       "developer": "Nintendo EPD",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-kart-8-deluxe.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Mario Kart 8 · MarioKart8Boxart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#81a48d",
+        "#3f5956",
+        "#bbc9cb"
+      ]
     },
     {
       "id": "switch-mario-party-superstars",
@@ -2347,8 +2611,17 @@
       "developer": "Ubisoft Milan",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-rabbids-kingdom-battle.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Mario + Rabbids Kingdom Battle · Mario_+_Rabbids_Kingdom_Battle.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#c9af79",
+        "#777b48",
+        "#3d9fd1"
+      ]
     },
     {
       "id": "switch-mario-rabbids-sparks-of-hope",
@@ -2362,8 +2635,17 @@
       "developer": "Ubisoft Milan",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mario-rabbids-sparks-of-hope.jpg",
+        "ratio": 0.6771,
+        "source": "en.wikipedia.org",
+        "ref": "Mario + Rabbids Sparks of Hope · Mario_+_Rabbids_Sparks_of_Hope_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#5272ba",
+        "#94cae1",
+        "#35216d"
+      ]
     },
     {
       "id": "switch-mortal-kombat-11",
@@ -2376,8 +2658,17 @@
       "developer": "NetherRealm Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/mortal-kombat-11.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Mortal Kombat 11 · Mortal_Kombat_11_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#f5cc4a",
+        "#c68325",
+        "#6a3e12"
+      ]
     },
     {
       "id": "switch-moving-out",
@@ -2419,6 +2710,7 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null,
       "series": "MySims"
@@ -2464,8 +2756,17 @@
       "developer": "Ghost Town Games",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/overcooked-2.jpg",
+        "ratio": 0.8348,
+        "source": "en.wikipedia.org",
+        "ref": "Overcooked 2 · Overcooked_2_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a48a51",
+        "#414747",
+        "#4499b8"
+      ]
     },
     {
       "id": "switch-overcooked-all-you-can-eat",
@@ -2583,8 +2884,17 @@
       "developer": "Ubisoft Montpellier",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/rayman-legends-definitive-edition.jpg",
+        "ratio": 0.7645,
+        "source": "en.wikipedia.org",
+        "ref": "Rayman Legends · Rayman_Legends_Box_Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#1e4a3a",
+        "#6a4330",
+        "#8dad89"
+      ]
     },
     {
       "id": "switch-rollercoaster-tycoon-adventures",
@@ -2630,8 +2940,17 @@
       "genre": "Simulation",
       "format": "boxed",
       "check": "Release date unknown for the Switch version.",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/rollercoaster-tycoon-classic.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "RollerCoaster Tycoon Classic · RollerCoaster_Tycoon_Classic.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b59119",
+        "#5d6526",
+        "#e8cd4e"
+      ]
     },
     {
       "id": "switch-rollercoaster-tycoon-3-complete-edition",
@@ -2673,8 +2992,17 @@
       "developer": "HexaDrive",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-bomberman-r.jpg",
+        "ratio": 0.6173,
+        "source": "en.wikipedia.org",
+        "ref": "Super Bomberman R · Super_Bomberman_R_(artwork).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#998580",
+        "#4e4451",
+        "#ba6c28"
+      ]
     },
     {
       "id": "switch-super-bomberman-r-2",
@@ -2687,8 +3015,17 @@
       "developer": "Konami",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-bomberman-r-2.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "Super Bomberman R 2 · Super_Bomberman_R2_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#d3c2b1",
+        "#be6d5f",
+        "#84bfd8"
+      ]
     },
     {
       "id": "switch-super-mario-3d-all-stars",
@@ -2702,8 +3039,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-mario-3d-all-stars.jpg",
+        "ratio": 0.7139,
+        "source": "en.wikipedia.org",
+        "ref": "Super Mario 3D All-Stars · Super_Mario_3D_All_Stars.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ad8568",
+        "#d4d5bd",
+        "#2f3248"
+      ]
     },
     {
       "id": "switch-super-mario-3d-world-bowsers-fury",
@@ -2716,8 +3062,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-mario-3d-world-bowsers-fury.jpg",
+        "ratio": 0.7082,
+        "source": "en.wikipedia.org",
+        "ref": "Super Mario 3D World · Super_Mario_3D_World_box_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#8b772e",
+        "#c5a892",
+        "#ecefee"
+      ]
     },
     {
       "id": "switch-super-mario-bros-wonder",
@@ -2745,8 +3100,17 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/new-super-mario-bros-u-deluxe.jpg",
+        "ratio": 0.7072,
+        "source": "en.wikipedia.org",
+        "ref": "New Super Mario Bros. U · New_Super_Mario_Bros._U_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#37754c",
+        "#97806f",
+        "#abc7d7"
+      ]
     },
     {
       "id": "switch-super-mario-galaxy-super-mario-galaxy-2",
@@ -2817,6 +3181,7 @@
       "developer": "ArtePiazza",
       "genre": "Role-playing",
       "format": "boxed",
+      "coverMatch": "Super Mario RPG (2023 video game)",
       "cover": null,
       "colors": null
     },
@@ -2831,8 +3196,17 @@
       "developer": "Bandai Namco Studios",
       "genre": "Fighting",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/super-smash-bros-ultimate.jpg",
+        "ratio": 0.648,
+        "source": "en.wikipedia.org",
+        "ref": "Super Smash Bros. Ultimate · Super_Smash_Bros._Ultimate.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a0948c",
+        "#695f58",
+        "#d3d6d7"
+      ]
     },
     {
       "id": "switch-team-sonic-racing",
@@ -2845,8 +3219,17 @@
       "developer": "Sumo Digital",
       "genre": "Kart racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/team-sonic-racing.jpg",
+        "ratio": 0.8271,
+        "source": "en.wikipedia.org",
+        "ref": "Team Sonic Racing · Team_Sonic_Racing_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9abddc",
+        "#448acd",
+        "#a59c6d"
+      ]
     },
     {
       "id": "switch-the-legend-of-zelda-breath-of-the-wild",
@@ -2860,8 +3243,17 @@
       "developer": "Nintendo EPD",
       "genre": "Action-adventure",
       "format": "cartridge-only",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/the-legend-of-zelda-breath-of-the-wild.jpg",
+        "ratio": 0.7479,
+        "source": "en.wikipedia.org",
+        "ref": "The Legend of Zelda: Breath of the Wild · The_Legend_of_Zelda_Breath_of_the_Wild.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#ebd8b5",
+        "#555d68",
+        "#968b7f"
+      ]
     },
     {
       "id": "xone-fifa-19",
@@ -2874,8 +3266,17 @@
       "developer": "EA Vancouver",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/fifa-19.jpg",
+        "ratio": 0.8358,
+        "source": "en.wikipedia.org",
+        "ref": "FIFA 19 · FIFA_19_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#09afe3",
+        "#b7c4d2",
+        "#07ccf0"
+      ]
     },
     {
       "id": "xone-guitar-hero-live",
@@ -2921,8 +3322,17 @@
       "developer": "Rockstar Studios",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/red-dead-redemption-2.jpg",
+        "ratio": 0.8114,
+        "source": "en.wikipedia.org",
+        "ref": "Red Dead Redemption 2 · Red_Dead_Redemption_II.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#bb1012",
+        "#3f1110",
+        "#9e9791"
+      ]
     },
     {
       "id": "xone-the-sims-4",
@@ -2936,8 +3346,17 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
-      "cover": null,
-      "colors": null,
+      "cover": {
+        "file": "covers/xone/the-sims-4.jpg",
+        "ratio": 0.6667,
+        "source": "en.wikipedia.org",
+        "ref": "The Sims 4 · Sims4_Rebrand.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#b08c7a",
+        "#99d0dc",
+        "#4b4739"
+      ],
       "series": "The Sims 4"
     },
     {
@@ -2951,8 +3370,17 @@
       "developer": "Robomodo",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/xone/tony-hawks-pro-skater-5.jpg",
+        "ratio": 0.8509,
+        "source": "en.wikipedia.org",
+        "ref": "Tony Hawk's Pro Skater 5 · THPS5_Box_Art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#615153",
+        "#cfe4f2",
+        "#988b8a"
+      ]
     },
     {
       "id": "x360-bully-scholarship-edition",
@@ -2966,6 +3394,7 @@
       "developer": "Rockstar New England",
       "genre": "Action-adventure",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -2980,8 +3409,17 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/dance-central.jpg",
+        "ratio": 0.7067,
+        "source": "en.wikipedia.org",
+        "ref": "Dance Central (2010 video game) · Dance_Central_boxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4d555d",
+        "#252828",
+        "#9e817b"
+      ]
     },
     {
       "id": "x360-dance-central-2",
@@ -2994,8 +3432,17 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/dance-central-2.jpg",
+        "ratio": 0.7072,
+        "source": "en.wikipedia.org",
+        "ref": "Dance Central 2 · Dance_Central_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9e96b5",
+        "#714f7d",
+        "#e3dde4"
+      ]
     },
     {
       "id": "x360-dance-paradise",
@@ -3037,8 +3484,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/grand-theft-auto-v.jpg",
+        "ratio": 0.8091,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#887566",
+        "#bebdb8",
+        "#1b1512"
+      ]
     },
     {
       "id": "x360-guitar-hero-ii",
@@ -3051,6 +3507,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -3065,8 +3522,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-iii-legends-of-rock.jpg",
+        "ratio": 0.6711,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero III: Legends of Rock · Guitar-hero-iii-cover-image.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4b100c",
+        "#754334",
+        "#d8742e"
+      ]
     },
     {
       "id": "x360-guitar-hero-metallica",
@@ -3079,8 +3545,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-metallica.jpg",
+        "ratio": 0.8127,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero: Metallica · Guitar_Hero_Metallica.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#6f6a65",
+        "#201c1a",
+        "#a29f9c"
+      ]
     },
     {
       "id": "x360-guitar-hero-world-tour",
@@ -3094,8 +3569,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-world-tour.jpg",
+        "ratio": 0.8,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero World Tour · Guitar_Hero_World_Tour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#4f2d24",
+        "#b2ad9c",
+        "#e8b930"
+      ]
     },
     {
       "id": "x360-guitar-hero-5",
@@ -3108,8 +3592,17 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/guitar-hero-5.jpg",
+        "ratio": 0.8218,
+        "source": "en.wikipedia.org",
+        "ref": "Guitar Hero 5 · Guitar_Hero_5_Game_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#0d0b0c",
+        "#704c40",
+        "#3a2821"
+      ]
     },
     {
       "id": "x360-halo-wars",
@@ -3122,8 +3615,17 @@
       "developer": "Ensemble Studios",
       "genre": "Strategy",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/halo-wars.jpg",
+        "ratio": 0.7853,
+        "source": "en.wikipedia.org",
+        "ref": "Halo Wars · Halo_wars.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#3a505a",
+        "#0c1418",
+        "#233239"
+      ]
     },
     {
       "id": "x360-kinect-adventures",
@@ -3137,8 +3639,17 @@
       "developer": "Good Science Studio",
       "genre": "Party",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-adventures.jpg",
+        "ratio": 0.7112,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Adventures! · Kinect_Adventures_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a16e45",
+        "#8c9384",
+        "#4b3c2f"
+      ]
     },
     {
       "id": "x360-kinect-joy-ride",
@@ -3151,8 +3662,17 @@
       "developer": "BigPark",
       "genre": "Racing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-joy-ride.jpg",
+        "ratio": 0.7167,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Joy Ride · Joyride.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#9f9074",
+        "#543a3e",
+        "#39a7d0"
+      ]
     },
     {
       "id": "x360-kinect-sports",
@@ -3165,8 +3685,17 @@
       "developer": "Rare",
       "genre": "Sports",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/kinect-sports.jpg",
+        "ratio": 0.7091,
+        "source": "en.wikipedia.org",
+        "ref": "Kinect Sports · Kinect_Sports.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#a09b81",
+        "#ededef",
+        "#ccc4c3"
+      ]
     },
     {
       "id": "x360-mortal-kombat",
@@ -3193,6 +3722,7 @@
       "developer": "Pipeworks Software",
       "genre": "Fitness",
       "format": "boxed",
+      "wikiCover": false,
       "cover": null,
       "colors": null
     },
@@ -3207,8 +3737,17 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/x360/grand-theft-auto-iv.jpg",
+        "ratio": 0.8,
+        "source": "en.wikipedia.org",
+        "ref": "Grand Theft Auto IV · Grand_Theft_Auto_IV_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+      },
+      "colors": [
+        "#84776b",
+        "#564d49",
+        "#c1c1bb"
+      ]
     },
     {
       "id": "xbox-ice-age-2-the-meltdown",
