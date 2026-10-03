@@ -991,8 +991,10 @@
   }
   addEventListener('popstate', () => {
     const h = location.hash.slice(1);
-    if (byId.has(h)) { if (Detail.current()?.id !== h) Detail.open(byId.get(h), null, true); }
-    else if (Detail.isOpen()) Detail.close(true);
+    if (byId.has(h)) { if (Detail.current()?.id !== h) Detail.open(byId.get(h), null, true); return; }
+    if (Detail.isOpen()) Detail.close(true);
+    // a console typed into the address, or a link to one: the shelf shows that console
+    if (CONSOLE_BY_ID[h] && !(state.sel.size === 1 && state.sel.has(h))) { state.sel = new Set([h]); changed(); }
   });
 
   /* ---------- start ---------- */
