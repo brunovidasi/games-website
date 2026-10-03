@@ -6818,6 +6818,23 @@
       "colors": null
     },
     {
+      "id": "pc-the-sims-medieval-limited-edition",
+      "console": "pc",
+      "title": "The Sims Medieval Limited Edition",
+      "edition": "Limited Edition",
+      "region": "PAL",
+      "released": "2011-03-22",
+      "dateSource": "manual",
+      "publisher": "Electronic Arts",
+      "developer": "The Sims Studio",
+      "genre": "Life simulation",
+      "format": "boxed",
+      "series": "The Sims Medieval",
+      "pack": "Base game",
+      "cover": null,
+      "colors": null
+    },
+    {
       "id": "pc-the-sims-medieval-pirates-and-nobles",
       "console": "pc",
       "title": "The Sims Medieval: Pirates & Nobles",
@@ -7473,6 +7490,23 @@
       "alsoDigital": true,
       "series": "SimCity",
       "pack": "Collection",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-simcity-deluxe",
+      "console": "pc",
+      "title": "SimCity Deluxe",
+      "region": "PAL",
+      "released": "2010",
+      "dateSource": "manual",
+      "publisher": "Electronic Arts",
+      "developer": "Maxis",
+      "genre": "City-building",
+      "format": "boxed",
+      "series": "SimCity",
+      "pack": "Collection",
+      "check": "Which SimCity this Deluxe box holds, and its exact release",
       "cover": null,
       "colors": null
     },
