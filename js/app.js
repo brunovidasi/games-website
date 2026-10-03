@@ -605,12 +605,13 @@
 
     const infoAbove = g => {
       const c = CONSOLE_BY_ID[g.console];
-      return `<p class="spot-eyebrow" style="--n:0"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)} · ${esc(REGIONS[g.region]?.name || g.region)}</p><h2 style="--n:1">${esc(g.title)}</h2>`;
+      return `<p class="spot-eyebrow" style="--n:0"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)}${g.mac ? ' / Mac' : ''} · ${esc(REGIONS[g.region]?.name || g.region)}</p><h2 style="--n:1">${esc(g.title)}</h2>`;
     };
     function infoBelow(g) {
       const c = CONSOLE_BY_ID[g.console];
       const made = g.developer && g.developer !== g.publisher ? `Developed by ${g.developer}` : '';
-      const rest = [g.genre, FORMATS[g.format], g.edition, made].filter(Boolean);
+      const pack = g.pack && g.pack !== 'Base game' ? [g.pack, g.packCode].filter(Boolean).join(' ') : '';
+      const rest = [pack, g.genre, FORMATS[g.format], g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
       const q = encodeURIComponent(`${g.title} ${c.name} ${REGIONS[g.region]?.name || g.region} box art`);
       let n = 2;
       return `
@@ -963,7 +964,7 @@
       ALL = db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
-        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition].join(' | '));
+        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
       });
       shell();
       const h = location.hash.slice(1);
