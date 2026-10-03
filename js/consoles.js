@@ -9,21 +9,20 @@ window.FAMILIES = [
 ];
 
 /* kind: keep = plastic keep case, jewel = CD jewel case, box = cardboard box.
-   Sizes are the case's outside in mm (width × height, depth). A cardboard box
-   takes the shape of its scan; a plastic case keeps its own and holds the scan
-   inside it, at the scan's own shape, so a cover is never cut.
-   insert: bottom on Blu-ray cases, whose printed sleeve stops short of the top.
+   Sizes are the case's outside in mm (width × height, depth). A case with a cover
+   scan keeps its height and takes its width from the scan (js/cases.js), so the
+   scan always shows whole and fills the front.
    media: what is inside. spineArt: the spine takes its colour from the cover.
    hidden: a case style only, never a shelf of its own. */
 window.CONSOLES = [
   { id: 'ps1',     name: 'PlayStation',       short: 'PS1',      fam: 'playstation', w: 142, h: 125, d: 10, kind: 'jewel', media: 'cd',      spineArt: true },
   { id: 'ps2',     name: 'PlayStation 2',     short: 'PS2',      fam: 'playstation', w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
-  { id: 'ps3',     name: 'PlayStation 3',     short: 'PS3',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true,  insert: 'bottom' },
-  { id: 'ps4',     name: 'PlayStation 4',     short: 'PS4',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true,  insert: 'bottom' },
-  { id: 'ps5',     name: 'PlayStation 5',     short: 'PS5',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true,  insert: 'bottom' },
+  { id: 'ps3',     name: 'PlayStation 3',     short: 'PS3',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
+  { id: 'ps4',     name: 'PlayStation 4',     short: 'PS4',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
+  { id: 'ps5',     name: 'PlayStation 5',     short: 'PS5',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
   { id: 'xbox',    name: 'Xbox',              short: 'Xbox',     fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
   { id: 'x360',    name: 'Xbox 360',          short: '360',      fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
-  { id: 'xone',    name: 'Xbox One',          short: 'One',      fam: 'xbox',        w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true,  insert: 'bottom' },
+  { id: 'xone',    name: 'Xbox One',          short: 'One',      fam: 'xbox',        w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
   { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true },
   { id: 'gb',      name: 'Game Boy',          short: 'GB',       fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gb',      spineArt: true,  hidden: true },
   { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true },
