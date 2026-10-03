@@ -155,22 +155,48 @@ function findPs3(g) {
 
 /* ---------- PC: the box art on a game's wiki page ----------
    None of the collections above have PC games. The Sims Wiki has a page for every Sims
-   game and pack with its box as the page image, and Wikipedia has the rest. The page
-   is the game's title (or its coverMatch); the wikis follow redirects. */
-const WIKIS = [
-  { source: 'sims.fandom.com', api: 'https://sims.fandom.com/api.php' },
-  { source: 'en.wikipedia.org', api: 'https://en.wikipedia.org/w/api.php', extra: '&pilicense=any' },
-];
+   game and pack with its box in the infobox, and Wikipedia has the rest, with the box as
+   the page image. (The Sims Wiki's page image is usually a screenshot, so it isn't used.)
+   The page is the game's title (or its coverMatch); the wikis follow redirects. */
+// Wikimedia turns away requests whose User-Agent doesn't say who is asking.
+const UA = 'games-website-cover-fetcher/1.0 (https://github.com/brunovidasi/games-website)';
+const getJSON = async url => {
+  for (let i = 0; i < 4; i++) {
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (r.ok) return r.json();
+    if (r.status !== 429) return null;
+    await new Promise(res => setTimeout(res, 5000 * 2 ** i));
+  }
+  return null;
+};
+
+// The infobox's "image = [[File:The Sims 2 Apartment Life Cover.jpg|250px]]".
+async function findSimsWiki(page) {
+  const api = 'https://sims.fandom.com/api.php';
+  const j = await getJSON(`${api}?action=parse&format=json&redirects=1&prop=wikitext&section=0&page=${encodeURIComponent(page)}`);
+  const text = j?.parse?.wikitext?.['*'];
+  if (!text) return null;
+  const file = text.match(/\|\s*image\s*=\s*\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim();
+  if (!file) return null;
+  const info = await getJSON(`${api}?action=query&format=json&prop=imageinfo&iiprop=url&titles=${encodeURIComponent('File:' + file)}`);
+  const url = Object.values(info?.query?.pages || {})[0]?.imageinfo?.[0]?.url;
+  return url ? { url, source: 'sims.fandom.com', ref: `${j.parse.title} · ${file}` } : null;
+}
+
+async function findWikipedia(page) {
+  const j = await getJSON(`https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages&piprop=original&pilicense=any&titles=${encodeURIComponent(page)}`);
+  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source);
+  if (!p) return null;
+  const img = p.original.source;
+  return { url: img, source: 'en.wikipedia.org', ref: `${p.title} · ${decodeURIComponent(img.split('/').pop())}` };
+}
+
 async function findWiki(g) {
   const page = g.coverMatch || g.title;
-  for (const w of WIKIS) {
-    const url = `${w.api}?action=query&format=json&redirects=1&prop=pageimages&piprop=original${w.extra || ''}&titles=${encodeURIComponent(page)}`;
+  for (const find of [findSimsWiki, findWikipedia]) {
     try {
-      const r = await fetch(url, { headers: { 'User-Agent': 'games-website cover fetcher' } });
-      if (!r.ok) continue;
-      const pages = Object.values((await r.json()).query?.pages || {});
-      const img = pages.find(p => p.original?.source)?.original.source;
-      if (img) return { url: img, source: w.source, ref: `${pages[0].title} · ${decodeURIComponent(img.split('/').filter(x => /\.(jpe?g|png|webp)$/i.test(x)).pop() || '')}` };
+      const hit = await find(page);
+      if (hit) return hit;
     } catch (e) { /* that wiki can't be reached: try the next */ }
   }
   return null;
@@ -180,7 +206,7 @@ async function findWiki(g) {
 
 async function download(url) {
   for (let i = 0; i < 4; i++) {
-    const r = await fetch(url);
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
     if (r.ok) return Buffer.from(await r.arrayBuffer());
     if (r.status === 404) throw new Error(`404 ${url}`);
     await new Promise(res => setTimeout(res, 2000 * 2 ** i));
