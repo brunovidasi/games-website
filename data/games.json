@@ -1844,6 +1844,30 @@
       "series": "The Sims"
     },
     {
+      "id": "ps2-grand-theft-auto-san-andreas",
+      "console": "ps2",
+      "title": "Grand Theft Auto: San Andreas",
+      "region": "PAL",
+      "released": "2004-10-29",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "coverMatch": "SLES-52541",
+      "cover": {
+        "file": "covers/ps2/grand-theft-auto-san-andreas.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-52541"
+      },
+      "colors": [
+        "#7e6c59",
+        "#bfbda2",
+        "#493728"
+      ]
+    },
+    {
       "id": "ps1-a-bugs-life",
       "console": "ps1",
       "title": "A Bug's Life",
@@ -3173,6 +3197,20 @@
       "colors": null
     },
     {
+      "id": "x360-grand-theft-auto-iv",
+      "console": "x360",
+      "title": "Grand Theft Auto IV",
+      "region": "PAL",
+      "released": "2008-04-29",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "cover": null,
+      "colors": null
+    },
+    {
       "id": "xbox-ice-age-2-the-meltdown",
       "console": "xbox",
       "title": "Ice Age 2: The Meltdown",
@@ -4396,6 +4434,30 @@
         "#a69996",
         "#b6654c",
         "#4a3737"
+      ]
+    },
+    {
+      "id": "gba-grand-theft-auto-advance",
+      "console": "gba",
+      "title": "Grand Theft Auto Advance",
+      "listedAs": "Grand Theft Auto: Advance",
+      "region": "PAL",
+      "released": "2004-10-29",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Digital Eclipse",
+      "genre": "Action",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/gba/grand-theft-auto-advance.jpg",
+        "ratio": 1.1179,
+        "source": "libretro-thumbnails",
+        "ref": "Grand Theft Auto Advance (Europe) (En,Fr,De,Es,It)"
+      },
+      "colors": [
+        "#121e23",
+        "#3f4a4d",
+        "#7f8078"
       ]
     },
     {
@@ -7575,6 +7637,149 @@
       "alsoDigital": true,
       "series": "MySims",
       "pack": "Base game",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto",
+      "console": "pc",
+      "title": "Grand Theft Auto",
+      "region": "PAL",
+      "released": "1997-11",
+      "dateSource": "manual",
+      "publisher": "BMG Interactive",
+      "developer": "DMA Design",
+      "genre": "Action",
+      "format": "boxed",
+      "coverMatch": "Grand Theft Auto (1997)",
+      "cover": {
+        "file": "covers/pc/grand-theft-auto.jpg",
+        "ratio": 0.7862,
+        "source": "libretro-thumbnails",
+        "ref": "Grand Theft Auto (1997)"
+      },
+      "colors": [
+        "#030517",
+        "#655747",
+        "#2d272f"
+      ]
+    },
+    {
+      "id": "pc-grand-theft-auto-london-1969",
+      "console": "pc",
+      "title": "Grand Theft Auto: London 1969",
+      "region": "PAL",
+      "released": "1999-03-31",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Tarantula Studios",
+      "genre": "Action",
+      "format": "boxed",
+      "note": "An expansion: it needs Grand Theft Auto to play",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-iii",
+      "console": "pc",
+      "title": "Grand Theft Auto III",
+      "region": "PAL",
+      "released": "2002-05-21",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "DMA Design",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-vice-city",
+      "console": "pc",
+      "title": "Grand Theft Auto: Vice City",
+      "region": "PAL",
+      "released": "2003-05-16",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-san-andreas",
+      "console": "pc",
+      "title": "Grand Theft Auto: San Andreas",
+      "region": "PAL",
+      "released": "2005-06-10",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-iv",
+      "console": "pc",
+      "title": "Grand Theft Auto IV",
+      "region": "PAL",
+      "released": "2008-12-03",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "launcher": "rockstar",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-episodes-from-liberty-city",
+      "console": "pc",
+      "title": "Grand Theft Auto: Episodes from Liberty City",
+      "listedAs": "Grand Theft Auto: Episodes From Liberty City",
+      "region": "PAL",
+      "released": "2010-04-16",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "launcher": "rockstar",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-grand-theft-auto-v",
+      "console": "pc",
+      "title": "Grand Theft Auto V",
+      "region": "PAL",
+      "released": "2015-04-14",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar North",
+      "genre": "Action-adventure",
+      "format": "digital",
+      "launcher": "rockstar",
+      "cover": null,
+      "colors": null
+    },
+    {
+      "id": "pc-la-noire",
+      "console": "pc",
+      "title": "L.A. Noire",
+      "listedAs": "LA Noire",
+      "region": "PAL",
+      "released": "2011-11-11",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Team Bondi",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "launcher": "rockstar",
       "cover": null,
       "colors": null
     }
