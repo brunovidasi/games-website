@@ -284,7 +284,9 @@
       bx.classList.toggle('open', isOpen);
       if (isOpen) { rx = -8; ry = cur && dims().kind === 'box' ? -18 : 18; }
       const box = dims().kind === 'box';
-      dv.querySelector('.open-btn').textContent = isOpen ? (box ? 'Put it back' : 'Close case') : (box ? 'Take it out' : 'Open case');
+      const btn = dv.querySelector('.open-btn');
+      btn.textContent = isOpen ? (box ? 'Put it back' : 'Close case') : (box ? 'Take it out' : 'Open case');
+      btn.dataset.v = isOpen ? 'close' : 'open';
     } else {
       if (isOpen) view('close');
       rx = v === 'front' ? -4 : -6;

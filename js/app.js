@@ -675,7 +675,10 @@
         cur.open = v === 'open';
         cur.obj.classList.toggle('open', cur.open);
         if (cur.open) { cur.rx = -8; cur.ry = isBox ? -18 : 16; }
-        $$('.open-btn', cur.layer).forEach(b => b.textContent = cur.open ? (isBox ? 'Put it back' : 'Close case') : (isBox ? 'Take it out' : 'Open case'));
+        $$('.open-btn', cur.layer).forEach(b => {
+          b.textContent = cur.open ? (isBox ? 'Put it back' : 'Close case') : (isBox ? 'Take it out' : 'Open case');
+          b.dataset.v = cur.open ? 'close' : 'open';
+        });
       } else {
         if (cur.open) view('close');
         cur.rx = -5;
