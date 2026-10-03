@@ -182,7 +182,7 @@
     const T = CART[type];
     const [x, y, lw, lh] = T.label;
     // Japanese box art has no name strip down the side
-    const [cl, cr] = T.crop && g.region !== 'NTSC-J' ? T.crop : [0, 0], keep = 1 - cl - cr;
+    const [cl, cr] = T.crop && window.REGIONS[g.region]?.std !== 'NTSC-J' ? T.crop : [0, 0], keep = 1 - cl - cr;
     return `<div class="cart c-${type} k-${styleOf(g)}" style="--cw:${px(T.w * s)};--ch:${px(T.h * s)}">
       <svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true">${T.body()}</svg>
       <div class="clab" style="left:${pct(x, T.w)};top:${pct(y, T.h)};width:${pct(lw, T.w)};height:${pct(lh, T.h)};--lp:${T.pos};--liw:${pct(1, keep)};--lix:${pct(-cl, keep)}">${g.cover ? img(g) : `<span>${esc(g.title)}</span>`}</div>

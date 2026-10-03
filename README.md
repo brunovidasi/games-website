@@ -30,7 +30,7 @@ One entry per copy on the shelf:
 | `title` | `"Final Fantasy X"` | the official title |
 | `listedAs` | `"Nárnia"` | how it was written on the original list, when different |
 | `edition` | `"Nintendo Switch 2 Edition"` | optional |
-| `region` | `"PAL"` | `PAL`, `NTSC-U` or `NTSC-J` |
+| `region` | `"AUS"` | the region code on the box: `AUS`, `EUR`, `HOL` (Netherlands), `USA` or `JPN`. When it isn't known, just `PAL`, `NTSC-U` or `NTSC-J`. The region filter groups them by PAL, NTSC-U and NTSC-J |
 | `released` | `"2001-07-19"` | first release on that console. Can be `"2001-07"` or `"2001"` |
 | `dateSource` | `"manual"` | `libretro-database`, or `manual` (from memory, worth checking) |
 | `publisher`, `developer`, `genre` | | |
@@ -61,6 +61,7 @@ cd tools && npm install
 node fetch-covers.mjs --dry      # show what it would match
 node fetch-covers.mjs            # download
 node fetch-covers.mjs --only ps2-the-sims   # redo one game
+node fetch-covers.mjs --recheck  # after changing regions: swap in the right region's box
 ```
 
 It uses free community collections on GitHub, region by region, and needs no keys:
