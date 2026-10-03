@@ -1,0 +1,12 @@
+{
+  "name": "games-website-tools",
+  "private": true,
+  "type": "module",
+  "description": "Finds box art for games in data/games.json",
+  "scripts": {
+    "covers": "node fetch-covers.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}
