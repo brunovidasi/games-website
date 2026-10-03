@@ -11,10 +11,12 @@
 //   xlenore/ps2-covers — PS2 covers named by disc serial (SLES-52047…), used when coverMatch is a serial
 //   The Sims Wiki, then Wikipedia — PC games: the page image of the game's page
 //   libretro-thumbnails DOS — PC games from the DOS days, when the wikis have nothing
+//   Wikipedia — PS4, PS5, Xbox One, Switch, Switch 2 and the Xbox 360 games libretro lacks
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
 // ".png", a PS3 serial such as "BLES00229", a PS2 serial such as "SLES-52047", or for a PC game
-// the wiki page to take the box from, such as "SimCity (2013 video game)". Covers you add yourself (cover.source
+// the wiki page to take the box from, such as "SimCity (2013 video game)" (the Wikipedia page, too, for
+// the consoles that only Wikipedia covers). "wikiCover": false stops a console game taking Wikipedia's box. Covers you add yourself (cover.source
 // "manual") are never replaced: the script only measures their shape and colours if they are missing.
 
 import fs from 'node:fs';
@@ -200,10 +202,26 @@ async function findSimsWiki(page, g) {
 async function findWikipedia(page) {
   const j = await getJSON(`https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages&piprop=original&pilicense=any&titles=${encodeURIComponent(page)}`);
   // A box is a scan, never a drawing: an .svg page image is the game's logo.
-  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source && !/\.svg(\?|$)/i.test(p.original.source));
+  // A box is a scan, never a drawing: an .svg page image is the game's logo. A box is also
+  // taller than it is wide, so a square store icon or a wide banner isn't one either.
+  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source && !/\.svg(\?|$)/i.test(p.original.source)
+    && !(p.original.width / p.original.height > 0.9));
   if (!p) return null;
   const img = p.original.source;
   return { url: img, source: 'en.wikipedia.org', ref: `${p.title} · ${decodeURIComponent(img.split('/').pop())}` };
+}
+
+// The consoles none of the collections have: the box on the game's Wikipedia page. That is
+// often key art rather than a scan, and for a game on several consoles it can be another
+// console's box, so check what comes back. "wikiCover": false keeps a wrong one from coming back.
+const WIKIPEDIA_ONLY = ['ps4', 'ps5', 'xone', 'x360', 'switch', 'switch2'];
+async function findConsoleWiki(g) {
+  if (g.wikiCover === false) return null;
+  for (const page of g.coverMatch ? [g.coverMatch] : [g.title, `${g.title} (video game)`]) {
+    const hit = await findWikipedia(page);
+    if (hit) return hit;
+  }
+  return null;
 }
 
 async function findWiki(g) {
@@ -295,6 +313,10 @@ for (const g of db.games) {
   if (!hit) {
     hit = findLibretro(g, sys === 'pc' ? 'dos' : sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
+  }
+  if (!hit && WIKIPEDIA_ONLY.includes(sys)) {
+    hit = await findConsoleWiki(g);
+    if (hit) ({ source, url } = hit);
   }
   if (!hit) { if (had) report.skipped++; else report.missing.push(`${g.id}  (${g.title})`); continue; }
   // a scan already there stays unless the new one suits the copy's region better
