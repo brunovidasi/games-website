@@ -1,0 +1,27 @@
+/* gta.css — the GTA page's own look: a Vice City sunset for what is in the
+   collection, and a row per game with its copies and the versions still to find.
+   The rest is css/collection.css. */
+.gta { --acc: #ff7a45; --acc-dk: #d6246e; --acc-glow: rgba(255,106,90,.4); }
+.gta .hero h1 em { background: linear-gradient(100deg, #ffb347, #ff6a5a 45%, #e8337c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- one game: its name, then its copies and the gaps ---------- */
+.title-row { margin-top: 26px; }
+.tr-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.tr-head .yr { font: 600 12px/1 'Space Grotesk', sans-serif; letter-spacing: .1em; color: var(--acc); font-variant-numeric: tabular-nums; }
+.tr-head h3 { margin: 0; font: 600 clamp(19px, 2.4vw, 24px)/1.15 'Fraunces', serif; letter-spacing: -.01em; }
+.tr-head small { font-size: 12px; opacity: .55; margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* a version still to find: the outline of its case */
+.ghostbox { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5em; text-align: center;
+  border: 1.5px dashed rgba(242,234,216,.35); border-radius: 4px; background: rgba(0,0,0,.18); color: rgba(242,234,216,.7); transition: border-color .2s, color .2s; }
+.ghostbox b { font: 600 13px/1.1 'Space Grotesk', sans-serif; letter-spacing: .06em; padding: 0 6px; }
+.ghostbox i { font: 500 9.5px/1 'Space Grotesk', sans-serif; font-style: normal; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+.cell.missing .cap b { opacity: .6; }
+.cell.missing .cap small { color: var(--gold); opacity: .8; }
+@media (hover: hover) { .cell.missing:hover .ghostbox { border-color: var(--acc); color: var(--text); } }
+.cell.missing:focus-visible .ghostbox { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .tr-head small { margin-left: 0; flex-basis: 100%; }
+  .ghostbox b { font-size: 11px; }
+}

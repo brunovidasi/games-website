@@ -7,6 +7,7 @@ The game collection site, with the same dark wood, Fraunces and Space Grotesk, a
 - **The list**: the same games as a sortable table, like the record site's list.
 - **A game up close**: click a case on the shelf, in the grid or in the list. It lifts out of its place, which stays empty, and flies to the middle of the screen with its name above it and its details below. Drag it to turn it round, or use *Front*, *Spine* and *Back*. *Open case* shows the disc, and *Take it out* lifts the cartridge out of its box. The arrows at the bottom (or the arrow keys) go to the next and previous game; closing flies it back into its place. On a phone held sideways the details stand beside it.
 - **The Sims collection** (`sims.html`): every Sims game and pack, PC and Mac first, grouped by game (The Sims, The Sims 2, The Sims Stories, The Sims 3, The Sims Medieval, The Sims 4, SimCity, MySims) and then by pack, with how much of each is there, the Sims games on consoles, and the want list. A solid case is on disc, an outline is in the EA app. Any case opens in the spotlight on the shelf.
+- **Grand Theft Auto** (`gta.html`): every GTA, era by era, one row per game with its copies on every platform and a dashed outline at the real case size for each version still to find. Those outlines are the want list at the bottom.
 - **Design prototypes** (`prototypes/`): the four early designs, kept as they were.
 
 ## Running it
@@ -49,7 +50,9 @@ To add a game, copy an entry, change it, and set `cover` and `colors` to `null`.
 
 **The Sims page** takes every game with a `"series"` (`"The Sims"`, `"The Sims 2"`, `"The Sims Stories"`, `"The Sims 3"`, `"The Sims Medieval"`, `"The Sims 4"`, `"SimCity"` or `"MySims"`), on any console. `"pack"` says what it is (`Base game`, `Collection`, `Expansion Pack`, `Game Pack`, `Stuff Pack`, `Kit`, `World` or `Extra`) and `"packCode"` gives The Sims 4's numbering (`EP01`, `GP04`, `SP12`). Serial keys are never kept here.
 
-**The want list** is `data/sims-wants.json`: the games and packs not in the collection yet, with the same `series`, `pack` and `packCode`, plus `platform` and an optional `note`. When one comes home, delete it there and add it to `games.json`.
+**The GTA page** reads `data/gta.json`: the eras, and in each its games with `copies` (ids from `games.json`) and `missing` (console ids, plus `psp` and `xsx` for Xbox Series X|S). When a missing version comes home, add it to `games.json` and move its id from `missing` to `copies`.
+
+**The Sims want list** is `data/sims-wants.json`: the games and packs not in the collection yet, with the same `series`, `pack` and `packCode`, plus `platform` and an optional `note`. When one comes home, delete it there and add it to `games.json`.
 
 ## Cases and cartridges
 
@@ -95,8 +98,10 @@ The script never replaces covers marked `manual`. A source with an API key, such
 - `css/cases.css`, `js/cases.js`: each console's case, spine, back, disc and cartridge
 - `js/consoles.js`: the consoles with their real case sizes, the regions and the PC launchers
 - `js/console-art.js`: the console drawings in the filter
+- `css/collection.css`, `js/collection.js`: what the collection pages share: the cases on their stretches of shelf, the meters, the want cards
 - `sims.html`, `css/sims.css`, `js/sims.js`: the Sims collection page
 - `data/sims-wants.json`: the Sims want list
+- `gta.html`, `css/gta.css`, `js/gta.js`, `data/gta.json`: the Grand Theft Auto page
 - `data/games.json`: the collection
 - `covers/`: box art, one folder per console
 - `tools/`: the cover fetcher
