@@ -44,7 +44,7 @@
     if (state.q) p.set('q', state.q);
     if (state.sort !== 'console') p.set('o', state.sort);
     const h = p.toString();
-    history.replaceState(null, '', h ? '#' + h : location.pathname + location.search);
+    try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch (e) { /* some sandboxes refuse it; filters just won't carry over */ }
     document.querySelectorAll('.protonav a, .keephash').forEach(a => { a.href = a.getAttribute('data-href') + (h ? '#' + h : ''); });
   }
 
