@@ -61,11 +61,13 @@
   const byId = new Map();
 
   /* ---------- filtering ---------- */
+  // the region filter groups the copies by what they play on: PAL, NTSC-U or NTSC-J
+  const stdOf = g => REGIONS[g.region]?.std || g.region;
   const fold = s => String(s || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
   function base() {
     const words = fold(state.q).split(/\s+/).filter(Boolean);
     return ALL.filter(g =>
-      (!state.region || g.region === state.region) &&
+      (!state.region || stdOf(g) === state.region) &&
       (!state.covers || (state.covers === 'with') === !!g.cover) &&
       (!words.length || words.every(w => g._hay.includes(w))));
   }
@@ -75,7 +77,7 @@
   function shell() {
     const consoles = CONSOLES.filter(c => !c.hidden && ALL.some(g => g.console === c.id));
     const years = ALL.map(g => g.released).filter(Boolean).map(r => +r.slice(0, 4));
-    const regions = Object.keys(REGIONS).filter(r => ALL.some(g => g.region === r));
+    const regions = ['PAL', 'NTSC-U', 'NTSC-J'].filter(r => ALL.some(g => stdOf(g) === r));
     $('#shell').innerHTML = `
       <header class="hero">
         <div>
@@ -170,7 +172,7 @@
       f.classList.toggle('on', ids.length === state.sel.size && ids.every(i => state.sel.has(i)));
     });
     $$('[data-r]').forEach(x => x.classList.toggle('on', x.dataset.r === state.region));
-    $$('[data-rn]').forEach(x => x.textContent = ALL.filter(g => g.region === x.dataset.rn).length);
+    $$('[data-rn]').forEach(x => x.textContent = ALL.filter(g => stdOf(g) === x.dataset.rn).length);
     $$('#view button').forEach(x => x.classList.toggle('on', x.dataset.view === state.view));
     $$('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === state.mode));
     $('#modeWrap').hidden = state.view !== 'shelf';
@@ -961,7 +963,7 @@
       ALL = db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
-        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition].join(' | '));
+        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition].join(' | '));
       });
       shell();
       const h = location.hash.slice(1);

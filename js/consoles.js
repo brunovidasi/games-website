@@ -52,10 +52,18 @@ window.LAUNCHERS = {
   none:      { name: 'DRM-free disc',   bg: '#3a3a3a', fg: '#ffffff', glyph: '◌' },
 };
 
+/* Where a copy was sold: the code printed on the box (AUS, EUR, HOL, USA, JPN) when it is
+   known, else just the standard it plays on. std groups them for the filter: a PAL copy wants
+   a PAL console, and a 3DS only plays games from its own region. */
 window.REGIONS = {
-  'PAL':    { name: 'PAL',    long: 'PAL — Europe & Australia' },
-  'NTSC-U': { name: 'NTSC-U', long: 'NTSC-U — Americas' },
-  'NTSC-J': { name: 'NTSC-J', long: 'NTSC-J — Japan' },
+  'AUS':    { name: 'AUS',    long: 'Australia',                 std: 'PAL' },
+  'EUR':    { name: 'EUR',    long: 'Europe',                    std: 'PAL' },
+  'HOL':    { name: 'HOL',    long: 'Netherlands',               std: 'PAL' },
+  'PAL':    { name: 'PAL',    long: 'PAL — Europe or Australia', std: 'PAL' },
+  'USA':    { name: 'USA',    long: 'United States',             std: 'NTSC-U' },
+  'NTSC-U': { name: 'NTSC-U', long: 'NTSC-U — the Americas',     std: 'NTSC-U' },
+  'JPN':    { name: 'JPN',    long: 'Japan',                     std: 'NTSC-J' },
+  'NTSC-J': { name: 'NTSC-J', long: 'NTSC-J — Japan',            std: 'NTSC-J' },
 };
 
 window.FORMATS = {

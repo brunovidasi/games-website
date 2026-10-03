@@ -3,6 +3,7 @@
 //   cd tools && npm install && node fetch-covers.mjs            (games without a cover)
 //   node fetch-covers.mjs --only ps2-final-fantasy-x            (one game, even if it has one)
 //   node fetch-covers.mjs --dry                                 (report matches, download nothing)
+//   node fetch-covers.mjs --recheck                             (swap covers for a better match, say after a region changed)
 //
 // Sources (free, no keys, all on GitHub):
 //   libretro-thumbnails — front box scans named after the release, region by region
@@ -24,6 +25,7 @@ const CACHE = process.env.COVER_CACHE || path.join(ROOT, 'tools/.cache');
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const ONLY = args.includes('--only') ? args[args.indexOf('--only') + 1] : null;
+const RECHECK = args.includes('--recheck');
 const HEIGHT = 520;
 
 const LIBRETRO = {
@@ -76,12 +78,20 @@ function parseLibretro(file) {
 
 const BAD = /\b(beta|proto|prototype|demo|sample|kiosk|preview|trade|promo|unl|pirate|hack)\b/i;
 const EU_OTHER = /\b(France|Germany|Spain|Italy|Netherlands|Scandinavia|Sweden|Russia|Poland|Portugal|Greece|Brazil|Korea|China|Taiwan|Asia)\b/;
+// what each region code plays on (as in js/consoles.js)
+const STD = { AUS: 'PAL', EUR: 'PAL', HOL: 'PAL', PAL: 'PAL', USA: 'NTSC-U', 'NTSC-U': 'NTSC-U', JPN: 'NTSC-J', 'NTSC-J': 'NTSC-J' };
+// how well a scan's region tags suit a copy: 0 is its own box, 5 and up is another region's
 function regionRank(tags, region) {
   const t = tags.join(' | ');
   if (BAD.test(t)) return 99;
+  const std = STD[region] || 'PAL';
   let r;
-  if (region === 'NTSC-J') r = /\bJapan\b/.test(t) ? 0 : /\bWorld\b/.test(t) ? 3 : /\bUSA\b/.test(t) ? 5 : 8;
-  else if (region === 'NTSC-U') r = /\bUSA\b/.test(t) ? (/Europe/.test(t) ? 1 : 0) : /\bWorld\b/.test(t) ? 2 : /\bCanada\b/.test(t) ? 3 : /\bEurope\b/.test(t) ? 5 : 8;
+  if (std === 'NTSC-J') r = /\bJapan\b/.test(t) ? 0 : /\bWorld\b/.test(t) ? 3 : /\bUSA\b/.test(t) ? 5 : 8;
+  else if (std === 'NTSC-U') r = /\bUSA\b/.test(t) ? (/Europe/.test(t) ? 1 : 0) : /\bWorld\b/.test(t) ? 2 : /\bCanada\b/.test(t) ? 3 : /\bEurope\b/.test(t) ? 5 : 8;
+  else if (region === 'HOL' && /\bNetherlands\b/.test(t)) r = 0;
+  // a European copy: the European box first, an Australian one is next best
+  else if (region === 'EUR' || region === 'HOL') r = /\bEurope\b/.test(t) ? (EU_OTHER.test(t) ? 4 : 0.5) : /\bUK\b/.test(t) ? 1 : /\bAustralia\b/.test(t) ? 2 : /\bWorld\b/.test(t) ? 3 : EU_OTHER.test(t) ? 6 : /\bUSA\b/.test(t) ? 5 : 8;
+  // an Australian copy, or a PAL one from either: the Australian box first
   else r = /\bAustralia\b/.test(t) ? 0 : /\bEurope\b/.test(t) ? (EU_OTHER.test(t) ? 4 : 1) : /\bUK\b/.test(t) ? 2 : /\bWorld\b/.test(t) ? 3 : EU_OTHER.test(t) ? 6 : /\bUSA\b/.test(t) ? 5 : 8;
   if (/Virtual Console|Switch Online|Collection/.test(t)) r += 0.5;
   if (/Rev \d|v\d/.test(t)) r += 0.1;
@@ -128,7 +138,8 @@ function findPs3(g) {
     return x ? { file: x.f, ref: x.id } : null;
   }
   const want = norm(g.title);
-  const order = g.region === 'NTSC-U' ? ['BCUS', 'BLUS', 'NPUA', 'NPUB'] : g.region === 'NTSC-J' ? ['BCJS', 'BLJS', 'BLJM', 'NPJA', 'NPJB'] : ['BCES', 'BLES', 'NPEA', 'NPEB'];
+  const std = STD[g.region] || 'PAL';
+  const order = std === 'NTSC-U' ? ['BCUS', 'BLUS', 'NPUA', 'NPUB'] : std === 'NTSC-J' ? ['BCJS', 'BLJS', 'BLJM', 'NPJA', 'NPJB'] : ['BCES', 'BLES', 'NPEA', 'NPEB'];
   const rows = ps3Titles.filter(r => r.key === want);
   for (const pre of order) {
     const ids = rows.filter(r => r.id.startsWith(pre)).sort((a, b) => a.rank - b.rank || a.id.localeCompare(b.id)).map(r => r.id);
@@ -196,7 +207,8 @@ const report = { found: [], offRegion: [], missing: [], skipped: 0 };
 
 for (const g of db.games) {
   if (g.cover && g.cover.source === 'manual') { await measure(g); report.skipped++; continue; }
-  if (ONLY ? g.id !== ONLY : (g.cover && g.cover.file)) { report.skipped++; continue; }
+  const had = g.cover && g.cover.file ? g.cover : null;
+  if (ONLY ? g.id !== ONLY : (had && !RECHECK)) { report.skipped++; continue; }
   const sys = g.caseStyle || g.console;
   let hit = null, url = null, source = null;
   if (sys === 'ps2' && /^S[CL][EUP][SMD]-\d{5}$/.test(g.coverMatch || '')) {
@@ -212,8 +224,10 @@ for (const g of db.games) {
     hit = findLibretro(g, sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
   }
-  if (!hit) { report.missing.push(`${g.id}  (${g.title})`); continue; }
-  (hit.offRegion ? report.offRegion : report.found).push(`${g.id}  ←  ${hit.ref}`);
+  if (!hit) { if (had) report.skipped++; else report.missing.push(`${g.id}  (${g.title})`); continue; }
+  // a scan already there stays unless the new one suits the copy's region better
+  if (had && !ONLY && (hit.ref === had.ref || (had.source === source && source === 'libretro-thumbnails' && regionRank(parseLibretro(had.ref).tags, g.region) <= regionRank(parseLibretro(hit.ref).tags, g.region)))) { report.skipped++; continue; }
+  (hit.offRegion ? report.offRegion : report.found).push(`${g.id}  ←  ${hit.ref}${had ? `  (was ${had.ref})` : ''}`);
   if (DRY) continue;
   try {
     const out = await save(await download(url), g);
