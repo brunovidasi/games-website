@@ -9,7 +9,7 @@ The game collection site, with the same dark wood, Fraunces and Space Grotesk, a
 - **The Sims collection** (`sims.html`): every Sims game and pack, on the same bookcase, in the same grid and list, grouped by game (The Sims, The Sims 2, The Sims Stories, The Sims 3, The Sims Medieval, The Sims 4, SimCity, MySims) rather than by console. Its *Checklist* view sorts them by game and pack, with how much of each is there and the want list. A solid case is on disc, an outline is in the EA app.
 - **Grand Theft Auto** (`gta.html`): every GTA copy on the bookcase, grouped by game. Its *Checklist* goes era by era, one row per game with its copies on every platform and a dashed outline at the real case size for each version still to find. Those outlines are the want list at the bottom.
 - **Design prototypes** (`prototypes/`): the four early designs, kept as they were.
-- **Style prototypes** (`prototypes/styles/`): eleven looks for the same site, each one stylesheet loaded after `css/site.css` and `css/cases.css` (and the collection page's own CSS): `neon.css` (Neon Arcade), `hud.css` (Holo Vault), `pixel.css` (Pixel Quest), `dashboard.css` (Next-Gen Home), `museum.css` (Hall of Fame), `atomic.css` (Atomic Purple), `comic.css` (Game Mag), `console.css` (Super Console), `glitch.css` (Glitch City), `leonida.css` (Leonida, after GTA VI's Vice City) and `datacore.css` (Data Core). Each also needs its Google Fonts link, named at the top of the file.
+- **Style prototypes** (`prototypes/styles/`): eleven looks for the same site, none of them live yet. `prototypes/styles/index.html` is a gallery of them with a screenshot of each, and every style has a full preview of the site in its own folder (`prototypes/styles/neon/`, with its own `sims.html` and `gta.html`). Each look is one stylesheet, `prototypes/styles/<name>.css`, loaded after the site's own CSS: `neon` (Neon Arcade), `hud` (Holo Vault), `pixel` (Pixel Quest), `dashboard` (Next-Gen Home), `museum` (Hall of Fame), `atomic` (Atomic Purple), `comic` (Game Mag), `console` (Super Console), `glitch` (Glitch City), `leonida` (Leonida, after GTA VI's Vice City) and `datacore` (Data Core). The top of each names the Google Fonts it needs. The previews are copies of the site's pages, so after changing `index.html`, `sims.html` or `gta.html`, run `node tools/style-previews.mjs` to rebuild them.
 
 ## Running it
 
@@ -107,6 +107,7 @@ The script never replaces covers marked `manual`. A source with an API key, such
 - `gta.html`, `css/gta.css`, `js/gta.js`, `data/gta.json`: the Grand Theft Auto page
 - `data/games.json`: the collection
 - `covers/`: box art, one folder per console
-- `tools/`: the cover fetcher
+- `tools/`: the cover fetcher, and `style-previews.mjs`, which builds the style prototype previews
 - `prototypes/`, `assets/`: the four design prototypes
+- `prototypes/styles/`: the style prototypes, their previews and their gallery
 - `fonts/`: the same self-hosted fonts as the record site
