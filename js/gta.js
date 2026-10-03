@@ -1,7 +1,8 @@
 /* gta.js — the Grand Theft Auto page. data/gta.json lists every game in the series,
    era by era, with the copies on the shelf (ids from data/games.json) and the
-   platforms it came out on that aren't here yet. Each game is a row: its copies stand
-   on a stretch of shelf, and each missing version is an outline at its case's real
+   platforms it came out on that aren't here yet. The copies stand on the shelf
+   (js/app.js) grouped by game. In the checklist view each game is a row: its copies
+   on a stretch of shelf, and each missing version an outline at its case's real
    size. The missing versions are the want list at the bottom. */
 
 (function () {
@@ -13,9 +14,6 @@
     xsx: { name: 'Xbox Series X|S', short: 'Series X|S', w: 135, h: 171 },
   };
   const platform = id => CONSOLE_BY_ID[id] || OTHER[id];
-
-  // the shorter name a game goes by inside its own row
-  const short = t => t.replace(/^Grand Theft Auto:? ?/, '') || t;
 
   /** An outline where a version still to find would stand, at that case's real size. */
   function missing(title, id) {
@@ -32,16 +30,13 @@
     return a;
   }
 
-  function render(db, data) {
-    const byId = new Map(db.games.map(g => [g.id, g]));
-    const all = data.eras.flatMap(e => e.games);
-    const copies = all.flatMap(g => g.copies.map(id => byId.get(id)).filter(Boolean));
-    const wants = all.flatMap(g => g.missing.map(p => ({ g, p })));
+  let data, byId, all, wants;
+  const gameOf = new Map(); // a copy's id → its game in data/gta.json
+
+  function hero(copies) {
     const platforms = new Set(copies.map(g => g.console));
     const years = all.map(g => +g.released.slice(0, 4));
-
-    const root = $('#gta');
-    root.innerHTML = `
+    return `
       <header class="hero">
         <div>
           <div class="eyebrow">Bruno's Games</div>
@@ -54,7 +49,11 @@
           <div><b>${platforms.size}</b><span>Platforms</span></div>
           <div><b>${wants.length}</b><span>Still to find</span></div>
         </div>
-      </header>
+      </header>`;
+  }
+
+  function checklist(root, copies) {
+    root.innerHTML = `
       <nav class="series-nav" aria-label="Jump to"><div class="in">
         ${data.eras.map(e => `<a href="#${e.id}">${esc(e.name)} <em>${e.games.length}</em></a>`).join('')}
         <a class="want" href="#want-list">Want list <em>${wants.length}</em></a>
@@ -95,5 +94,23 @@
     root.append(sec);
   }
 
-  Collection.start($('#gta'), ['data/games.json', 'data/gta.json'], render);
+  window.SHELF_PAGE = {
+    id: 'gta',
+    data: ['data/gta.json'],
+    games(db, d) {
+      data = d;
+      byId = new Map(db.games.map(g => [g.id, g]));
+      all = data.eras.flatMap(e => e.games);
+      wants = all.flatMap(g => g.missing.map(p => ({ g, p })));
+      all.forEach((g, i) => g.copies.forEach(id => gameOf.set(id, { ...g, order: i })));
+      return all.flatMap(g => g.copies.map(id => byId.get(id)).filter(Boolean));
+    },
+    group(c) {
+      const g = gameOf.get(c.id);
+      return { key: 'gta-' + g.order, label: g.title.replace(/^Grand Theft Auto:? ?/, 'GTA ').replace(/ – .*/, '').trim(), name: g.title, order: g.order };
+    },
+    groupNoun: 'game',
+    hero,
+    checklist,
+  };
 })();

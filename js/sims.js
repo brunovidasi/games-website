@@ -1,7 +1,7 @@
 /* sims.js — the Sims collection page. Every game in data/games.json with a "series"
-   stands here, grouped by game and then by pack, with how much of each is there.
-   The want list (data/sims-wants.json) is what the collection is still missing.
-   The cases, meters and want cards come from js/collection.js. */
+   stands on the shelf (js/app.js), grouped by game: The Sims, The Sims 2… Its
+   checklist view sorts them by game and then by pack, with how much of each is
+   there, and the want list (data/sims-wants.json) of what is still missing. */
 
 (function () {
   const esc = Case.esc;
@@ -29,17 +29,15 @@
     return t;
   };
 
-  function render(games, wants) {
-    const pc = games.filter(g => g.console === 'pc');
-    const consoles = games.filter(g => g.console !== 'pc');
-    const inApp = games.filter(g => g.format === 'digital' || g.alsoDigital).length;
-    const onDisc = games.filter(g => g.format === 'boxed' || g.format === 'cartridge-only').length;
-    const sections = SERIES.map(s => ({ ...s, games: pc.filter(g => g.series === s.key).sort(byRelease), wants: wants.filter(w => w.series === s.key && !/DS|N64/.test(w.platform)) }))
-      .filter(s => s.games.length || s.wants.length);
-    const consoleWants = wants.filter(w => /DS|N64/.test(w.platform));
+  let wants = [];
+  const countOf = games => ({
+    inApp: games.filter(g => g.format === 'digital' || g.alsoDigital).length,
+    onDisc: games.filter(g => g.format === 'boxed' || g.format === 'cartridge-only').length,
+  });
 
-    const root = $('#sims');
-    root.innerHTML = `
+  function hero(games) {
+    const { inApp, onDisc } = countOf(games);
+    return `
       <header class="hero">
         <div>
           <div class="eyebrow">Bruno's Games</div>
@@ -52,7 +50,17 @@
           <div><b>${inApp}</b><span>In the EA app</span></div>
           <div><b>${wants.length}</b><span>Still to find</span></div>
         </div>
-      </header>
+      </header>`;
+  }
+
+  function checklist(root, games) {
+    const pc = games.filter(g => g.console === 'pc');
+    const consoles = games.filter(g => g.console !== 'pc');
+    const sections = SERIES.map(s => ({ ...s, games: pc.filter(g => g.series === s.key).sort(byRelease), wants: wants.filter(w => w.series === s.key && !/DS|N64/.test(w.platform)) }))
+      .filter(s => s.games.length || s.wants.length);
+    const consoleWants = wants.filter(w => /DS|N64/.test(w.platform));
+
+    root.innerHTML = `
       <nav class="series-nav" aria-label="Jump to"><div class="in">
         ${sections.map(s => `<a href="#${s.id}">${esc(s.name)} <em>${s.games.length}</em></a>`).join('')}
         ${consoles.length ? `<a href="#consoles">On consoles <em>${consoles.length}</em></a>` : ''}
@@ -100,5 +108,16 @@
 
   }
 
-  Collection.start($('#sims'), ['data/games.json', 'data/sims-wants.json'], (db, w) => render(db.games.filter(g => g.series), w.wants));
+  window.SHELF_PAGE = {
+    id: 'sims',
+    data: ['data/sims-wants.json'],
+    games(db, w) { wants = w.wants; return db.games.filter(g => g.series); },
+    group(g) {
+      const i = SERIES.findIndex(s => s.key === g.series);
+      return { key: SERIES[i].id, label: SERIES[i].name, name: SERIES[i].name, order: i };
+    },
+    groupNoun: 'game',
+    hero,
+    checklist,
+  };
 })();

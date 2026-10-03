@@ -24,11 +24,32 @@
   </nav>
 </div>
 
-<div id="gta"></div>
+<div id="shell"></div>
+
+<div class="tools">
+  <div class="grp" id="modeWrap">
+    <span class="lbl">Show</span>
+    <div class="pills" id="mode" role="group" aria-label="How the cases stand">
+      <button type="button" data-m="mixed">One cover per game</button>
+      <button type="button" data-m="spines">All spines</button>
+      <button type="button" data-m="covers">All covers</button>
+    </div>
+  </div>
+  <div class="grp">
+    <span class="lbl">Covers</span>
+    <div class="pills" id="covers" role="group" aria-label="Filter by cover">
+      <button type="button" data-cv="">All</button>
+      <button type="button" data-cv="with">Scanned <em id="cv-with"></em></button>
+      <button type="button" data-cv="without">Still to find <em id="cv-without"></em></button>
+    </div>
+  </div>
+</div>
+
+<main class="case-wrap"><div class="bookcase" id="case"></div></main>
+<section id="checklist" aria-label="Checklist"></section>
 
 <footer>
-  Every Grand Theft Auto I have, on every platform, and the versions still on the want list.
-  Pick any case to open it on <a href="./">the shelf</a>.
+  Every Grand Theft Auto I have, on every platform. The checklist shows the versions still to find. Release dates are the first release on each platform.
 </footer>
 
 <script src="js/consoles.js"></script>
@@ -36,5 +57,6 @@
 <script src="js/cases.js"></script>
 <script src="js/collection.js"></script>
 <script src="js/gta.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
