@@ -86,9 +86,9 @@ If it picks the wrong one, or finds nothing, set `"coverMatch"` on the game:
 - a PS3 serial, for example `"BLES00229"`
 - a PS2 serial, for example `"SLES-52047"`
 
-PC games come from the box art on the game's page on [the Sims Wiki](https://sims.fandom.com), then Wikipedia, then libretro-thumbnails' DOS boxes (the first Grand Theft Auto). `"coverMatch"` names the page when the title doesn't find it. This needs `sims.fandom.com`, `static.wikia.nocookie.net`, `en.wikipedia.org` and `upload.wikimedia.org` to be reachable.
+PC games come from the box art on the game's page on [the Sims Wiki](https://sims.fandom.com), then Wikipedia, then libretro-thumbnails' DOS boxes (the first Grand Theft Auto). `"coverMatch"` names the page when the title doesn't find it. This needs `sims.fandom.com`, `static.wikia.nocookie.net`, `en.wikipedia.org` and `upload.wikimedia.org` to be reachable. In a Claude Code cloud session, run it as `NODE_USE_ENV_PROXY=1 node fetch-covers.mjs` so Node goes through the session's proxy.
 
-None of these collections cover PS4, PS5, Switch, Switch 2, Xbox One or most Xbox 360 games. Those show a printed title card in the right case until they have a cover. The details of every game without a cover have a *Find the cover on Google Images* link that searches for the title, console and region. To add a cover by hand:
+None of these collections cover PS4, PS5, Switch, Switch 2, Xbox One or most Xbox 360 games. Those take the box on the game's Wikipedia page, which is often key art or another console's box, so look at what comes back. A picture wider than a box (a store icon, a banner) is skipped, `"coverMatch"` names the page, and `"wikiCover": false` stops a wrong one coming back. A game with no cover shows a printed title card in the right case. The details of every game without a cover have a *Find the cover on Google Images* link that searches for the title, console and region. To add a cover by hand:
 1. Save the image as `covers/<console>/<name>.jpg`.
 2. Set `"cover": { "file": "covers/…", "source": "manual" }` on the game.
 3. Run `node fetch-covers.mjs` in `tools/`. It measures the cover's shape, so it fits the case, and takes its colours for the spine. It does not change the image.

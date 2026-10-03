@@ -11,10 +11,12 @@
 //   xlenore/ps2-covers — PS2 covers named by disc serial (SLES-52047…), used when coverMatch is a serial
 //   The Sims Wiki, then Wikipedia — PC games: the page image of the game's page
 //   libretro-thumbnails DOS — PC games from the DOS days, when the wikis have nothing
+//   Wikipedia — PS4, PS5, Xbox One, Switch, Switch 2 and the Xbox 360 games libretro lacks
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
 // ".png", a PS3 serial such as "BLES00229", a PS2 serial such as "SLES-52047", or for a PC game
-// the wiki page to take the box from, such as "SimCity (2013 video game)". Covers you add yourself (cover.source
+// the wiki page to take the box from, such as "SimCity (2013 video game)" (the Wikipedia page, too, for
+// the consoles that only Wikipedia covers). "wikiCover": false stops a console game taking Wikipedia's box. Covers you add yourself (cover.source
 // "manual") are never replaced: the script only measures their shape and colours if they are missing.
 
 import fs from 'node:fs';
@@ -155,22 +157,79 @@ function findPs3(g) {
 
 /* ---------- PC: the box art on a game's wiki page ----------
    None of the collections above have PC games. The Sims Wiki has a page for every Sims
-   game and pack with its box as the page image, and Wikipedia has the rest. The page
-   is the game's title (or its coverMatch); the wikis follow redirects. */
-const WIKIS = [
-  { source: 'sims.fandom.com', api: 'https://sims.fandom.com/api.php' },
-  { source: 'en.wikipedia.org', api: 'https://en.wikipedia.org/w/api.php', extra: '&pilicense=any' },
-];
+   game and pack with its box in the infobox, and Wikipedia has the rest, with the box as
+   the page image. (The Sims Wiki's page image is usually a screenshot, so it isn't used.)
+   The page is the game's title (or its coverMatch); the wikis follow redirects. */
+// Wikimedia turns away requests whose User-Agent doesn't say who is asking.
+const UA = 'games-website-cover-fetcher/1.0 (https://github.com/brunovidasi/games-website)';
+const getJSON = async url => {
+  for (let i = 0; i < 4; i++) {
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (r.ok) return r.json();
+    if (r.status !== 429) return null;
+    await new Promise(res => setTimeout(res, 5000 * 2 ** i));
+  }
+  return null;
+};
+
+// The infobox's "image = [[File:The Sims 2 Apartment Life Cover.jpg|250px]]". A page with
+// several boxes puts them in tabs ("Modernised=[[File:…]] |-| Original=[[File:…]]"): a box
+// on the shelf takes the original one, a pack in the EA app the first, which is today's art.
+function infoboxFile(text, digital) {
+  const tabs = text.match(/\|\s*image\s*=\s*<tabber>([\s\S]*?)<\/tabber>/i)?.[1];
+  if (!tabs) return text.match(/\|\s*image\s*=\s*\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim();
+  const files = tabs.split('|-|').map(t => ({
+    name: t.split('=')[0].trim(),
+    file: t.match(/\[\[\s*(?:File|Image)\s*:\s*([^|\]]+)/i)?.[1].trim(),
+  })).filter(t => t.file);
+  if (!files.length) return null;
+  if (digital) return files[0].file;
+  return (files.find(t => /original|1st|first/i.test(t.name)) || files[files.length - 1]).file;
+}
+
+async function findSimsWiki(page, g) {
+  const api = 'https://sims.fandom.com/api.php';
+  const j = await getJSON(`${api}?action=parse&format=json&redirects=1&prop=wikitext&section=0&page=${encodeURIComponent(page)}`);
+  const text = j?.parse?.wikitext?.['*'];
+  if (!text) return null;
+  const file = infoboxFile(text, g.format === 'digital');
+  if (!file) return null;
+  const info = await getJSON(`${api}?action=query&format=json&prop=imageinfo&iiprop=url&titles=${encodeURIComponent('File:' + file)}`);
+  const url = Object.values(info?.query?.pages || {})[0]?.imageinfo?.[0]?.url;
+  return url ? { url, source: 'sims.fandom.com', ref: `${j.parse.title} · ${file}` } : null;
+}
+
+async function findWikipedia(page) {
+  const j = await getJSON(`https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages&piprop=original&pilicense=any&titles=${encodeURIComponent(page)}`);
+  // A box is a scan, never a drawing: an .svg page image is the game's logo.
+  // A box is a scan, never a drawing: an .svg page image is the game's logo. A box is also
+  // taller than it is wide, so a square store icon or a wide banner isn't one either.
+  const p = Object.values(j?.query?.pages || {}).find(p => p.original?.source && !/\.svg(\?|$)/i.test(p.original.source)
+    && !(p.original.width / p.original.height > 0.9));
+  if (!p) return null;
+  const img = p.original.source;
+  return { url: img, source: 'en.wikipedia.org', ref: `${p.title} · ${decodeURIComponent(img.split('/').pop())}` };
+}
+
+// The consoles none of the collections have: the box on the game's Wikipedia page. That is
+// often key art rather than a scan, and for a game on several consoles it can be another
+// console's box, so check what comes back. "wikiCover": false keeps a wrong one from coming back.
+const WIKIPEDIA_ONLY = ['ps4', 'ps5', 'xone', 'x360', 'switch', 'switch2'];
+async function findConsoleWiki(g) {
+  if (g.wikiCover === false) return null;
+  for (const page of g.coverMatch ? [g.coverMatch] : [g.title, `${g.title} (video game)`]) {
+    const hit = await findWikipedia(page);
+    if (hit) return hit;
+  }
+  return null;
+}
+
 async function findWiki(g) {
   const page = g.coverMatch || g.title;
-  for (const w of WIKIS) {
-    const url = `${w.api}?action=query&format=json&redirects=1&prop=pageimages&piprop=original${w.extra || ''}&titles=${encodeURIComponent(page)}`;
+  for (const find of [findSimsWiki, findWikipedia]) {
     try {
-      const r = await fetch(url, { headers: { 'User-Agent': 'games-website cover fetcher' } });
-      if (!r.ok) continue;
-      const pages = Object.values((await r.json()).query?.pages || {});
-      const img = pages.find(p => p.original?.source)?.original.source;
-      if (img) return { url: img, source: w.source, ref: `${pages[0].title} · ${decodeURIComponent(img.split('/').filter(x => /\.(jpe?g|png|webp)$/i.test(x)).pop() || '')}` };
+      const hit = await find(page, g);
+      if (hit) return hit;
     } catch (e) { /* that wiki can't be reached: try the next */ }
   }
   return null;
@@ -180,7 +239,7 @@ async function findWiki(g) {
 
 async function download(url) {
   for (let i = 0; i < 4; i++) {
-    const r = await fetch(url);
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
     if (r.ok) return Buffer.from(await r.arrayBuffer());
     if (r.status === 404) throw new Error(`404 ${url}`);
     await new Promise(res => setTimeout(res, 2000 * 2 ** i));
@@ -254,6 +313,10 @@ for (const g of db.games) {
   if (!hit) {
     hit = findLibretro(g, sys === 'pc' ? 'dos' : sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
+  }
+  if (!hit && WIKIPEDIA_ONLY.includes(sys)) {
+    hit = await findConsoleWiki(g);
+    if (hit) ({ source, url } = hit);
   }
   if (!hit) { if (had) report.skipped++; else report.missing.push(`${g.id}  (${g.title})`); continue; }
   // a scan already there stays unless the new one suits the copy's region better
