@@ -5,13 +5,15 @@
 //   node fetch-covers.mjs --dry                                 (report matches, download nothing)
 //   node fetch-covers.mjs --recheck                             (swap covers for a better match, say after a region changed)
 //
-// Sources (free, no keys, all on GitHub):
+// Sources (free, no keys; the first three on GitHub):
 //   libretro-thumbnails — front box scans named after the release, region by region
 //   aldostools/resources — PS3 covers named by disc serial (BLES…, BLUS…), with titleid.txt
 //   xlenore/ps2-covers — PS2 covers named by disc serial (SLES-52047…), used when coverMatch is a serial
+//   The Sims Wiki, then Wikipedia — PC games: the page image of the game's page
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
-// ".png", a PS3 serial such as "BLES00229", or a PS2 serial such as "SLES-52047". Covers you add yourself (cover.source
+// ".png", a PS3 serial such as "BLES00229", a PS2 serial such as "SLES-52047", or for a PC game
+// the wiki page to take the box from, such as "SimCity (2013 video game)". Covers you add yourself (cover.source
 // "manual") are never replaced: the script only measures their shape and colours if they are missing.
 
 import fs from 'node:fs';
@@ -149,6 +151,29 @@ function findPs3(g) {
   return null;
 }
 
+/* ---------- PC: the box art on a game's wiki page ----------
+   None of the collections above have PC games. The Sims Wiki has a page for every Sims
+   game and pack with its box as the page image, and Wikipedia has the rest. The page
+   is the game's title (or its coverMatch); the wikis follow redirects. */
+const WIKIS = [
+  { source: 'sims.fandom.com', api: 'https://sims.fandom.com/api.php' },
+  { source: 'en.wikipedia.org', api: 'https://en.wikipedia.org/w/api.php', extra: '&pilicense=any' },
+];
+async function findWiki(g) {
+  const page = g.coverMatch || g.title;
+  for (const w of WIKIS) {
+    const url = `${w.api}?action=query&format=json&redirects=1&prop=pageimages&piprop=original${w.extra || ''}&titles=${encodeURIComponent(page)}`;
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': 'games-website cover fetcher' } });
+      if (!r.ok) continue;
+      const pages = Object.values((await r.json()).query?.pages || {});
+      const img = pages.find(p => p.original?.source)?.original.source;
+      if (img) return { url: img, source: w.source, ref: `${pages[0].title} · ${decodeURIComponent(img.split('/').filter(x => /\.(jpe?g|png|webp)$/i.test(x)).pop() || '')}` };
+    } catch (e) { /* that wiki can't be reached: try the next */ }
+  }
+  return null;
+}
+
 /* ---------- download, resize, colours ---------- */
 
 async function download(url) {
@@ -220,7 +245,11 @@ for (const g of db.games) {
     hit = findPs3(g);
     if (hit) { source = 'aldostools/resources'; url = `https://raw.githubusercontent.com/aldostools/resources/HEAD/COV/${encodeURIComponent(hit.file)}`; }
   }
-  if (!hit) {
+  if (!hit && sys === 'pc') {
+    hit = await findWiki(g);
+    if (hit) ({ source, url } = hit);
+  }
+  if (!hit && sys !== 'pc') {
     hit = findLibretro(g, sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
   }
