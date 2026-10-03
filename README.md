@@ -9,7 +9,7 @@ The game collection site, with the same dark wood, Fraunces and Space Grotesk, a
 - **The Sims collection** (`sims.html`): every Sims game and pack, on the same bookcase, in the same grid and list, grouped by game (The Sims, The Sims 2, The Sims Stories, The Sims 3, The Sims Medieval, The Sims 4, SimCity, MySims) rather than by console. Its *Checklist* view sorts them by game and pack, with how much of each is there and the want list. A solid case is on disc, an outline is in the EA app.
 - **Grand Theft Auto** (`gta.html`): every GTA copy on the bookcase, grouped by game. Its *Checklist* goes era by era, one row per game with its copies on every platform and a dashed outline at the real case size for each version still to find. Those outlines are the want list at the bottom.
 - **Design prototypes** (`prototypes/`): the four early designs, kept as they were.
-- **Style prototypes** (`prototypes/styles/`): four looks for the same site, each one stylesheet loaded after `css/site.css` and `css/cases.css` (and the collection page's own CSS): `neon.css` (Neon Arcade), `hud.css` (Holo Vault), `pixel.css` (Pixel Quest) and `dashboard.css` (Next-Gen Home). Each also needs its Google Fonts link, named at the top of the file.
+- **Style prototypes** (`prototypes/styles/`): nine looks for the same site, each one stylesheet loaded after `css/site.css` and `css/cases.css` (and the collection page's own CSS): `neon.css` (Neon Arcade), `hud.css` (Holo Vault), `pixel.css` (Pixel Quest), `dashboard.css` (Next-Gen Home), `museum.css` (Hall of Fame), `atomic.css` (Atomic Purple), `comic.css` (Game Mag), `console.css` (Super Console) and `glitch.css` (Glitch City). Each also needs its Google Fonts link, named at the top of the file.
 
 ## Running it
 
