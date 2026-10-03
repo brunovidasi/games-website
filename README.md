@@ -3,8 +3,9 @@
 The game collection site, with the same dark wood, Fraunces and Space Grotesk, and gold as the record site (`brunovida.si/music`). The two are separate sites.
 
 - **The shelf** (`index.html`): every game on a wooden bookcase, grouped by console, in that console's real case at its real size. Loose cartridges stand on their own. The console filter at the top shows a drawing of each console.
-- **The list**: the same games as a sortable table, like the record site's list. Switch between them with *Shelf* and *List*.
-- **A game up close**: click a case on the shelf or a row in the list. As on the record site, it flies out to the middle of the page with its details beside it. Drag it to turn it round, or use *Front*, *Spine* and *Back*. *Open case* shows the disc, and *Take it out* lifts the cartridge out of its box. On a phone the details slide up from the bottom.
+- **The grid**: every game face out, standing on one line at its real size, with its name under it. Going between *Shelf* and *Grid* carries every case on screen across, as the record site does between its floor and its grid: each case comes off the shelf and turns from its spine to its cover on the way, and turns back to its spine on the way home.
+- **The list**: the same games as a sortable table, like the record site's list.
+- **A game up close**: click a case on the shelf, in the grid or in the list. It lifts out of its place, which stays empty, and flies to the middle of the screen with its name above it and its details below. Drag it to turn it round, or use *Front*, *Spine* and *Back*. *Open case* shows the disc, and *Take it out* lifts the cartridge out of its box. The arrows at the bottom (or the arrow keys) go to the next and previous game; closing flies it back into its place. On a phone held sideways the details stand beside it.
 - **Design prototypes** (`prototypes/`): the four early designs, kept as they were.
 
 ## Running it
@@ -47,7 +48,7 @@ To add a game, copy an entry, change it, and set `cover` and `colors` to `null`.
 
 ## Cases and cartridges
 
-Each case is drawn at its real size from `js/consoles.js`, so a DS case is wider than it is tall and a PS3 case is shorter than a PS2 one. A cover scan always shows whole. It sits in the case at its own shape: under the blue header on a Blu-ray case, to the right of the hinge on a CD jewel case, and centred in the rest. Cardboard boxes (SNES, Game Boy) take the shape of their scan.
+Each case is drawn at its console's real height from `js/consoles.js`, so a DS case is shorter than a PS2 one and a PS3 case sits between them. The case is built around its cover scan: it takes its width from the scan, so the scan always shows whole and fills the front, with just the case's rim and hinge round it. Cardboard boxes (SNES, Game Boy) simply are their scan. A game without a scan gets its case's real width.
 
 The cartridges and game cards (SNES, Game Boy, GBA, DS, 3DS, Switch, Switch 2) are drawn in `js/cases.js` with their real outlines and label areas. The label shows the box art without the console-name strip that Western boxes have down one side.
 
@@ -82,7 +83,7 @@ The script never replaces covers marked `manual`. A source with an API key, such
 
 ## Files
 
-- `index.html`, `css/site.css`, `js/app.js`: the page, the filter, the shelf, the list and the 3D view
+- `index.html`, `css/site.css`, `js/app.js`: the page, the filter, the shelf, the grid, the list, the shelf ⇄ grid flight and the spotlight
 - `css/cases.css`, `js/cases.js`: each console's case, spine, back, disc and cartridge
 - `js/consoles.js`: the consoles with their real case sizes, the regions and the PC launchers
 - `js/console-art.js`: the console drawings in the filter

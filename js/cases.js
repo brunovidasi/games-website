@@ -19,28 +19,22 @@
   const styleOf = g => g.caseStyle || g.console;
 
   /* ---------- the case's shape ----------
-     A plastic case keeps its real size and holds the cover scan at the scan's
-     own shape, so nothing is cut: a Blu-ray sleeve sits at the bottom with
-     plastic above it, a square booklet sits to the right of a jewel case's
-     hinge. A cardboard box simply is its scan. */
+     A case keeps its console's real height and is built around its cover scan,
+     so the scan fills the front exactly: nothing cut, no gaps. A plastic case
+     keeps a thin rim and its hinge round the scan; a cardboard box simply is its
+     scan. Without a scan the case has its real width. */
   function layout(g, s) {
     const c = C()[styleOf(g)];
     const m = g.big ? window.BIGBOX : c;
     const kind = g.big ? 'box' : c.kind;
-    let w = m.w * s;
     const h = m.h * s, d = m.d * s;
     const r = g.cover && g.cover.ratio;
     let rim = [0, 0, 0, 0]; // top, right, bottom, left
     if (kind === 'keep') { const t = m.w * s * 0.018; rim = [t, t, t, m.w * s * 0.045]; }
-    if (kind === 'jewel') { const t = m.w * s * 0.012; rim = [t, t, t, t]; }
-    if (kind === 'box' && r) w = h * r;
-    const aw = w - rim[1] - rim[3], ah = h - rim[0] - rim[2];
-    let ix = rim[3], iy = rim[0], iw = aw, ih = ah;
-    if (r && kind !== 'box') {
-      if (aw / ah > r) { iw = ah * r; ix += kind === 'jewel' ? aw - iw : (aw - iw) / 2; }
-      else { ih = aw / r; iy += c.insert === 'bottom' ? ah - ih : (ah - ih) / 2; }
-    }
-    return { w, h, d, kind, c, ix, iy, iw, ih };
+    if (kind === 'jewel') { const t = m.w * s * 0.012; rim = [t, t, t, m.w * s * 0.07]; }
+    const ih = h - rim[0] - rim[2];
+    const iw = r ? ih * r : m.w * s - rim[1] - rim[3];
+    return { w: iw + rim[1] + rim[3], h, d, kind, c, ix: rim[3], iy: rim[0], iw, ih };
   }
   const dims = layout;
 
@@ -209,19 +203,10 @@
   const cart = (g, s) => el(cartHTML(g, s, mediaType(g)));
 
   /* ---------- 3D case ---------- */
-  function box(g, s) {
-    const L = layout(g, s);
+  // stands each face of a 3D case in its place round the middle of the case
+  function assemble(b, L) {
     const W = L.w, H = L.h, D = L.d;
-    const b = el(`<div class="bx ${cls(g, L)}" style="${vars(g, L)}">
-      <div class="fc f-tray"><div class="tray">${mediaHTML(g, s)}</div></div>
-      <div class="fc f-front"><div class="leaf">${frontHTML(g, L, false)}<div class="inner"><div class="manual"><div class="mt">${esc(g.title)}</div><div class="ml"><i></i><i></i><i></i><i style="width:60%"></i></div><div class="mthumb">${img(g)}</div></div></div></div></div>
-      <div class="fc f-back">${backHTML(g, L)}</div>
-      <div class="fc f-left">${spineHTML(g, L)}</div>
-      <div class="fc f-right"><div class="edge"></div></div>
-      <div class="fc f-top"><div class="edge"></div></div>
-      <div class="fc f-bot"><div class="edge"></div></div>
-    </div>`);
-    const set = (sel, w, h, l, t, tr) => Object.assign(b.querySelector(sel).style, { width: w + 'px', height: h + 'px', left: l + 'px', top: t + 'px', transform: tr });
+    const set = (sel, w, h, l, t, tr) => { const f = b.querySelector(sel); if (f) Object.assign(f.style, { width: w + 'px', height: h + 'px', left: l + 'px', top: t + 'px', transform: tr }); };
     set('.f-front', W, H, 0, 0, `translateZ(${D / 2}px)`);
     set('.f-tray', W, H, 0, 0, `translateZ(${D / 2 - 1}px)`);
     set('.f-back', W, H, 0, 0, `rotateY(180deg) translateZ(${D / 2}px)`);
@@ -231,6 +216,31 @@
     set('.f-bot', W, D, 0, (H - D) / 2, `rotateX(-90deg) translateZ(${H / 2}px)`);
     b.style.width = W + 'px';
     b.style.height = H + 'px';
+    return b;
+  }
+
+  // just the front and the spine: a case turning as it goes between the shelf and the grid
+  function slab(g, s) {
+    const L = layout(g, s);
+    return assemble(el(`<div class="bx slab ${cls(g, L)}" style="${vars(g, L)}">
+      <div class="fc f-front">${frontHTML(g, L, false)}</div>
+      <div class="fc f-left">${spineHTML(g, L)}</div>
+    </div>`), L);
+  }
+
+  function box(g, s) {
+    const L = layout(g, s);
+    const H = L.h;
+    const b = el(`<div class="bx ${cls(g, L)}" style="${vars(g, L)}">
+      <div class="fc f-tray"><div class="tray">${mediaHTML(g, s)}</div></div>
+      <div class="fc f-front"><div class="leaf">${frontHTML(g, L, false)}<div class="inner"><div class="manual"><div class="mt">${esc(g.title)}</div><div class="ml"><i></i><i></i><i></i><i style="width:60%"></i></div><div class="mthumb">${img(g)}</div></div></div></div></div>
+      <div class="fc f-back">${backHTML(g, L)}</div>
+      <div class="fc f-left">${spineHTML(g, L)}</div>
+      <div class="fc f-right"><div class="edge"></div></div>
+      <div class="fc f-top"><div class="edge"></div></div>
+      <div class="fc f-bot"><div class="edge"></div></div>
+    </div>`);
+    assemble(b, L);
     // taking it out of a cardboard box: the box shrinks to the bottom of its outline and the
     // cartridge rises three quarters out of the top, so the open box needs no more room than the closed one
     if (L.kind === 'box') {
@@ -246,5 +256,5 @@
   // a cartridge's size in px at scale s, for laying one out
   const cartSize = (g, s) => { const T = CART[mediaType(g)]; return T ? [T.w * s, T.h * s] : [0, 0]; };
 
-  window.Case = { dims, layout, front, spine, box, cart, cartSize, isCart, date, year, esc, styleOf };
+  window.Case = { dims, layout, front, spine, box, slab, cart, cartSize, isCart, date, year, esc, styleOf };
 })();
