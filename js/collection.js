@@ -1,13 +1,11 @@
-/* collection.js — what the collection pages (sims.html, gta.html) share: a game's case
-   standing on a stretch of shelf with its name and tags under it, the meter of how
-   much of a set is there, a want-list card, the section pills that follow the page,
-   and loading the data. A case opens in the spotlight on the shelf (index.html#<id>). */
+/* collection.js — what the collection pages' checklists (sims.html, gta.html) share:
+   a game's case standing on a stretch of shelf with its name and tags under it, the
+   meter of how much of a set is there, and a want-list card. A case opens in the
+   spotlight in place (js/app.js). */
 
 (function () {
   const esc = Case.esc;
   const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const plural = (n, one, many = one + 's') => `${n} ${n === 1 ? one : many}`;
   const byRelease = (a, b) => (a.released || '9999').localeCompare(b.released || '9999') || a.title.localeCompare(b.title);
 
   // a DVD case stands the height of the stage, and the rest keep their real size beside it
@@ -21,6 +19,7 @@
     const a = document.createElement('a');
     a.className = 'cell';
     a.href = './#' + encodeURIComponent(g.id);
+    a.dataset.id = g.id; // the shelf opens it in place (js/app.js)
     a.setAttribute('aria-label', `${g.title}, ${c.name}${g.mac ? ' and Mac' : ''}, ${Case.year(g)}`);
     const stage = document.createElement('span');
     stage.className = 'stage';
@@ -81,33 +80,5 @@
     </div>`;
   }
 
-  /** The pill for the section on screen lights up, and the row of pills scrolls to it. */
-  function followNav() {
-    const links = $$('.series-nav a');
-    const io = new IntersectionObserver(entries => entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
-      const on = $(`.series-nav a[href="#${e.target.id}"]`), bar = $('.series-nav .in');
-      if (on) bar.scrollTo({ left: on.offsetLeft - (bar.clientWidth - on.offsetWidth) / 2, behavior: 'smooth' });
-    }), { rootMargin: '-45% 0px -50% 0px' });
-    $$('.series').forEach(s => io.observe(s));
-  }
-
-  /** Loads the data files and draws the page, again when the phone and desktop sizes swap. */
-  function start(root, urls, draw) {
-    Promise.all(urls.map(u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); })))
-      .then(data => {
-        draw(...data);
-        followNav();
-        if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
-        let lw = innerWidth, t;
-        addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if ((innerWidth < 640) !== (lw < 640)) { lw = innerWidth; draw(...data); followNav(); } }, 150); });
-      })
-      .catch(err => {
-        console.error(err);
-        root.innerHTML = `<div class="empty-msg" style="padding-top:120px"><b>The collection couldn't load</b>The data didn't load. Open the site through a web server (for example <code>npx serve</code>) rather than as a file.</div>`;
-      });
-  }
-
-  window.Collection = { card, group, meter, wantCard, start, stageH, plural, byRelease, esc, $, $$ };
+  window.Collection = { card, group, meter, wantCard, stageH, byRelease, esc, $ };
 })();
