@@ -47,13 +47,18 @@
       <path d="M10.6 22.5 L47.6 22.5" stroke="#3d7bff" stroke-width="1.1"/>
       <path d="M14 11.6 L53 11.6" stroke="#4b4f5b" stroke-width=".6"/>`),
 
-    // standing: the black core between the two white wings
+    // lying flat, seen at an angle like the PS4: the black core with its blue light between
+    // the two white panels, which curve round at the ends, on its stand
     ps5: svg(`
-      <path d="M25.5 4.5 Q15 6 13 13.5 L14.5 34.5 L25.5 35.5 Z" fill="#f3f3f5"/>
-      <path d="M34.5 4.5 Q45 6 47 13.5 L45.5 34.5 L34.5 35.5 Z" fill="#e6e7ea"/>
-      <rect x="25.5" y="4.5" width="9" height="31" rx="1.2" fill="#16171c"/>
-      <path d="M25.9 6 V34" stroke="#4a8dff" stroke-width=".7"/><path d="M34.1 6 V34" stroke="#4a8dff" stroke-width=".7"/>
-      <rect x="19" y="35.5" width="22" height="2" rx="1" fill="#1d1e24"/>`),
+      <path d="M6 18 C8 13.5 11.5 11.5 17 11.5 L56 11.5 C55 14.5 52 18 47.5 18 Z" fill="#f3f3f5"/>
+      <path d="M56 11.5 C55 14.5 52 18 47.5 18 L47.5 29 C52 29 55 25.5 56 22.5 Z" fill="#c8cad0"/>
+      <path d="M47.5 19.6 C51.4 19.6 54.4 16.4 56 13.6 L56 17.6 C54.4 20.6 51.4 23.8 47.5 23.8 Z" fill="#0d0e11"/>
+      <rect x="6" y="18" width="41.5" height="1.6" fill="#d9dadf"/>
+      <rect x="6" y="19.6" width="41.5" height="4.2" fill="#16171c"/>
+      <path d="M6.6 20 H47.5 M6.6 23.4 H47.5" stroke="#4a8dff" stroke-width=".55"/>
+      <path d="M6 23.8 H47.5 V29 L13 29 C9 29 6 27.4 6 23.8 Z" fill="#e8e9ec"/>
+      <rect x="14" y="12.2" width="34" height="1.3" rx=".65" fill="#fff" opacity=".6"/>
+      <rect x="22" y="29" width="13" height="2.4" rx="1" fill="#1d1e24"/>`),
 
     // the big black box with the green jewel on top
     xbox: svg(`
