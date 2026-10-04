@@ -4,7 +4,7 @@
 
 /* ---------- per-console plastic, banner and spine colours ---------- */
 .k-ps1    { --pl: rgba(205,215,225,.55); --bb: #0b0b0b; --bf: #fff;                  --sb: #0d0d0d; --sf: #fff; --st: #0b0b0b; --stf: #fff;    --ph1: #1b1d22; --ph2: #34373f; }
-.k-ps2    { --pl: #121212; --bb: #0b0b0b; --bf: #fff;                                --sb: #0b0b0b; --sf: #fff; --st: #0b0b0b; --stf: #fff;    --ph1: #10131c; --ph2: #23293a; }
+.k-ps2    { --pl: #121212; --bb: #0b0b0b; --bf: #fff;                                --sb: #f7f7f5; --sf: #111; --st: #0b0b0b; --stf: #fff;    --ph1: #10131c; --ph2: #23293a; }
 .k-ps3    { --pl: #1c1f26; --bb: #0c0c0e; --bf: #fff;                                --sb: #141418; --sf: #e6e6e6; --st: #0c0c0e; --stf: #cfd3d8; --ph1: #121214; --ph2: #2c2c33; }
 .k-ps4    { --pl: #1e4ea8; --bb: #003791; --bf: #fff;                                --sb: #0d1a33; --sf: #fff; --st: #003791; --stf: #fff;    --ph1: #0b1631; --ph2: #1d3a78; }
 .k-ps5    { --pl: #2456b0; --bb: #ffffff; --bf: #000;                                --sb: #0b0b0b; --sf: #fff; --st: #ffffff; --stf: #000;    --ph1: #0e1016; --ph2: #262b38; }
