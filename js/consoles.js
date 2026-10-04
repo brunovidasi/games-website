@@ -3,9 +3,9 @@
 
 window.FAMILIES = [
   { id: 'playstation', name: 'PlayStation', color: '#3b7be0' },
-  { id: 'xbox',        name: 'Xbox',        color: '#3aa64a' },
   { id: 'nintendo',    name: 'Nintendo',    color: '#e8303a' },
   { id: 'pc',          name: 'PC',          color: '#9aa4ad' },
+  { id: 'xbox',        name: 'Xbox',        color: '#3aa64a' },
 ];
 
 /* kind: keep = plastic keep case, jewel = CD jewel case, box = cardboard box.
@@ -13,27 +13,28 @@ window.FAMILIES = [
    scan keeps its height and takes its width from the scan (js/cases.js), so the
    scan always shows whole and fills the front.
    media: what is inside. spineArt: the spine takes its colour from the cover.
-   hidden: a case style only, never a shelf of its own. */
+   hidden: a case style only, never a shelf of its own.
+   The order here is the order on the site: PlayStation, Nintendo, PC, then Xbox, each newest first. */
 window.CONSOLES = [
-  { id: 'ps1',     name: 'PlayStation',       short: 'PS1',      fam: 'playstation', w: 142, h: 125, d: 10, kind: 'jewel', media: 'cd',      spineArt: true },
-  { id: 'ps2',     name: 'PlayStation 2',     short: 'PS2',      fam: 'playstation', w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
-  { id: 'ps3',     name: 'PlayStation 3',     short: 'PS3',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
-  { id: 'ps4',     name: 'PlayStation 4',     short: 'PS4',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
   { id: 'ps5',     name: 'PlayStation 5',     short: 'PS5',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
-  { id: 'xbox',    name: 'Xbox',              short: 'Xbox',     fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
-  { id: 'x360',    name: 'Xbox 360',          short: '360',      fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
-  { id: 'xone',    name: 'Xbox One',          short: 'One',      fam: 'xbox',        w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
-  { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true },
-  { id: 'gb',      name: 'Game Boy',          short: 'GB',       fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gb',      spineArt: true,  hidden: true },
-  { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true },
-  { id: 'gba',     name: 'Game Boy Advance',  short: 'GBA',      fam: 'nintendo',    w: 128, h: 124, d: 32, kind: 'box',   media: 'gba',     spineArt: true },
-  { id: 'ds',      name: 'Nintendo DS',       short: 'DS',       fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: 'ds',      spineArt: false },
+  { id: 'ps4',     name: 'PlayStation 4',     short: 'PS4',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
+  { id: 'ps3',     name: 'PlayStation 3',     short: 'PS3',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
+  { id: 'ps2',     name: 'PlayStation 2',     short: 'PS2',      fam: 'playstation', w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
+  { id: 'ps1',     name: 'PlayStation',       short: 'PS1',      fam: 'playstation', w: 142, h: 125, d: 10, kind: 'jewel', media: 'cd',      spineArt: true },
+  { id: 'switch2', name: 'Nintendo Switch 2', short: 'Switch 2', fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch2', spineArt: false },
+  { id: 'switch',  name: 'Nintendo Switch',   short: 'Switch',   fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch',  spineArt: false },
+  { id: 'wiiu',    name: 'Wii U',             short: 'Wii U',    fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wiiu',    spineArt: false },
   { id: '3ds',     name: 'Nintendo 3DS',      short: '3DS',      fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: '3ds',     spineArt: false },
   { id: 'wii',     name: 'Wii',               short: 'Wii',      fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wii',     spineArt: false },
-  { id: 'wiiu',    name: 'Wii U',             short: 'Wii U',    fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wiiu',    spineArt: false },
-  { id: 'switch',  name: 'Nintendo Switch',   short: 'Switch',   fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch',  spineArt: false },
-  { id: 'switch2', name: 'Nintendo Switch 2', short: 'Switch 2', fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch2', spineArt: false },
+  { id: 'ds',      name: 'Nintendo DS',       short: 'DS',       fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: 'ds',      spineArt: false },
+  { id: 'gba',     name: 'Game Boy Advance',  short: 'GBA',      fam: 'nintendo',    w: 128, h: 124, d: 32, kind: 'box',   media: 'gba',     spineArt: true },
+  { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true },
+  { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true },
+  { id: 'gb',      name: 'Game Boy',          short: 'GB',       fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gb',      spineArt: true,  hidden: true },
   { id: 'pc',      name: 'PC',                short: 'PC',       fam: 'pc',          w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
+  { id: 'xone',    name: 'Xbox One',          short: 'One',      fam: 'xbox',        w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
+  { id: 'x360',    name: 'Xbox 360',          short: '360',      fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
+  { id: 'xbox',    name: 'Xbox',              short: 'Xbox',     fam: 'xbox',        w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
 ];
 window.CONSOLE_BY_ID = Object.fromEntries(window.CONSOLES.map(c => [c.id, c]));
 
