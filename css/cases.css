@@ -20,9 +20,9 @@
 .k-ds     { --pl: #2b2b30; --bb: #ececec; --bf: #555;                                --sb: #f2f2f2; --sf: #222; --st: #d9d9d9; --stf: #444;    --ph1: #ececec; --ph2: #d4d4d8; --phf: #222; }
 .k-3ds    { --pl: #f3f3f3; --bb: #ffffff; --bf: #444;                                --sb: #fbfbfb; --sf: #222; --st: #ffffff; --stf: #d0021b; --ph1: #ffffff; --ph2: #e9e9ec; --phf: #222; }
 .k-wii    { --pl: #f7f7f7; --bb: #ffffff; --bf: #8a8f94;                             --sb: #fbfbfb; --sf: #333; --st: #ffffff; --stf: #8a8f94; --ph1: #ffffff; --ph2: #e8eaec; --phf: #2a2d30; }
-.k-wiiu   { --pl: #1c9bd1; --bb: #009ac7; --bf: #fff;                                --sb: #fbfbfb; --sf: #222; --st: #009ac7; --stf: #fff;    --ph1: #e9f5fa; --ph2: #c6e4f1; --phf: #12384a; }
+.k-wiiu   { --pl: #1c9bd1; --bb: #009ac7; --bf: #fff;                                --sb: #009ac7; --sf: #fff;  --st: #009ac7; --stf: #fff;    --ph1: #e9f5fa; --ph2: #c6e4f1; --phf: #12384a; }
 .k-switch { --pl: #e60012; --bb: #e60012; --bf: #fff;                                --sb: #f6f6f6; --sf: #222; --st: #e60012; --stf: #fff;    --ph1: #ffffff; --ph2: #ececee; --phf: #1d1d1f; }
-.k-switch2{ --pl: #d8000f; --bb: #e60012; --bf: #fff;                                --sb: #f6f6f6; --sf: #222; --st: #e60012; --stf: #fff;    --ph1: #17171a; --ph2: #2c2c31; }
+.k-switch2{ --pl: #d8000f; --bb: #e60012; --bf: #fff;                                --sb: #e60012; --sf: #fff;  --st: #e60012; --stf: #fff;    --ph1: #17171a; --ph2: #2c2c31; }
 .k-pc     { --pl: #121212; --bb: #0b0b0b; --bf: #fff;                                --sb: #141414; --sf: #fff; --st: #0b0b0b; --stf: #fff;    --ph1: #121212; --ph2: #2c2c2c; }
 
 /* ---------- front ---------- */
@@ -131,7 +131,6 @@
 .k-xbox .stop, .k-x360 .stop, .k-xone .stop { font-family: Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400; letter-spacing: .06em; }
 .k-wii .stop, .k-wiiu .stop { font-family: 'Arial Rounded MT Bold', 'Space Grotesk', sans-serif; }
 .k-wiiu .stop { font-size: .5em; }
-.k-switch2 .stop { box-shadow: inset 0 -.25em 0 #111; }
 .sp .joy { font-size: 1.1em; }
 .sttl { flex: 1; min-height: 0; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start; padding: .5em 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   font: 600 .74em/1 'Space Grotesk', sans-serif; letter-spacing: .02em; }
