@@ -72,7 +72,7 @@
     });
   }
 
-  const VIEWS = ['shelf', 'grid', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
+  const VIEWS = ['shelf', 'rows', 'grid', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
   const flat = v => v === 'list' || v === 'checklist'; // views with no cases to carry across
   const state = {
     view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
@@ -135,6 +135,7 @@
           </select>
           <div class="seg" id="view" role="group" aria-label="View">
             <button type="button" data-view="shelf">Shelf</button>
+            <button type="button" data-view="rows">Rows</button>
             <button type="button" data-view="grid">Grid</button>
             <button type="button" data-view="list">List</button>
             ${VIEWS.includes('checklist') ? '<button type="button" data-view="checklist">Checklist</button>' : ''}
@@ -162,7 +163,7 @@
     $('#sort').addEventListener('change', e => { if (MENU[e.target.value]) setSort(MENU[e.target.value]); });
     $$('#view button').forEach(b => b.addEventListener('click', () => {
       if (state.view === b.dataset.view) return;
-      // the shelf and the grid are the same cases laid out two ways, so they are carried across
+      // the shelf, the rows and the grid are the same cases laid out three ways, so they are carried across
       const before = Morph.capture();
       state.view = b.dataset.view;
       store.set('view', state.view);
@@ -274,12 +275,13 @@
     host.classList.toggle('bookcase', state.view === 'shelf');
     host.classList.toggle('gridview', state.view === 'grid');
     host.classList.toggle('listview', state.view === 'list');
+    host.classList.toggle('rowsview', state.view === 'rows');
     if (state.view === 'checklist') { CFG.checklist($('#checklist'), ALL); Detail.rehome(); return; }
     if (!games.length) {
       host.innerHTML = `<div class="empty-msg"><b>Nothing on this shelf</b>No games match those filters. Try another console or clear the search.</div>`;
       return;
     }
-    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else renderShelf(animate);
+    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else if (state.view === 'rows') renderRows(animate); else renderShelf(animate);
     Detail.rehome();
   }
 
@@ -412,6 +414,42 @@
     host.replaceChildren(wrap);
   }
 
+  /* ---------- a game standing face out with its name under it: in the grid and in the rows ----------
+     It stands at scale s, no wider than room and no taller than the stage. */
+  function cellOf(g, s, room, stage, animate, delay) {
+    const c = CONSOLE_BY_ID[g.console];
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'cell' + (animate ? ' enter' : '');
+    cell.dataset.id = g.id;
+    cell.style.setProperty('--d', delay + 'ms');
+    cell.setAttribute('aria-label', `${g.title}, ${c.name}, ${Case.year(g)}`);
+    const tile = document.createElement('span');
+    tile.className = 'gt';
+    let w;
+    if (g.format === 'cartridge-only') {
+      const [w1, h1] = Case.cartSize(g, 1);
+      const k = Math.min(s * 2, room / w1, (stage * 0.8) / h1);
+      tile.append(Case.cart(g, k));
+      w = w1 * k;
+    } else {
+      const L = Case.layout(g, 1);
+      const k = Math.min(s, room / L.w, stage / L.h);
+      const face = Case.front(g, k);
+      if (g.format === 'digital') face.classList.add('ghosted');
+      tile.append(face);
+      w = L.w * k;
+    }
+    cell.style.setProperty('--tw', w.toFixed(1) + 'px');
+    const st = document.createElement('span');
+    st.className = 'stage';
+    st.append(tile);
+    cell.append(st);
+    cell.insertAdjacentHTML('beforeend', `<span class="cap"><b>${esc(g.title)}</b><small>${c.short} · ${Case.year(g)} · ${esc(g.region)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small></span>`);
+    return cell;
+  }
+  const groupHead = (gr, n) => `<div class="ghead">${gr.art ? `<span class="spot-art">${gr.art}</span>` : ''}<b>${esc(gr.name)}</b><i>${n} ${n === 1 ? 'copy' : CFG ? 'copies' : 'games'}</i></div>`;
+
   /* ---------- the grid: every game standing face out on one baseline ---------- */
   // A DVD case stands the full height of the stage and the rest keep their real size beside it,
   // so a DS case is shorter and a Switch case narrower. Loose cartridges stand twice their size.
@@ -430,35 +468,45 @@
     games.forEach(g => counts[groupOf(g).key] = (counts[groupOf(g).key] || 0) + 1);
     let last = null, n = 0;
     games.forEach(g => {
-      const c = CONSOLE_BY_ID[g.console];
       const gr = groupOf(g);
       if (grouped && gr.key !== last) {
-        wrap.insertAdjacentHTML('beforeend', `<div class="ghead">${gr.art ? `<span class="spot-art">${gr.art}</span>` : ''}<b>${esc(gr.name)}</b><i>${counts[gr.key]} ${counts[gr.key] === 1 ? 'copy' : CFG ? 'copies' : 'games'}</i></div>`);
+        wrap.insertAdjacentHTML('beforeend', groupHead(gr, counts[gr.key]));
       }
       last = gr.key;
-      const cell = document.createElement('button');
-      cell.type = 'button';
-      cell.className = 'cell' + (animate ? ' enter' : '');
-      cell.dataset.id = g.id;
-      cell.style.setProperty('--d', Math.min(n++ * 12, 700) + 'ms');
-      cell.setAttribute('aria-label', `${g.title}, ${c.name}, ${Case.year(g)}`);
-      const tile = document.createElement('span');
-      tile.className = 'gt';
-      if (g.format === 'cartridge-only') {
-        const [w1, h1] = Case.cartSize(g, 1);
-        tile.append(Case.cart(g, Math.min(s * 2, room / w1, (G.stage * 0.8) / h1)));
-      } else {
-        const L = Case.layout(g, 1);
-        const face = Case.front(g, Math.min(s, room / L.w, G.stage / L.h));
-        if (g.format === 'digital') face.classList.add('ghosted');
-        tile.append(face);
-      }
-      const stage = document.createElement('span');
-      stage.className = 'stage';
-      stage.append(tile);
-      cell.append(stage);
-      cell.insertAdjacentHTML('beforeend', `<span class="cap"><b>${esc(g.title)}</b><small>${c.short} · ${Case.year(g)} · ${esc(g.region)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small></span>`);
-      wrap.append(cell);
+      wrap.append(cellOf(g, s, room, G.stage, animate, Math.min(n++ * 12, 700)));
+    });
+    host.replaceChildren(wrap);
+  }
+
+  /* ---------- the rows: each console (or game) on a row of its own that scrolls sideways ----------
+     Bigger than the grid, to be easy to tap on a phone: a DVD case stands the full height of
+     the row, and a swipe moves the row along a case at a time. Sorted any way but by console,
+     the games stand on one long row in that order. */
+  const rowSize = () => innerWidth < 640 ? { stage: 230, gap: 18 } : innerWidth < 1000 ? { stage: 250, gap: 22 } : { stage: 270, gap: 28 };
+  function renderRows(animate) {
+    const R = rowSize();
+    const s = R.stage / 190;
+    const wrap = document.createElement('div');
+    wrap.className = 'rows';
+    wrap.style.cssText = `--stage:${R.stage}px;--gap:${R.gap}px`;
+    const grouped = state.sort.key === GROUP;
+    const runs = [];
+    games.forEach(g => {
+      const gr = grouped ? groupOf(g) : null, last = runs[runs.length - 1];
+      if (last && (!grouped || last.gr.key === gr.key)) last.games.push(g);
+      else runs.push({ gr, games: [g] });
+    });
+    let n = 0;
+    runs.forEach(({ gr, games: gs }) => {
+      const sec = document.createElement('section');
+      sec.className = 'rgrp';
+      if (gr) sec.innerHTML = groupHead(gr, gs.length);
+      const track = document.createElement('div');
+      track.className = 'rtrack';
+      // only the first cases on each row rise in; the rest are off to the side
+      gs.forEach((g, i) => track.append(cellOf(g, s, R.stage * 1.1, R.stage, animate && i < 8, Math.min(n++ * 12, 500))));
+      sec.append(track);
+      wrap.append(sec);
     });
     host.replaceChildren(wrap);
   }
@@ -863,6 +911,7 @@
       ui.classList.remove('open');
       if (!fromHash) setHash(state.sel.size === 1 ? [...state.sel][0] : '', false, a.g.id);
       const back = homeOf(a.g);
+      if (back && state.view === 'rows') back.closest('[data-id]').scrollIntoView({ block: 'nearest', inline: 'center' });
       leave(a, 0);
       setTimeout(() => back?.closest('[data-id]')?.focus({ preventScroll: true }), 30);
     }

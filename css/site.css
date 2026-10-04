@@ -194,6 +194,18 @@ select.sort { background: var(--surface); border: 1px solid var(--line-strong); 
 @keyframes rise { from { transform: translateY(30px); opacity: 0; } }
 @keyframes capIn { from { opacity: 0; } }
 
+/* ---------- the rows: a row for each console that scrolls sideways, bigger for a thumb ---------- */
+.rgrp { margin-bottom: 18px; }
+.rgrp .ghead { margin: 0; }
+/* the row runs to the edges of the screen, and stops a case at a time */
+.rtrack { display: flex; align-items: flex-end; gap: var(--gap); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding: 0 20px;
+  margin: 0 -20px; padding: 16px 20px 12px; scrollbar-width: none; }
+.rtrack::-webkit-scrollbar { display: none; }
+.rtrack .cell { flex: none; width: max(var(--tw), 112px); scroll-snap-align: start; }
+.rtrack .cap { text-align: center; }
+.rows .cap b { font-size: 1rem; }
+.rows .cap small { font-size: .78rem; }
+
 /* ---------- shelf ⇄ grid: the cases in the air (js/app.js, Morph) ---------- */
 .morph { position: absolute; left: 0; top: 0; z-index: 60; pointer-events: none; }
 .mf { position: absolute; perspective: 900px; display: grid; place-items: center; will-change: transform; }
@@ -275,6 +287,7 @@ footer a { text-decoration-color: rgba(242,234,216,.3); }
   .pills button { flex: none; }
   .search { max-width: none; flex-basis: 100%; }
   .tools, .case-wrap { padding-left: 16px; padding-right: 16px; }
+  .rtrack { margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding: 0 16px; }
   .bookcase { padding: 14px 10px 0; }
   .board { margin: 0 -10px; }
   .plates { inset: 0 10px; }
