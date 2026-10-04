@@ -71,14 +71,14 @@
   const px = v => v.toFixed(1) + 'px';
   function vars(g, L) {
     let v = `--w:${px(L.w)};--h:${px(L.h)};--d:${px(L.d)};--ix:${px(L.ix)};--iy:${px(L.iy)};--iw:${px(L.iw)};--ih:${px(L.ih)}`;
-    // spines that carry the game's own colours take them from the cover
-    if (L.c.spineArt && g.colors) {
+    // spines that carry the game's own colours take them from the cover (Kinect games keep their purple)
+    if (L.c.spineArt && g.colors && !g.kinect) {
       const [a, b] = g.colors;
       v += L.kind === 'box' ? `;--sb:linear-gradient(${a},${b || a});--sf:${ink(a)}` : `;--sb:${a};--sf:${ink(a)}`;
     }
     return v;
   }
-  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''} kind-${L.kind}`;
+  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''}${g.kinect ? ' kinect' : ''} kind-${L.kind}`;
   const img = (g, c = '', lazy = true) => g.cover ? `<img class="${c}" src="${esc(g.cover.file)}" alt="" ${lazy ? 'loading="lazy"' : ''} decoding="async" draggable="false">` : '';
   function el(html) {
     const t = document.createElement('template');

@@ -10,6 +10,8 @@
 .k-ps5    { --pl: #2456b0; --bb: #ffffff; --bf: #000;                                --sb: #0b0b0b; --sf: #fff; --st: #ffffff; --stf: #000;    --ph1: #0e1016; --ph2: #262b38; }
 .k-xbox   { --pl: #111;    --bb: linear-gradient(#5fbf2a,#2f8a12); --bf: #0b1a05;    --sb: #0e0e0e; --sf: #fff; --st: #3c9a1a; --stf: #0b1a05; --ph1: #0c140b; --ph2: #1d3318; }
 .k-x360   { --pl: #2f8f33; --bb: linear-gradient(#ffffff,#cfd4d8); --bf: #2b8a2b;    --sb: #18301a; --sf: #fff; --st: linear-gradient(90deg,#e9ecef,#bfc5ca); --stf: #2b8a2b; --ph1: #0d1a0e; --ph2: #24452a; }
+/* Kinect games came in purple */
+.k-x360.kinect { --pl: #6b2a8f; --bb: linear-gradient(#8e42b6,#5c2280); --bf: #fff; --sb: #5c2280; --sf: #fff; --st: linear-gradient(90deg,#9446bd,#6a2a8f); --stf: #fff; --ph1: #1d0d26; --ph2: #43205a; }
 .k-xone   { --pl: #1c7c1c; --bb: #107c10; --bf: #fff;                                --sb: #0f2410; --sf: #fff; --st: #107c10; --stf: #fff;    --ph1: #0a160a; --ph2: #1d3d1d; }
 .k-snes   { --pl: transparent; --bb: #3d3d44; --bf: #fff;                            --sb: #3d3d44; --sf: #fff; --st: #2d2d33; --stf: #ddd;    --ph1: #2a2a31; --ph2: #55555f; }
 .k-gb     { --pl: transparent; --bb: #5a5a64; --bf: #fff;                            --sb: #6a6a72; --sf: #fff; --st: #3c3c44; --stf: #e8e8e8; --ph1: #4a4a52; --ph2: #8a8a92; }

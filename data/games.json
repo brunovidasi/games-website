@@ -3484,6 +3484,7 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
+      "kinect": true,
       "cover": {
         "file": "covers/x360/dance-central.jpg",
         "ratio": 0.7067,
@@ -3507,6 +3508,7 @@
       "developer": "Harmonix",
       "genre": "Dance",
       "format": "boxed",
+      "kinect": true,
       "cover": {
         "file": "covers/x360/dance-central-2.jpg",
         "ratio": 0.7072,
@@ -3530,6 +3532,7 @@
       "developer": "Smack Down Productions",
       "genre": "Dance",
       "format": "boxed",
+      "kinect": true,
       "cover": null,
       "colors": null
     },
@@ -3714,6 +3717,7 @@
       "developer": "Good Science Studio",
       "genre": "Party",
       "format": "boxed",
+      "kinect": true,
       "cover": {
         "file": "covers/x360/kinect-adventures.jpg",
         "ratio": 0.7112,
@@ -3737,6 +3741,7 @@
       "developer": "BigPark",
       "genre": "Racing",
       "format": "boxed",
+      "kinect": true,
       "cover": {
         "file": "covers/x360/kinect-joy-ride.jpg",
         "ratio": 0.7167,
@@ -3760,6 +3765,7 @@
       "developer": "Rare",
       "genre": "Sports",
       "format": "boxed",
+      "kinect": true,
       "cover": {
         "file": "covers/x360/kinect-sports.jpg",
         "ratio": 0.7091,
@@ -3797,6 +3803,7 @@
       "developer": "Pipeworks Software",
       "genre": "Fitness",
       "format": "boxed",
+      "kinect": true,
       "wikiCover": false,
       "cover": null,
       "colors": null

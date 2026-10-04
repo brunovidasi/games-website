@@ -40,6 +40,7 @@ One entry per copy on the shelf:
 | `dateSource` | `"manual"` | `libretro-database`, or `manual` (from memory, worth checking) |
 | `publisher`, `developer`, `genre` | | |
 | `format` | `"boxed"` | `boxed`, `cartridge-only` (stands loose on the shelf) or `digital` (an outline) |
+| `kinect` | `true` | optional: a Kinect game, drawn in a purple case |
 | `caseStyle` | `"ps4"` | optional: drawn in another console's case (a PS4 disc on the PS5 shelf) |
 | `note` | `"No guitar controller"` | shown under the details |
 | `fav` | `true` | optional: faces out on the shelf in "One cover per console" |
