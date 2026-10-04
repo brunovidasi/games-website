@@ -1535,6 +1535,30 @@
       ]
     },
     {
+      "id": "ps2-guitar-hero-rocks-the-80s",
+      "console": "ps2",
+      "title": "Guitar Hero: Rocks the 80s",
+      "region": "PAL",
+      "released": "2007-07-24",
+      "dateSource": "manual",
+      "publisher": "Activision",
+      "developer": "Harmonix",
+      "genre": "Rhythm",
+      "format": "boxed",
+      "coverMatch": "SLES-54859",
+      "cover": {
+        "file": "covers/ps2/guitar-hero-rocks-the-80s.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-54859"
+      },
+      "colors": [
+        "#807480",
+        "#514a5a",
+        "#261f26"
+      ]
+    },
+    {
       "id": "ps2-guitar-hero-ii",
       "console": "ps2",
       "title": "Guitar Hero II",
@@ -1647,6 +1671,30 @@
         "#070a06",
         "#333d2d",
         "#6f7a66"
+      ]
+    },
+    {
+      "id": "ps2-the-incredibles",
+      "console": "ps2",
+      "title": "The Incredibles",
+      "region": "PAL",
+      "released": "2004-10-31",
+      "dateSource": "manual",
+      "publisher": "THQ",
+      "developer": "Heavy Iron Studios",
+      "genre": "Action",
+      "format": "boxed",
+      "coverMatch": "SLES-52812",
+      "cover": {
+        "file": "covers/ps2/the-incredibles.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-52812"
+      },
+      "colors": [
+        "#e41d19",
+        "#eca830",
+        "#0c0b08"
       ]
     },
     {
@@ -1936,6 +1984,32 @@
         "#1c161a"
       ],
       "series": "The Sims"
+    },
+    {
+      "id": "ps2-the-sims-2-pets",
+      "console": "ps2",
+      "title": "The Sims 2: Pets",
+      "listedAs": "The Sims 2 Pets",
+      "region": "PAL",
+      "released": "2006-10-17",
+      "dateSource": "manual",
+      "publisher": "Electronic Arts",
+      "developer": "Maxis",
+      "genre": "Life simulation",
+      "format": "boxed",
+      "coverMatch": "SLES-54347",
+      "cover": {
+        "file": "covers/ps2/the-sims-2-pets.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-54347"
+      },
+      "colors": [
+        "#202328",
+        "#7e5643",
+        "#4f809d"
+      ],
+      "series": "The Sims 2"
     },
     {
       "id": "ps2-the-urbz-sims-in-the-city",
