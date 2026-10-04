@@ -200,7 +200,7 @@
     $$('[data-rn]').forEach(x => x.textContent = ALL.filter(g => stdOf(g) === x.dataset.rn).length);
     $$('#view button').forEach(x => x.classList.toggle('on', x.dataset.view === state.view));
     $$('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === state.mode));
-    $('#modeWrap').hidden = state.view !== 'shelf';
+    $('#modeWrap').hidden = state.view !== 'shelf' && state.view !== 'rows';
     document.body.dataset.view = state.view;
     $$('#covers button').forEach(x => x.classList.toggle('on', x.dataset.cv === state.covers));
     $('#cv-with').textContent = ALL.filter(g => g.cover).length;
@@ -479,16 +479,17 @@
   }
 
   /* ---------- the rows: each console (or game) on a row of its own that scrolls sideways ----------
-     Bigger than the grid, to be easy to tap on a phone: a DVD case stands the full height of
-     the row, and a swipe moves the row along a case at a time. Sorted any way but by console,
-     the games stand on one long row in that order. */
-  const rowSize = () => innerWidth < 640 ? { stage: 230, gap: 18 } : innerWidth < 1000 ? { stage: 250, gap: 22 } : { stage: 270, gap: 28 };
+     The cases stand as on the shelf, their spines out (with "Show" as on the shelf), but taller,
+     and each spine much wider than a real one, so it is easy to tap on a phone. A swipe moves
+     along the row. Sorted any way but by console, the games stand on one long row in that order. */
+  const rowSize = () => innerWidth < 640 ? { stage: 230, spine: 46 } : innerWidth < 1000 ? { stage: 250, spine: 44 } : { stage: 270, spine: 42 };
   function renderRows(animate) {
     const R = rowSize();
     const s = R.stage / 190;
+    const lead = state.mode === 'mixed' ? leaders() : new Set();
+    const kindOf = g => g.format === 'cartridge-only' ? 'loose' : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
     const wrap = document.createElement('div');
     wrap.className = 'rows';
-    wrap.style.cssText = `--stage:${R.stage}px;--gap:${R.gap}px`;
     const grouped = state.sort.key === GROUP;
     const runs = [];
     games.forEach(g => {
@@ -503,8 +504,27 @@
       if (gr) sec.innerHTML = groupHead(gr, gs.length);
       const track = document.createElement('div');
       track.className = 'rtrack';
-      // only the first cases on each row rise in; the rest are off to the side
-      gs.forEach((g, i) => track.append(cellOf(g, s, R.stage * 1.1, R.stage, animate && i < 8, Math.min(n++ * 12, 500))));
+      gs.forEach((g, i) => {
+        const kind = kindOf(g);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        // only the first cases on each row rise in; the rest are off to the side
+        btn.className = `item ${kind}` + (animate && i < 14 ? ' enter' : '');
+        btn.dataset.id = g.id;
+        btn.style.animationDelay = Math.min(n++ * 8, 500) + 'ms';
+        btn.setAttribute('aria-label', `${g.title}, ${CONSOLE_BY_ID[g.console].name}, ${Case.year(g)}`);
+        const tile = document.createElement('span');
+        tile.className = 'gt';
+        if (kind === 'loose') tile.append(Case.cart(g, s * 1.6));
+        else if (kind === 'face') tile.append(Case.front(g, Math.min(s, (R.stage * 1.1) / Case.layout(g, 1).w)));
+        else {
+          const sp = Case.spine(g, s);
+          sp.style.setProperty('--d', R.spine + 'px');
+          tile.append(sp);
+        }
+        btn.append(tile);
+        track.append(btn);
+      });
       sec.append(track);
       wrap.append(sec);
     });

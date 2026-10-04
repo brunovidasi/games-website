@@ -194,17 +194,22 @@ select.sort { background: var(--surface); border: 1px solid var(--line-strong); 
 @keyframes rise { from { transform: translateY(30px); opacity: 0; } }
 @keyframes capIn { from { opacity: 0; } }
 
-/* ---------- the rows: a row for each console that scrolls sideways, bigger for a thumb ---------- */
-.rgrp { margin-bottom: 18px; }
+/* ---------- the rows: a row for each console that scrolls sideways, its spines wide enough for a thumb ---------- */
+.rgrp { margin-bottom: 22px; }
 .rgrp .ghead { margin: 0; }
-/* the row runs to the edges of the screen, and stops a case at a time */
-.rtrack { display: flex; align-items: flex-end; gap: var(--gap); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding: 0 20px;
-  margin: 0 -20px; padding: 16px 20px 12px; scrollbar-width: none; }
+/* the row runs to the edges of the screen, and stands on a strip of shelf */
+.rtrack { display: flex; align-items: flex-end; gap: 5px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding: 0 20px;
+  margin: 0 -20px; padding: 18px 20px 0; scrollbar-width: none; border-bottom: 12px solid; border-image: linear-gradient(#8a5a31, #6b4425 40%, #4f3119) 1; }
 .rtrack::-webkit-scrollbar { display: none; }
-.rtrack .cell { flex: none; width: max(var(--tw), 112px); scroll-snap-align: start; }
-.rtrack .cap { text-align: center; }
-.rows .cap b { font-size: 1rem; }
-.rows .cap small { font-size: .78rem; }
+.rtrack .item { flex: none; border: 0; padding: 0; background: none; cursor: pointer; scroll-snap-align: start; }
+.rtrack .item.face, .rtrack .item.loose { margin: 0 8px; }
+.rtrack .item:focus-visible { outline: none; }
+.rtrack .item:focus-visible .gt > * { outline: 2px solid var(--gold); outline-offset: 2px; }
+.rtrack .item.enter .gt { animation: rise .55s cubic-bezier(.3,1.25,.5,1) backwards; animation-delay: inherit; }
+.rows .sp { font-size: clamp(7px, calc(var(--d) * .42), 19px); }
+.rows .gt .cv { box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 8px 16px rgba(0,0,0,.5); }
+.rtrack .gt .cart { transform: rotate(-4deg); }
+@media (hover: hover) { .rtrack .item:hover .gt { transform: translateY(-8px); } }
 
 /* ---------- shelf ⇄ grid: the cases in the air (js/app.js, Morph) ---------- */
 .morph { position: absolute; left: 0; top: 0; z-index: 60; pointer-events: none; }
