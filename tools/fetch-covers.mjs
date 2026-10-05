@@ -288,6 +288,7 @@ async function measure(g) {
 
 /* ---------- main ---------- */
 
+const PLAIN_ART = ['ps5', 'switch2'];
 const db = JSON.parse(fs.readFileSync(DATA, 'utf8'));
 const report = { found: [], offRegion: [], missing: [], skipped: 0 };
 
@@ -326,6 +327,8 @@ for (const g of db.games) {
   try {
     const out = await save(await download(url), g);
     g.cover = { file: out.rel, ratio: out.ratio, source, ref: hit.ref };
+    // Wikipedia's PS5 and Switch 2 pictures are the game's key art, without the console's band: the site prints the band over it
+    if (source === 'en.wikipedia.org' && PLAIN_ART.includes(sys)) g.cover.plain = true;
     g.colors = out.colors;
     process.stdout.write('.');
   } catch (e) {

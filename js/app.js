@@ -78,19 +78,16 @@
     view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
     mode: ['mixed', 'spines', 'covers'].includes(store.get('mode')) ? store.get('mode') : 'mixed',
     sort: validSort(store.get('sort')),
-    sel: new Set(), region: '', q: '', covers: '',
+    sel: new Set(), q: '', covers: '',
   };
   let ALL = [], games = [];
   const byId = new Map();
 
   /* ---------- filtering ---------- */
-  // the region filter groups the copies by what they play on: PAL, NTSC-U or NTSC-J
-  const stdOf = g => REGIONS[g.region]?.std || g.region;
   const fold = s => String(s || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
   function base() {
     const words = fold(state.q).split(/\s+/).filter(Boolean);
     return ALL.filter(g =>
-      (!state.region || stdOf(g) === state.region) &&
       (!state.covers || (state.covers === 'with') === !!g.cover) &&
       (!words.length || words.every(w => g._hay.includes(w))));
   }
@@ -100,7 +97,6 @@
   function shell() {
     const consoles = CONSOLES.filter(c => !c.hidden && ALL.some(g => g.console === c.id));
     const years = ALL.map(g => g.released).filter(Boolean).map(r => +r.slice(0, 4));
-    const regions = ['PAL', 'NTSC-U', 'NTSC-J'].filter(r => ALL.some(g => stdOf(g) === r));
     $('#shell').innerHTML = `
       ${CFG ? CFG.hero(ALL) : `<header class="hero">
         <div>
@@ -118,17 +114,16 @@
       <div class="filters"><div class="filters-in">
         <div class="consoles" role="toolbar" aria-label="Filter by console">
           <button class="chip all" data-all><span class="lab"><b>All</b><i data-n="all"></i></span></button>
-          ${FAMILIES.filter(f => consoles.some(c => c.fam === f.id)).map(f => `<div class="fam" style="--fc:${f.color}">
+          <div class="cscroll">${FAMILIES.filter(f => consoles.some(c => c.fam === f.id)).map(f => `<div class="fam" style="--fc:${f.color}">
             <button class="famname" data-fam="${f.id}">${f.name}</button>
             <div class="row">${consoles.filter(c => c.fam === f.id).map(c => `
               <button class="chip" data-c="${c.id}" title="${c.name}" aria-pressed="false">
                 ${CONSOLE_ART[c.id] || ''}
                 <span class="lab"><b>${c.short}</b><i data-n="${c.id}"></i></span>
-              </button>`).join('')}</div></div>`).join('')}
+              </button>`).join('')}</div></div>`).join('')}</div>
         </div>
         <div class="subbar">
-          <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search title, publisher, year…" aria-label="Search games"></label>
-          ${regions.length > 1 ? `<div class="pills" role="group" aria-label="Region"><button data-r="">All regions</button>${regions.map(r => `<button data-r="${r}">${REGIONS[r].name} <em data-rn="${r}"></em></button>`).join('')}</div>` : ''}
+          <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="${innerWidth < 640 ? 'Search…' : 'Search title, publisher, year…'}" aria-label="Search games"></label>
           <select class="sort" id="sort" aria-label="Sort">
             ${Object.entries(MENU).map(([k, m]) => `<option value="${k}">${m.label}</option>`).join('')}
             <option value="custom" hidden></option>
@@ -157,7 +152,15 @@
       changed();
     }));
     $('[data-all]').addEventListener('click', () => { state.sel = new Set(); changed(); });
-    $$('[data-r]').forEach(b => b.addEventListener('click', () => { state.region = b.dataset.r; changed(); }));
+    // the consoles scroll sideways beside "All", and fade out at an edge that has more past it
+    const cs = $('.cscroll');
+    const edges = () => {
+      cs.classList.toggle('more-l', cs.scrollLeft > 2);
+      cs.classList.toggle('more-r', cs.scrollLeft + cs.clientWidth < cs.scrollWidth - 2);
+    };
+    cs.addEventListener('scroll', edges, { passive: true });
+    addEventListener('resize', edges);
+    edges();
     let t;
     $('#q').addEventListener('input', e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value; changed(); }, 120); });
     $('#sort').addEventListener('change', e => { if (MENU[e.target.value]) setSort(MENU[e.target.value]); });
@@ -196,8 +199,6 @@
       const ids = $$('.chip[data-c]', f.parentElement).map(c => c.dataset.c);
       f.classList.toggle('on', ids.length === state.sel.size && ids.every(i => state.sel.has(i)));
     });
-    $$('[data-r]').forEach(x => x.classList.toggle('on', x.dataset.r === state.region));
-    $$('[data-rn]').forEach(x => x.textContent = ALL.filter(g => stdOf(g) === x.dataset.rn).length);
     $$('#view button').forEach(x => x.classList.toggle('on', x.dataset.view === state.view));
     $$('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === state.mode));
     $('#modeWrap').hidden = state.view !== 'shelf' && state.view !== 'rows';
@@ -230,7 +231,7 @@
     const item = e.target.closest('[data-id]');
     if (!item || e.pointerType === 'touch' || !host.contains(item) || state.view !== 'shelf') return;
     const g = byId.get(item.dataset.id);
-    tipEl.innerHTML = `<b>${esc(g.title)}</b><span>${CONSOLE_BY_ID[g.console].short} · ${Case.year(g)} · ${esc(REGIONS[g.region]?.name || g.region)}${g.format !== 'boxed' ? ' · ' + FORMATS[g.format] : ''}</span>`;
+    tipEl.innerHTML = `<b>${esc(g.title)}</b><span>${CONSOLE_BY_ID[g.console].short}${g.platinum ? ' Platinum' : ''} · ${Case.year(g)} · ${esc(REGIONS[g.region]?.name || g.region)}${g.format !== 'boxed' ? ' · ' + FORMATS[g.format] : ''}</span>`;
     tipEl.classList.add('vis');
   });
   host.addEventListener('pointerout', e => { if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('[data-id]')) tipEl.classList.remove('vis'); });
@@ -403,7 +404,7 @@
       }
       row.append(thumb);
       row.insertAdjacentHTML('beforeend', `
-        <span class="ltitle"><b title="${esc(g.title)}">${esc(g.title)}</b><small>${c.short} · ${Case.year(g)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small>${g.format !== 'boxed' ? `<i class="kc">${FORMATS[g.format]}</i>` : ''}</span>
+        <span class="ltitle"><b title="${esc(g.title)}">${esc(g.title)}</b><small>${c.short}${g.platinum ? ' Platinum' : ''} · ${Case.year(g)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small>${g.format !== 'boxed' ? `<i class="kc">${FORMATS[g.format]}</i>` : ''}${g.platinum ? '<i class="kc plat-tag">Platinum</i>' : ''}</span>
         <span class="lcon"><i class="kc" style="--fc:${FAMILIES.find(f => f.id === c.fam).color}">${c.short}</i></span>
         <span class="lyear" title="${esc(Case.date(g.released, true))}">${Case.year(g)}</span>
         <span class="lregion" title="${esc(REGIONS[g.region]?.long || g.region)}">${esc(g.region)}</span>
@@ -445,7 +446,7 @@
     st.className = 'stage';
     st.append(tile);
     cell.append(st);
-    cell.insertAdjacentHTML('beforeend', `<span class="cap"><b>${esc(g.title)}</b><small>${c.short} · ${Case.year(g)} · ${esc(g.region)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small></span>`);
+    cell.insertAdjacentHTML('beforeend', `<span class="cap"><b>${esc(g.title)}</b><small>${c.short}${g.platinum ? ' Platinum' : ''} · ${Case.year(g)} · ${esc(g.region)}${g.format !== 'boxed' ? ` · ${FORMATS[g.format]}` : ''}</small></span>`);
     return cell;
   }
   const groupHead = (gr, n) => `<div class="ghead">${gr.art ? `<span class="spot-art">${gr.art}</span>` : ''}<b>${esc(gr.name)}</b><i>${n} ${n === 1 ? 'copy' : CFG ? 'copies' : 'games'}</i></div>`;
@@ -714,7 +715,7 @@
       const c = CONSOLE_BY_ID[g.console];
       const made = g.developer && g.developer !== g.publisher ? `Developed by ${g.developer}` : '';
       const pack = g.pack && g.pack !== 'Base game' ? [g.pack, g.packCode].filter(Boolean).join(' ') : '';
-      const rest = [pack, g.genre, FORMATS[g.format], g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
+      const rest = [pack, g.genre, FORMATS[g.format], g.platinum && 'Platinum', g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
       const q = encodeURIComponent(`${g.title} ${c.name} ${REGIONS[g.region]?.name || g.region} box art`);
       let n = 2;
       return `
@@ -1073,7 +1074,7 @@
       ALL = CFG ? CFG.games(db, ...more) : db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
-        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
+        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.platinum && 'Platinum', g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
       });
       shell();
       const h = location.hash.slice(1);

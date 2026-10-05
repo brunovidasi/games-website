@@ -36,17 +36,19 @@ One entry per copy on the shelf:
 | `title` | `"Final Fantasy X"` | the official title |
 | `listedAs` | `"Nárnia"` | how it was written on the original list, when different |
 | `edition` | `"Nintendo Switch 2 Edition"` | optional |
-| `region` | `"AUS"` | the region code on the box: `AUS`, `EUR`, `HOL` (Netherlands), `USA` or `JPN`. When it isn't known, just `PAL`, `NTSC-U` or `NTSC-J`. The region filter groups them by PAL, NTSC-U and NTSC-J |
+| `region` | `"AUS"` | the region code on the box: `AUS`, `EUR`, `HOL` (Netherlands), `USA` or `JPN`. When it isn't known, just `PAL`, `NTSC-U` or `NTSC-J` |
 | `released` | `"2001-07-19"` | first release on that console. Can be `"2001-07"` or `"2001"` |
 | `dateSource` | `"manual"` | `libretro-database`, or `manual` (from memory, worth checking) |
 | `publisher`, `developer`, `genre` | | |
 | `format` | `"boxed"` | `boxed`, `cartridge-only` (stands loose on the shelf) or `digital` (an outline) |
 | `kinect` | `true` | optional: a Kinect game, drawn in a purple case |
+| `platinum` | `true` | PS2 only: a Platinum copy, with the silver band across its cover and a silver spine. Every PS2 game has it, `false` until set |
+| `caseColor` | `"#d8000f"` | optional: a case in another colour than its console's usual one (a red Wii case, a white Wii U one). It colours the plastic and the spine, and the spine's writing turns light or dark to suit |
 | `caseStyle` | `"ps4"` | optional: drawn in another console's case (a PS4 disc on the PS5 shelf) |
 | `note` | `"No guitar controller"` | shown under the details |
 | `fav` | `true` | optional: faces out on the shelf in "One cover per console" |
 | `check` | | something still to confirm. Not shown on the site |
-| `cover` | `{ "file": "covers/ps2/final-fantasy-x.jpg", … }` | the box art, or `null` |
+| `cover` | `{ "file": "covers/ps2/final-fantasy-x.jpg", … }` | the box art, or `null`. `"plain": true` marks a picture that is only the game's key art, not that console's box (the PS5 and Switch 2 pictures from Wikipedia): the case keeps its real size, the console's band is printed across the top and the art fills the rest |
 | `colors` | `["#fcfcfc", …]` | taken from the cover. Some spines use them |
 
 To add a game, copy an entry, change it, and set `cover` and `colors` to `null`. Then fetch its cover (below).

@@ -17,7 +17,8 @@
         "file": "covers/ps5/avatar-frontiers-of-pandora.jpg",
         "ratio": 0.7576,
         "source": "en.wikipedia.org",
-        "ref": "Avatar: Frontiers of Pandora · Avatar_Frontiers_of_Pandora_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Avatar: Frontiers of Pandora · Avatar_Frontiers_of_Pandora_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#29555a",
@@ -41,7 +42,8 @@
         "file": "covers/ps5/grand-theft-auto-v.jpg",
         "ratio": 0.8091,
         "source": "en.wikipedia.org",
-        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Grand Theft Auto V · Grand_Theft_Auto_V.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#887566",
@@ -65,7 +67,8 @@
         "file": "covers/ps5/hogwarts-legacy.jpg",
         "ratio": 0.6667,
         "source": "en.wikipedia.org",
-        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Hogwarts Legacy · Hogwarts_legacyboxart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#44575d",
@@ -114,7 +117,8 @@
         "file": "covers/ps5/mortal-kombat-1.jpg",
         "ratio": 0.8324,
         "source": "en.wikipedia.org",
-        "ref": "Mortal Kombat 1 · Mortal_Kombat_1_key_art.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Mortal Kombat 1 · Mortal_Kombat_1_key_art.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#e8eaea",
@@ -1266,6 +1270,7 @@
       "developer": "Neko Entertainment",
       "genre": "Kart racing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/crazy-frog-racer.jpg",
         "ratio": 0.7091,
@@ -1289,6 +1294,7 @@
       "developer": "Neko Entertainment",
       "genre": "Kart racing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/crazy-frog-racer-2.jpg",
         "ratio": 0.7154,
@@ -1313,6 +1319,7 @@
       "developer": "Hitmaker",
       "genre": "Racing",
       "format": "boxed",
+      "platinum": false,
       "note": "Maluma",
       "cover": {
         "file": "covers/ps2/crazy-taxi.jpg",
@@ -1337,6 +1344,7 @@
       "developer": "Escape",
       "genre": "Racing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/driving-emotion-type-s.jpg",
         "ratio": 0.7038,
@@ -1360,6 +1368,7 @@
       "developer": "Square",
       "genre": "Role-playing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/final-fantasy-x.jpg",
         "ratio": 0.7058,
@@ -1383,6 +1392,7 @@
       "developer": "Traveller's Tales",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "Disney-Pixar Finding Nemo (Europe)",
       "cover": {
         "file": "covers/ps2/finding-nemo.jpg",
@@ -1407,6 +1417,7 @@
       "developer": "Polyphony Digital",
       "genre": "Racing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/gran-turismo-4.jpg",
         "ratio": 0.7096,
@@ -1430,6 +1441,7 @@
       "developer": "DMA Design",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/grand-theft-auto-iii.jpg",
         "ratio": 0.7058,
@@ -1453,6 +1465,7 @@
       "developer": "Rockstar Leeds",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/grand-theft-auto-liberty-city-stories.jpg",
         "ratio": 0.7154,
@@ -1476,6 +1489,7 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/grand-theft-auto-vice-city.jpg",
         "ratio": 0.7154,
@@ -1499,6 +1513,7 @@
       "developer": "Rockstar Leeds",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/grand-theft-auto-vice-city-stories.jpg",
         "ratio": 0.7154,
@@ -1522,6 +1537,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/guitar-hero.jpg",
         "ratio": 0.7154,
@@ -1545,6 +1561,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-54859",
       "cover": {
         "file": "covers/ps2/guitar-hero-rocks-the-80s.jpg",
@@ -1569,6 +1586,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/guitar-hero-ii.jpg",
         "ratio": 0.7154,
@@ -1592,6 +1610,7 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/guitar-hero-iii-legends-of-rock.jpg",
         "ratio": 0.7154,
@@ -1615,6 +1634,7 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/guitar-hero-world-tour.jpg",
         "ratio": 0.7154,
@@ -1638,6 +1658,7 @@
       "developer": "EA UK",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/harry-potter-and-the-goblet-of-fire.jpg",
         "ratio": 0.7154,
@@ -1661,6 +1682,7 @@
       "developer": "Radical Entertainment",
       "genre": "Action",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/hulk.jpg",
         "ratio": 0.7154,
@@ -1684,6 +1706,7 @@
       "developer": "Heavy Iron Studios",
       "genre": "Action",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-52812",
       "cover": {
         "file": "covers/ps2/the-incredibles.jpg",
@@ -1708,6 +1731,7 @@
       "developer": "Eurocom",
       "genre": "Platformer",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/ice-age-2-the-meltdown.jpg",
         "ratio": 0.7154,
@@ -1731,6 +1755,7 @@
       "developer": "Remedy Entertainment",
       "genre": "Shooter",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/max-payne.jpg",
         "ratio": 0.7154,
@@ -1755,6 +1780,7 @@
       "developer": "EA Los Angeles",
       "genre": "Shooter",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/medal-of-honor-european-assault.jpg",
         "ratio": 0.7154,
@@ -1778,6 +1804,7 @@
       "developer": "EA Black Box",
       "genre": "Racing",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/need-for-speed-underground.jpg",
         "ratio": 0.7154,
@@ -1802,6 +1829,7 @@
       "developer": "Traveller's Tales",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "check": "Assumed The Lion, the Witch and the Wardrobe — Prince Caspian also came out on PS2.",
       "cover": {
         "file": "covers/ps2/the-chronicles-of-narnia-the-lion-the-witch-and-the-wardrobe.jpg",
@@ -1827,6 +1855,7 @@
       "developer": "Cyberlore Studios",
       "genre": "Life simulation",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/playboy-the-mansion.jpg",
         "ratio": 0.6981,
@@ -1851,6 +1880,7 @@
       "developer": "Midway",
       "genre": "Sports",
       "format": "boxed",
+      "platinum": false,
       "check": "On PS2 only Round 2 exists. Is it Round 2, or the PS1 original?",
       "cover": {
         "file": "covers/ps2/ready-2-rumble-boxing-round-2.jpg",
@@ -1875,6 +1905,7 @@
       "developer": "Edge of Reality",
       "genre": "Action",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "DreamWorks Shark Tale (Europe)",
       "cover": {
         "file": "covers/ps2/shark-tale.jpg",
@@ -1899,6 +1930,7 @@
       "developer": "Team Soho",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/the-getaway.jpg",
         "ratio": 0.7154,
@@ -1922,6 +1954,7 @@
       "developer": "London Studio",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "cover": {
         "file": "covers/ps2/the-getaway-black-monday.jpg",
         "ratio": 0.7154,
@@ -1945,6 +1978,7 @@
       "developer": "Edge of Reality",
       "genre": "Life simulation",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-51257",
       "cover": {
         "file": "covers/ps2/the-sims.jpg",
@@ -1971,6 +2005,7 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-52047",
       "cover": {
         "file": "covers/ps2/the-sims-bustin-out.jpg",
@@ -1997,6 +2032,7 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-54347",
       "cover": {
         "file": "covers/ps2/the-sims-2-pets.jpg",
@@ -2022,6 +2058,7 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-52908",
       "cover": {
         "file": "covers/ps2/the-urbz-sims-in-the-city.jpg",
@@ -2047,6 +2084,7 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": false,
       "coverMatch": "SLES-52541",
       "cover": {
         "file": "covers/ps2/grand-theft-auto-san-andreas.jpg",
@@ -2148,7 +2186,8 @@
         "file": "covers/switch2/donkey-kong-bananza.jpg",
         "ratio": 0.7048,
         "source": "en.wikipedia.org",
-        "ref": "Donkey Kong Bananza · Donkey_Kong_Bananza_updated_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Donkey Kong Bananza · Donkey_Kong_Bananza_updated_box_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#9d5e39",
@@ -2171,7 +2210,8 @@
         "file": "covers/switch2/mario-kart-world.jpg",
         "ratio": 0.7139,
         "source": "en.wikipedia.org",
-        "ref": "Mario Kart World · Mario_Kart_World_Cover_Artwork.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "ref": "Mario Kart World · Mario_Kart_World_Cover_Artwork.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+        "plain": true
       },
       "colors": [
         "#997458",

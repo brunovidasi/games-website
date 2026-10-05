@@ -22,7 +22,9 @@
      A case keeps its console's real height and is built around its cover scan,
      so the scan fills the front exactly: nothing cut, no gaps. A plastic case
      keeps a thin rim and its hinge round the scan; a cardboard box simply is its
-     scan. Without a scan the case has its real width. */
+     scan. Without a scan the case has its real width, and so has a case whose
+     picture is only the game's key art (cover.plain): the console's band is
+     printed across its top and the art fills the rest. */
   function layout(g, s) {
     const c = C()[styleOf(g)];
     const m = g.big ? window.BIGBOX : c;
@@ -31,9 +33,10 @@
     const r = g.cover && g.cover.ratio;
     let rim = [0, 0, 0, 0]; // top, right, bottom, left
     if (kind === 'keep') { const t = m.w * s * 0.018; rim = [t, t, t, m.w * s * 0.045]; }
-    if (kind === 'jewel') { const t = m.w * s * 0.012; rim = [t, t, t, m.w * s * 0.07]; }
+    // a PlayStation jewel case shows its black tray down a wide hinge on the left
+    if (kind === 'jewel') { const t = m.w * s * 0.012; rim = [t, t, t, m.w * s * (styleOf(g) === 'ps1' ? 0.1 : 0.07)]; }
     const ih = h - rim[0] - rim[2];
-    const iw = r ? ih * r : m.w * s - rim[1] - rim[3];
+    const iw = r && !g.cover.plain ? ih * r : m.w * s - rim[1] - rim[3];
     return { w: iw + rim[1] + rim[3], h, d, kind, c, ix: rim[3], iy: rim[0], iw, ih };
   }
   const dims = layout;
@@ -71,6 +74,11 @@
   const px = v => v.toFixed(1) + 'px';
   function vars(g, L) {
     let v = `--w:${px(L.w)};--h:${px(L.h)};--d:${px(L.d)};--ix:${px(L.ix)};--iy:${px(L.iy)};--iw:${px(L.iw)};--ih:${px(L.ih)}`;
+    // a case that came in another colour than its console's usual one (a red Wii case, a white Wii U one)
+    if (/^#[0-9a-f]{6}$/i.test(g.caseColor || '')) {
+      const c = g.caseColor, f = ink(c);
+      return v + `;--pl:${c};--sb:${c};--sf:${f};--st:${c};--stf:${f}`;
+    }
     // spines that carry the game's own colours take them from the cover (Kinect games keep their purple)
     if (L.c.spineArt && g.colors && !g.kinect) {
       const [a, b] = g.colors;
@@ -78,7 +86,7 @@
     }
     return v;
   }
-  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''}${g.kinect ? ' kinect' : ''} kind-${L.kind}`;
+  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''}${g.kinect ? ' kinect' : ''}${g.platinum ? ' platinum' : ''}${g.caseColor ? ' tinted' : ''} kind-${L.kind}`;
   const img = (g, c = '', lazy = true) => g.cover ? `<img class="${c}" src="${esc(g.cover.file)}" alt="" ${lazy ? 'loading="lazy"' : ''} decoding="async" draggable="false">` : '';
   function el(html) {
     const t = document.createElement('template');
@@ -93,9 +101,11 @@
   }
 
   /* ---------- front ---------- */
+  // a Platinum copy's silver band across the top of the cover, over the black one on the scan
+  const PLAT = '<div class="plat"><em>PlayStation<sup>®</sup><b>2</b></em><span>Platinum</span></div>';
   function frontHTML(g, L, lazy) {
     const inner = g.cover
-      ? `<div class="ins">${img(g, 'scan', lazy)}</div>`
+      ? `<div class="ins${g.cover.plain ? ' plain' : ''}">${g.cover.plain ? `<div class="band">${LOGO[styleOf(g)]}</div>` : ''}${img(g, 'scan', lazy)}${g.platinum ? PLAT : ''}</div>`
       : `<div class="ins ph">
           <div class="band">${LOGO[styleOf(g)]}</div>
           <div class="phc"><b class="pht">${esc(g.title)}</b><i class="phr"></i><span class="phs">${year(g)}${g.publisher ? ' · ' + esc(g.publisher) : ''}</span></div>
