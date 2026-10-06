@@ -25,7 +25,7 @@
 <body>
 <div class="wrap">
   <h1>Legacy drawings</h1>
-  <p>The PlayStation and Xbox drawings in the console filter, and the SNES, Game Boy, GBA and Switch cartridges, before they were redrawn from photos of the real ones. Each pair shows the old one on the left and the one on the site now on the right. The old code is kept here as it was: <code>legacy/console-art.js</code> and <code>legacy/cases.js</code>.</p>
+  <p>The PlayStation and Xbox drawings in the console filter, and the SNES, Game Boy, GBA, DS, 3DS and Switch cartridges, before they were redrawn from photos of the real ones. Each pair shows the old one on the left and the one on the site now on the right. The old code is kept here as it was: <code>legacy/console-art.js</code> and <code>legacy/cases.js</code>.</p>
 
   <h2>Consoles</h2>
   <div class="pairs" id="consoles"></div>
@@ -51,7 +51,7 @@
   fetch('../data/games.json').then(r => r.json()).then(({ games }) => {
     const carts = document.getElementById('carts');
     const sample = c => games.find(g => g.console === c && g.cover) || games.find(g => g.console === c);
-    [['snes', 'snes', .85], ['gb', 'gbc', 1.6], ['gbc', 'gbc', 1.6], ['gba', 'gba', 1.8], ['switch', 'switch', 3.6], ['switch2', 'switch2', 3.6]].forEach(([type, from, s]) => {
+    [['snes', 'snes', .85], ['gb', 'gbc', 1.6], ['gbc', 'gbc', 1.6], ['gba', 'gba', 1.8], ['ds', 'ds', 3.2], ['3ds', '3ds', 3.2], ['switch', 'switch', 3.6], ['switch2', 'switch2', 3.6]].forEach(([type, from, s]) => {
       const g = fix({ ...sample(from), console: type });
       const box = document.createElement('div');
       box.innerHTML = pair(CONSOLE_BY_ID[type].name, '', '');

@@ -27,15 +27,25 @@
   const face = (x, y, d, r, c) => [[0, -d], [d, 0], [0, d], [-d, 0]].map(([dx, dy], i) => `<circle cx="${x + dx}" cy="${y + dy}" r="${r}" fill="${Array.isArray(c) ? c[i] : c}"/>`).join('');
 
   // PlayStation pads, drawn in a 24 × 15 box and placed with a transform
+  // the DualShock 3: its long grips, the d-pad as four arrows in a round well, the face buttons with
+  // their coloured symbols, the two sticks low in the middle, the PS button between them
   const ds3 = `
-    <path d="M5 1.2 Q12 .2 19 1.2 Q22.6 1.6 23.3 5.4 Q24.2 10.6 22.8 12.6 Q21.2 14 19.3 12.4 L16.7 9.6 H7.3 L4.7 12.4 Q2.8 14 1.2 12.6 Q-.2 10.6 .7 5.4 Q1.4 1.6 5 1.2 Z" fill="#232326"/>
-    <path d="M5 1.6 Q12 .7 19 1.6" stroke="#55575d" stroke-width=".4" fill="none"/>
-    ${cross(4.6, 5, 1.9, '#4a4b51')}
-    ${face(19.4, 5, 1.55, .72, ['#3f8f5a', '#b84a4a', '#4f6fb8', '#a8649a'])}
-    <circle cx="8.6" cy="8.6" r="1.75" fill="#141416"/><circle cx="8.6" cy="8.6" r="1.15" fill="#3a3b40"/>
-    <circle cx="15.4" cy="8.6" r="1.75" fill="#141416"/><circle cx="15.4" cy="8.6" r="1.15" fill="#3a3b40"/>
-    <circle cx="12" cy="6.6" r=".6" fill="#4a4b51"/>
-    <rect x="9.6" y="4.4" width="1.5" height=".6" rx=".3" fill="#4a4b51"/><rect x="12.9" y="4.4" width="1.5" height=".6" rx=".3" fill="#4a4b51"/>`;
+    <path d="M3.2 2.2C5 1.2 8 1.2 9.6 1.7H14.4C16 1.2 19 1.2 20.8 2.2C22.6 3.2 23.3 5 23.7 7.5C24.1 10.2 24.2 12.6 23.2 13.8C22.2 14.9 20.6 14.6 19.7 13.4L17.4 10.6C16.6 9.8 15.6 9.6 14.8 10.2C13.4 11 10.6 11 9.2 10.2C8.4 9.6 7.4 9.8 6.6 10.6L4.3 13.4C3.4 14.6 1.8 14.9 .8 13.8C-.2 12.6-.1 10.2 .3 7.5C.7 5 1.4 3.2 3.2 2.2Z" fill="#1b1b1e"/>
+    <path d="M3.4 2.6C5.2 1.7 8 1.7 9.6 2.1H14.4C16 1.7 18.8 1.7 20.6 2.6" stroke="#6a6c73" stroke-width=".35" fill="none"/>
+    <path d="M1.3 7Q1.8 4 3.6 3" stroke="#fff" stroke-opacity=".18" stroke-width=".5" fill="none"/>
+    <circle cx="5" cy="5.6" r="2.6" fill="#101012"/>
+    <g fill="#34353a"><path d="M4.4 3.3H5.6V4.6L5 5.2L4.4 4.6Z"/><path d="M4.4 7.9H5.6V6.6L5 6L4.4 6.6Z"/><path d="M2.7 5V6.2H4L4.6 5.6L4 5Z"/><path d="M7.3 5V6.2H6L5.4 5.6L6 5Z"/></g>
+    <circle cx="19" cy="5.6" r="2.6" fill="#101012"/>
+    ${[[19, 3.9], [20.7, 5.6], [19, 7.3], [17.3, 5.6]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r=".82" fill="#2c2d32"/>`).join('')}
+    <path d="M18.6 4.25L19 3.5L19.4 4.25Z" fill="none" stroke="#4fc07a" stroke-width=".2"/>
+    <circle cx="20.7" cy="5.6" r=".38" fill="none" stroke="#e0565c" stroke-width=".2"/>
+    <path d="M18.65 6.95L19.35 7.65M19.35 6.95L18.65 7.65" stroke="#6f8fe0" stroke-width=".2"/>
+    <rect x="16.95" y="5.25" width=".7" height=".7" fill="none" stroke="#d98cc6" stroke-width=".2"/>
+    <circle cx="8.6" cy="8.5" r="2.15" fill="#0c0c0e"/><circle cx="8.6" cy="8.5" r="1.55" fill="#26272b"/><circle cx="8.6" cy="8.5" r="1.05" fill="#313237"/>
+    <circle cx="15.4" cy="8.5" r="2.15" fill="#0c0c0e"/><circle cx="15.4" cy="8.5" r="1.55" fill="#26272b"/><circle cx="15.4" cy="8.5" r="1.05" fill="#313237"/>
+    <circle cx="12" cy="7.5" r=".7" fill="#2c2d32" stroke="#45464c" stroke-width=".15"/>
+    <rect x="9.9" y="5.3" width="1.4" height=".55" rx=".27" fill="#34353a"/><rect x="12.7" y="5.3" width="1.4" height=".55" rx=".27" fill="#34353a"/>
+    <text x="12" y="3.9" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="1" letter-spacing=".1" fill="#7a7c83">SONY</text>`;
   const ds4 = `
     <path d="M3.6 1.4 H20.4 Q23 1.6 23.5 5.2 Q24.4 10.6 22.9 12.7 Q21.2 14.1 19.3 12.4 L16.9 9.9 H7.1 L4.7 12.4 Q2.8 14.1 1.1 12.7 Q-.4 10.6 .5 5.2 Q1 1.6 3.6 1.4 Z" fill="#1c1c1f"/>
     <path d="M3.6 1.8 H20.4" stroke="#47494f" stroke-width=".4"/>
@@ -96,20 +106,25 @@
       <path d="M27.9 17.1 H29.6 V18.25 H28 V19.4 H29.8" stroke="#6d9cff" stroke-width=".42" fill="none"/>
       <rect x="23.6" y="20.2" width="4.6" height=".45" fill="#4a4c53"/></g>`),
 
-    // the PS3 slim from above: its rounded sides, the PS3 logo and the silver corner with
-    // the disc slot, and a DualShock 3 beside it
+    // the PS3 slim at an angle from the front: its curved matte top with the PS3 logo, the front with the
+    // disc slot and the glossy strip with its two buttons, and a DualShock 3 in front of it
     ps3: svg(`
-      <path d="M4.8 4 H33.2 Q36.8 20 33.2 36 H4.8 Q1.2 20 4.8 4 Z" fill="#38383c"/>
-      <path d="M5.3 4.6 H32.7 Q33.8 9.6 34.5 14" stroke="#fff" stroke-opacity=".12" stroke-width=".6" fill="none"/>
-      <path d="M16.5 36 Q16.5 30.6 22 30.6 H33.9 L33.2 36 Z" fill="#bdbdbf"/>
-      <path d="M16.9 32.8 Q17.8 31.4 22 31.3 H33.8" stroke="#8d8d90" stroke-width=".3" fill="none"/>
-      <circle cx="22.6" cy="33.4" r=".9" fill="#79797c"/><circle cx="28.7" cy="33.4" r=".9" fill="#79797c"/>
-      <g stroke="#c4c4c6" stroke-width=".95" fill="none">
+      <path d="M58 11 L56.6 15.4 L39.3 32.7 L39.9 28.8 Z" fill="#232326"/>
+      <path d="M5.95 18.5 L39.9 28.8 L39.3 32.7 L7 22.6 Z" fill="#17171a"/>
+      <path d="M21.8 25 L39.6 30.1" stroke="#050506" stroke-width=".7"/>
+      <path d="M22.5 25.9 L39.4 30.9 L39.1 32.6 L22.5 27.8 Z" fill="#b8b9bd"/>
+      <path d="M22.5 25.9 L39.4 30.9" stroke="#e8e9ec" stroke-width=".3"/>
+      <ellipse cx="29.6" cy="27.9" rx=".8" ry=".45" fill="#f4f4f6"/><ellipse cx="37.6" cy="30.9" rx=".8" ry=".45" fill="#f4f4f6"/>
+      <path d="M5.95 18.5 Q13 9 27.6 2.5 Q45 6 58 11 Q50 21 39.9 28.8 Q22 24.5 5.95 18.5 Z" fill="#38383c"/>
+      <path d="M8 17.6 Q15 9.6 27.6 3.6 Q40 6.6 48 9.4 Q30 9 8 17.6 Z" fill="#fff" opacity=".05"/>
+      <path d="M5.95 18.5 Q13 9 27.6 2.5 Q45 6 58 11" stroke="#5a5b61" stroke-width=".35" fill="none"/>
+      <path d="M5.95 18.5 Q22 24.5 39.9 28.8 Q50 21 58 11" stroke="#4a4b50" stroke-width=".3" fill="none"/>
+      <g transform="matrix(.5 .15 -.27 .27 35.7 7.5)" stroke="#232326" stroke-width="1.4" fill="none">
         <path d="M14.6 16.05 H19.2 Q20.3 16.05 20.3 17.15 V17.4 Q20.3 18.45 19.2 18.45 H16.1 Q15 18.45 15 19.55 V20.9"/>
         <path d="M26.9 16.05 H24.2 Q23.2 16.05 23.2 17.05 V19.4 Q23.2 20.4 22.2 20.4 H20"/>
         <path d="M27.9 16.05 H32.1 Q33.1 16.05 33.1 17.1 V17.2 Q33.1 18.25 32.1 18.25 H29.8 M32.1 18.25 Q33.1 18.25 33.1 19.3 V19.35 Q33.1 20.4 32.1 20.4 H27.9"/>
       </g>
-      <g transform="translate(35.6 24.6) rotate(-8 11 7)">${ds3}</g>`),
+      <g transform="translate(12.2 28) rotate(18) scale(.8) translate(-12 -7.6)">${ds3}</g>`),
 
     // the PS4 slim standing up, the groove down its front edge and the PS logo on its side,
     // with a DualShock 4 in front of it
