@@ -144,117 +144,47 @@
 
   /* ---------- cartridges and game cards ----------
      Drawn from the real ones, in millimetres: the outline, the grip ridges, the
-     raised logo, the recess the label sits in. The label is the cover art, or the
-     title. The SNES, Game Boy, GBA and Switch shapes are traced from photos of real
-     cartridges; the ones they replaced are kept in legacy/cases.js. */
+     recess the label sits in. The label is the cover art, or the title. */
+  const ridges = (xs, y, h, w = 1.3) => xs.map(x => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w / 2}"/>`).join('');
   const lines = (x1, x2, ys) => ys.map(y => `<path d="M${x1} ${y}H${x2}"/>`).join('');
-  // a groove: a dark line with the light catching its lower lip
-  const groove = (x1, x2, y, dark, w = .7) => `<path d="M${x1} ${y}H${x2}" stroke="#000" stroke-opacity="${dark ? 0.45 : 0.2}" stroke-width="${w}"/><path d="M${x1} ${y + w * .75}H${x2}" stroke="#fff" stroke-opacity="${dark ? 0.08 : 0.4}" stroke-width="${w * .6}"/>`;
-  // lettering moulded into the plastic: a shadow above, the light below
-  const emboss = (x, y, size, text, dark, extra = '') => `
-    <text x="${x}" y="${y + size * .05}" font-size="${size}" ${extra} fill="#fff" fill-opacity="${dark ? 0.1 : 0.45}">${text}</text>
-    <text x="${x}" y="${y}" font-size="${size}" ${extra} fill="#000" fill-opacity="${dark ? 0.5 : 0.22}">${text}</text>`;
-  const SANS = `font-family="Arial, Helvetica, sans-serif" font-weight="700"`;
-  // the Game Boy cartridge: the notch in its top right corner, the raised "Nintendo GAME BOY" between
-  // two sets of grip ridges, the label down its lower part between grey strips, the arrow under it
-  const gbBody = (f, dark, name, long = name.length > 8) => `
-    <path d="M2 0H50.4Q50.8 0 50.8 .4V4.1Q50.8 4.5 51.2 4.5H57V27.3H55V63Q55 65 53 65H2Q0 65 0 63V2Q0 0 2 0Z" fill="${f}"/>
-    <path d="M2 .45H50.3M51.2 4.95H56.6" stroke="#fff" stroke-opacity="${dark ? 0.14 : 0.5}" stroke-width=".6"/>
-    ${[5.6, 7.7, 9.7, 11.7].map(y => groove(.8, 5.4, y, dark) + groove(46.6, 56.4, y, dark)).join('')}
-    <rect x="6.1" y="2.2" width="39.7" height="11.6" rx="5.8" fill="#000" fill-opacity="${dark ? 0.25 : 0.07}"/>
-    <path d="M8 2.75H44" stroke="#000" stroke-opacity="${dark ? 0.35 : 0.16}" stroke-width=".6"/>
-    <path d="M8.4 13.3H43.6" stroke="#fff" stroke-opacity="${dark ? 0.1 : 0.45}" stroke-width=".55"/>
-    ${long ? emboss(8.2, 9.6, 1.9, 'Nintendo', dark, `${SANS} font-style="italic" textLength="8.2" lengthAdjust="spacingAndGlyphs"`) + emboss(17.4, 9.7, 3.4, name, dark, `${SANS} textLength="26.4" lengthAdjust="spacingAndGlyphs"`)
-      : emboss(9.2, 9.9, 2.4, 'Nintendo', dark, `${SANS} font-style="italic" textLength="10" lengthAdjust="spacingAndGlyphs"`) + emboss(21.3, 9.9, 4.4, name, dark, `${SANS} textLength="21.5" lengthAdjust="spacingAndGlyphs"`)}
-    <rect x="6.1" y="17.2" width="44.4" height="38" rx="1.4" fill="#000" fill-opacity="${dark ? 0.3 : 0.08}"/>
-    <path d="M7.4 17.6H49.2" stroke="#000" stroke-opacity="${dark ? 0.4 : 0.18}" stroke-width=".5"/>
-    <rect x="7.6" y="18.9" width="40.5" height="35.5" rx=".7" fill="#d2d2ce"/>
-    <rect x="8.2" y="22.5" width=".5" height="27" fill="#000" fill-opacity=".22"/><rect x="46.9" y="31" width=".5" height="14" fill="#000" fill-opacity=".22"/>
-    <path d="M24.8 56.8H33.3L29 60.6Z" fill="#000" fill-opacity="${dark ? 0.35 : 0.1}"/>
-    <path d="M33.3 56.8L29 60.6L24.8 56.8" stroke="#fff" stroke-opacity="${dark ? 0.08 : 0.35}" stroke-width=".45" fill="none" transform="translate(0 .35)"/>
-    <rect y="62" width="55" height="3" rx="1.5" fill="#000" fill-opacity=".08"/>`;
+  const gbBody = (f, dark) => `
+    <path d="M3 0H50L57 7V62Q57 65 54 65H3Q0 65 0 62V3Q0 0 3 0Z" fill="${f}"/>
+    <g stroke="${dark ? '#fff' : '#000'}" stroke-opacity="${dark ? 0.1 : 0.14}" stroke-width=".7">${lines(5, 44, [3, 5.4, 7.8])}</g>
+    <path d="M25.5 10.2H31.5L28.5 13.4Z" fill="${dark ? '#fff' : '#000'}" fill-opacity="${dark ? 0.12 : 0.15}"/>
+    <rect x="5" y="16" width="47" height="41" rx="2" fill="#000" fill-opacity="${dark ? 0.3 : 0.1}"/>
+    <path d="M3 .6H49.6" stroke="#fff" stroke-opacity="${dark ? 0.15 : 0.45}" stroke-width=".7"/>
+    <rect y="61" width="57" height="4" rx="1.5" fill="#000" fill-opacity=".1"/>`;
   const dsBody = (f, tab, dark) => `
     <path d="M1.5 0H31L35 4${tab ? 'V5.6H36.2V10H35' : ''}V31.5Q35 33 33.5 33H1.5Q0 33 0 31.5V1.5Q0 0 1.5 0Z" fill="${f}"/>
     <g stroke="${dark ? '#fff' : '#000'}" stroke-opacity="${dark ? 0.13 : 0.16}" stroke-width=".5">${lines(3, 27, [1.7, 3.1, 4.5])}</g>
     <path d="M1.5 .4H30.6" stroke="#fff" stroke-opacity="${dark ? 0.12 : 0.5}" stroke-width=".4"/>`;
-  // the region at the end of the code printed under a Switch card's label
-  const cardRegion = g => ({ AUS: 'AUS', USA: 'USA', 'NTSC-U': 'USA', JPN: 'JPN', 'NTSC-J': 'JPN' }[g.region] || 'EUR');
-  // a Switch game card: rounded all round, the little tab at the top, the label with the console's red
-  // band over the art and its code on a black strip, the arrow under it
-  const cardBody = (f, band, two) => g => `
-    <path d="M1.7 0H19.3Q21 0 21 1.7V29.3Q21 31 19.3 31H1.7Q0 31 0 29.3V1.7Q0 0 1.7 0Z" fill="${f}"/>
-    <path d="M1.7 .3H19.3" stroke="#fff" stroke-opacity=".2" stroke-width=".3"/>
-    <rect x=".9" y="2.2" width="19.2" height="25.8" rx="1.3" fill="#000" fill-opacity=".12" stroke="#000" stroke-opacity=".25" stroke-width=".25"/>
-    <rect x="7.2" y="1.1" width="6.6" height="1.5" rx=".45" fill="#000" fill-opacity=".3"/>
-    <rect x="1.4" y="2.5" width="18.2" height="24.4" rx=".9" fill="#141414"/>
-    <path d="M2.3 2.5H18.7Q19.6 2.5 19.6 3.4V8.5H1.4V3.4Q1.4 2.5 2.3 2.5Z" fill="${band}"/>
-    ${two ? `
-      <rect x="7.6" y="3.4" width="1.2" height="2.9" rx=".45" fill="#fff"/><circle cx="8.2" cy="4.2" r=".28" fill="${band}"/>
-      <rect x="9.05" y="3.55" width="1" height="2.6" rx=".4" fill="none" stroke="#fff" stroke-width=".28"/><circle cx="9.55" cy="5.4" r=".25" fill="#fff"/>
-      <text x="10.5" y="6.25" ${SANS} font-size="3.6" fill="#fff">2</text>
-      <text x="10.5" y="7.25" ${SANS} font-size=".72" letter-spacing=".08" text-anchor="middle" fill="#fff">NINTENDO</text>
-      <text x="10.5" y="8.15" ${SANS} font-size=".9" text-anchor="middle" fill="#fff">SWITCH</text>` : `
-      <rect x="3.4" y="3.7" width="1.4" height="3.4" rx=".55" fill="#fff"/><circle cx="4.1" cy="4.6" r=".32" fill="${band}"/>
-      <rect x="5.05" y="3.85" width="1.15" height="3.1" rx=".45" fill="none" stroke="#fff" stroke-width=".3"/><circle cx="5.62" cy="6.1" r=".3" fill="#fff"/>
-      <text x="7" y="5.25" ${SANS} font-size="1.45" letter-spacing=".22" fill="#fff" textLength="10.6" lengthAdjust="spacingAndGlyphs">NINTENDO</text>
-      <text x="6.9" y="7.55" ${SANS} font-size="2.4" fill="#fff" textLength="10.9" lengthAdjust="spacingAndGlyphs">SWITCH</text>`}
-    <text x="10.5" y="26.1" font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="1.05" letter-spacing=".12" text-anchor="middle" fill="#e8e8e8">${two ? 'LB-XXXXX-XXX' : 'LA-H-XXXXX'}-${cardRegion(g)}</text>
-    <path d="M9.2 28.4H11.8L10.5 29.8Z" fill="#000" fill-opacity=".35"/>`;
+  const cardBody = f => `
+    <path d="M1 0H17.4L21 3.6V30Q21 31 20 31H1Q0 31 0 30V1Q0 0 1 0Z" fill="${f}"/>
+    <path d="M1.2 .45H17" stroke="#fff" stroke-opacity=".16" stroke-width=".4"/>`;
   const CART = {
-    // the American SNES cartridge: the label housing standing up in the middle, the ridged sides,
-    // the grip hollowed out under the label, the two screws, and its label with the Nintendo seal
-    // and the rating down the left and the SNES logo down the right
-    snes: { w: 132, h: 86, label: [37.8, 2.8, 43.9, 35.4], pos: 'center top', crop: [0, 0, 0, 0.12], body: () => `
-      <path d="M22 0H110Q111 0 111 1V2.9H130Q132 2.9 132 4.9V84Q132 86 130 86H2Q0 86 0 84V4.9Q0 2.9 2 2.9H21V1Q21 0 22 0Z" fill="#bab9c1"/>
-      <path d="M22 .4H110M2 3.3H21M111 3.3H130" stroke="#fff" stroke-opacity=".55" stroke-width=".7"/>
-      <path d="M21 3V86M111 3V86" stroke="#000" stroke-opacity=".13" stroke-width=".7"/>
-      <path d="M21.6 3V86M111.6 3V86" stroke="#fff" stroke-opacity=".3" stroke-width=".4"/>
-      ${[16.7, 30.6, 44.4, 58.2, 72.1].map(y => groove(.6, 20.6, y, false, 1) + groove(111.4, 131.4, y, false, 1)).join('')}
-      ${[12, 120].map(x => `<circle cx="${x}" cy="78.4" r="2.7" fill="#6e6440"/><circle cx="${x}" cy="78.4" r="2.1" fill="#c8b06a"/><path d="M${x - .9} 77.9 L${x} 77.4 L${x + .9} 77.9 V78.9 L${x} 79.4 L${x - .9} 78.9Z" fill="#4c4428"/>`).join('')}
-      <path d="M25.5 86V54.7Q25.5 51.7 28.5 51.7H104.2Q107.2 51.7 107.2 54.7V86Z" fill="#000" fill-opacity=".07"/>
-      <path d="M25.5 85V54.7Q25.5 51.7 28.5 51.7H104.2Q107.2 51.7 107.2 54.7V85" stroke="#000" stroke-opacity=".2" stroke-width=".7" fill="none"/>
-      <path d="M54 52.4Q51.4 68 53.4 85.6M78 52.4Q75.4 68 77.4 85.6" stroke="#000" stroke-opacity=".1" stroke-width=".6" fill="none"/>
-      <path d="M54.6 52.4Q52 68 54 85.6M78.6 52.4Q76 68 78 85.6" stroke="#fff" stroke-opacity=".3" stroke-width=".4" fill="none"/>
-      <rect x="24.7" y="1.2" width="82.5" height="37.8" rx="1.6" fill="#121214"/>
-      <text x="31.2" y="3.9" ${SANS} font-size="1.1" letter-spacing=".1" text-anchor="middle" fill="#ddd">LICENSED BY</text>
-      <rect x="27.4" y="4.9" width="7.6" height="2.5" rx="1.25" fill="#fff"/><rect x="27.8" y="5.25" width="6.8" height="1.8" rx=".9" fill="none" stroke="#e60012" stroke-width=".25"/>
-      <text x="31.2" y="6.7" ${SANS} font-size="1.35" text-anchor="middle" fill="#e60012">Nintendo</text>
-      <path d="M27.6 9H29.6L28.6 10.2Z" fill="#7b5cc8"/>
-      <rect x="28.3" y="11.4" width="5.8" height="7.6" fill="#fff"/><rect x="28.8" y="12.6" width="4.8" height="5" fill="none" stroke="#111" stroke-width=".35"/>
-      <text x="31.2" y="16.3" ${SANS} font-size="2.6" text-anchor="middle" fill="#111">K-A</text>
-      <circle cx="31.2" cy="23.4" r="3" fill="#d9c98f"/><circle cx="31.2" cy="23.4" r="2.2" fill="#f2ead0"/><rect x="29.4" y="22.8" width="3.6" height="1.2" rx=".6" fill="none" stroke="#8a7a48" stroke-width=".2"/>
-      <text x="31.2" y="29" ${SANS} font-size="1.25" text-anchor="middle" fill="#ddd">SNS-USA</text>
-      <text x="31.2" y="30.8" font-family="Arial, Helvetica, sans-serif" font-size="1.1" text-anchor="middle" fill="#ddd">MADE IN JAPAN</text>
-      <rect x="83" y="2.4" width="22.5" height="1.4" fill="#e8583b"/>
-      <rect x="93" y="12.4" width="11.6" height="13.6" fill="#fff" fill-opacity=".08"/>
-      ${Array.from({ length: 12 }, (_, i) => `<rect x="93" y="${(12.8 + i * 1.12).toFixed(2)}" width="11.6" height=".5" fill="#9a9aa0"/>`).join('')}
-      <ellipse cx="97.6" cy="17.3" rx="3.1" ry="2.2" transform="rotate(-38 97.6 17.3)" fill="none" stroke="#121214" stroke-width="1.1"/>
-      <ellipse cx="100.2" cy="21.2" rx="3.1" ry="2.2" transform="rotate(-38 100.2 21.2)" fill="none" stroke="#121214" stroke-width="1.1"/>
-      <text x="84" y="33.4" font-family="Impact, 'Arial Narrow', Arial, sans-serif" font-style="italic" font-size="3.6" fill="#e8583b" textLength="21.6" lengthAdjust="spacingAndGlyphs">SUPER NINTENDO</text>
-      <rect x="84" y="34.6" width="21.6" height="1.6" fill="#e8583b"/>
-      <text x="94.8" y="35.85" ${SANS} font-size="1.1" letter-spacing=".15" text-anchor="middle" fill="#121214" textLength="20" lengthAdjust="spacingAndGlyphs">ENTERTAINMENT SYSTEM</text>` },
-    // crop: the share of the box art, left, right, top and bottom, taken by the console's name strip, which a cartridge label leaves out
-    gb:      { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], body: () => gbBody('#acaca8', false, 'GAME BOY') },
-    gbc:     { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], body: () => gbBody('#2b2b2e', true, 'GAME BOY COLOR') },
-    // GBA: wider than tall, a full-width ledge along the top with "GAME BOY ADVANCE" moulded in it,
-    // the sides stepped in under it, the corners stepped in again at the bottom by the arrow
-    gba: { w: 57, h: 35, label: [3.6, 7.8, 49.2, 22.9], pos: 'center 5%', crop: [0.17, 0], body: () => `
-      <path d="M3.5 0H53.5Q57 0 57 3.5V6.6H55.6V33H54V35H3V33H1.4V6.6H0V3.5Q0 0 3.5 0Z" fill="#65676c"/>
-      <path d="M3.5 .4H53.5" stroke="#fff" stroke-opacity=".22" stroke-width=".5"/>
-      <path d="M1.4 6.85H55.6" stroke="#000" stroke-opacity=".25" stroke-width=".4"/>
-      <path d="M2.4 6.2Q28.5 1.6 54.6 6.2" stroke="#000" stroke-opacity=".18" stroke-width=".35" fill="none"/>
-      ${emboss(9.8, 5.9, 2.3, 'GAME BOY ADVANCE', true, `${SANS} textLength="20.7" lengthAdjust="spacingAndGlyphs"`)}
-      <rect x="3.1" y="7.2" width="50.8" height="24.2" rx="1.4" fill="#000" fill-opacity=".22"/>
-      <path d="M4.2 31.6H52.8" stroke="#fff" stroke-opacity=".1" stroke-width=".4"/>
-      <path d="M27 32.3L28.5 33.5L30 32.3" stroke="#000" stroke-opacity=".4" stroke-width=".45" fill="none"/>
-      <rect x="3" y="33.6" width="51" height="1.4" fill="#000" fill-opacity=".1"/>` },
+    // the American SNES cartridge: shoulders at the top, grip ridges, a deep label recess
+    snes: { w: 120, h: 86, label: [15, 16, 90, 62], pos: 'center', body: () => `
+      <path d="M9 0H111Q115 0 115 4V7Q120 7 120 12V82Q120 86 116 86H4Q0 86 0 82V12Q0 7 5 7V4Q5 0 9 0Z" fill="#c0bfc7"/>
+      <path d="M5 7.4H115" stroke="#000" stroke-opacity=".12" stroke-width=".8"/>
+      <g fill="#000" fill-opacity=".11">${ridges([9.5, 12.5, 15.5, 18.5, 98.7, 101.7, 104.7, 107.7], 1.6, 4.2)}</g>
+      <rect x="12.5" y="13.5" width="95" height="67" rx="3" fill="#000" fill-opacity=".11"/>
+      <path d="M9 .7H111" stroke="#fff" stroke-opacity=".55" stroke-width=".8"/>
+      <rect y="83" width="120" height="3" rx="1.5" fill="#000" fill-opacity=".09"/>` },
+    // crop: the share of the box art, left and right, taken by the console's name strip, which a cartridge label leaves out
+    gb:      { w: 57, h: 65, label: [6.5, 17.5, 44, 38], pos: 'center 25%', crop: [0.18, 0], body: () => gbBody('#adada7') },
+    gbc:     { w: 57, h: 65, label: [6.5, 17.5, 44, 38], pos: 'center 25%', crop: [0.18, 0], body: () => gbBody('#2b2b2e', true) },
+    // GBA: wider than tall, rounded on top, stepped in at the bottom corners
+    gba: { w: 57, h: 35, label: [5, 5.4, 47, 21.5], pos: 'center 5%', crop: [0.17, 0], body: () => `
+      <path d="M5 0H52Q57 0 57 5V29.5H54V35H3V29.5H0V5Q0 0 5 0Z" fill="#9e9ea5"/>
+      <path d="M19 2.1H38" stroke="#000" stroke-opacity=".16" stroke-width="1" stroke-linecap="round"/>
+      <rect x="3.8" y="4.3" width="49.4" height="23.7" rx="1.6" fill="#000" fill-opacity=".11"/>
+      <path d="M5 .6H52" stroke="#fff" stroke-opacity=".45" stroke-width=".6"/>` },
     ds:      { w: 35,   h: 33, label: [2.4, 6.8, 30.2, 24.4], pos: 'center 30%', crop: [0.13, 0], body: () => dsBody('#3a3a40', false, true) },
     // 3DS cards have the little tab on the right that stops them going into a DS
     '3ds':   { w: 36.2, h: 33, label: [2.4, 6.8, 30.2, 24.4], pos: 'center 30%', crop: [0, 0.11], body: () => dsBody('#e4e4e7', true, false) },
-    // the art shows in the white part of the label, under the red band (the box's own band is cut off)
-    switch:  { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', body: cardBody('#48484b', '#e4262e', false) },
+    switch:  { w: 21, h: 31, label: [1.6, 4.4, 17.8, 25.2], pos: 'center', body: () => cardBody('#232326') },
     // Switch 2 game cards are red
-    switch2: { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', body: cardBody('#de3a3d', '#c8262b', true) },
+    switch2: { w: 21, h: 31, label: [1.6, 4.4, 17.8, 25.2], pos: 'center', body: () => cardBody('#c0121d') },
   };
   const pct = (v, of) => (v / of * 100).toFixed(2) + '%';
 
@@ -262,10 +192,10 @@
     const T = CART[type];
     const [x, y, lw, lh] = T.label;
     // Japanese box art has no name strip down the side
-    const [cl, cr, ct = 0, cb = 0] = T.crop && window.REGIONS[g.region]?.std !== 'NTSC-J' ? T.crop : [0, 0], keep = 1 - cl - cr, keepY = 1 - ct - cb;
+    const [cl, cr] = T.crop && window.REGIONS[g.region]?.std !== 'NTSC-J' ? T.crop : [0, 0], keep = 1 - cl - cr;
     return `<div class="cart c-${type} k-${styleOf(g)}" style="--cw:${px(T.w * s)};--ch:${px(T.h * s)}">
-      <svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true">${T.body(g)}</svg>
-      <div class="clab" style="left:${pct(x, T.w)};top:${pct(y, T.h)};width:${pct(lw, T.w)};height:${pct(lh, T.h)};--lp:${T.pos};--liw:${pct(1, keep)};--lix:${pct(-cl, keep)};--lih:${pct(1, keepY)};--liy:${pct(-ct, keepY)}">${g.cover ? img(g) : `<span>${esc(g.title)}</span>`}</div>
+      <svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true">${T.body()}</svg>
+      <div class="clab" style="left:${pct(x, T.w)};top:${pct(y, T.h)};width:${pct(lw, T.w)};height:${pct(lh, T.h)};--lp:${T.pos};--liw:${pct(1, keep)};--lix:${pct(-cl, keep)}">${g.cover ? img(g) : `<span>${esc(g.title)}</span>`}</div>
     </div>`;
   }
 

@@ -255,8 +255,11 @@
 .cart { position: relative; width: var(--cw); height: var(--ch); flex: none; filter: drop-shadow(0 3px 5px rgba(0,0,0,.45)); }
 .cart > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
 .cart .clab { position: absolute; overflow: hidden; border-radius: 4% / 5%; background: linear-gradient(160deg, var(--ph1), var(--ph2)); box-shadow: 0 0 0 .5px rgba(0,0,0,.35); }
-.cart .clab img { width: var(--liw, 100%); max-width: none; height: 100%; margin-left: var(--lix, 0); object-fit: cover; object-position: var(--lp, center); display: block; }
+.cart .clab img { position: relative; top: var(--liy, 0); width: var(--liw, 100%); max-width: none; height: var(--lih, 100%); margin-left: var(--lix, 0); object-fit: cover; object-position: var(--lp, center); display: block; }
 .cart .clab::after { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.28), rgba(255,255,255,0) 40%); pointer-events: none; }
 .cart .clab span { position: absolute; left: 9%; right: 9%; top: 50%; transform: translateY(-50%); color: var(--phf, #fff); font: 700 calc(var(--cw) * .1)/1.05 'Fraunces', serif; text-align: center; overflow-wrap: anywhere; }
 .c-snes .clab span { font-size: calc(var(--cw) * .07); }
 .c-switch .clab span, .c-switch2 .clab span { font-size: calc(var(--cw) * .13); }
+/* a Switch card's art sits square between the red band and the black strip of its label */
+.c-switch .clab, .c-switch2 .clab { border-radius: 0; box-shadow: none; }
+.c-gb .clab, .c-gbc .clab { border-radius: 1px; }

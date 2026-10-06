@@ -67,6 +67,8 @@ Each case is drawn at its console's real height from `js/consoles.js`, so a DS c
 
 The cartridges and game cards (SNES, Game Boy, GBA, DS, 3DS, Switch, Switch 2) are drawn in `js/cases.js` with their real outlines and label areas. The label shows the box art without the console-name strip that Western boxes have down one side.
 
+The SNES, Game Boy, Game Boy Color, GBA, Switch and Switch 2 cartridges are traced from photos of real ones: the SNES cartridge's ridged sides, grip and screws, with the Nintendo seal and the SNES logo either side of the art on its label; the Game Boy's corner notch and raised logo; the GBA's ledge with *GAME BOY ADVANCE* moulded in it; and the Switch cards' red band over the art and code strip under it. The PlayStation and Xbox drawings in the console filter are traced from pictures of the real consoles in the same way.
+
 ## Covers
 
 `tools/fetch-covers.mjs` looks for box art for every game whose `cover` is `null`. It downloads it into `covers/`, resizes it, and writes the file and its colours back into `games.json`:
@@ -105,6 +107,7 @@ The script never replaces covers marked `manual`. A source with an API key, such
 - `css/cases.css`, `js/cases.js`: each console's case, spine, back, disc and cartridge
 - `js/consoles.js`: the consoles with their real case sizes, the regions and the PC launchers
 - `js/console-art.js`: the console drawings in the filter
+- `legacy/`: the console drawings and cartridges as they were before the PlayStation, Xbox and cartridge redraw (`legacy/console-art.js`, `legacy/cases.js`), and `legacy/index.html`, which shows each old one beside the one on the site now. Nothing on the site loads them
 - `css/collection.css`, `js/collection.js`: what the collection pages' checklists share: the cases on their stretches of shelf, the meters, the want cards
 - `sims.html`, `css/sims.css`, `js/sims.js`: the Sims collection page
 - `data/sims-wants.json`: the Sims want list
