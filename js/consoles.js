@@ -14,8 +14,8 @@ window.FAMILIES = [
    scan always shows whole and fills the front.
    media: what is inside. spineArt: the spine takes its colour from the cover.
    hidden: a case style only, never a shelf of its own.
-   stack: its loose cartridges lie in a pile with their top label facing out, the way the title shows on a
-   real SNES cartridge, except the one that faces out (js/app.js).
+   stack: its loose cartridges stand on their side with their top label facing out, like books, where the
+   title shows on a real SNES cartridge, except the one that faces out (js/app.js).
    The order here is the order on the site: PlayStation, Nintendo, PC, then Xbox, each newest first. */
 window.CONSOLES = [
   { id: 'ps5',     name: 'PlayStation 5',     short: 'PS5',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },

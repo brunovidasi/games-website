@@ -502,16 +502,18 @@
   /* ---------- the top of a cartridge ----------
      A SNES cartridge carries its title on the top edge, where the label wraps over. Lying in a pile
      with that edge facing out, this is what shows: the raised middle with the black top label and
-     the title on it, the lower ridged sides either end. Its size is the cartridge's width by its thickness. */
-  function topHTML(g, s) {
+     the title on it, the lower ridged sides either end. Its size is the cartridge's width by its thickness.
+     Standing on its side (side = true) it is turned upright, so the title reads down like a book's spine. */
+  function topHTML(g, s, side) {
     const T = CART[mediaType(g)];
     const c = /^#[0-9a-f]{6}$/i.test(g.cartColor || '') ? g.cartColor : T.c;
-    return `<div class="ctop c-${mediaType(g)}" style="--cw:${px(T.w * s)};--ch:${px(T.dp * s)};--cc:${c}">
+    const strip = `<div class="ctop c-${mediaType(g)}" style="--cw:${px(T.w * s)};--ch:${px(T.dp * s)};--cc:${c}">
       <i class="side"></i><i class="mid"><b>${esc(g.title)}</b></i><i class="side"></i>
     </div>`;
+    return side ? `<div class="cside" style="width:${px(T.dp * s)};height:${px(T.w * s)}">${strip}</div>` : strip;
   }
-  const top = (g, s) => el(topHTML(g, s));
-  const topSize = (g, s) => { const T = CART[mediaType(g)]; return T ? [T.w * s, T.dp * s] : [0, 0]; };
+  const top = (g, s, side) => el(topHTML(g, s, side));
+  const topSize = (g, s, side) => { const T = CART[mediaType(g)]; return !T ? [0, 0] : side ? [T.dp * s, T.w * s] : [T.w * s, T.dp * s]; };
 
   // a cartridge's size in px at scale s, for laying one out
   const cartSize = (g, s) => { const T = CART[mediaType(g)]; return T ? [T.w * s, T.h * s] : [0, 0]; };

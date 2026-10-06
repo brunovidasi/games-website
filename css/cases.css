@@ -288,7 +288,10 @@
 .c-snes .clab span { font-size: calc(var(--cw) * .07); }
 .c-switch .clab span, .c-switch2 .clab span { font-size: calc(var(--cw) * .13); }
 
-/* ---------- the top of a cartridge, lying in a pile (js/cases.js, Case.top) ---------- */
+/* ---------- the top of a cartridge, its title on the label (js/cases.js, Case.top) ---------- */
+/* standing on its side, turned upright so the title reads down like a book's spine */
+.cside { position: relative; flex: none; }
+.cside > .ctop { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(90deg); }
 .ctop { position: relative; display: flex; width: var(--cw); height: var(--ch); flex: none; border-radius: 2px; overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,.5); }
 .ctop .side { width: 15.9%; flex: none; background: linear-gradient(color-mix(in srgb, var(--cc) 75%, #000), color-mix(in srgb, var(--cc) 60%, #000));
