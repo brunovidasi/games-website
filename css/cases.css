@@ -287,6 +287,19 @@
 .cart .clab span { position: absolute; left: 9%; right: 9%; top: 50%; transform: translateY(-50%); color: var(--phf, #fff); font: 700 calc(var(--cw) * .1)/1.05 'Fraunces', serif; text-align: center; overflow-wrap: anywhere; }
 .c-snes .clab span { font-size: calc(var(--cw) * .07); }
 .c-switch .clab span, .c-switch2 .clab span { font-size: calc(var(--cw) * .13); }
+
+/* ---------- the top of a cartridge, lying in a pile (js/cases.js, Case.top) ---------- */
+.ctop { position: relative; display: flex; width: var(--cw); height: var(--ch); flex: none; border-radius: 2px; overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,.5); }
+.ctop .side { width: 15.9%; flex: none; background: linear-gradient(color-mix(in srgb, var(--cc) 75%, #000), color-mix(in srgb, var(--cc) 60%, #000));
+  box-shadow: inset 0 calc(var(--ch) * .14) 0 rgba(0,0,0,.25); }
+.ctop .mid { position: relative; flex: 1; background: linear-gradient(color-mix(in srgb, var(--cc) 100%, #fff 12%), var(--cc) 40%, color-mix(in srgb, var(--cc) 80%, #000)); }
+/* the top label: black, with the title in white */
+.ctop .mid b { position: absolute; left: 4.1%; right: 4.2%; top: 16%; bottom: 16%; display: flex; align-items: center; justify-content: center; padding: 0 4%;
+  background: #121214; border-radius: 1px; color: #fff; font: 700 calc(var(--ch) * .32)/1 'Space Grotesk', sans-serif; letter-spacing: .06em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.ctop .mid b::before { content: ""; flex: none; width: calc(var(--ch) * .18); height: calc(var(--ch) * .18); margin-right: .6em; border-radius: 50%;
+  background: conic-gradient(#e60012 0 25%, #f5c400 0 50%, #2aa047 0 75%, #1f6fd1 0); }
 /* a Switch card's art sits square between the red band and the black strip of its label */
 .c-switch .clab, .c-switch2 .clab { border-radius: 0; box-shadow: none; }
 .c-gb .clab, .c-gbc .clab { border-radius: 1px; }

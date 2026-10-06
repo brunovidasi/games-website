@@ -288,13 +288,26 @@
 
   /* ---------- the bookcase ---------- */
   const scale = () => innerWidth < 640 ? 0.78 : innerWidth < 1000 ? 0.95 : 1.12;
+  // a loose cartridge stands facing out, or, on a console whose cartridges pile up (the SNES), lies in the pile
+  // with its top label out, all but the one that faces out ("All covers" stands them all up)
+  const looseKind = (g, lead) => CONSOLE_BY_ID[g.console].stack && state.mode !== 'covers' && !lead.has(g.id) ? 'stack' : 'loose';
+  function shelfItem(g, kind, animate, n) {
+    const btn = document.createElement('button');
+    btn.className = `item ${kind}` + (animate ? ' enter' : '');
+    btn.dataset.id = g.id;
+    btn.style.animationDelay = Math.min(n * 6, 900) + 'ms';
+    btn.setAttribute('aria-label', `${g.title}, ${CONSOLE_BY_ID[g.console].name}, ${Case.year(g)}`);
+    return btn;
+  }
 
   // In "one cover per console" (or game), one per console faces out: a favourite if marked, else the newest with a cover.
   function leaders() {
     const out = new Set(), by = {};
     games.forEach(g => (by[groupOf(g).key] = by[groupOf(g).key] || []).push(g));
     for (const gs of Object.values(by)) {
-      const pool = gs.filter(g => g.format === 'boxed');
+      // a console whose games are all loose cartridges (the SNES) faces one of those out
+      let pool = gs.filter(g => g.format === 'boxed');
+      if (!pool.length) pool = gs.filter(g => g.format === 'cartridge-only' && CONSOLE_BY_ID[g.console].stack);
       const favs = pool.filter(g => g.fav);
       if (favs.length) { favs.forEach(g => out.add(g.id)); continue; }
       const pick = [...pool].sort((a, b) => (!!b.cover - !!a.cover) || (b.released || '').localeCompare(a.released || ''))[0];
@@ -308,9 +321,11 @@
     const s = scale();
     const inner = host.clientWidth - (innerWidth < 820 ? 20 + 12 : 44 + 28);
     const lead = state.mode === 'mixed' ? leaders() : new Set();
-    const kindOf = g => g.format === 'cartridge-only' ? 'loose' : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
-    const tallest = Math.max(...games.map(g => kindOf(g) === 'loose' ? Case.cartSize(g, s * 1.6)[1] : Case.layout(g, s).h));
+    const kindOf = g => g.format === 'cartridge-only' ? looseKind(g, lead) : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
+    const tallest = Math.max(...games.map(g => { const k = kindOf(g); return k === 'loose' ? Case.cartSize(g, s * 1.6)[1] : k === 'stack' ? 0 : Case.layout(g, s).h; }));
     host.style.setProperty('--bay', (tallest + 34) + 'px');
+    // how many cartridge tops fit in one pile under the shelf above
+    const perPile = g => Math.max(1, Math.floor(tallest / (Case.topSize(g, s * 1.6)[1] + 2)));
 
     // left to right, a new shelf when one is full
     const rows = [[]];
@@ -319,11 +334,20 @@
     games.forEach(g => {
       const kind = kindOf(g), L = Case.layout(g, s);
       const newGroup = grouped && groupOf(g).key !== last;
-      const w = (kind === 'face' ? L.w + 12 : kind === 'loose' ? Case.cartSize(g, s * 1.6)[0] + 16 : L.d) + 2 + (newGroup && last ? 30 : 0);
+      // a cartridge lying in a pile goes on top of the last pile of its console while there is room
+      const pile = rows[rows.length - 1].at(-1);
+      if (kind === 'stack' && !newGroup && pile?.pile && pile.pile.length < perPile(g)) { pile.pile.push(g); last = groupOf(g).key; return; }
+      const w = (kind === 'face' ? L.w + 12 : kind === 'loose' ? Case.cartSize(g, s * 1.6)[0] + 16 : kind === 'stack' ? Case.topSize(g, s * 1.6)[0] + 16 : L.d) + 2 + (newGroup && last ? 30 : 0);
       if (x + w > inner && rows[rows.length - 1].length) { rows.push([]); x = 0; }
       const row = rows[rows.length - 1];
+      if (kind === 'stack') {
+        if (newGroup && last && row.length) row.push({ end: true });
+        row.push({ pile: [g], label: grouped && (newGroup || !row.some(r => r.g || r.pile)) });
+        x += w; last = groupOf(g).key;
+        return;
+      }
       if (newGroup && last && row.length) row.push({ end: true });
-      row.push({ g, kind, label: grouped && (newGroup || !row.some(r => r.g)) });
+      row.push({ g, kind, label: grouped && (newGroup || !row.some(r => r.g || r.pile)) });
       x += w;
       last = groupOf(g).key;
     });
@@ -341,12 +365,21 @@
       board.append(plates);
       row.forEach(it => {
         if (it.end) { const b = document.createElement('div'); b.className = 'bookend'; bay.append(b); return; }
+        if (it.pile) {
+          // the pile, from the bottom up, each cartridge's top label facing out
+          const pile = document.createElement('div');
+          pile.className = 'pile';
+          it.pile.forEach((g, i) => {
+            const btn = shelfItem(g, 'stack', animate, n++);
+            btn.append(Case.top(g, s * 1.6));
+            pile.append(btn);
+            if (i === 0 && it.label) labels.push([btn, g, plates]);
+          });
+          bay.append(pile);
+          return;
+        }
         const { g, kind } = it;
-        const btn = document.createElement('button');
-        btn.className = `item ${kind}` + (animate ? ' enter' : '');
-        btn.dataset.id = g.id;
-        btn.style.animationDelay = Math.min(n++ * 6, 900) + 'ms';
-        btn.setAttribute('aria-label', `${g.title}, ${CONSOLE_BY_ID[g.console].name}, ${Case.year(g)}`);
+        const btn = shelfItem(g, kind, animate, n++);
         btn.append(kind === 'face' ? Case.front(g, s) : kind === 'loose' ? Case.cart(g, s * 1.6) : Case.spine(g, s));
         bay.append(btn);
         if (it.label) labels.push([btn, g, plates]);
@@ -361,6 +394,9 @@
       if (plates !== lastPlates) { edge = -Infinity; lastPlates = plates; }
       const p = document.createElement('div');
       p.className = 'plate';
+      // in the colour of the console's family, as in the filter: red Nintendo, blue PlayStation, green Xbox
+      const fam = CONSOLE_BY_ID[groupOf(g).key] && FAMILIES.find(f => f.id === CONSOLE_BY_ID[groupOf(g).key].fam);
+      if (fam) p.style.setProperty('--pc', fam.color);
       p.textContent = groupOf(g).label;
       p.title = groupOf(g).name;
       plates.append(p);
@@ -488,7 +524,7 @@
     const R = rowSize();
     const s = R.stage / 190;
     const lead = state.mode === 'mixed' ? leaders() : new Set();
-    const kindOf = g => g.format === 'cartridge-only' ? 'loose' : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
+    const kindOf = g => g.format === 'cartridge-only' ? looseKind(g, lead) : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
     const wrap = document.createElement('div');
     wrap.className = 'rows';
     const grouped = state.sort.key === GROUP;
@@ -505,8 +541,15 @@
       if (gr) sec.innerHTML = groupHead(gr, gs.length);
       const track = document.createElement('div');
       track.className = 'rtrack';
+      let pile = null;
       gs.forEach((g, i) => {
         const kind = kindOf(g);
+        if (kind !== 'stack') pile = null;
+        else if (!pile || pile.children.length >= Math.floor(R.stage / (Case.topSize(g, s * 1.6)[1] + 2))) {
+          pile = document.createElement('div');
+          pile.className = 'pile';
+          track.append(pile);
+        }
         const btn = document.createElement('button');
         btn.type = 'button';
         // only the first cases on each row rise in; the rest are off to the side
@@ -517,6 +560,7 @@
         const tile = document.createElement('span');
         tile.className = 'gt';
         if (kind === 'loose') tile.append(Case.cart(g, s * 1.6));
+        else if (kind === 'stack') tile.append(Case.top(g, s * 1.6));
         else if (kind === 'face') tile.append(Case.front(g, Math.min(s, (R.stage * 1.1) / Case.layout(g, 1).w)));
         else {
           const sp = Case.spine(g, s);
@@ -524,7 +568,7 @@
           tile.append(sp);
         }
         btn.append(tile);
-        track.append(btn);
+        (pile || track).append(btn);
       });
       sec.append(track);
       wrap.append(sec);
@@ -551,6 +595,7 @@
       const spots = new Map();
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item);
+        if (face.classList.contains('ctop')) continue;
         const r = face.getBoundingClientRect();
         if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind: kindOf(face) });
       }
@@ -579,6 +624,7 @@
       const arrivals = [];
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item);
+        if (face.classList.contains('ctop')) continue;
         const r = face.getBoundingClientRect();
         if (onScreen(r)) arrivals.push({ item, face, r, from: snap.spots.get(item.dataset.id), kind: kindOf(face) });
       }

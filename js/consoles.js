@@ -14,6 +14,8 @@ window.FAMILIES = [
    scan always shows whole and fills the front.
    media: what is inside. spineArt: the spine takes its colour from the cover.
    hidden: a case style only, never a shelf of its own.
+   stack: its loose cartridges lie in a pile with their top label facing out, the way the title shows on a
+   real SNES cartridge, except the one that faces out (js/app.js).
    The order here is the order on the site: PlayStation, Nintendo, PC, then Xbox, each newest first. */
 window.CONSOLES = [
   { id: 'ps5',     name: 'PlayStation 5',     short: 'PS5',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
@@ -29,7 +31,7 @@ window.CONSOLES = [
   { id: 'ds',      name: 'Nintendo DS',       short: 'DS',       fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: 'ds',      spineArt: false },
   { id: 'gba',     name: 'Game Boy Advance',  short: 'GBA',      fam: 'nintendo',    w: 128, h: 124, d: 32, kind: 'box',   media: 'gba',     spineArt: true },
   { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true },
-  { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true },
+  { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true,  stack: true },
   { id: 'gb',      name: 'Game Boy',          short: 'GB',       fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gb',      spineArt: true,  hidden: true },
   { id: 'pc',      name: 'PC',                short: 'PC',       fam: 'pc',          w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
   { id: 'xone',    name: 'Xbox One',          short: 'One',      fam: 'xbox',        w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
