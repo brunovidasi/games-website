@@ -177,7 +177,7 @@
   // a DS game card: a touch taller than wide, the bottom left corner cut off, the label in a frame
   // round its edge: white, with the logo across the top and a white strip at the bottom
   const dsBody = f => `
-    <path d="M1.6 0H31.4Q33 0 33 1.6V33.4Q33 35 31.4 35H3.2L0 31.8V1.6Q0 0 1.6 0Z" fill="${f}"/>
+    <path d="M1.6 0H31.4Q33 0 33 1.6V33.4Q33 35 31.4 35H3.2L0 31.8V20.7H1V18.5H0V1.6Q0 0 1.6 0Z" fill="${f}"/>
     <path d="M1.6 .35H31.4" stroke="#fff" stroke-opacity=".16" stroke-width=".35"/>
     <path d="M2.8 1.6H30.2Q31.4 1.6 31.4 2.8V32.2Q31.4 33.4 30.2 33.4H5.5L1.6 29.5V2.8Q1.6 1.6 2.8 1.6Z" fill="#000" fill-opacity=".35"/>
     <path d="M31.1 2.4V32.6M5.6 33.1H30.4" stroke="#fff" stroke-opacity=".12" stroke-width=".3" fill="none"/>
@@ -189,7 +189,7 @@
   // side at the top, flush with the top edge and sloping back in below (it stops the card going into a
   // DS), and the label in a frame with rounded corners: white, the logo across the top, a white strip below
   const threeDsBody = f => `
-    <path d="M1.4 0H33.6Q34.8 0 34.8 1.2V5.6L33 7.9V33.6Q33 35 31.6 35H1.8L0 33.2V1.4Q0 0 1.4 0Z" fill="${f}"/>
+    <path d="M1.4 0H33.6Q34.8 0 34.8 1.2V5.6L33 7.9V33.6Q33 35 31.6 35H1.8L0 33.2V20.8H1V18.3H0V1.4Q0 0 1.4 0Z" fill="${f}"/>
     <path d="M1.4 .35H33.5M34.45 1.2V5.5" stroke="#fff" stroke-opacity=".75" stroke-width=".35" fill="none"/>
     <path d="M33 8V33.6Q33 34.7 31.6 34.7H1.9" stroke="#000" stroke-opacity=".14" stroke-width=".35" fill="none"/>
     <path d="M3.3 1.5H29.7Q30.8 1.5 30.8 2.6V32Q30.8 33.2 29.6 33.2H3.6Q2.3 33.2 2.3 31.9V2.5Q2.3 1.5 3.3 1.5Z" fill="#000" fill-opacity=".1"/>
@@ -202,7 +202,7 @@
   // a Switch game card: rounded all round, the little tab at the top, the label with the console's red
   // band over the art and its code on a black strip, the arrow under it
   const cardBody = (f, band, two) => g => `
-    <path d="M1.7 0H19.3Q21 0 21 1.7V29.3Q21 31 19.3 31H1.7Q0 31 0 29.3V1.7Q0 0 1.7 0Z" fill="${f}"/>
+    <path d="M1.7 0H19.3Q21 0 21 1.7V20.9H19.8V24.1H21V29.3Q21 31 19.3 31H1.7Q0 31 0 29.3V1.7Q0 0 1.7 0Z" fill="${f}"/>
     <path d="M1.7 .3H19.3" stroke="#fff" stroke-opacity=".2" stroke-width=".3"/>
     <rect x=".9" y="2.2" width="19.2" height="25.8" rx="1.3" fill="#000" fill-opacity=".12" stroke="#000" stroke-opacity=".25" stroke-width=".25"/>
     <rect x="7.2" y="1.1" width="6.6" height="1.5" rx=".45" fill="#000" fill-opacity=".3"/>
@@ -221,13 +221,13 @@
     <text x="10.5" y="26.1" font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="1.05" letter-spacing=".12" text-anchor="middle" fill="#e8e8e8">${two ? 'LB-XXXXX-XXX' : 'LA-H-XXXXX'}-${cardRegion(g)}</text>
     <path d="M9.2 28.4H11.8L10.5 29.8Z" fill="#000" fill-opacity=".35"/>`;
   const GB_PTS = [[0, 1], [1, 0], [50.8, 0], [50.8, 4.5], [57, 4.5], [57, 64], [56, 65], [1, 65], [0, 64]];
-  const CARD_PTS = [[0, 1.2], [.4, .4], [1.2, 0], [19.8, 0], [20.6, .4], [21, 1.2], [21, 29.8], [20.6, 30.6], [19.8, 31], [1.2, 31], [.4, 30.6], [0, 29.8]];
+  const CARD_PTS = [[0, 1.2], [.4, .4], [1.2, 0], [19.8, 0], [20.6, .4], [21, 1.2], [21, 20.9], [19.8, 20.9], [19.8, 24.1], [21, 24.1], [21, 29.8], [20.6, 30.6], [19.8, 31], [1.2, 31], [.4, 30.6], [0, 29.8]];
   const CART = {
     // the American SNES cartridge: the label housing standing up in the middle, the ridged sides,
     // the grip hollowed out under the label, the two screws, and its label with the Nintendo seal
     // and the rating down the left and the SNES logo down the right
     snes: { w: 132, h: 86, label: [37.8, 2.8, 43.9, 35.4], pos: 'center top', crop: [0, 0, 0, 0.12], c: '#bab9c1', dp: 20,
-      pts: [[21, 0], [111, 0], [111, 2.9], [132, 2.9], [132, 86], [0, 86], [0, 2.9], [21, 2.9]], back: [[21, 10, 90, 60]], body: () => `
+      pts: [[21, 0], [111, 0], [111, 2.9], [132, 2.9], [132, 86], [0, 86], [0, 2.9], [21, 2.9]], body: () => `
       <path d="M22 0H110Q111 0 111 1V2.9H130Q132 2.9 132 4.9V84Q132 86 130 86H2Q0 86 0 84V4.9Q0 2.9 2 2.9H21V1Q21 0 22 0Z" fill="#bab9c1"/>
       <path d="M22 .4H110M2 3.3H21M111 3.3H130" stroke="#fff" stroke-opacity=".55" stroke-width=".7"/>
       <path d="M21 3V86M111 3V86" stroke="#000" stroke-opacity=".13" stroke-width=".7"/>
@@ -257,15 +257,14 @@
       <rect x="84" y="34.6" width="21.6" height="1.6" fill="#e8583b"/>
       <text x="94.8" y="35.85" ${SANS} font-size="1.1" letter-spacing=".15" text-anchor="middle" fill="#121214" textLength="20" lengthAdjust="spacingAndGlyphs">ENTERTAINMENT SYSTEM</text>` },
     // crop: the share of the box art, left, right, top and bottom, taken by the console's name strip, which a cartridge label leaves out
-    gb:      { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], c: '#acaca8', dp: 8, pts: GB_PTS, pins: [7, 58.5, 43, 5.4, 26], screw: [28.5, 40], body: () => gbBody('#acaca8', false, 'GAME BOY') },
-    gbc:     { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], c: '#2b2b2e', dp: 8, pts: GB_PTS, pins: [7, 58.5, 43, 5.4, 26], screw: [28.5, 40], body: () => gbBody('#2b2b2e', true, 'GAME BOY COLOR') },
+    gb:      { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], c: '#acaca8', dp: 8, pts: GB_PTS, body: () => gbBody('#acaca8', false, 'GAME BOY') },
+    gbc:     { w: 57, h: 65, label: [9.5, 19.1, 35.8, 35.1], pos: 'center 25%', crop: [0.18, 0], c: '#2b2b2e', dp: 8, pts: GB_PTS, body: () => gbBody('#2b2b2e', true, 'GAME BOY COLOR') },
     // GBA: wider than tall, a full-width ledge along the top with the raised arch moulded across it,
     // the sides stepped in under it, the corners stepped in again at the bottom by the arrow. The label
     // is printed like a real one: the box art small in the middle, over a soft wash of its own colours,
     // with the Nintendo seal on the left and the code on the right
     gba: { w: 57, h: 35, label: [7, 8.3, 43, 23.2], pos: 'center', crop: [0.19, 0], small: true, c: '#3c3d41', dp: 8,
-      pts: [[0, 2], [1, .5], [3, 0], [54, 0], [56, .5], [57, 2], [57, 6.6], [55.6, 6.6], [55.6, 33], [54, 33], [54, 35], [3, 35], [3, 33], [1.4, 33], [1.4, 6.6], [0, 6.6]],
-      pins: [6, 29.6, 45, 4.4, 26], screw: [28.5, 12], body: () => `
+      pts: [[0, 2], [1, .5], [3, 0], [54, 0], [56, .5], [57, 2], [57, 6.6], [55.6, 6.6], [55.6, 33], [54, 33], [54, 35], [3, 35], [3, 33], [1.4, 33], [1.4, 6.6], [0, 6.6]], body: () => `
       <path d="M3.5 0H53.5Q57 0 57 3.5V6.6H55.6V33H54V35H3V33H1.4V6.6H0V3.5Q0 0 3.5 0Z" fill="#3c3d41"/>
       <path d="M3.5 .4H53.5" stroke="#fff" stroke-opacity=".2" stroke-width=".5"/>
       <path d="M1.2 1.2Q28.5 .4 55.8 1.2" stroke="#000" stroke-opacity=".35" stroke-width=".3" fill="none"/>
@@ -279,14 +278,14 @@
       <path d="M26.6 33L28.5 34.2L30.4 33" stroke="#000" stroke-opacity=".5" stroke-width=".4" fill="none"/>
       <rect x="3" y="33.6" width="51" height="1.4" fill="#000" fill-opacity=".1"/>` },
     ds:      { w: 33,   h: 35, label: [2.6, 7.4, 27.8, 21.4], pos: 'center 30%', crop: [0.13, 0], c: '#38383c', dp: 3.8,
-      pts: [[0, 1], [1, 0], [32, 0], [33, 1], [33, 34], [32, 35], [3.2, 35], [0, 31.8]], pins: [3.5, 1.4, 26, 4.2, 17], body: () => dsBody('#38383c') },
+      pts: [[0, 1], [1, 0], [32, 0], [33, 1], [33, 34], [32, 35], [3.2, 35], [0, 31.8], [0, 20.7], [1, 20.7], [1, 18.5], [0, 18.5]], body: () => dsBody('#38383c') },
     // 3DS cards have the little tab at the top of their right side that stops them going into a DS
     '3ds':   { w: 34.8, h: 35, label: [3, 7.3, 27, 20.4], pos: 'center 30%', crop: [0, 0.11], c: '#d9dadd', dp: 3.8,
-      pts: [[0, 1.4], [1.4, 0], [33.6, 0], [34.8, 1.2], [34.8, 5.6], [33, 7.9], [33, 33.6], [31.6, 35], [1.8, 35], [0, 33.2]], pins: [3.5, 1.4, 26, 4.2, 17], body: () => threeDsBody('#d9dadd') },
+      pts: [[0, 1.4], [1.4, 0], [33.6, 0], [34.8, 1.2], [34.8, 5.6], [33, 7.9], [33, 33.6], [31.6, 35], [1.8, 35], [0, 33.2], [0, 20.8], [1, 20.8], [1, 18.3], [0, 18.3]], body: () => threeDsBody('#d9dadd') },
     // the art shows in the white part of the label, under the red band (the box's own band is cut off)
-    switch:  { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', c: '#48484b', dp: 3.3, pts: CARD_PTS, pins: [3, 1.6, 15, 4, 15], body: cardBody('#48484b', '#e4262e', false) },
+    switch:  { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', c: '#48484b', dp: 3.3, pts: CARD_PTS, body: cardBody('#48484b', '#e4262e', false) },
     // Switch 2 game cards are red
-    switch2: { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', c: '#de3a3d', dp: 3.3, pts: CARD_PTS, pins: [3, 1.6, 15, 4, 15], body: cardBody('#de3a3d', '#c8262b', true) },
+    switch2: { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', c: '#de3a3d', dp: 3.3, pts: CARD_PTS, body: cardBody('#de3a3d', '#c8262b', true) },
   };
   const pct = (v, of) => (v / of * 100).toFixed(2) + '%';
 
@@ -295,16 +294,98 @@
     const n = parseInt(hex.slice(1), 16), to = t > 0 ? 255 : 0, k = Math.abs(t);
     return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v + (to - v) * k).toString(16).padStart(2, '0')).join('');
   }
-  // the back, seen from behind: the outline mirrored, the contacts showing through, the screw
-  function backSVG(T) {
-    const [px0, py, pw, ph, n] = T.pins || [];
-    return `<svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true"><g transform="translate(${T.w} 0) scale(-1 1)">
-      <polygon points="${T.pts.join(' ')}" fill="${shade(T.c, -0.12)}"/>
-      ${(T.back || []).map(([x, y, w, h]) => `<rect x="${x + 3}" y="${y}" width="${w - 6}" height="${h}" rx="3" fill="#000" fill-opacity=".07"/>`).join('')}
-      ${T.pins ? `<rect x="${px0}" y="${py}" width="${pw}" height="${ph}" rx=".6" fill="#141416"/>` + Array.from({ length: n }, (_, k) => `<rect x="${(px0 + .5 + k * (pw - 1) / n).toFixed(2)}" y="${py + .5}" width="${((pw - 1) / n * .6).toFixed(2)}" height="${ph - 1}" fill="#c9a24a"/>`).join('') : ''}
-      ${T.screw ? `<circle cx="${T.screw[0]}" cy="${T.screw[1]}" r="1.7" fill="#000" fill-opacity=".25"/><circle cx="${T.screw[0]}" cy="${T.screw[1]}" r="1.15" fill="#8d8e93"/><path d="M${T.screw[0]} ${T.screw[1]}v-.9M${T.screw[0]} ${T.screw[1]}l.8 .5M${T.screw[0]} ${T.screw[1]}l-.8 .5" stroke="#3a3b40" stroke-width=".35"/>` : ''}
-    </g></svg>`;
+  // the backs, drawn as seen from behind (so a notch on the front's left is on the right here), from
+  // photos of real ones. Moulded lettering is drawn as a shadow with the light catching its lower edge
+  const mould = (x, y, size, text, dark, extra = '') => `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" ${SANS} ${extra} fill="#000" fill-opacity="${dark ? 0.45 : 0.2}">${text}</text><text x="${x}" y="${y + size * .06}" font-size="${size}" text-anchor="middle" ${SANS} ${extra} fill="#fff" fill-opacity="${dark ? 0.07 : 0.3}">${text}</text>`;
+  // the Nintendo logo moulded in an oval
+  const ovalLogo = (x, y, w, dark) => `<rect x="${x - w / 2}" y="${y - w * .13}" width="${w}" height="${w * .26}" rx="${w * .13}" fill="none" stroke="#000" stroke-opacity="${dark ? 0.45 : 0.2}" stroke-width="${w * .025}"/>${mould(x, y + w * .07, w * .19, 'Nintendo', dark, `textLength="${w * .72}" lengthAdjust="spacingAndGlyphs"`)}`;
+  const printed = (x, y, size, text) => `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-weight="700" letter-spacing="${size * .12}" fill="#1c1a3a" fill-opacity=".8">${text}</text>`;
+  // the long window at the bottom of a DS or 3DS card: 17 gold contacts behind thin ribs, the green board above them
+  const dsPins = (x, y, w, h, rib) => {
+    const n = 17, step = w / n;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".4" fill="#121214"/>
+      <rect x="${x + .3}" y="${y + .3}" width="${w - .6}" height="${h * .2}" fill="#5a8a4e"/>
+      <rect x="${x + .3}" y="${y + h * .2 + .3}" width="${w - .6}" height="${h * .62}" fill="#c99a48"/>
+      <rect x="${x + .3}" y="${y + h * .82 + .3}" width="${w - .6}" height="${h * .12}" fill="#d8cfa4"/>
+      ${Array.from({ length: n - 1 }, (_, k) => `<rect x="${(x + step * (k + 1) - .3).toFixed(2)}" y="${y}" width=".6" height="${h}" fill="${rib}"/>`).join('')}
+      <path d="M${x + .55} ${y + .6}h.8l-.4 .6z" fill="#fff" fill-opacity=".8"/>`;
+  };
+  // a Switch card's five windows, each with its contacts: two strips, the right one broken in the middle (three in the last)
+  const switchPins = (rib) => [[2.3, 2.3], [5.4, 2.3], [8.6, 2.3], [11.8, 2.3], [14.9, 3.5]].map(([x, w], k) => {
+    const strips = k === 4 ? 3 : 2, sw = (w - .5) / strips - .15;
+    return `<rect x="${x}" y="13.5" width="${w}" height="15.9" rx=".4" fill="#141416"/>
+      <rect x="${x + .25}" y="14.1" width="${w - .5}" height="2.2" fill="#55605a"/>
+      ${Array.from({ length: strips }, (_, i) => {
+        const sx = (x + .25 + i * (sw + .15)).toFixed(2);
+        return i === strips - 1 && i > 0
+          ? `<rect x="${sx}" y="16.4" width="${sw.toFixed(2)}" height="5.2" fill="#d4b26a"/><rect x="${sx}" y="22.6" width="${sw.toFixed(2)}" height="5.6" fill="#d4b26a"/>`
+          : `<rect x="${sx}" y="16.4" width="${sw.toFixed(2)}" height="11.8" fill="#d4b26a"/>`;
+      }).join('')}
+      <rect x="${x + .25}" y="28.4" width="${w - .5}" height=".7" fill="#2a2b2e"/>`;
+  }).join('') + `<path d="M2.7 14.2h.9l-.45 .7z" fill="#fff" fill-opacity=".75"/>`;
+  const BACKS = {
+    // the raised panel with the Nintendo logo, the moulded warning, the two small holes by the bottom corners
+    snes: (T, dark) => `
+      ${[16.7, 30.6, 44.4, 58.2, 72.1].map(y => groove(.6, 20.6, y, false, 1) + groove(111.4, 131.4, y, false, 1)).join('')}
+      <path d="M21 3V86M111 3V86" stroke="#000" stroke-opacity=".13" stroke-width=".7"/>
+      <rect x="27" y="8" width="78" height="44" rx="2" fill="#000" fill-opacity=".05" stroke="#000" stroke-opacity=".12" stroke-width=".5"/>
+      <circle cx="66" cy="4.5" r="1" fill="#000" fill-opacity=".15"/>
+      ${ovalLogo(66, 17, 26, dark)}
+      ${mould(66, 29, 2.6, 'IMPORTANT', dark)}
+      ${mould(66, 33.5, 2, 'POWER MUST BE OFF BEFORE LOADING OR REMOVING', dark, 'textLength="68" lengthAdjust="spacingAndGlyphs"')}
+      ${mould(66, 37, 2, 'THE GAME PAK. CLEAN IT REGULARLY.', dark, 'textLength="52" lengthAdjust="spacingAndGlyphs"')}
+      ${mould(66, 46, 2.2, 'MADE IN JAPAN', dark)}
+      ${[10.5, 121.5].map(x => `<circle cx="${x}" cy="80" r="1.4" fill="#000" fill-opacity=".35"/>`).join('')}`,
+    // the Nintendo logo and MADE IN JAPAN moulded in, the screw in the middle, the contacts showing at the bottom
+    gb: (T, dark) => `
+      ${ovalLogo(28.5, 14, 22, dark)}
+      ${mould(28.5, 22, 2.2, 'MADE IN JAPAN', dark)}
+      <circle cx="28.5" cy="32" r="2.6" fill="#000" fill-opacity="${dark ? 0.5 : 0.22}"/><circle cx="28.5" cy="32" r="1.6" fill="#7d7e83"/><circle cx="28.5" cy="32" r=".7" fill="#3a3b40"/>
+      <rect x="4" y="58.8" width="49" height="6.2" fill="#163a26"/>
+      ${Array.from({ length: 32 }, (_, k) => `<rect x="${(4.6 + k * 1.5).toFixed(2)}" y="59.6" width=".95" height="5.4" fill="#d1aa58"/>`).join('')}`,
+    // the raised panel with the logo and MODEL NO. AGB-002, the screw at the top, the dimple under the panel
+    gba: (T, dark) => `
+      <circle cx="28.5" cy="2.6" r="1.3" fill="#000" fill-opacity=".45"/><circle cx="28.5" cy="2.6" r=".8" fill="#7d7e83"/>
+      <rect x="17.2" y="6.5" width="22.6" height="12.9" rx="1" fill="#fff" fill-opacity=".04" stroke="#000" stroke-opacity=".35" stroke-width=".35"/>
+      ${ovalLogo(28.5, 10, 12, true)}
+      ${mould(28.5, 14.6, 1.3, 'MODEL NO. AGB-002', true)}
+      ${mould(28.5, 16.9, 1.1, 'PAT.PEND. MADE IN JAPAN', true)}
+      <circle cx="28.5" cy="21.6" r=".9" fill="#000" fill-opacity=".4"/>
+      <path d="M1.4 29.3H55.6" stroke="#000" stroke-opacity=".45" stroke-width=".35"/><rect x="1.4" y="29.3" width="54.2" height="5.7" fill="#000" fill-opacity=".14"/>`,
+    // the raised panel with the logo, NTR-005 PAT. PEND. and the printed batch code, the contacts window at the bottom
+    ds: (T, dark) => `
+      <rect x="3.5" y="2.2" width="26.2" height="20.3" rx="1.2" fill="#fff" fill-opacity=".04" stroke="#000" stroke-opacity=".35" stroke-width=".3"/>
+      ${ovalLogo(16.6, 9.3, 14.9, true)}
+      ${mould(16.6, 14, 1.8, 'NTR-005 PAT. PEND.', true)}
+      ${printed(16.6, 17.8, 1.5, 'CDYPN0J20')}
+      ${dsPins(2.8, 25, 25.7, 9.2, T.c)}`,
+    '3ds': (T, dark) => `
+      <rect x="5.3" y="2.6" width="26" height="19.4" rx="1.2" fill="none" stroke="#000" stroke-opacity=".07" stroke-width=".3"/>
+      ${ovalLogo(18.3, 9.3, 14, false)}
+      ${printed(18.3, 17.4, 1.5, 'ADAP210221')}
+      ${dsPins(5.1, 24.7, 26.4, 9.6, T.c)}`,
+    // the Nintendo logo, the model number, the printed code and the CE mark, the five windows of contacts below
+    switch: (T, dark) => `
+      <rect x="7" y=".7" width="6.6" height=".6" rx=".3" fill="#000" fill-opacity=".35"/>
+      <rect x="1.6" y="1.7" width="17.4" height="11.1" rx=".8" fill="#fff" fill-opacity=".03" stroke="#000" stroke-opacity=".3" stroke-width=".25"/>
+      ${ovalLogo(10.2, 4.2, 12, true)}
+      ${mould(6.3, 8.6, 1.3, 'HAC-006', true)}
+      ${printed(6.8, 10.8, .95, 'BAAZA20Y000')}
+      ${mould(16.4, 11.3, 3.6, 'CE', true, 'font-weight="400"')}
+      ${switchPins(T.c)}`,
+  };
+  BACKS.gbc = BACKS.gb;
+  BACKS.switch2 = BACKS.switch;
+  function backSVG(T, type) {
+    const mirror = T.pts.map(([x, y]) => [+(T.w - x).toFixed(2), y]);
+    const dark = parseInt(T.c.slice(1, 3), 16) < 128;
+    return `<svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true">
+      <polygon points="${mirror.join(' ')}" fill="${shade(T.c, -0.08)}"/>
+      <polygon points="${mirror.join(' ')}" fill="none" stroke="#fff" stroke-opacity="${dark ? 0.08 : 0.35}" stroke-width=".35"/>
+      ${(BACKS[type] || (() => ''))(T, dark)}
+    </svg>`;
   }
+
   // the edges all round, following the outline, each lit by which way it faces (the light is above, on the left)
   function edgesHTML(T, s) {
     const D = T.dp * s;
@@ -333,7 +414,7 @@
         <svg viewBox="0 0 ${T.w} ${T.h}" preserveAspectRatio="none" aria-hidden="true">${T.body(g)}</svg>
         <div class="clab${T.small && g.cover ? ' small' : ''}" style="left:${pct(x, T.w)};top:${pct(y, T.h)};width:${pct(lw, T.w)};height:${pct(lh, T.h)};--lp:${T.pos};--liw:${pct(1, keep)};--lix:${pct(-cl, keep)};--lih:${pct(1, keepY)};--liy:${pct(-ct, keepY)}">${label}</div>
       </div>
-      <div class="cb">${backSVG(T)}</div>
+      <div class="cb">${backSVG(T, type)}</div>
       ${edgesHTML(T, s)}
     </div>`;
   }
