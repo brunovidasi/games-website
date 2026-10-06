@@ -1,9 +1,9 @@
 # Bruno's Games
 
-The game collection site: black, finely pinstriped pages with a blue accent, and a dark wooden bookcase open at the back, so the pinstripes show behind the games as they do in the grid. The fonts, Fraunces and Space Grotesk, are the record site's (`brunovida.si/music`). The two are separate sites.
+The game collection site: black, finely pinstriped pages with a blue accent and a dark wooden bookcase, set in Orbitron (the big display text) and Exo 2 (everything else). It started from the record site (`brunovida.si/music`); the two are separate sites.
 
 - **The shelf** (`index.html`): every game on a wooden bookcase, grouped by console, in that console's real case at its real size. Loose cartridges stand on their own; SNES cartridges stand on their side in a row, like books, with the title on their top label facing out, beside the one that faces out. The plate under each console is in its family's colour, as in the filter: red Nintendo, blue PlayStation, green Xbox. The console filter at the top shows a drawing of each console.
-- **The grid**: every game face out, standing on one line at its real size, with its name under it. Going between *Shelf* and *Grid* carries every case on screen across, as the record site does between its floor and its grid: each case comes off the shelf and turns from its spine to its cover on the way, and turns back to its spine on the way home.
+- **The grid**: every game face out, standing on one line at its real size, with its name under it. Going between *Shelf* and *Grid* carries every case on screen across, as the record site does between its floor and its grid: each case comes off the shelf and turns from its spine to its cover on the way, and turns back to its spine on the way home. A SNES cartridge standing on its side turns from its top label to its front the same way, as one solid cartridge, and so it does when it is picked off the shelf.
 - **The rows**: each console on a strip of shelf of its own that scrolls sideways. The cases stand as on the shelf, their spines out (*Show* works as on the shelf), but taller and with each spine much wider than a real one, so they are easy to tap on a phone. Swipe a row to go along it. Sorted any way but by console, the games stand on one long row.
 - **The list**: the same games as a sortable table, like the record site's list.
 - **A game up close**: click a case on the shelf, in the grid or in the list. It lifts out of its place, which stays empty, and flies to the middle of the screen with its name above it and its details below. Drag it to turn it round, or use *Front*, *Spine* and *Back*. *Open case* shows the disc, and *Take it out* lifts the cartridge out of its box. The arrows at the bottom (or the arrow keys) go to the next and previous game; closing flies it back into its place. On a phone held sideways the details stand beside it.
@@ -118,4 +118,4 @@ The script never replaces covers marked `manual`. A source with an API key, such
 - `tools/`: the cover fetcher, and `style-previews.mjs`, which builds the style prototype previews
 - `prototypes/`, `assets/`: the four design prototypes
 - `prototypes/styles/`: the style prototypes, their previews and their gallery
-- `fonts/`: the same self-hosted fonts as the record site
+- `fonts/`: the self-hosted fonts: Orbitron and Exo 2 for the site, Fraunces and Space Grotesk for what is printed on the cases

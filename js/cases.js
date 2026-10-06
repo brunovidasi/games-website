@@ -227,7 +227,7 @@
     // the grip hollowed out under the label, the two screws, and its label with the Nintendo seal
     // and the rating down the left and the SNES logo down the right
     snes: { w: 132, h: 86, label: [37.8, 2.8, 43.9, 35.4], pos: 'center top', crop: [0, 0, 0, 0.12], c: '#bab9c1', dp: 20,
-      pts: [[21, 0], [111, 0], [111, 2.9], [132, 2.9], [132, 86], [0, 86], [0, 2.9], [21, 2.9]], conn: [27, 105, 2.5], body: (g, c) => `
+      pts: [[21, 0], [111, 0], [111, 2.9], [132, 2.9], [132, 86], [0, 86], [0, 2.9], [21, 2.9]], conn: [27, 105, 2.5], top: [24.7, 107.2], body: (g, c) => `
       <path d="M22 0H110Q111 0 111 1V2.9H130Q132 2.9 132 4.9V84Q132 86 130 86H2Q0 86 0 84V4.9Q0 2.9 2 2.9H21V1Q21 0 22 0Z" fill="${c}"/>
       <path d="M22 .4H110M2 3.3H21M111 3.3H130" stroke="#fff" stroke-opacity=".55" stroke-width=".7"/>
       <path d="M21 3V86M111 3V86" stroke="#000" stroke-opacity=".13" stroke-width=".7"/>
@@ -389,15 +389,17 @@
   }
 
   // the edges all round, following the outline, each lit by which way it faces (the light is above, on the left)
-  function edgesHTML(T, s) {
+  function edgesHTML(T, s, g) {
     const D = T.dp * s;
     return T.pts.map((p, i) => {
       const q = T.pts[(i + 1) % T.pts.length], dx = (q[0] - p[0]) * s, dy = (q[1] - p[1]) * s, len = Math.hypot(dx, dy);
       const lit = (dy * -0.45 + -dx * -0.89) / len;
       // the bottom edge of a cartridge that plugs in end first: the opening with the gold edge connector in it
       const slot = T.conn && p[1] === T.h && q[1] === T.h
-        ? `<b class="slot" style="left:${px((p[0] - T.conn[1]) * s)};width:${px((T.conn[1] - T.conn[0]) * s)};--pp:${px(T.conn[2] * s)}"></b>` : '';
-      return `<i class="ce${slot ? ' conn' : ''}" style="left:${px(p[0] * s)};top:${px(p[1] * s - D / 2)};width:${px(len + .6)};height:${px(D)};transform:rotate(${(Math.atan2(dy, dx) * 180 / Math.PI).toFixed(2)}deg) rotateX(90deg);background:${shade(T.c, lit > 0 ? lit * 0.2 : lit * 0.45)}">${slot}</i>`;
+        ? `<b class="slot" style="left:${px((p[0] - T.conn[1]) * s)};width:${px((T.conn[1] - T.conn[0]) * s)};--pp:${px(T.conn[2] * s)}"></b>`
+        // the top edge of a SNES cartridge: the label wrapping over it, with the title
+        : T.top && p[1] === 0 && q[1] === 0 ? `<b class="tl" style="left:${px((T.top[0] - p[0]) * s)};width:${px((T.top[1] - T.top[0]) * s)};--ch:${px(D)}"><span>${esc(g.title)}</span></b>` : '';
+      return `<i class="ce${slot.includes('slot') ? ' conn' : ''}" style="left:${px(p[0] * s)};top:${px(p[1] * s - D / 2)};width:${px(len + .6)};height:${px(D)};transform:rotate(${(Math.atan2(dy, dx) * 180 / Math.PI).toFixed(2)}deg) rotateX(90deg);background:${shade(T.c, lit > 0 ? lit * 0.2 : lit * 0.45)}">${slot}</i>`;
     }).join('');
   }
   // a GBA label: the box art small in the middle over a wash of its colours, the seal and the code
@@ -422,7 +424,7 @@
         <div class="clab${T.small && g.cover ? ' small' : ''}" style="left:${pct(x, T.w)};top:${pct(y, T.h)};width:${pct(lw, T.w)};height:${pct(lh, T.h)};--lp:${T.pos};--liw:${pct(1, keep)};--lix:${pct(-cl, keep)};--lih:${pct(1, keepY)};--liy:${pct(-ct, keepY)}">${label}</div>
       </div>
       <div class="cb">${backSVG(S, type)}</div>
-      ${edgesHTML(S, s)}
+      ${edgesHTML(S, s, g)}
     </div>`;
   }
 

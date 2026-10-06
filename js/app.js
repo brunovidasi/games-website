@@ -554,7 +554,14 @@
     const MAX = 72; // cases that travel; any more simply fade in
     let run = null;
     const onScreen = r => r.bottom > -40 && r.top < innerHeight + 40 && r.right > -40 && r.left < innerWidth + 40;
-    const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : 'front';
+    const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : el.classList.contains('cside') ? 'side' : 'front';
+    // a cartridge facing out or standing on its side: either way it flies as the one solid cartridge
+    const cartish = k => k === 'cart' || k === 'side';
+    // how big a cartridge is drawn, in px per mm: on its side its height is the cartridge's width
+    const unitOf = (face, kind, g) => face.offsetHeight / Case.cartSize(g, 1)[kind === 'side' ? 0 : 1];
+    // how it is turned: on its side with the top label out, leaning on the shelf, or straight
+    // (on its side it is pushed back by half its height, so its top label sits where the shelf showed it, not nearer)
+    const cartTurn = (kind, view, back) => kind === 'side' ? `translateZ(${-back}px) rotateY(-90deg) rotateZ(90deg)` : `translateZ(0px) rotateY(0deg) rotateZ(${view === 'shelf' ? -6 : 0}deg)`;
     // the part of the page that waits while its case is in the air
     const spotOf = (item, face) => face.closest('.gt') || item;
 
@@ -563,10 +570,9 @@
       if (flat(state.view) || reduced()) return null;
       const spots = new Map();
       for (const item of host.querySelectorAll('[data-id]')) {
-        const face = faceOf(item);
-        if (face.classList.contains('ctop') || face.classList.contains('cside')) continue;
+        const face = faceOf(item), kind = kindOf(face);
         const r = face.getBoundingClientRect();
-        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind: kindOf(face) });
+        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0 });
       }
       return { view: state.view, spots };
     }
@@ -593,24 +599,22 @@
       const arrivals = [];
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item);
-        if (face.classList.contains('ctop') || face.classList.contains('cside')) continue;
         const r = face.getBoundingClientRect();
         if (onScreen(r)) arrivals.push({ item, face, r, from: snap.spots.get(item.dataset.id), kind: kindOf(face) });
       }
       arrivals.sort((a, b) => (a.r.top - b.r.top) || (a.r.left - b.r.left));
-      const flights = arrivals.filter(a => a.from && (a.from.kind === 'cart') === (a.kind === 'cart')).slice(0, MAX);
+      const flights = arrivals.filter(a => a.from && cartish(a.from.kind) === cartish(a.kind)).slice(0, MAX);
       const flying = new Set(flights);
 
       let longest = 0;
       flights.forEach((a, i) => {
         const g = byId.get(a.item.dataset.id);
-        const cart = a.kind === 'cart';
+        const cart = cartish(a.kind);
         // it flies at the size it lands, so it is crisp when it gets there
-        const H = a.face.offsetHeight;
-        const s = H / (cart ? Case.cartSize(g, 1)[1] : Case.layout(g, 1).h);
+        const s = cart ? unitOf(a.face, a.kind, g) : a.face.offsetHeight / Case.layout(g, 1).h;
         const fly = cart ? Case.cart(g, s) : Case.slab(g, s);
         if (g.format === 'digital') $('.cv', fly)?.classList.add('ghosted');
-        const W = cart ? Case.cartSize(g, s)[0] : Case.layout(g, s).w;
+        const [W, H] = cart ? Case.cartSize(g, s) : [Case.layout(g, s).w, a.face.offsetHeight];
         const cx = a.r.left + a.r.width / 2, cy = a.r.top + a.r.height / 2;
         const wrap = document.createElement('div');
         wrap.className = 'mf';
@@ -618,7 +622,7 @@
         wrap.append(fly);
         layer.append(wrap);
 
-        const dx = a.from.cx - cx, dy = a.from.cy - cy, k = a.from.h / H;
+        const dx = a.from.cx - cx, dy = a.from.cy - cy, k = cart ? a.from.u / s : a.from.h / H;
         const dist = Math.hypot(dx, dy);
         const lift = 30 + Math.min(90, dist * 0.12);
         const duration = 760 + Math.min(340, dist * 0.3);
@@ -630,9 +634,9 @@
           { transform: at(dx / 2, dy / 2 - lift, ((k + 1) / 2) * 1.06), offset: 0.5 },
           { transform: at(0, 0, 1) },
         ], { duration, delay, easing: 'cubic-bezier(.35,0,.25,1)', fill: 'both' });
-        // a case turns between its spine and its cover; a loose cartridge straightens up or leans back
+        // a case turns between its spine and its cover; a cartridge turns from its side to its front, or straightens up or leans back
         const turn = cart
-          ? [`rotate(${snap.view === 'shelf' ? -6 : 0}deg)`, `rotate(${state.view === 'shelf' ? -6 : 0}deg)`]
+          ? [cartTurn(a.from.kind, snap.view, H / 2), cartTurn(a.kind, state.view, H / 2)]
           : [`rotateY(${a.from.kind === 'spine' ? 90 : 0}deg)`, `rotateY(${a.kind === 'spine' ? 90 : 0}deg)`];
         fly.animate(turn.map(transform => ({ transform })), { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
 
@@ -681,8 +685,9 @@
 
     const isOpen = () => !!cur && !cur.closing;
     const shape = g => g.format === 'cartridge-only' ? 'cart' : g.format === 'digital' ? 'card' : 'box';
-    const fromPose = el => el && el.classList.contains('sp') ? [0, 90] : [0, 0];
-    const rot = ([x, y]) => `rotateX(${x}deg) rotateY(${y}deg)`;
+    // how it stood where it was picked from: a spine turned side on, a cartridge on its side with its top label out, or facing out
+    const fromPose = el => el && el.classList.contains('sp') ? [0, 90, 0] : el && el.classList.contains('cside') ? [0, -90, 90] : [0, 0, 0];
+    const rot = ([x, y, z = 0]) => `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
 
     /* What stands in the spotlight: the 3D case, a cartridge, or a digital copy's card. */
     function build(g, k) {
@@ -804,7 +809,7 @@
       return item ? faceOf(item) : null;
     }
     // what a flight scales against: a spine is matched by height, anything else by its size
-    const scaleFrom = (el, p, w, h) => el.classList.contains('sp') ? p.h / h : Math.min(p.w / w, p.h / h);
+    const scaleFrom = (el, p, w, h) => el.classList.contains('sp') ? p.h / h : el.classList.contains('cside') ? p.h / w : Math.min(p.w / w, p.h / h);
     const piecePose = (L, cx, cy, s) => `translate(${(cx - L.w / 2).toFixed(1)}px,${(cy - L.h / 2).toFixed(1)}px) scale(${s.toFixed(4)})`;
     // a place just off the screen on the way to (x, y)
     const offscreen = (L, x, y) => [clamp(x, L.w / 2, L.vw - L.w / 2), y < L.vh / 2 ? -L.h * 0.75 : L.vh + L.h * 0.75];
