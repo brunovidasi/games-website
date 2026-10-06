@@ -6413,7 +6413,7 @@
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/snes/super-mario-world.jpg",
         "ratio": 1.4342,
@@ -6436,7 +6436,7 @@
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Kart racing",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/snes/super-mario-kart.jpg",
         "ratio": 1.4342,

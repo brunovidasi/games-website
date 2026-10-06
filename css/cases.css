@@ -271,6 +271,10 @@
 .cart .cb { transform: rotateY(180deg) translateZ(calc(var(--cd) / 2)); }
 .cart .cf > svg, .cart .cb > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
 .cart .ce { position: absolute; transform-origin: 0 50%; display: block; }
+/* the opening in the bottom edge, with the board's gold edge connector inside it */
+.cart .ce .slot { position: absolute; top: 20%; bottom: 20%; border-radius: 1px; background: #0c0c0e; box-shadow: inset 0 0 0 1px rgba(0,0,0,.5); }
+.cart .ce .slot::after { content: ""; position: absolute; left: 2%; right: 2%; top: 30%; bottom: 30%;
+  background: repeating-linear-gradient(90deg, #d6b062 0 58%, #123222 58% 100%); background-size: var(--pp) 100%; }
 /* the flat cartridges kept in legacy/ draw straight into .cart */
 .cart > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
 /* turning in 3D: a filter would flatten it, so the shadow goes on the faces instead */
