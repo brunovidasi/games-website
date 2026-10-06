@@ -449,18 +449,24 @@
 
   /* ---------- 3D case ---------- */
   // stands each face of a 3D case in its place round the middle of the case
+  // The depth is the --sd property (and the spine's lettering --sfs), not a fixed size, so a flight can widen
+  // or narrow the spine smoothly: the rows draw spines much wider than real ones (css/cases.css registers both)
   function assemble(b, L) {
-    const W = L.w, H = L.h, D = L.d;
-    const set = (sel, w, h, l, t, tr) => { const f = b.querySelector(sel); if (f) Object.assign(f.style, { width: w + 'px', height: h + 'px', left: l + 'px', top: t + 'px', transform: tr }); };
-    set('.f-front', W, H, 0, 0, `translateZ(${D / 2}px)`);
-    set('.f-tray', W, H, 0, 0, `translateZ(${D / 2 - 1}px)`);
-    set('.f-back', W, H, 0, 0, `rotateY(180deg) translateZ(${D / 2}px)`);
-    set('.f-left', D, H, (W - D) / 2, 0, `rotateY(-90deg) translateZ(${W / 2}px)`);
-    set('.f-right', D, H, (W - D) / 2, 0, `rotateY(90deg) translateZ(${W / 2}px)`);
-    set('.f-top', W, D, 0, (H - D) / 2, `rotateX(90deg) translateZ(${H / 2}px)`);
-    set('.f-bot', W, D, 0, (H - D) / 2, `rotateX(-90deg) translateZ(${H / 2}px)`);
+    const W = L.w, H = L.h, D = 'var(--sd)';
+    const set = (sel, w, h, l, t, tr) => { const f = b.querySelector(sel); if (f) Object.assign(f.style, { width: w, height: h, left: l, top: t, transform: tr }); };
+    set('.f-front', W + 'px', H + 'px', 0, 0, `translateZ(calc(${D} / 2))`);
+    set('.f-tray', W + 'px', H + 'px', 0, 0, `translateZ(calc(${D} / 2 - 1px))`);
+    set('.f-back', W + 'px', H + 'px', 0, 0, `rotateY(180deg) translateZ(calc(${D} / 2))`);
+    set('.f-left', D, H + 'px', `calc((${W}px - ${D}) / 2)`, 0, `rotateY(-90deg) translateZ(${W / 2}px)`);
+    set('.f-right', D, H + 'px', `calc((${W}px - ${D}) / 2)`, 0, `rotateY(90deg) translateZ(${W / 2}px)`);
+    set('.f-top', W + 'px', D, 0, `calc((${H}px - ${D}) / 2)`, `rotateX(90deg) translateZ(${H / 2}px)`);
+    set('.f-bot', W + 'px', D, 0, `calc((${H}px - ${D}) / 2)`, `rotateX(-90deg) translateZ(${H / 2}px)`);
     b.style.width = W + 'px';
     b.style.height = H + 'px';
+    b.style.setProperty('--sd', px(L.d));
+    b.style.setProperty('--sfs', px(Math.min(15, Math.max(7, L.d * 0.55))));
+    const sp = b.querySelector('.f-left > .sp');
+    if (sp) { sp.style.setProperty('--d', 'var(--sd)'); sp.style.fontSize = 'var(--sfs)'; }
     return b;
   }
 
@@ -486,7 +492,7 @@
       <div class="fc f-bot"><div class="edge"></div></div>
     </div>`);
     assemble(b, L);
-    if (isCart(g) && L.kind === 'keep') b.querySelector('.f-tray').style.transform = `translateZ(${-L.d / 2 + 1}px)`;
+    if (isCart(g) && L.kind === 'keep') b.querySelector('.f-tray').style.transform = 'translateZ(calc(var(--sd) / -2 + 1px))';
     // taking it out of a cardboard box: the box shrinks to the bottom of its outline and the
     // cartridge rises three quarters out of the top, so the open box needs no more room than the closed one
     if (L.kind === 'box') {

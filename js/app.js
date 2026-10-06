@@ -555,6 +555,8 @@
     let run = null;
     const onScreen = r => r.bottom > -40 && r.top < innerHeight + 40 && r.right > -40 && r.left < innerWidth + 40;
     const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : el.classList.contains('cside') ? 'side' : 'front';
+    // a spine's width and the size of its lettering, as drawn (the rows draw them wider than real ones)
+    const spineOf = el => el.classList.contains('sp') ? { sw: el.offsetWidth, sf: parseFloat(getComputedStyle(el).fontSize) } : {};
     // a cartridge facing out or standing on its side: either way it flies as the one solid cartridge
     const cartish = k => k === 'cart' || k === 'side';
     // how big a cartridge is drawn, in px per mm: on its side its height is the cartridge's width
@@ -572,7 +574,7 @@
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item), kind = kindOf(face);
         const r = face.getBoundingClientRect();
-        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0 });
+        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0, ...spineOf(face) });
       }
       return { view: state.view, spots };
     }
@@ -639,6 +641,13 @@
           ? [cartTurn(a.from.kind, snap.view, H / 2), cartTurn(a.kind, state.view, H / 2)]
           : [`rotateY(${a.from.kind === 'spine' ? 90 : 0}deg)`, `rotateY(${a.kind === 'spine' ? 90 : 0}deg)`];
         fly.animate(turn.map(transform => ({ transform })), { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
+        // a spine as wide as it was where it took off, widening or narrowing to the one it lands on
+        if (!cart) {
+          const d1 = parseFloat(fly.style.getPropertyValue('--sd')), f1 = parseFloat(fly.style.getPropertyValue('--sfs'));
+          const to = spineOf(a.face);
+          const ends = [a.from.sw ? [a.from.sw / k, a.from.sf / k] : [d1, f1], to.sw ? [to.sw, to.sf] : [d1, f1]];
+          if (Math.abs(ends[0][0] - ends[1][0]) > 0.5) fly.animate(ends.map(([d, f]) => ({ '--sd': d + 'px', '--sfs': f + 'px' })), { duration, delay, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
+        }
 
         // the game on the page waits under it until it lands
         const spot = spotOf(a.item, a.face);
@@ -814,6 +823,17 @@
     // a place just off the screen on the way to (x, y)
     const offscreen = (L, x, y) => [clamp(x, L.w / 2, L.vw - L.w / 2), y < L.vh / 2 ? -L.h * 0.75 : L.vh + L.h * 0.75];
 
+    // a case picked from a spine drawn wider than the real one (the rows) starts as wide and narrows to its real
+    // depth on the way out, and widens again on the way home, instead of jumping (s: its scale at the spine's end)
+    function depth(a, el, s, duration, fill, out) {
+      if (a.sh !== 'box' || !el || !el.classList.contains('sp')) return;
+      const real = [parseFloat(a.obj.style.getPropertyValue('--sd')), parseFloat(a.obj.style.getPropertyValue('--sfs'))];
+      const spine = [el.offsetWidth / s, parseFloat(getComputedStyle(el).fontSize) / s];
+      if (Math.abs(spine[0] - real[0]) < 0.5) return;
+      const keys = (out ? [spine, real] : [real, spine]).map(([d, f]) => ({ '--sd': d + 'px', '--sfs': f + 'px' }));
+      a.obj.animate(keys, { duration, easing: 'cubic-bezier(.4,.1,.2,1)', fill });
+    }
+
     function hide(a, el) { if (el && !a.hidden.includes(el)) { el.style.visibility = 'hidden'; a.hidden.push(el); } }
     function unhide(a) { a.hidden.forEach(el => { el.style.visibility = ''; }); a.hidden = []; }
 
@@ -876,6 +896,7 @@
           { transform: rest },
         ], { duration, easing: 'cubic-bezier(.3,.05,.2,1)', fill: 'backwards' });
         turn.animate([{ transform: rot(fromPose(a.source)) }, { transform: rot(restPose) }], { duration: duration * 0.9, easing: 'cubic-bezier(.4,.1,.2,1)', fill: 'backwards' });
+        depth(a, a.source, s0, duration * 0.9, 'backwards', true);
       } else {
         // its place is off the screen (or it has none): it comes in from that side
         const start = side ? [L.cx + side * (L.vw / 2 + L.w * 0.8), L.cy]
@@ -976,6 +997,7 @@
       }
       a.piece.getAnimations().forEach(x => x.cancel());
       a.turn.getAnimations().forEach(x => x.cancel());
+      a.obj.getAnimations().forEach(x => { if (x.effect?.getKeyframes?.()[0]?.['--sd'] !== undefined) x.cancel(); });
       a.piece.style.transform = piecePose(L, from.cx, from.cy, from.s);
 
       // the page may have been drawn again since it came out
@@ -989,6 +1011,7 @@
         const duration = 760 + Math.min(300, dist * 0.22);
         a.turn.style.transition = `transform ${duration * 0.85}ms cubic-bezier(.4,0,.2,1)`;
         a.turn.style.transform = rot(fromPose(home));
+        depth(a, home, scaleFrom(home, to, L.w, L.h), duration * 0.85, 'forwards', false);
         const t0 = performance.now();
         let goal = to;
         // every frame aims at where its place is now, since the page can scroll meanwhile

@@ -194,6 +194,9 @@
 .bar { width: 3em; height: 1.4em; background: repeating-linear-gradient(90deg, #000 0 1px, #fff 1px 2px, #000 2px 4px, #fff 4px 5px, #000 5px 6px, #fff 6px 8px); border: .2em solid #fff; }
 
 /* ---------- 3D case ---------- */
+/* its depth and its spine's lettering, registered so a flight can animate them (js/cases.js, assemble) */
+@property --sd { syntax: '<length>'; inherits: true; initial-value: 0px; }
+@property --sfs { syntax: '<length>'; inherits: true; initial-value: 10px; }
 .bx { position: relative; transform-style: preserve-3d; transition: translate .9s cubic-bezier(.3,.9,.3,1), scale .9s cubic-bezier(.3,.9,.3,1); }
 .bx .fc { position: absolute; transform-style: preserve-3d; backface-visibility: hidden; }
 .bx .fc > .cv, .bx .fc > .bk, .bx .fc > .sp { box-shadow: none; }
