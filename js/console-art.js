@@ -186,7 +186,7 @@
       <path d="M26.5 25.3 L41 16.7" stroke="#cfd4da" stroke-width=".5"/>
       <path d="M18 3.1 Q20.2 20.4 18.2 37.7 L26.4 37.1 Q24 20.4 26.4 2.3 Z" fill="#0b0b0d"/>
       <path d="M26.4 2.3 Q24 20.4 26.4 37.1" stroke="#2c2d32" stroke-width=".3" fill="none"/>
-      <path d="M19.4 4.2 Q21 20.4 19.6 36.4" stroke="#fff" stroke-opacity=".1" stroke-width="1.1" fill="none"/>
+      <path d="M19.4 4.2 Q21 20.4 19.6 36.4" stroke="#fff" stroke-opacity=".05" stroke-width="1.1" fill="none"/>
       <text transform="translate(22.1 5.4) rotate(90)" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="1.7" letter-spacing=".2" fill="#868b92">XBOX 360</text>
       <circle cx="21.6" cy="25.8" r="1.85" fill="#c8cdd3"/><circle cx="21.6" cy="25.8" r="1.35" fill="#1a1b1d"/>
       <circle cx="21.6" cy="25.8" r=".95" stroke="#9ee35a" stroke-width=".42" fill="none" stroke-dasharray="1.15 .34"/>
