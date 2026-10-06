@@ -176,7 +176,7 @@
       <rect x="36.9" y="26" width="17.6" height="2.9" fill="#1a1a1b"/>
       ${[15, 20.8, 38.9, 44.6].map(x => `<circle cx="${x}" cy="31.4" r=".45" fill="#0a0a0b"/><circle cx="${x}" cy="34.6" r="2.1" fill="#0a0a0b"/>`).join('')}`),
 
-    // the Xbox 360 S standing up: glossy black, the chrome edge down its curved front, the
+    // the Xbox 360 S standing up: glossy black, its curved front with the
     // ring of light, and its side with the silver stripe and the vents
     x360: svg(`
       <path d="M26.4 2.3 L40.9 6 Q41.9 6.3 41.9 7.3 V34.8 Q41.9 35.7 40.9 35.8 L26.4 37.1 Z" fill="#121214"/>
@@ -184,12 +184,9 @@
       <path d="M40.3 6.8 Q40.9 12 36.6 14.4 Q31.4 17.1 26.9 18.6" stroke="#4a4c52" stroke-width=".35" fill="none"/>
       ${Array.from({ length: 16 }, (_, i) => { const y = 19.6 + i * 1.02, x0 = Math.max(27.9, 26.5 + (25.3 - y) / 0.593); return x0 < 36.6 ? `<rect x="${f1(x0)}" y="${f1(y)}" width="${f1(36.6 - x0)}" height=".42" fill="#2b2c31"/>` : ''; }).join('')}
       <path d="M26.5 25.3 L41 16.7" stroke="#cfd4da" stroke-width=".5"/>
-      <path d="M41.9 7.3 V34.8" stroke="#8e939a" stroke-width=".4"/>
       <path d="M18 3.1 Q20.2 20.4 18.2 37.7 L26.4 37.1 Q24 20.4 26.4 2.3 Z" fill="#0b0b0d"/>
+      <path d="M26.4 2.3 Q24 20.4 26.4 37.1" stroke="#2c2d32" stroke-width=".3" fill="none"/>
       <path d="M19.4 4.2 Q21 20.4 19.6 36.4" stroke="#fff" stroke-opacity=".1" stroke-width="1.1" fill="none"/>
-      <path d="M18 3.1 Q20.2 20.4 18.2 37.7" stroke="#cdd2d8" stroke-width=".6" fill="none"/>
-      <path d="M18 3.1 L26.4 2.3 L40.9 6" stroke="#d6dae0" stroke-width=".45" fill="none"/>
-      <path d="M18.2 37.7 L26.4 37.1 L40.9 35.8" stroke="#9aa0a7" stroke-width=".45" fill="none"/>
       <text transform="translate(22.1 5.4) rotate(90)" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="1.7" letter-spacing=".2" fill="#868b92">XBOX 360</text>
       <circle cx="21.6" cy="25.8" r="1.85" fill="#c8cdd3"/><circle cx="21.6" cy="25.8" r="1.35" fill="#1a1b1d"/>
       <circle cx="21.6" cy="25.8" r=".95" stroke="#9ee35a" stroke-width=".42" fill="none" stroke-dasharray="1.15 .34"/>
