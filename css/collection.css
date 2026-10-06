@@ -1,7 +1,7 @@
 /* collection.css — what the collection pages (sims.html, gta.html) share: the pills
    that jump to each game, a section per game with its meter, the cases standing on
    stretches of shelf, and the want list. Each page sets its own --acc colour. */
-.collection { --acc: var(--gold); --acc-dk: #8a6614; --acc-glow: rgba(201,154,46,.4); }
+.collection { --acc: var(--gold); --acc-dk: #1f4fa8; --acc-glow: rgba(77,141,255,.4); }
 .collection .hero h1 em { font-style: normal; color: var(--acc); }
 
 /* ---------- the checklist: a view of its own beside the shelf, grid and list ---------- */
@@ -38,12 +38,12 @@ body[data-view="checklist"] :is(.case-wrap, .tools, .filters .consoles, .filters
 /* the cases, standing on a shelf board */
 .rack { position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 26px var(--gap); padding: 22px 16px 26px; margin-top: 12px; border-radius: 4px;
   --cell: 128px; --gap: 20px;
-  background: radial-gradient(ellipse at 50% -20%, rgba(255,214,150,.14), transparent 60%), linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.18)); box-shadow: inset 0 10px 16px -10px rgba(0,0,0,.8); }
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.1)); box-shadow: inset 0 10px 16px -10px rgba(0,0,0,.8); }
 .collection .cell { text-decoration: none; color: inherit; width: var(--cell); }
 .collection .stage { display: flex; align-items: flex-end; justify-content: center; height: var(--stage, 168px); }
 .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .tag { font: 600 9.5px/1 'Space Grotesk', sans-serif; letter-spacing: .08em; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; border: 1px solid var(--line-strong); opacity: .85; white-space: nowrap; }
-.tag.disc { border-color: rgba(201,154,46,.6); color: #e8c56d; }
+.tag.disc { border-color: rgba(77,141,255,.6); color: #8fb6ff; }
 .tag.dl { background: var(--lb, rgba(242,234,216,.15)); border-color: var(--lb, rgba(242,234,216,.15)); color: var(--lf, var(--text)); }
 .tag.mac { border-color: rgba(242,234,216,.4); }
 .tag.code { border-color: transparent; background: rgba(242,234,216,.1); }

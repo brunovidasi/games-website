@@ -1,12 +1,15 @@
 /* site.css — the shelf: header, console filter, the bookcase, the grid and the
-   list, and the spotlight a game opens into. A wooden bookcase standing against
-   black, finely pinstriped walls. */
+   list, and the spotlight a game opens into. Black, finely pinstriped pages with a
+   blue accent, and a dark wooden bookcase open at the back so the pinstripes show
+   through behind the games, as in the grid. */
 @font-face { font-family: 'Fraunces'; src: url('../fonts/fraunces-latin.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
 @font-face { font-family: 'Space Grotesk'; src: url('../fonts/space-grotesk-latin.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
 
 :root {
   --bg: #0a0a0b; --surface: #161618; --surface-2: #1f1f22;
-  --text: #F2EAD8; --ink: #17140F; --gold: #C99A2E;
+  --text: #F2EAD8; --ink: #0d1424;
+  /* the accent, blue (still called --gold, the name the style prototypes override) */
+  --gold: #4d8dff;
   --line: rgba(242,234,216,.14); --line-strong: rgba(242,234,216,.32);
   --shadow: 0 10px 24px rgba(0,0,0,.5);
   --page: 1320px;
@@ -40,7 +43,7 @@ a { color: inherit; }
 .topnav a[aria-current="page"] { opacity: 1; color: var(--ink); background: var(--gold); }
 
 /* ---------- header ---------- */
-.hero { max-width: var(--page); margin: 0 auto; padding: calc(84px + var(--top-inset)) 20px 22px; display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: flex-end; justify-content: space-between; position: relative; }
+.hero { max-width: var(--page); margin: 0 auto; padding: calc(66px + var(--top-inset)) 20px 22px; display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: flex-end; justify-content: space-between; position: relative; }
 .hero::before { content: ""; position: absolute; top: 0; bottom: -80px; left: 50%; width: 100vw; transform: translateX(-50%); z-index: -1; background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.45) 60%, transparent); pointer-events: none; }
 .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .hero h1 { font: 600 clamp(40px, 6vw, 68px)/0.95 'Fraunces', serif; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
@@ -106,20 +109,19 @@ select.sort { background: var(--surface); border: 1px solid var(--line-strong); 
 
 /* ---------- the bookcase ---------- */
 .bookcase { position: relative; padding: 22px 22px 0; border-radius: 6px;
-  background: linear-gradient(90deg, #4a2f19, #6b4425 3%, #5a3820 50%, #6b4425 97%, #4a2f19);
-  box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 2px 0 rgba(255,220,170,.15); }
-.bookcase::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; border-radius: 6px 6px 0 0; background: linear-gradient(#7a4f2c, #5a3820); box-shadow: inset 0 2px 0 rgba(255,220,170,.25); }
-.bay { position: relative; display: flex; align-items: flex-end; gap: 2px; padding: 26px 14px 0; height: var(--bay);
+  /* dark wood down the two sides; open at the back, so the page's pinstripes show through as in the grid */
   background:
-    radial-gradient(ellipse at 50% -10%, rgba(255,214,150,.22), transparent 60%),
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.15) 30%, rgba(0,0,0,.25)),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 1px, transparent 1px 7px),
-    linear-gradient(90deg, #2a1a0e, #3a2414 50%, #2a1a0e);
+    linear-gradient(90deg, #170f08, #2a1b0f 40%, #1c120a) left / 22px 100% no-repeat,
+    linear-gradient(90deg, #1c120a, #2a1b0f 60%, #170f08) right / 22px 100% no-repeat;
+  box-shadow: 0 30px 60px rgba(0,0,0,.6); }
+.bookcase::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; border-radius: 6px 6px 0 0; background: linear-gradient(#33220f, #22160c); box-shadow: inset 0 2px 0 rgba(255,220,170,.1); }
+.bay { position: relative; display: flex; align-items: flex-end; gap: 2px; padding: 26px 14px 0; height: var(--bay);
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,0) 30%);
   box-shadow: inset 0 14px 18px -10px rgba(0,0,0,.8), inset 10px 0 14px -10px rgba(0,0,0,.7), inset -10px 0 14px -10px rgba(0,0,0,.7); }
-.board { position: relative; height: 22px; margin: 0 -22px; z-index: 3; background: linear-gradient(#8a5a31, #6b4425 40%, #4f3119); box-shadow: 0 8px 14px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,220,170,.35); }
+.board { position: relative; height: 22px; margin: 0 -22px; z-index: 3; background: linear-gradient(#3a2713, #2a1b0e 40%, #1a1009); box-shadow: 0 8px 14px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,220,170,.14); }
 .plates { position: absolute; inset: 0 22px; }
-.plate { position: absolute; top: 4px; padding: 2px 8px; border-radius: 2px; white-space: nowrap; background: linear-gradient(#e7c873, #b58a2e); color: #3a2608; font: 600 10px/12px 'Space Grotesk', sans-serif; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 1px 2px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.5); }
-.plate::before, .plate::after { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: #6b4a12; vertical-align: middle; margin: 0 5px 2px 0; }
+.plate { position: absolute; top: 4px; padding: 2px 8px; border-radius: 2px; white-space: nowrap; background: linear-gradient(#8db8ff, #3a74d9); color: #071a3d; font: 600 10px/12px 'Space Grotesk', sans-serif; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 1px 2px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.5); }
+.plate::before, .plate::after { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: #0f2f6e; vertical-align: middle; margin: 0 5px 2px 0; }
 .plate::after { margin: 0 0 2px 5px; }
 
 .item { position: relative; flex: none; border: 0; padding: 0; background: none; cursor: pointer; transform-origin: 50% 100%; transition: transform .28s cubic-bezier(.3,1.4,.5,1), filter .2s; }
@@ -168,7 +170,7 @@ select.sort { background: var(--surface); border: 1px solid var(--line-strong); 
 .lyear, .lregion { opacity: 0.65; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
 .kc { display: inline-block; font: 600 0.66rem/1.4 'Space Grotesk', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.12rem 0.5rem; border-radius: 999px; border: 1px solid var(--line-strong); font-style: normal; white-space: nowrap; }
 .lcon .kc { color: color-mix(in srgb, var(--fc) 70%, #fff); border-color: color-mix(in srgb, var(--fc) 60%, transparent); }
-.ltitle .kc { color: var(--gold); border-color: rgba(201,154,46,.55); }
+.ltitle .kc { color: var(--gold); border-color: rgba(77,141,255,.55); }
 .ltitle .kc.plat-tag { color: #d9dde2; border-color: rgba(217,221,226,.5); }
 .ltitle { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: 6px; }
 .ltitle b, .ltitle small { flex-basis: 100%; }
@@ -207,7 +209,7 @@ select.sort { background: var(--surface); border: 1px solid var(--line-strong); 
 .rgrp .ghead { margin: 0; }
 /* the row runs to the edges of the screen, and stands on a strip of shelf */
 .rtrack { display: flex; align-items: flex-end; gap: 5px; overflow-x: auto; overflow-y: hidden; overscroll-behavior: contain; touch-action: pan-x pan-y; scroll-snap-type: x proximity; scroll-padding: 0 20px;
-  margin: 0 -20px; padding: 18px 20px 0; scrollbar-width: none; border-bottom: 12px solid; border-image: linear-gradient(#8a5a31, #6b4425 40%, #4f3119) 1; }
+  margin: 0 -20px; padding: 18px 20px 0; scrollbar-width: none; border-bottom: 12px solid; border-image: linear-gradient(#3a2713, #2a1b0e 40%, #1a1009) 1; }
 .rtrack::-webkit-scrollbar { display: none; }
 .rtrack .item { flex: none; border: 0; padding: 0; background: none; cursor: pointer; scroll-snap-align: start; }
 .rtrack .item.face, .rtrack .item.loose { margin: 0 8px; }

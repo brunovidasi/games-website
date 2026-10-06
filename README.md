@@ -1,6 +1,6 @@
 # Bruno's Games
 
-The game collection site: a wooden bookcase against a black, finely pinstriped background, with Fraunces, Space Grotesk and gold as on the record site (`brunovida.si/music`). The two are separate sites.
+The game collection site: black, finely pinstriped pages with a blue accent, and a dark wooden bookcase open at the back, so the pinstripes show behind the games as they do in the grid. The fonts, Fraunces and Space Grotesk, are the record site's (`brunovida.si/music`). The two are separate sites.
 
 - **The shelf** (`index.html`): every game on a wooden bookcase, grouped by console, in that console's real case at its real size. Loose cartridges stand on their own. The console filter at the top shows a drawing of each console.
 - **The grid**: every game face out, standing on one line at its real size, with its name under it. Going between *Shelf* and *Grid* carries every case on screen across, as the record site does between its floor and its grid: each case comes off the shelf and turns from its spine to its cover on the way, and turns back to its spine on the way home.
