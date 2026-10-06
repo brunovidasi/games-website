@@ -200,8 +200,10 @@
 /* square corners in 3D, so the front, back and spine meet the edges cleanly */
 .bx .cv, .bx .bk, .bx .sp, .bx .leaf .inner { border-radius: 0; }
 .bx .edge { width: 100%; height: 100%; background: var(--pl); }
-.bx.kind-keep .f-right .edge { background: linear-gradient(90deg, var(--pl) 0 12%, #f2efe8 12% 88%, var(--pl) 88%), var(--pl); }
-.bx.kind-keep .f-right .edge::after { content: ""; display: block; height: 100%; background: repeating-linear-gradient(90deg, transparent 0 2px, rgba(0,0,0,.08) 2px 3px); }
+/* the side a keep case opens on: all plastic, the front and back covers' rounded lips meeting at the seam in the middle */
+.bx.kind-keep .f-right .edge { background:
+  linear-gradient(90deg, rgba(0,0,0,.35), rgba(255,255,255,.14) 18%, rgba(0,0,0,.08) 40%, rgba(0,0,0,.55) 48% 52%, rgba(0,0,0,.08) 60%, rgba(255,255,255,.12) 82%, rgba(0,0,0,.35)),
+  var(--pl); }
 .bx.kind-keep .f-top .edge, .bx.kind-keep .f-bot .edge { filter: brightness(.85); }
 .bx.kind-jewel .edge { background: linear-gradient(90deg, rgba(220,228,236,.85), rgba(170,180,190,.85)); }
 .bx.k-ps1 .edge { background: linear-gradient(90deg, #2a2b2f, #0d0d0f); }

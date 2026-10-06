@@ -338,13 +338,11 @@
       ${mould(66, 37, 2, 'THE GAME PAK. CLEAN IT REGULARLY.', dark, 'textLength="52" lengthAdjust="spacingAndGlyphs"')}
       ${mould(66, 46, 2.2, 'MADE IN JAPAN', dark)}
       ${[10.5, 121.5].map(x => `<circle cx="${x}" cy="80" r="1.4" fill="#000" fill-opacity=".35"/>`).join('')}`,
-    // the Nintendo logo and MADE IN JAPAN moulded in, the screw in the middle, the contacts showing at the bottom
+    // the Nintendo logo and MADE IN JAPAN moulded in, the screw in the middle (the contacts show only in the bottom edge)
     gb: (T, dark) => `
       ${ovalLogo(28.5, 14, 22, dark)}
       ${mould(28.5, 22, 2.2, 'MADE IN JAPAN', dark)}
-      <circle cx="28.5" cy="32" r="2.6" fill="#000" fill-opacity="${dark ? 0.5 : 0.22}"/><circle cx="28.5" cy="32" r="1.6" fill="#7d7e83"/><circle cx="28.5" cy="32" r=".7" fill="#3a3b40"/>
-      <rect x="4" y="58.8" width="49" height="6.2" fill="#163a26"/>
-      ${Array.from({ length: 32 }, (_, k) => `<rect x="${(4.6 + k * 1.5).toFixed(2)}" y="59.6" width=".95" height="5.4" fill="#d1aa58"/>`).join('')}`,
+      <circle cx="28.5" cy="32" r="2.6" fill="#000" fill-opacity="${dark ? 0.5 : 0.22}"/><circle cx="28.5" cy="32" r="1.6" fill="#7d7e83"/><circle cx="28.5" cy="32" r=".7" fill="#3a3b40"/>`,
     // the raised panel with the logo and MODEL NO. AGB-002, the screw at the top, the dimple under the panel
     gba: (T, dark) => `
       <circle cx="28.5" cy="2.6" r="1.3" fill="#000" fill-opacity=".45"/><circle cx="28.5" cy="2.6" r=".8" fill="#7d7e83"/>
