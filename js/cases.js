@@ -174,18 +174,29 @@
     <path d="M24.8 56.8H33.3L29 60.6Z" fill="#000" fill-opacity="${dark ? 0.35 : 0.1}"/>
     <path d="M33.3 56.8L29 60.6L24.8 56.8" stroke="#fff" stroke-opacity="${dark ? 0.08 : 0.35}" stroke-width=".45" fill="none" transform="translate(0 .35)"/>
     <rect y="62" width="57" height="3" rx="1.5" fill="#000" fill-opacity=".08"/>`;
-  // a DS or 3DS game card: a touch taller than wide, the bottom left corner cut off, the label in a
-  // frame round its edge: white, with the console's logo across the top and a white strip at the
-  // bottom. A 3DS card is light grey and has the little tab on its top edge that stops it going into a DS
-  const dsBody = (f, tab, dark) => `${tab ? `<path d="M24.5 1.4V.4Q24.5 0 24.9 0H29.6Q30 0 30 .4V1.4Z" fill="${f}"/><path d="M24.9 .3H29.6" stroke="#fff" stroke-opacity=".7" stroke-width=".3"/>` : ''}<g${tab ? ' transform="translate(0 1.2)"' : ''}>
+  // a DS game card: a touch taller than wide, the bottom left corner cut off, the label in a frame
+  // round its edge: white, with the logo across the top and a white strip at the bottom
+  const dsBody = f => `
     <path d="M1.6 0H31.4Q33 0 33 1.6V33.4Q33 35 31.4 35H3.2L0 31.8V1.6Q0 0 1.6 0Z" fill="${f}"/>
-    <path d="M1.6 .35H31.4" stroke="#fff" stroke-opacity="${dark ? 0.16 : 0.7}" stroke-width=".35"/>
-    <path d="M2.8 1.6H30.2Q31.4 1.6 31.4 2.8V32.2Q31.4 33.4 30.2 33.4H5.5L1.6 29.5V2.8Q1.6 1.6 2.8 1.6Z" fill="#000" fill-opacity="${dark ? 0.35 : 0.1}"/>
-    <path d="M31.1 2.4V32.6M5.6 33.1H30.4" stroke="#fff" stroke-opacity="${dark ? 0.12 : 0.6}" stroke-width=".3" fill="none"/>
+    <path d="M1.6 .35H31.4" stroke="#fff" stroke-opacity=".16" stroke-width=".35"/>
+    <path d="M2.8 1.6H30.2Q31.4 1.6 31.4 2.8V32.2Q31.4 33.4 30.2 33.4H5.5L1.6 29.5V2.8Q1.6 1.6 2.8 1.6Z" fill="#000" fill-opacity=".35"/>
+    <path d="M31.1 2.4V32.6M5.6 33.1H30.4" stroke="#fff" stroke-opacity=".12" stroke-width=".3" fill="none"/>
     <path d="M3.3 2.2H29.7Q30.4 2.2 30.4 2.9V31.3Q30.4 32 29.7 32H5.6L2.6 29V2.9Q2.6 2.2 3.3 2.2Z" fill="#f6f7f8"/>
-    <text x="16.6" y="6.15" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#2a2a2e"><tspan font-size="1.25" letter-spacing=".12">NINTENDO</tspan><tspan font-size="3.2" font-weight="900" dx=".2">${tab ? '<tspan fill="#d0021b">3</tspan>DS' : 'DS'}</tspan></text>
+    <text x="16.6" y="6.15" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#2a2a2e"><tspan font-size="1.25" letter-spacing=".12">NINTENDO</tspan><tspan font-size="3.2" font-weight="900" dx=".2">DS</tspan></text>
     <path d="M2.6 7.3H30.4M2.6 28.8H30.4" stroke="#000" stroke-opacity=".12" stroke-width=".2"/>
-    <rect x="21.5" y="30" width="7" height=".5" fill="#000" fill-opacity=".18"/></g>`;
+    <rect x="21.5" y="30" width="7" height=".5" fill="#000" fill-opacity=".18"/>`;
+  // a 3DS game card: light grey, the same size as a DS card but with the tab sticking out of its right
+  // side at the top, flush with the top edge and sloping back in below (it stops the card going into a
+  // DS), and the label in a frame with rounded corners: white, the logo across the top, a white strip below
+  const threeDsBody = f => `
+    <path d="M1.4 0H33.6Q34.8 0 34.8 1.2V5.6L33 7.9V33.6Q33 35 31.6 35H1.8L0 33.2V1.4Q0 0 1.4 0Z" fill="${f}"/>
+    <path d="M1.4 .35H33.5M34.45 1.2V5.5" stroke="#fff" stroke-opacity=".75" stroke-width=".35" fill="none"/>
+    <path d="M33 8V33.6Q33 34.7 31.6 34.7H1.9" stroke="#000" stroke-opacity=".14" stroke-width=".35" fill="none"/>
+    <path d="M3.3 1.5H29.7Q30.8 1.5 30.8 2.6V32Q30.8 33.2 29.6 33.2H3.6Q2.3 33.2 2.3 31.9V2.5Q2.3 1.5 3.3 1.5Z" fill="#000" fill-opacity=".1"/>
+    <path d="M30.5 2.4V32.2Q30.5 32.9 29.6 32.9H3.6" stroke="#fff" stroke-opacity=".7" stroke-width=".3" fill="none"/>
+    <path d="M3.6 2.2H29.4Q30 2.2 30 2.8V31.4Q30 32.4 29 32.4H4.4Q3 32.4 3 31V2.8Q3 2.2 3.6 2.2Z" fill="#f7f8f9"/>
+    <text x="16.9" y="6.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#2a2a2e"><tspan font-size="1.65" letter-spacing=".16" fill="#4a4b50">NINTENDO</tspan><tspan font-size="4.2" font-weight="900" dx=".25" letter-spacing="-.1"><tspan fill="#fff" stroke="#d0021b" stroke-width=".22">3</tspan>DS</tspan><tspan font-size=".6" dx=".1">.</tspan></text>
+    <path d="M3 7.3H30M3 27.7H30" stroke="#000" stroke-opacity=".12" stroke-width=".2"/>`;
   // the region at the end of the code printed under a Switch card's label
   const cardRegion = g => ({ AUS: 'AUS', USA: 'USA', 'NTSC-U': 'USA', JPN: 'JPN', 'NTSC-J': 'JPN' }[g.region] || 'EUR');
   // a Switch game card: rounded all round, the little tab at the top, the label with the console's red
@@ -268,10 +279,10 @@
       <path d="M26.6 33L28.5 34.2L30.4 33" stroke="#000" stroke-opacity=".5" stroke-width=".4" fill="none"/>
       <rect x="3" y="33.6" width="51" height="1.4" fill="#000" fill-opacity=".1"/>` },
     ds:      { w: 33,   h: 35, label: [2.6, 7.4, 27.8, 21.4], pos: 'center 30%', crop: [0.13, 0], c: '#38383c', dp: 3.8,
-      pts: [[0, 1], [1, 0], [32, 0], [33, 1], [33, 34], [32, 35], [3.2, 35], [0, 31.8]], pins: [3.5, 1.4, 26, 4.2, 17], body: () => dsBody('#38383c', false, true) },
-    // 3DS cards have the little tab on top that stops them going into a DS
-    '3ds':   { w: 33,   h: 36.2, label: [2.6, 8.6, 27.8, 21.4], pos: 'center 30%', crop: [0, 0.11], c: '#d9dadd', dp: 3.8,
-      pts: [[0, 2.2], [1, 1.2], [24.5, 1.2], [24.5, 0], [30, 0], [30, 1.2], [32, 1.2], [33, 2.2], [33, 35.2], [32, 36.2], [3.2, 36.2], [0, 33]], pins: [3.5, 2.6, 26, 4.2, 17], body: () => dsBody('#d9dadd', true, false) },
+      pts: [[0, 1], [1, 0], [32, 0], [33, 1], [33, 34], [32, 35], [3.2, 35], [0, 31.8]], pins: [3.5, 1.4, 26, 4.2, 17], body: () => dsBody('#38383c') },
+    // 3DS cards have the little tab at the top of their right side that stops them going into a DS
+    '3ds':   { w: 34.8, h: 35, label: [3, 7.3, 27, 20.4], pos: 'center 30%', crop: [0, 0.11], c: '#d9dadd', dp: 3.8,
+      pts: [[0, 1.4], [1.4, 0], [33.6, 0], [34.8, 1.2], [34.8, 5.6], [33, 7.9], [33, 33.6], [31.6, 35], [1.8, 35], [0, 33.2]], pins: [3.5, 1.4, 26, 4.2, 17], body: () => threeDsBody('#d9dadd') },
     // the art shows in the white part of the label, under the red band (the box's own band is cut off)
     switch:  { w: 21, h: 31, label: [1.4, 8.5, 18.2, 16], pos: 'center 25%', c: '#48484b', dp: 3.3, pts: CARD_PTS, pins: [3, 1.6, 15, 4, 15], body: cardBody('#48484b', '#e4262e', false) },
     // Switch 2 game cards are red
