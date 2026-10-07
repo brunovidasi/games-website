@@ -4,6 +4,7 @@
 //   node fetch-covers.mjs --only ps2-final-fantasy-x            (one game, even if it has one)
 //   node fetch-covers.mjs --dry                                 (report matches, download nothing)
 //   node fetch-covers.mjs --recheck                             (swap covers for a better match, say after a region changed)
+//   node fetch-covers.mjs --upgrade-wiki                        (swap Wikipedia pictures on the consoles below for real box scans)
 //
 // Sources (free, no keys; the first three on GitHub):
 //   libretro-thumbnails — front box scans named after the release, region by region
@@ -11,13 +12,15 @@
 //   xlenore/ps2-covers — PS2 covers named by disc serial (SLES-52047…), used when coverMatch is a serial
 //   The Sims Wiki, then Wikipedia — PC games: the page image of the game's page
 //   libretro-thumbnails DOS — PC games from the DOS days, when the wikis have nothing
-//   Wikipedia — PS4, PS5, Xbox One, Switch, Switch 2 and the Xbox 360 games libretro lacks
+//   TheGamesDB — real box scans, region by region, for PS4, PS5, Xbox One, Xbox 360, Switch, Switch 2 and PC
+//   Wikipedia — what TheGamesDB lacks on those consoles (often key art, not the box)
 //
 // A game can steer the match with "coverMatch": the exact libretro file name without
 // ".png", a PS3 serial such as "BLES00229", a PS2 serial such as "SLES-52047", or for a PC game
 // the wiki page to take the box from, such as "SimCity (2013 video game)" (the Wikipedia page, too, for
 // the consoles that only Wikipedia covers). "wikiCover": false stops a console game taking Wikipedia's box. Covers you add yourself (cover.source
 // "manual") are never replaced: the script only measures their shape and colours if they are missing.
+// "tgdbId": 39758 takes that TheGamesDB entry's box, when the search picks the wrong one.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -31,6 +34,7 @@ const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const ONLY = args.includes('--only') ? args[args.indexOf('--only') + 1] : null;
 const RECHECK = args.includes('--recheck');
+const UPGRADE_WIKI = args.includes('--upgrade-wiki');
 const HEIGHT = 520;
 
 const LIBRETRO = {
@@ -224,6 +228,42 @@ async function findConsoleWiki(g) {
   return null;
 }
 
+/* ---------- TheGamesDB ----------
+   Its search page lists each release with its region and a front box scan: the scan of the
+   copy's own region is taken (a PAL copy a British or Australian box, in English), else another. */
+const TGDB_PLATFORM = { ps4: 4919, ps5: 4980, xone: 4920, x360: 15, switch: 4971, switch2: 5021, pc: 1 };
+const tgdbBox = id => `https://cdn.thegamesdb.net/images/original/boxart/front/${id}-1.jpg`;
+const tgdbRank = (region, std) => {
+  const pal = /\bPAL\b/.test(region), ntsc = /\bNTSC/.test(region);
+  const english = !region || /United Kingdom|Australia|United States|Canada|^\s*(PAL|NTSC(-U)?)\s*$/.test(region);
+  // (an English box from elsewhere before a PAL one in another language)
+  if (std === 'PAL') return pal && english ? 0 : !region ? 1.5 : english ? 2 : pal ? 2.2 : 3;
+  if (std === 'NTSC-U') return ntsc && english ? 0 : !region ? 1 : ntsc ? 2 : 3;
+  return /Japan|NTSC-J/.test(region) ? 0 : 1;
+};
+async function findTgdb(g, sys) {
+  if (!TGDB_PLATFORM[sys]) return null;
+  if (g.tgdbId) return { url: tgdbBox(g.tgdbId), source: 'thegamesdb.net', ref: `TheGamesDB #${g.tgdbId}` };
+  const r = await fetch(`https://thegamesdb.net/search.php?name=${encodeURIComponent(g.title)}&platform_id%5B%5D=${TGDB_PLATFORM[sys]}`, { headers: { 'User-Agent': UA } });
+  if (!r.ok) return null;
+  const html = await r.text();
+  const want = norm(g.title), std = STD[g.region] || 'PAL';
+  const hits = [];
+  // one card per release; a card without a box scan is passed over
+  for (const card of html.split('<div class="col-6 col-md-2">').slice(1)) {
+    const m = card.match(/game\.php\?id=(\d+)[\s\S]*?boxart\/front\/\d+-1\.jpg[\s\S]*?<p>([\s\S]*?)<\/p>([\s\S]*?)<p class="text-muted">/);
+    if (!m) continue;
+    const title = m[2].replace(/&amp;/g, '&').replace(/&#0?39;|&apos;/g, "'").trim();
+    const edition = /\[[^\]]*\]/.test(title);
+    if (norm(title.replace(/\[[^\]]*\]/g, '')) !== want) continue;
+    const region = m[3].replace(/<[^>]+>/g, ' ').replace(/\d{4}-\d{2}-\d{2}/, '').replace(/\s+/g, ' ').trim();
+    hits.push({ id: m[1], title, region, rank: tgdbRank(region, std) + (edition && !g.edition ? 3 : 0) });
+  }
+  if (!hits.length) return null;
+  const best = hits.sort((a, b) => a.rank - b.rank)[0];
+  return { url: tgdbBox(best.id), source: 'thegamesdb.net', ref: `${best.title} · ${best.region || 'no region'} · TheGamesDB #${best.id}`, offRegion: best.rank >= 2 };
+}
+
 async function findWiki(g) {
   const page = g.coverMatch || g.title;
   for (const find of [findSimsWiki, findWikipedia]) {
@@ -295,8 +335,9 @@ const report = { found: [], offRegion: [], missing: [], skipped: 0 };
 for (const g of db.games) {
   if (g.cover && g.cover.source === 'manual') { await measure(g); report.skipped++; continue; }
   const had = g.cover && g.cover.file ? g.cover : null;
-  if (ONLY ? g.id !== ONLY : (had && !RECHECK)) { report.skipped++; continue; }
   const sys = g.caseStyle || g.console;
+  const upgrade = UPGRADE_WIKI && had && had.source === 'en.wikipedia.org' && WIKIPEDIA_ONLY.includes(sys);
+  if (ONLY ? g.id !== ONLY : (had && !RECHECK && !upgrade)) { report.skipped++; continue; }
   let hit = null, url = null, source = null;
   if (sys === 'ps2' && /^S[CL][EUP][SMD]-\d{5}$/.test(g.coverMatch || '')) {
     hit = { ref: g.coverMatch };
@@ -315,17 +356,26 @@ for (const g of db.games) {
     hit = findLibretro(g, sys === 'pc' ? 'dos' : sys);
     if (hit) { source = 'libretro-thumbnails'; url = `https://raw.githubusercontent.com/libretro-thumbnails/${hit.repo}/HEAD/Named_Boxarts/${encodeURIComponent(hit.file)}`; }
   }
+  if (!hit && (WIKIPEDIA_ONLY.includes(sys) || sys === 'pc')) {
+    try { hit = await findTgdb(g, sys); } catch (e) { /* TheGamesDB can't be reached: try Wikipedia */ }
+    if (hit) ({ source, url } = hit);
+  }
+  if (!hit && upgrade) { report.skipped++; continue; }
   if (!hit && WIKIPEDIA_ONLY.includes(sys)) {
-    hit = await findConsoleWiki(g);
+    try { hit = await findConsoleWiki(g); } catch (e) { /* Wikipedia can't be reached */ }
     if (hit) ({ source, url } = hit);
   }
   if (!hit) { if (had) report.skipped++; else report.missing.push(`${g.id}  (${g.title})`); continue; }
   // a scan already there stays unless the new one suits the copy's region better
-  if (had && !ONLY && (hit.ref === had.ref || (had.source === source && source === 'libretro-thumbnails' && regionRank(parseLibretro(had.ref).tags, g.region) <= regionRank(parseLibretro(hit.ref).tags, g.region)))) { report.skipped++; continue; }
+  if (had && !ONLY && !upgrade && (hit.ref === had.ref || (had.source === source && source === 'libretro-thumbnails' && regionRank(parseLibretro(had.ref).tags, g.region) <= regionRank(parseLibretro(hit.ref).tags, g.region)))) { report.skipped++; continue; }
   (hit.offRegion ? report.offRegion : report.found).push(`${g.id}  ←  ${hit.ref}${had ? `  (was ${had.ref})` : ''}`);
   if (DRY) continue;
   try {
-    const out = await save(await download(url), g);
+    const buf = await download(url);
+    // a box is taller than it is wide: a wide picture is a photo of the box, or of something else
+    const meta = await sharp(buf).metadata();
+    if (meta.width / meta.height > 0.95) { report.missing.push(`${g.id}  (only a wide picture: ${hit.ref})`); continue; }
+    const out = await save(buf, g);
     g.cover = { file: out.rel, ratio: out.ratio, source, ref: hit.ref };
     // Wikipedia's PS5 and Switch 2 pictures are the game's key art, without the console's band: the site prints the band over it
     if (source === 'en.wikipedia.org' && PLAIN_ART.includes(sys)) g.cover.plain = true;

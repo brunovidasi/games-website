@@ -56,8 +56,8 @@
   const MENU = {
     console: { key: GROUP, dir: 'asc', label: CFG ? `By ${CFG.groupNoun}` : 'By console' },
     title: { key: 'title', dir: 'asc', label: 'Title A–Z' },
-    newest: { key: 'released', dir: 'desc', label: 'Newest release first' },
-    oldest: { key: 'released', dir: 'asc', label: 'Oldest release first' },
+    newest: { key: 'released', dir: 'desc', label: 'Newest release first', short: 'Newest first' },
+    oldest: { key: 'released', dir: 'asc', label: 'Oldest release first', short: 'Oldest first' },
   };
   const validSort = s => s && SORT_BY[s.key] && (s.key !== 'group' || CFG) && (s.dir === 'asc' || s.dir === 'desc') ? { key: s.key, dir: s.dir } : { key: GROUP, dir: 'asc' };
   function sortList(list, { key, dir }) {
@@ -72,7 +72,7 @@
     });
   }
 
-  const VIEWS = ['shelf', 'rows', 'grid', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
+  const VIEWS = ['shelf', 'rows', 'grid', 'showcase', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
   const flat = v => v === 'list' || v === 'checklist'; // views with no cases to carry across
   const state = {
     view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
@@ -99,11 +99,7 @@
     const years = ALL.map(g => g.released).filter(Boolean).map(r => +r.slice(0, 4));
     $('#shell').innerHTML = `
       ${CFG ? CFG.hero(ALL) : `<header class="hero">
-        <div>
-          <div class="eyebrow">Bruno's Games</div>
-          <h1>The Game Shelf</h1>
-          <p>Every game on my shelf, from the Super Nintendo to the Switch 2. Pick up any case to turn it round and open it.</p>
-        </div>
+        <h1>The Game Shelf</h1>
         <div class="stats">
           <div><b>${ALL.length}</b><span>Games</span></div>
           <div><b>${consoles.length}</b><span>Consoles</span></div>
@@ -111,8 +107,7 @@
           <div><b>${Math.max(...years)}</b><span>Newest</span></div>
         </div>
       </header>`}
-      <div class="filters"><div class="filters-in">
-        <div class="consoles" role="toolbar" aria-label="Filter by console">
+      <div class="consoles-bar"><div class="consoles" role="toolbar" aria-label="Filter by console">
           <button class="chip all" data-all><span class="lab"><b>All</b><i data-n="all"></i></span></button>
           <div class="cscroll">${FAMILIES.filter(f => consoles.some(c => c.fam === f.id)).map(f => `<div class="fam" style="--fc:${f.color}">
             <button class="famname" data-fam="${f.id}">${f.name}</button>
@@ -121,23 +116,35 @@
                 ${CONSOLE_ART[c.id] || ''}
                 <span class="lab"><b>${c.short}</b><i data-n="${c.id}"></i></span>
               </button>`).join('')}</div></div>`).join('')}</div>
-        </div>
-        <div class="subbar">
-          <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="${innerWidth < 640 ? 'Search…' : 'Search title, publisher, year…'}" aria-label="Search games"></label>
+      </div></div>
+      <div class="filters"><div class="filters-in">
+          <div class="search" id="searchBox">
+            <button type="button" class="search-open" aria-label="Search" aria-expanded="false" aria-controls="q">
+              <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
+            </button>
+            <input id="q" type="search" placeholder="Search title, publisher, year…" aria-label="Search games" autocomplete="off">
+            <button type="button" class="search-close" aria-label="Clear search">✕</button>
+          </div>
           <select class="sort" id="sort" aria-label="Sort">
-            ${Object.entries(MENU).map(([k, m]) => `<option value="${k}">${m.label}</option>`).join('')}
-            <option value="custom" hidden></option>
+            ${Object.entries(MENU).map(([k, m]) => `<option value="${k}"${m.short ? ` data-short="${m.short}"` : ''}>${m.label}</option>`).join('')}
+            <option value="custom" disabled hidden></option>
           </select>
           <div class="seg" id="view" role="group" aria-label="View">
             <button type="button" data-view="shelf">Shelf</button>
             <button type="button" data-view="rows">Rows</button>
             <button type="button" data-view="grid">Grid</button>
+            <button type="button" data-view="showcase">Showcase</button>
             <button type="button" data-view="list">List</button>
             ${VIEWS.includes('checklist') ? '<button type="button" data-view="checklist">Checklist</button>' : ''}
           </div>
-          <span class="count" id="count"></span>
-        </div>
       </div></div>`;
+    // how many games are showing: on the line under the bar, at its right, beside the pills
+    const count = document.createElement('span');
+    count.className = 'count';
+    count.id = 'count';
+    ($('.tools') || $('#shell')).append(count);
+    dropdown($('#sort'));
+    searchBox();
 
     $$('.chip[data-c]').forEach(b => b.addEventListener('click', e => {
       const id = b.dataset.c;
@@ -159,6 +166,22 @@
       cs.classList.toggle('more-r', cs.scrollLeft + cs.clientWidth < cs.scrollWidth - 2);
     };
     cs.addEventListener('scroll', edges, { passive: true });
+    // with a mouse the consoles can be dragged sideways too; a drag doesn't pick the console it ends on
+    let csDrag = null, csDragged = 0;
+    cs.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 0) csDrag = { x: e.clientX, left: cs.scrollLeft, moved: false }; });
+    addEventListener('pointermove', e => {
+      if (!csDrag) return;
+      const dx = e.clientX - csDrag.x;
+      if (!csDrag.moved && Math.abs(dx) > 4) { csDrag.moved = true; cs.classList.add('dragging'); }
+      if (csDrag.moved) cs.scrollLeft = csDrag.left - dx;
+    });
+    addEventListener('pointerup', () => {
+      if (!csDrag) return;
+      if (csDrag.moved) csDragged = performance.now();
+      csDrag = null;
+      cs.classList.remove('dragging');
+    });
+    cs.addEventListener('click', e => { if (performance.now() - csDragged < 100) { e.preventDefault(); e.stopImmediatePropagation(); } }, true);
     addEventListener('resize', edges);
     edges();
     let t;
@@ -176,6 +199,27 @@
     }));
     $$('#mode button').forEach(b => b.addEventListener('click', () => { state.mode = b.dataset.m; store.set('mode', state.mode); changed(); }));
     $$('#covers button').forEach(b => b.addEventListener('click', () => { state.covers = b.dataset.cv; changed(); }));
+  }
+
+  /* The search: a field in the bar; on a phone a magnifying glass that opens the field across the bar,
+     as on the record site. .searching on the bar means it is open; .has-query on the box means something is typed. */
+  function searchBox() {
+    const box = $('#searchBox'), input = $('#q'), bar = box.closest('.filters'), opener = $('.search-open', box);
+    const typed = () => box.classList.toggle('has-query', input.value.trim() !== '');
+    const setOpen = on => { bar.classList.toggle('searching', on); opener.setAttribute('aria-expanded', String(on)); };
+    const clear = () => {
+      if (input.value !== '') { input.value = ''; input.dispatchEvent(new Event('input', { bubbles: true })); }
+      typed();
+    };
+    opener.addEventListener('click', () => { setOpen(true); input.focus(); });
+    $('.search-close', box).addEventListener('click', () => { clear(); input.blur(); setOpen(false); });
+    input.addEventListener('input', typed);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { clear(); input.blur(); setOpen(false); }
+      else if (e.key === 'Enter') input.blur(); // puts a phone's keyboard away, keeps the search
+    });
+    // left empty it folds back into a glass; with a search typed it stays open
+    input.addEventListener('blur', () => { if (input.value.trim() === '') setOpen(false); });
   }
 
   function setSort(sort) {
@@ -212,6 +256,7 @@
     custom.hidden = !!choice;
     custom.textContent = `Sorted by ${SORT_BY[state.sort.key].label} ${state.sort.dir === 'asc' ? '↑' : '↓'}`;
     $('#sort').value = choice || 'custom';
+    dropdownSync($('#sort'));
     $('#count').textContent = `${games.length} of ${ALL.length} games`;
   }
 
@@ -252,7 +297,14 @@
       return;
     }
     const item = e.target.closest('[data-id]');
-    if (item) Detail.open(byId.get(item.dataset.id), faceOf(item));
+    if (!item) return;
+    // in the showcase a game to the side comes to the middle first, and a drag isn't a click
+    if (state.view === 'showcase') {
+      if (SC.dragged) return;
+      const i = SC.items.findIndex(it => it.el === item);
+      if (i >= 0 && i !== Math.round(SC.cur)) { scGo(i); return; }
+    }
+    Detail.open(byId.get(item.dataset.id), faceOf(item));
   });
   host.addEventListener('keydown', e => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
@@ -277,17 +329,24 @@
     host.classList.toggle('gridview', state.view === 'grid');
     host.classList.toggle('listview', state.view === 'list');
     host.classList.toggle('rowsview', state.view === 'rows');
+    host.classList.toggle('showcaseview', state.view === 'showcase');
+    cancelAnimationFrame(SC.raf);
+    SC.raf = 0;
     if (state.view === 'checklist') { CFG.checklist($('#checklist'), ALL); Detail.rehome(); return; }
     if (!games.length) {
       host.innerHTML = `<div class="empty-msg"><b>Nothing on this shelf</b>No games match those filters. Try another console or clear the search.</div>`;
       return;
     }
-    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else if (state.view === 'rows') renderRows(animate); else renderShelf(animate);
+    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else if (state.view === 'rows') renderRows(animate); else if (state.view === 'showcase') renderShowcase(animate); else renderShelf(animate);
     Detail.rehome();
   }
 
   /* ---------- the bookcase ---------- */
-  const scale = () => innerWidth < 640 ? 0.78 : innerWidth < 1000 ? 0.95 : 1.12;
+  const scale = () => innerWidth < 640 ? 1 : innerWidth < 1000 ? 1.25 : 1.5;
+  // spines on the shelf are drawn wider than real ones, so their titles can be read
+  const spineK = () => innerWidth < 640 ? 1.55 : innerWidth < 1000 ? 1.45 : 1.45;
+  // a loose cartridge beside the cases: a big one (the SNES) at its real size, a small card larger so it can be seen
+  const cartK = g => Case.cartSize(g, 1)[0] > 100 ? 1 : 1.6;
   // a loose cartridge stands facing out, or, on a console whose cartridges stand sideways (the SNES), on its
   // side with its top label out like a book's spine, all but the one that faces out ("All covers" faces them all out)
   const looseKind = (g, lead) => CONSOLE_BY_ID[g.console].stack && state.mode !== 'covers' && !lead.has(g.id) ? 'stack' : 'loose';
@@ -316,47 +375,110 @@
     return out;
   }
 
+  // a number from a game's id, the same every time, so the shelf is messy the same way on every visit
+  const hash = str => { let h = 2166136261; for (const ch of str) h = Math.imul(h ^ ch.charCodeAt(0), 16777619); return h >>> 0; };
+
+  /* The last one or two games on a shelf (on about two shelves in three, which keep room for it, and on any
+     with room to spare), or before a bookend where the shelf has room, lean over onto the one before, as on a real shelf. A leaning game tips over on its bottom left corner until its top
+     rests against its neighbour: on its side, or on its top corner if the leaning one is the taller. A second
+     one leans the same way on the first. Returns each one that leans, with its angle and how far it stands
+     out from where it would stand upright. */
+  function leanOf(row, room, atEnd) {
+    const out = [];
+    // where a run of games ends: the end of the shelf first, then each bookend
+    const stops = [...(atEnd ? [row.length] : []), ...row.map((it, i) => it.end ? i : -1).filter(i => i > 0)];
+    for (const stop of stops) {
+      const tail = [];
+      for (let i = stop - 1; i >= 0 && (row[i].kind === 'spine' || row[i].kind === 'stack'); i--) tail.unshift(row[i]);
+      if (!tail.length) continue;
+      const h = hash(tail[tail.length - 1].g.id);
+      if (stop !== row.length && h % 2) continue;
+      for (let n = Math.min(tail.length, h % 3 === 0 ? 2 : 1); n >= 1; n--) {
+        const lean = tail.slice(-n), nb = row[stop - n - 1];
+        if (!nb || nb.end) continue;
+        let done = false;
+        for (let deg = 9 + (h >>> 3) % 7; deg >= 6 && !done; deg -= 2) {
+          const t = deg * Math.PI / 180, first = lean[0];
+          const off = first.bh * Math.cos(t) <= nb.bh ? first.bh * Math.sin(t) : nb.bh * Math.tan(t);
+          // each after the first stands against the one before it, at the same angle
+          const rest = lean.slice(0, -1).map(it => it.bw / Math.cos(t) - it.bw);
+          const need = off + rest.reduce((x, y) => x + y, 0) + 4;
+          if (need > room) continue;
+          room -= need;
+          lean.forEach((it, i) => out.push({ it, deg, off: i ? rest[i - 1] : off }));
+          done = true;
+        }
+        if (done) break;
+      }
+    }
+    return out;
+  }
+
   function renderShelf(animate) {
     host.innerHTML = '';
-    const s = scale();
+    const s = scale(), sk = spineK();
     const inner = host.clientWidth - (innerWidth < 820 ? 20 + 12 : 44 + 28);
     const lead = state.mode === 'mixed' ? leaders() : new Set();
     const kindOf = g => g.format === 'cartridge-only' ? looseKind(g, lead) : g.format === 'digital' ? 'spine' : (state.mode === 'covers' || lead.has(g.id)) ? 'face' : 'spine';
-    const tallest = Math.max(...games.map(g => { const k = kindOf(g); return k === 'loose' ? Case.cartSize(g, s * 1.6)[1] : k === 'stack' ? Case.topSize(g, s * 1.6, true)[1] : Case.layout(g, s).h; }));
-    host.style.setProperty('--bay', (tallest + 34) + 'px');
+    // a thin spine is drawn wider, up to as wide as a widened DVD case's; a thick one (a cardboard box) stays as it is
+    const widen = d => Math.max(d, Math.min(d * sk, 15 * s * sk));
+    // and so is a SNES cartridge standing on its side
+    const thick = g => widen(Case.topSize(g, s * cartK(g), true)[0]);
+    // how big it stands (bw × bh) and the room it takes on the shelf (w)
+    function sizeOf(g, kind) {
+      if (kind === 'loose') { const [cw, ch] = Case.cartSize(g, s * cartK(g)); return { bw: cw, bh: ch + 12, w: cw + 16 }; }
+      if (kind === 'stack') { const [tw, th] = Case.topSize(g, s * cartK(g), true, thick(g)); return { bw: tw, bh: th, w: tw + 2 }; }
+      const L = Case.layout(g, s);
+      return kind === 'face' ? { bw: L.w, bh: L.h, w: L.w + 12 } : { bw: widen(L.d), bh: L.h, w: widen(L.d) };
+    }
 
-    // left to right, a new shelf when one is full
-    const rows = [[]];
-    let x = 0, last = null;
+    // left to right, a new shelf when one is full (a shelf whose last games will lean keeps room for them)
+    const reserve = 190 * s * 0.2;
+    const shelfOf = g => ({ items: [], x: 0, lean: !g || hash(g.id) % 3 !== 0 });
+    const rows = [shelfOf(games[0])];
+    let last = null;
     const grouped = state.sort.key === GROUP;
     games.forEach(g => {
-      const kind = kindOf(g), L = Case.layout(g, s);
+      const kind = kindOf(g), size = sizeOf(g, kind);
       const newGroup = grouped && groupOf(g).key !== last;
-      const w = (kind === 'face' ? L.w + 12 : kind === 'loose' ? Case.cartSize(g, s * 1.6)[0] + 16 : kind === 'stack' ? Case.topSize(g, s * 1.6, true)[0] : L.d) + 2 + (newGroup && last ? 30 : 0);
-      if (x + w > inner && rows[rows.length - 1].length) { rows.push([]); x = 0; }
-      const row = rows[rows.length - 1];
-      if (newGroup && last && row.length) row.push({ end: true });
-      row.push({ g, kind, label: grouped && (newGroup || !row.some(r => r.g)) });
-      x += w;
+      const w = size.w + 2 + (newGroup && last ? 30 : 0);
+      let row = rows[rows.length - 1];
+      if (row.x + w > inner - (row.lean ? reserve : 0) && row.items.length) { row = shelfOf(g); rows.push(row); }
+      if (newGroup && last && row.items.length) row.items.push({ end: true });
+      row.items.push({ g, kind, ...size, label: grouped && (newGroup || !row.items.some(r => r.g)) });
+      row.x += w;
       last = groupOf(g).key;
     });
 
     let n = 0;
     const labels = [];
-    rows.forEach(row => {
+    rows.forEach(({ items, x, lean }) => {
       const shelf = document.createElement('div');
       const bay = document.createElement('div');
       bay.className = 'bay';
+      // each shelf only a little taller than the tallest game on it
+      bay.style.height = (Math.max(...items.filter(it => it.g).map(it => it.bh)) + 26) + 'px';
       const board = document.createElement('div');
       board.className = 'board';
       const plates = document.createElement('div');
       plates.className = 'plates';
       board.append(plates);
-      row.forEach(it => {
+      const leans = new Map(leanOf(items, inner - x, lean || inner - x > reserve).map(l => [l.it, l]));
+      items.forEach(it => {
         if (it.end) { const b = document.createElement('div'); b.className = 'bookend'; bay.append(b); return; }
         const { g, kind } = it;
         const btn = shelfItem(g, kind, animate, n++);
-        btn.append(kind === 'face' ? Case.front(g, s) : kind === 'loose' ? Case.cart(g, s * 1.6) : kind === 'stack' ? Case.top(g, s * 1.6, true) : Case.spine(g, s));
+        btn.append(kind === 'face' ? Case.front(g, s) : kind === 'loose' ? Case.cart(g, s * cartK(g)) : kind === 'stack' ? Case.top(g, s * cartK(g), true, thick(g)) : Case.spine(g, s));
+        if (kind === 'spine') {
+          const sp = btn.firstElementChild;
+          sp.style.setProperty('--d', it.bw.toFixed(1) + 'px');
+        }
+        const l = leans.get(it);
+        if (l) {
+          btn.classList.add('lean');
+          btn.style.setProperty('--lean', l.deg);
+          btn.style.marginLeft = (l.off + 2).toFixed(1) + 'px';
+        }
         bay.append(btn);
         if (it.label) labels.push([btn, g, plates]);
       });
@@ -442,7 +564,7 @@
     let w;
     if (g.format === 'cartridge-only') {
       const [w1, h1] = Case.cartSize(g, 1);
-      const k = Math.min(s * 2, room / w1, (stage * 0.8) / h1);
+      const k = Math.min(s * cartK(g) * 1.25, room / w1, (stage * 0.8) / h1);
       tile.append(Case.cart(g, k));
       w = w1 * k;
     } else {
@@ -465,7 +587,7 @@
 
   /* ---------- the grid: every game standing face out on one baseline ---------- */
   // A DVD case stands the full height of the stage and the rest keep their real size beside it,
-  // so a DS case is shorter and a Switch case narrower. Loose cartridges stand twice their size.
+  // so a DS case is shorter and a Switch case narrower. Loose cards stand twice their size, a SNES cartridge a little over its own.
   const gridSize = () => innerWidth < 640 ? { cell: 100, stage: 136, gap: 12 } : innerWidth < 1000 ? { cell: 132, stage: 172, gap: 20 } : { cell: 148, stage: 196, gap: 26 };
   function renderGrid(animate) {
     const G = gridSize();
@@ -528,8 +650,8 @@
         btn.setAttribute('aria-label', `${g.title}, ${CONSOLE_BY_ID[g.console].name}, ${Case.year(g)}`);
         const tile = document.createElement('span');
         tile.className = 'gt';
-        if (kind === 'loose') tile.append(Case.cart(g, s * 1.6));
-        else if (kind === 'stack') tile.append(Case.top(g, Math.min(s * 1.6, R.stage * 1.15 / Case.topSize(g, 1, true)[1]), true));
+        if (kind === 'loose') tile.append(Case.cart(g, s * cartK(g)));
+        else if (kind === 'stack') tile.append(Case.top(g, s * cartK(g), true, R.spine * 1.2));
         else if (kind === 'face') tile.append(Case.front(g, Math.min(s, (R.stage * 1.1) / Case.layout(g, 1).w)));
         else {
           const sp = Case.spine(g, s);
@@ -540,9 +662,239 @@
         track.append(btn);
       });
       sec.append(track);
+      // with a mouse, an arrow either end moves along the row by most of its width
+      const arrows = [-1, 1].map(dir => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'rnav ' + (dir < 0 ? 'prev' : 'next');
+        b.tabIndex = -1;
+        b.setAttribute('aria-label', dir < 0 ? 'Scroll the row left' : 'Scroll the row right');
+        b.innerHTML = `<span>${dir < 0 ? '‹' : '›'}</span>`;
+        b.addEventListener('click', () => track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: reduced() ? 'auto' : 'smooth' }));
+        sec.append(b);
+        return b;
+      });
+      const ends = () => {
+        arrows[0].classList.toggle('more', track.scrollLeft > 4);
+        arrows[1].classList.toggle('more', track.scrollLeft + track.clientWidth < track.scrollWidth - 4);
+      };
+      track.addEventListener('scroll', ends, { passive: true });
+      requestAnimationFrame(ends);
       wrap.append(sec);
     });
     host.replaceChildren(wrap);
+  }
+
+  /* ---------- the showcase: one game at a time on a glossy stage, the rest fanned out either side ----------
+     As in prototypes/3-showcase.html. A drag, a sideways scroll, the arrows or the arrow keys move along, and
+     the strip under it jumps through the whole collection, a block per console (or game). The game in the
+     middle is picked up like any other; one to the side comes to the middle first. */
+  const SC = { items: [], cur: 0, target: 0, raf: 0, shown: -1, id: null, drag: null, dragged: false, wheel: 0 };
+  const scSize = () => innerWidth < 640 ? 1.25 : innerWidth < 1000 ? 1.6 : 1.9;
+  function renderShowcase(animate) {
+    const wrap = document.createElement('div');
+    wrap.className = 'showcase' + (animate ? ' enter' : '');
+    wrap.innerHTML = `<div class="sc-stage"><div class="sc-floor"></div>
+        <button type="button" class="sc-arrow l" data-go="-1" aria-label="Previous game">←</button>
+        <button type="button" class="sc-arrow r" data-go="1" aria-label="Next game">→</button></div>
+      <div class="sc-cap"></div>
+      <div class="sc-scrub"><div class="sc-track"><i class="sc-thumb"></i></div>
+        <small><span>Drag, scroll sideways or use ← → · click the middle one to pick it up</span><span class="sc-pos"></span></small></div>`;
+    host.replaceChildren(wrap);
+    const stage = $('.sc-stage', wrap), track = $('.sc-track', wrap);
+    const maxH = stage.clientHeight * 0.66;
+    Object.assign(SC, { wrap, stage, track, thumb: $('.sc-thumb', wrap), cap: $('.sc-cap', wrap), shown: -1 });
+    SC.items = games.map(g => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'sc-it';
+      el.dataset.id = g.id;
+      el.tabIndex = -1;
+      el.setAttribute('aria-label', `${g.title}, ${CONSOLE_BY_ID[g.console].name}, ${Case.year(g)}`);
+      const tile = document.createElement('span');
+      tile.className = 'gt';
+      let w;
+      if (g.format === 'cartridge-only') {
+        const [w1, h1] = Case.cartSize(g, 1);
+        const k = Math.min(scSize() * cartK(g), (maxH * 0.6) / h1, (innerWidth * 0.4) / w1);
+        tile.append(Case.cart(g, k));
+        w = w1 * k;
+      } else {
+        // a solid case, front, spine and edges, so turned to the side it shows its spine and depth;
+        // a digital copy, which has no case, stays a flat outline
+        const L = Case.layout(g, 1);
+        const k = Math.min(scSize(), maxH / L.h, (innerWidth * 0.5) / L.w);
+        let face;
+        if (g.format === 'digital') { face = Case.front(g, k); face.classList.add('ghosted'); }
+        else face = Case.slab(g, k, true);
+        tile.append(face);
+        // its reflection in the floor: a mirrored cover (a 3D case can't take the browser's own reflection)
+        const refl = document.createElement('span');
+        refl.className = 'sc-refl';
+        refl.style.setProperty('--sd', (L.d * k).toFixed(1) + 'px');
+        const mirror = Case.front(g, k);
+        if (g.format === 'digital') mirror.classList.add('ghosted');
+        refl.append(mirror);
+        tile.append(refl);
+        w = L.w * k;
+      }
+      el.style.marginLeft = (-w / 2).toFixed(1) + 'px';
+      el.append(tile);
+      stage.append(el);
+      return { el, g };
+    });
+    // the strip: a block for each console (or game) when sorted that way, else one
+    const grouped = state.sort.key === GROUP;
+    const blocks = [];
+    games.forEach((g, i) => {
+      const gr = groupOf(g), last = blocks[blocks.length - 1];
+      if (grouped && last && last.gr.key === gr.key) last.n++; else if (grouped || !last) blocks.push({ gr, n: 1, start: i });
+      else last.n++;
+    });
+    blocks.forEach(b => {
+      const el = document.createElement('div');
+      el.className = 'sc-seg';
+      el.style.flex = b.n;
+      const fam = grouped && CONSOLE_BY_ID[b.gr.key] && FAMILIES.find(f => f.id === CONSOLE_BY_ID[b.gr.key].fam);
+      el.style.setProperty('--fc', fam ? fam.color : 'var(--gold)');
+      if (grouped) { el.dataset.key = b.gr.key; el.title = b.gr.name; el.textContent = b.n / games.length > 0.035 ? b.gr.label : ''; }
+      track.insertBefore(el, SC.thumb);
+    });
+    const at = SC.id ? games.findIndex(g => g.id === SC.id) : -1;
+    SC.cur = SC.target = Math.max(0, at);
+    scLayout();
+
+    // moving along: a drag, a sideways scroll (a scroll down still goes down the page), the arrows, the strip
+    stage.addEventListener('pointerdown', e => {
+      if (e.target.closest('.sc-arrow')) return;
+      SC.drag = { x: e.clientX, c: SC.cur };
+      SC.dragged = false;
+    });
+    stage.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      SC.wheel += e.deltaX;
+      if (Math.abs(SC.wheel) > 40) { scGo(Math.round(SC.target) + Math.sign(SC.wheel)); SC.wheel = 0; }
+    }, { passive: false });
+    wrap.addEventListener('click', e => {
+      const b = e.target.closest('[data-go]');
+      if (b) scGo(Math.round(SC.target) + +b.dataset.go);
+      if (e.target.closest('.sc-go')) { const it = SC.items[Math.round(SC.cur)]; if (it) Detail.open(it.g, faceOf(it.el)); }
+    });
+    let scrubbing = false;
+    const scrubTo = e => { const r = track.getBoundingClientRect(); scGo(Math.floor((e.clientX - r.left) / r.width * games.length)); };
+    track.addEventListener('pointerdown', e => { scrubbing = true; track.setPointerCapture(e.pointerId); scrubTo(e); });
+    track.addEventListener('pointermove', e => { if (scrubbing) scrubTo(e); });
+    track.addEventListener('pointerup', () => { scrubbing = false; });
+  }
+  addEventListener('pointermove', e => {
+    if (!SC.drag) return;
+    const dx = e.clientX - SC.drag.x;
+    if (Math.abs(dx) > 5) SC.dragged = true;
+    SC.target = SC.cur = clamp(SC.drag.c - dx / 90, 0, Math.max(0, games.length - 1));
+    scLayout();
+  });
+  addEventListener('pointerup', () => {
+    if (!SC.drag) return;
+    SC.drag = null;
+    scGo(Math.round(SC.cur));
+    setTimeout(() => { SC.dragged = false; }, 0);
+  });
+  document.addEventListener('keydown', e => {
+    if (state.view !== 'showcase' || Detail.isOpen() || e.target.closest?.('input, select, textarea, .dd')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); scGo(Math.round(SC.target) + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); scGo(Math.round(SC.target) - 1); }
+    if (e.key === 'Enter' && e.target === document.body) { const it = SC.items[Math.round(SC.cur)]; if (it) Detail.open(it.g, faceOf(it.el)); }
+  });
+
+  // each game stands where it is from the middle: the middle one facing out, the rest fanned out and turned in
+  function scLayout() {
+    const sp = Math.min(innerWidth * 0.085, 110), gap = Math.min(innerWidth * 0.2, 230);
+    SC.items.forEach((it, i) => {
+      const o = i - SC.cur, a = Math.abs(o);
+      if (a > 10) { it.el.style.display = 'none'; return; }
+      it.el.style.display = '';
+      const sg = Math.sign(o), k = Math.min(a, 1);
+      // the one in the middle rests a little turned, so its spine shows; easing to none as it moves aside
+      const ry = -sg * k * 58 - (1 - k) * 14;
+      it.el.style.transform = scPose(o * sp + sg * k * gap, 0, -k * 220 - a * 18, ry, 1);
+      it.el.style.zIndex = 100 - Math.round(a * 4);
+      // further from the middle, darker: an overlay's opacity rather than a filter, so a step repaints nothing
+      it.el.style.setProperty('--dim', (Math.min(a, 6) * 0.1).toFixed(3));
+      it.el.style.setProperty('--k', Math.round(a));
+      it.el.dataset.ry = ry.toFixed(1); // how it is turned, for a flight from it (js: Detail, Morph)
+      it.el.classList.toggle('center', a < 0.5);
+    });
+    const c = Math.round(SC.cur);
+    if (c !== SC.shown && games[c]) scCaption(c);
+    SC.thumb.style.left = games.length ? ((c + 0.5) / games.length * 100) + '%' : '0';
+  }
+  // the same list of functions every time, so a transition between two poses goes smoothly through each
+  const scPose = (x, y, z, ry, k) => `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateY(${ry.toFixed(1)}deg) scale(${k.toFixed(3)})`;
+
+  /* Coming from the shelf, the rows or the grid: each game on screen there travels from where it stood to its
+     place on the stage, turning from its spine (or as it stood) to face out on the way, in one arc. It is the
+     stage's own case that moves, so nothing is swapped when it lands. The rest come in quietly. */
+  function scEnter(snap) {
+    const sr = SC.stage.getBoundingClientRect();
+    const moving = SC.items.filter(it => it.el.style.display !== 'none');
+    moving.forEach(it => {
+      const end = it.el.style.transform, from = snap.spots.get(it.g.id);
+      const a = Math.abs(SC.items.indexOf(it) - SC.cur);
+      if (!from) {
+        it.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 350 + a * 30, easing: 'ease-out', fill: 'backwards' });
+        return;
+      }
+      // where it stands untransformed: its bottom middle, the point it turns and scales about
+      const bx = sr.left + it.el.offsetLeft + it.el.offsetWidth / 2, by = sr.top + it.el.offsetTop + it.el.offsetHeight;
+      const h = it.el.offsetHeight;
+      const turned = from.kind === 'spine' || from.kind === 'side';
+      const fh = from.kind === 'side' ? from.h * (it.el.offsetHeight / it.el.offsetWidth) : from.h; // a cartridge on its side is as tall as the cartridge is wide
+      const k0 = Math.max(0.05, fh / h), dx = from.cx - bx, dy = from.cy + fh / 2 - by;
+      const m = new DOMMatrix(getComputedStyle(it.el).transform);
+      const x1 = m.m41, z1 = m.m43, ry1 = +it.el.dataset.ry;
+      const lift = 40 + Math.min(120, Math.hypot(dx - x1, dy) * 0.12);
+      const duration = 820 + Math.min(300, Math.hypot(dx - x1, dy) * 0.25);
+      it.el.animate([
+        { transform: scPose(dx, dy, 0, turned ? 90 : from.ry || 0, k0) },
+        { transform: scPose((dx + x1) / 2, dy / 2 - lift, z1 / 2, turned ? 45 + ry1 / 2 : ry1 / 2, (k0 + 1) / 2), offset: 0.5 },
+        { transform: end },
+      ], { duration, delay: Math.min(a, 10) * 28, easing: 'cubic-bezier(.35,0,.25,1)', fill: 'backwards' });
+    });
+  }
+
+  function scCaption(i) {
+    SC.shown = i;
+    const g = games[i], c = CONSOLE_BY_ID[g.console];
+    SC.id = g.id;
+    SC.wrap.style.setProperty('--tint', (g.colors && g.colors[1]) || '#2a2a30');
+    SC.cap.innerHTML = `<div class="sc-fade">
+      <p class="sc-eyebrow"><span class="spot-art">${CONSOLE_ART[g.console] || ''}</span>${esc(c.name)} · ${esc(REGIONS[g.region]?.name || g.region)}</p>
+      <h2>${esc(g.title)}</h2>
+      <p class="sc-meta">${[Case.year(g), g.publisher, g.format !== 'boxed' && FORMATS[g.format], g.platinum && 'Platinum'].filter(Boolean).map(esc).join(' · ')}</p>
+      <button type="button" class="sc-go">Take a closer look</button></div>`;
+    $$('.sc-seg', SC.track).forEach(s => s.classList.toggle('on', s.dataset.key === groupOf(g).key));
+    $('.sc-pos', SC.wrap).textContent = `${i + 1} / ${games.length}`;
+  }
+  function scTick() {
+    SC.cur += (SC.target - SC.cur) * 0.14;
+    if (Math.abs(SC.target - SC.cur) < 0.002) SC.cur = SC.target;
+    scLayout();
+    SC.raf = SC.cur !== SC.target ? requestAnimationFrame(scTick) : 0;
+  }
+  function scGo(i) {
+    SC.target = clamp(i, 0, Math.max(0, games.length - 1));
+    if (reduced()) { SC.cur = SC.target; scLayout(); return; }
+    if (!SC.raf) SC.raf = requestAnimationFrame(scTick);
+  }
+  // straight to a game, as when one closes after stepping to it in the spotlight, so it flies home to the middle
+  function scJump(g) {
+    const i = games.indexOf(g);
+    if (i < 0 || !SC.items.length) return;
+    cancelAnimationFrame(SC.raf);
+    SC.raf = 0;
+    SC.cur = SC.target = i;
+    scLayout();
   }
 
   /* ---------- shelf ⇄ grid: every case on screen is carried across ----------
@@ -553,14 +905,18 @@
   const Morph = (() => {
     const MAX = 72; // cases that travel; any more simply fade in
     let run = null;
-    const onScreen = r => r.bottom > -40 && r.top < innerHeight + 40 && r.right > -40 && r.left < innerWidth + 40;
+    const onScreen = r => r.width > 0 && r.bottom > -40 && r.top < innerHeight + 40 && r.right > -40 && r.left < innerWidth + 40;
+    // how tall it shows: in the showcase one to the side stands further back, so smaller than it is drawn
+    const hOf = face => face.closest('.sc-it') ? face.getBoundingClientRect().height : face.offsetHeight;
+    // how it is turned where it stands (one to the side in the showcase turns in towards the middle)
+    const ryOf = item => +(item.dataset.ry || 0);
     const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : el.classList.contains('cside') ? 'side' : 'front';
     // a spine's width and the size of its lettering, as drawn (the rows draw them wider than real ones)
     const spineOf = el => el.classList.contains('sp') ? { sw: el.offsetWidth, sf: parseFloat(getComputedStyle(el).fontSize) } : {};
     // a cartridge facing out or standing on its side: either way it flies as the one solid cartridge
     const cartish = k => k === 'cart' || k === 'side';
     // how big a cartridge is drawn, in px per mm: on its side its height is the cartridge's width
-    const unitOf = (face, kind, g) => face.offsetHeight / Case.cartSize(g, 1)[kind === 'side' ? 0 : 1];
+    const unitOf = (face, kind, g) => hOf(face) / Case.cartSize(g, 1)[kind === 'side' ? 0 : 1];
     // how it is turned: on its side with the top label out, leaning on the shelf, or straight
     // (on its side it is pushed back by half its height, so its top label sits where the shelf showed it, not nearer)
     const cartTurn = (kind, view, back) => kind === 'side' ? `translateZ(${-back}px) rotateY(-90deg) rotateZ(90deg)` : `translateZ(0px) rotateY(0deg) rotateZ(${view === 'shelf' ? -6 : 0}deg)`;
@@ -574,7 +930,7 @@
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item), kind = kindOf(face);
         const r = face.getBoundingClientRect();
-        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: face.offsetHeight, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0, ...spineOf(face) });
+        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: hOf(face), ry: ryOf(item), z: +item.style.zIndex || 0, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0, ...spineOf(face) });
       }
       return { view: state.view, spots };
     }
@@ -592,6 +948,7 @@
     function play(snap) {
       if (!snap || snap.view === state.view || flat(state.view) || reduced()) return;
       stop();
+      if (state.view === 'showcase') { scEnter(snap); return; }
       const layer = document.createElement('div');
       layer.className = 'morph';
       document.body.append(layer);
@@ -613,14 +970,15 @@
         const g = byId.get(a.item.dataset.id);
         const cart = cartish(a.kind);
         // it flies at the size it lands, so it is crisp when it gets there
-        const s = cart ? unitOf(a.face, a.kind, g) : a.face.offsetHeight / Case.layout(g, 1).h;
+        const s = cart ? unitOf(a.face, a.kind, g) : hOf(a.face) / Case.layout(g, 1).h;
         const fly = cart ? Case.cart(g, s) : Case.slab(g, s);
         if (g.format === 'digital') $('.cv', fly)?.classList.add('ghosted');
-        const [W, H] = cart ? Case.cartSize(g, s) : [Case.layout(g, s).w, a.face.offsetHeight];
+        const [W, H] = cart ? Case.cartSize(g, s) : [Case.layout(g, s).w, hOf(a.face)];
         const cx = a.r.left + a.r.width / 2, cy = a.r.top + a.r.height / 2;
         const wrap = document.createElement('div');
         wrap.className = 'mf';
-        wrap.style.cssText = `left:${(cx - W / 2 + scrollX).toFixed(1)}px;top:${(cy - H / 2 + scrollY).toFixed(1)}px;width:${W.toFixed(1)}px;height:${H.toFixed(1)}px`;
+        // (leaving the showcase, the one in the middle stays over the ones beside it)
+        wrap.style.cssText = `left:${(cx - W / 2 + scrollX).toFixed(1)}px;top:${(cy - H / 2 + scrollY).toFixed(1)}px;width:${W.toFixed(1)}px;height:${H.toFixed(1)}px;z-index:${a.from.z || 0}`;
         wrap.append(fly);
         layer.append(wrap);
 
@@ -639,7 +997,7 @@
         // a case turns between its spine and its cover; a cartridge turns from its side to its front, or straightens up or leans back
         const turn = cart
           ? [cartTurn(a.from.kind, snap.view, H / 2), cartTurn(a.kind, state.view, H / 2)]
-          : [`rotateY(${a.from.kind === 'spine' ? 90 : 0}deg)`, `rotateY(${a.kind === 'spine' ? 90 : 0}deg)`];
+          : [`rotateY(${a.from.kind === 'spine' ? 90 : a.from.ry}deg)`, `rotateY(${a.kind === 'spine' ? 90 : ryOf(a.item)}deg)`];
         fly.animate(turn.map(transform => ({ transform })), { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
         // a spine as wide as it was where it took off, widening or narrowing to the one it lands on
         if (!cart) {
@@ -682,8 +1040,12 @@
     ui.tabIndex = -1;
     ui.innerHTML = `<button class="spot-close" type="button" aria-label="Close">✕</button>
       <div class="spot-nav"><button type="button" data-step="-1" aria-label="Previous game">←</button><span class="spot-count"></span><button type="button" data-step="1" aria-label="Next game">→</button></div>`;
-    document.body.append(overlay, ui);
+    // on a big screen the games either side stand smaller to the left and right (see peeks)
+    const peeks = document.createElement('div');
+    peeks.className = 'spot-peeks';
+    document.body.append(overlay, peeks, ui);
     overlay.addEventListener('click', () => close());
+    peeks.addEventListener('click', e => { const p = e.target.closest('.peek'); if (p) step(+p.dataset.dir); });
     $('.spot-close', ui).addEventListener('click', () => close());
     ui.addEventListener('click', e => { const s = e.target.closest('[data-step]'); if (s) step(+s.dataset.step); });
 
@@ -695,7 +1057,8 @@
     const isOpen = () => !!cur && !cur.closing;
     const shape = g => g.format === 'cartridge-only' ? 'cart' : g.format === 'digital' ? 'card' : 'box';
     // how it stood where it was picked from: a spine turned side on, a cartridge on its side with its top label out, or facing out
-    const fromPose = el => el && el.classList.contains('sp') ? [0, 90, 0] : el && el.classList.contains('cside') ? [0, -90, 90] : [0, 0, 0];
+    const fromPose = el => el && el.classList.contains('peek') ? [0, el._pose.ry, 0] : el && el.classList.contains('sp') ? [0, 90, 0] : el && el.classList.contains('cside') ? [0, -90, 90]
+      : [0, el && el.closest('[data-ry]') ? +el.closest('[data-ry]').dataset.ry : 0, 0];
     const rot = ([x, y, z = 0]) => `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
 
     /* What stands in the spotlight: the 3D case, a cartridge, or a digital copy's card. */
@@ -818,7 +1181,7 @@
       return item ? faceOf(item) : null;
     }
     // what a flight scales against: a spine is matched by height, anything else by its size
-    const scaleFrom = (el, p, w, h) => el.classList.contains('sp') ? p.h / h : el.classList.contains('cside') ? p.h / w : Math.min(p.w / w, p.h / h);
+    const scaleFrom = (el, p, w, h) => el.closest('.sc-it') ? p.h / h : el.classList.contains('peek') ? el._pose.h / h : el.classList.contains('sp') ? p.h / h : el.classList.contains('cside') ? p.h / w : Math.min(p.w / w, p.h / h);
     const piecePose = (L, cx, cy, s) => `translate(${(cx - L.w / 2).toFixed(1)}px,${(cy - L.h / 2).toFixed(1)}px) scale(${s.toFixed(4)})`;
     // a place just off the screen on the way to (x, y)
     const offscreen = (L, x, y) => [clamp(x, L.w / 2, L.vw - L.w / 2), y < L.vh / 2 ? -L.h * 0.75 : L.vh + L.h * 0.75];
@@ -834,8 +1197,77 @@
       a.obj.animate(keys, { duration, easing: 'cubic-bezier(.4,.1,.2,1)', fill });
     }
 
-    function hide(a, el) { if (el && !a.hidden.includes(el)) { el.style.visibility = 'hidden'; a.hidden.push(el); } }
+    function hide(a, el) {
+      if (el && el.closest('.sc-it')) el = el.closest('.gt'); // in the showcase its reflection goes with it
+      if (el && !a.hidden.includes(el)) { el.style.visibility = 'hidden'; a.hidden.push(el); }
+    }
     function unhide(a) { a.hidden.forEach(el => { el.style.visibility = ''; }); a.hidden = []; }
+
+    /* ---------- the games either side ----------
+       On a big screen the previous game stands to the left and the next to the right, smaller and turned in
+       towards the middle, on the same floor as the game in the middle. A click on one steps to it. Stepping,
+       the one in the middle moves aside into the place beside it and the next one comes in from its own. */
+    const PEEK_TURN = 24;
+    // where a game stands beside the one in the middle (a, its layout L), on side dir: or null if there is no room
+    function peekPose(g, dir, a) {
+      const L = a.L;
+      if (L.side || L.vw < 1000) return null;
+      const [w1, h1] = sizeOf(g, 1);
+      const H = L.h * 0.62;
+      const k = Math.min(H / h1, (L.vw * 0.18) / w1, shape(g) === 'cart' ? (H / 190) * 1.6 : Infinity);
+      const w = w1 * k, h = h1 * k;
+      // clear of the text above and below the game in the middle
+      const text = Math.min(Math.max(L.w * 1.6, 360), L.vw - L.padX * 2) / 2;
+      const near = Math.max(L.w / 2, text) + 48 + w / 2, far = L.vw / 2 - w / 2 - 24;
+      if (far < near) return null;
+      const floor = L.cy + L.h / 2;
+      return { g, k, w, h, cx: L.vw / 2 + dir * clamp(L.vw * 0.31, near, far), cy: floor - h / 2, ry: -dir * PEEK_TURN };
+    }
+    function peekEl(P, dir) {
+      const { g } = P;
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'peek';
+      el.dataset.dir = dir;
+      el.setAttribute('aria-label', `${dir < 0 ? 'Previous' : 'Next'}: ${g.title}`);
+      const face = shape(g) === 'cart' ? Case.cart(g, P.k) : Case.front(g, P.k, false);
+      if (shape(g) === 'card') face.classList.add('ghosted');
+      el.append(face);
+      el.style.cssText = `left:${(P.cx - P.w / 2).toFixed(1)}px;top:${(P.cy - P.h / 2).toFixed(1)}px;width:${P.w.toFixed(1)}px;height:${P.h.toFixed(1)}px;--ry:${P.ry}deg`;
+      el._pose = P;
+      return el;
+    }
+    const peekAt = dir => peeks.querySelector(`.peek[data-dir="${dir}"]:not(.gone)`);
+    // Stands the games either side of a. Coming after a step of n, the one on side -n (the game that was in the
+    // middle) waits hidden until that game lands there, and the one on side n slides in from the edge.
+    function setPeeks(a, n = 0, still = false) {
+      clearPeeks(n);
+      const i = games.indexOf(a.g);
+      if (i < 0) return;
+      for (const dir of [-1, 1]) {
+        const g = games[i + dir], P = g && peekPose(g, dir, a);
+        if (!P) continue;
+        const el = peekEl(P, dir);
+        peeks.append(el);
+        if (still || reduced()) continue;
+        if (n && dir === -n) el.style.visibility = 'hidden';
+        else if (n) el.animate([{ transform: `translateX(${dir * 140}px)`, opacity: 0 }, { transform: 'none', opacity: .5 }], { duration: 650, delay: 120, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'backwards' });
+        else el.animate([{ opacity: 0 }, { opacity: .5 }], { duration: 500, delay: 380, easing: 'ease-out', fill: 'backwards' });
+      }
+    }
+    // Takes the games either side away: after a step of n, the one on side -n slides out past the edge
+    function clearPeeks(n = 0) {
+      for (const el of [...peeks.children]) {
+        if (el.classList.contains('gone')) continue;
+        el.classList.add('gone');
+        // a game on its way into this place goes with it
+        leaving.forEach(x => { if (x.peek === el) x.layer.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' }); });
+        const dir = +el.dataset.dir;
+        if (reduced() || el.style.visibility === 'hidden' || (n && dir === n)) { el.remove(); continue; }
+        const out = el.animate([{ opacity: getComputedStyle(el).opacity }, { transform: `translateX(${(n ? dir : 0) * 140}px)`, opacity: 0 }], { duration: n ? 450 : 300, easing: 'ease-in', fill: 'forwards' });
+        out.finished.then(() => el.remove(), () => el.remove());
+      }
+    }
 
     /* ---------- opening ---------- */
     function open(g, source, fromHash) {
@@ -846,6 +1278,7 @@
       overlay.classList.add('open');
       ui.classList.add('open');
       show(g, source && source.isConnected ? source : homeOf(g), 0);
+      setPeeks(cur);
       setTimeout(() => ui.focus({ preventScroll: true }), 60);
     }
 
@@ -883,13 +1316,16 @@
 
       const from = a.source ? poseOf(a.source) : null;
       hide(a, a.source); // its place stays empty while it is out
+      if (a.source && a.source.classList.contains('peek')) hide(a, homeOf(g)); // and so does its place on the page
       if (still || reduced()) return;
       if (from && from.seen && !side) {
         // off the page: it lifts from its place and flies over, turning and growing as it goes
+        // (from beside the game that was in the middle it simply moves across)
         const s0 = scaleFrom(a.source, from, L.w, L.h);
         const dist = Math.hypot(from.cx - L.cx, from.cy - L.cy);
-        const lift = 50 + Math.min(110, dist * 0.12);
-        const duration = 820 + Math.min(320, dist * 0.25);
+        const beside = a.source.classList.contains('peek');
+        const lift = beside ? 0 : 50 + Math.min(110, dist * 0.12);
+        const duration = beside ? 720 : 820 + Math.min(320, dist * 0.25);
         a.flight = piece.animate([
           { transform: piecePose(L, from.cx, from.cy, s0) },
           { transform: piecePose(L, (from.cx + L.cx) / 2, (from.cy + L.cy) / 2 - lift, (s0 + 1) / 2), offset: 0.45 },
@@ -971,7 +1407,9 @@
       if (!a || a.closing) return;
       overlay.classList.remove('open');
       ui.classList.remove('open');
+      clearPeeks();
       if (!fromHash) setHash(state.sel.size === 1 ? [...state.sel][0] : '', false, a.g.id);
+      if (state.view === 'showcase') scJump(a.g); // the showcase turns to it, so it flies home to the middle
       const back = homeOf(a.g);
       if (back && state.view === 'rows') back.closest('[data-id]').scrollIntoView({ block: 'nearest', inline: 'center' });
       leave(a, 0);
@@ -979,8 +1417,9 @@
     }
 
     // Sends a game back: into its place if that is on screen, else off the screen towards it,
-    // or out of the side it is leaving by when stepping through (side -1 left, 1 right).
-    function leave(a, side) {
+    // or out of the side it is leaving by when stepping through (side -1 left, 1 right),
+    // or, on a big screen, into the place beside the next game (peek, standing hidden until it lands).
+    function leave(a, side, peek) {
       a.closing = true;
       if (cur === a) cur = null;
       leaving.add(a);
@@ -999,6 +1438,21 @@
       a.turn.getAnimations().forEach(x => x.cancel());
       a.obj.getAnimations().forEach(x => { if (x.effect?.getKeyframes?.()[0]?.['--sd'] !== undefined) x.cancel(); });
       a.piece.style.transform = piecePose(L, from.cx, from.cy, from.s);
+
+      if (peek) {
+        const P = peek._pose;
+        a.peek = peek;
+        a.turn.style.transition = 'transform .72s cubic-bezier(.4,0,.2,1)';
+        a.turn.style.transform = rot([0, P.ry]);
+        a.flight = a.piece.animate([
+          { transform: piecePose(L, from.cx, from.cy, from.s) },
+          { transform: piecePose(L, P.cx, P.cy, P.h / L.h) },
+        ], { duration: 720, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
+        const land = () => { if (peek.isConnected && !peek.classList.contains('gone')) peek.style.visibility = ''; finish(a); };
+        a.flight.finished.then(land, () => {});
+        a.timer = setTimeout(land, 1100);
+        return;
+      }
 
       // the page may have been drawn again since it came out
       const home = homeOf(a.g);
@@ -1053,13 +1507,22 @@
     }
 
     // the next or previous game: this one goes back as that one comes out
+    // (on a big screen the next one comes in from its place beside this one, and this one moves into the place beside it)
     function step(n) {
       if (!cur || cur.closing) return;
       const g = games[games.indexOf(cur.g) + n];
       if (!g || games.indexOf(cur.g) < 0) return;
-      leave(cur, -n);
       setHash(g.id, false);
+      const old = cur, via = peekAt(n);
+      if (via) {
+        show(g, via, 0);
+        setPeeks(cur, n);
+        leave(old, -n, peekAt(-n));
+        return;
+      }
+      leave(old, -n);
       show(g, homeOf(g), n);
+      setPeeks(cur, 0, true);
     }
 
     // the page was drawn again: the game in the middle belongs to its new place
@@ -1069,6 +1532,7 @@
       cur.source = homeOf(cur.g);
       hide(cur, cur.source);
       count(cur.g);
+      if (!cur.closing) setPeeks(cur, 0, true);
     }
 
     let rt = 0;
@@ -1079,6 +1543,7 @@
         const g = cur.g;
         finish(cur);
         show(g, homeOf(g), 0, true);
+        setPeeks(cur, 0, true);
       }, 200);
     });
     document.addEventListener('keydown', e => {

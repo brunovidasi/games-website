@@ -40,7 +40,6 @@
     return `
       <header class="hero">
         <div>
-          <div class="eyebrow">Bruno's Games</div>
           <h1>The Sims <em>Collection</em><i class="plumbob" aria-hidden="true"></i></h1>
           <p>Every Sims game and pack I have, from the first one in 2000 to The Sims 4, with SimCity and MySims beside them. A solid case is on disc; an outline is in the EA app.</p>
         </div>

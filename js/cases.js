@@ -465,34 +465,49 @@
     b.style.height = H + 'px';
     b.style.setProperty('--sd', px(L.d));
     b.style.setProperty('--sfs', px(Math.min(15, Math.max(7, L.d * 0.55))));
-    const sp = b.querySelector('.f-left > .sp');
-    if (sp) { sp.style.setProperty('--d', 'var(--sd)'); sp.style.fontSize = 'var(--sfs)'; }
+    b.querySelectorAll('.f-left > .sp, .lsp > .sp').forEach(sp => { sp.style.setProperty('--d', 'var(--sd)'); sp.style.fontSize = 'var(--sfs)'; });
     return b;
   }
 
-  // just the front and the spine: a case turning as it goes between the shelf and the grid
-  function slab(g, s) {
+  // just the front and the spine: a case turning as it goes between the shelf and the grid. solid: the edges
+  // round it too, so it holds up seen from any side (the showcase), with its cover loaded only once it shows
+  function slab(g, s, solid = false) {
     const L = layout(g, s);
     return assemble(el(`<div class="bx slab ${cls(g, L)}" style="${vars(g, L)}">
-      <div class="fc f-front">${frontHTML(g, L, false)}</div>
+      <div class="fc f-front">${frontHTML(g, L, solid)}</div>
       <div class="fc f-left">${spineHTML(g, L)}</div>
+      ${solid ? '<div class="fc f-right"><div class="edge"></div></div><div class="fc f-top"><div class="edge"></div></div><div class="fc f-bot"><div class="edge"></div></div>' : ''}
     </div>`), L);
   }
 
   function box(g, s) {
     const L = layout(g, s);
-    const H = L.h;
+    const H = L.h, W = L.w;
+    // a plastic case opens in two halves, hinged at the seam in the middle: the lid takes the front half of the
+    // spine and the walls round it with it, the back keeps the other half
+    const split = L.kind !== 'box';
     const b = el(`<div class="bx ${cls(g, L)}" style="${vars(g, L)}">
       <div class="fc f-tray"><div class="tray">${mediaHTML(g, s)}</div></div>
-      <div class="fc f-front"><div class="leaf">${frontHTML(g, L, false)}<div class="inner"><div class="manual"><div class="mt">${esc(g.title)}</div><div class="ml"><i></i><i></i><i></i><i style="width:60%"></i></div><div class="mthumb">${img(g)}</div></div></div></div></div>
+      <div class="fc f-front"><div class="leaf">${frontHTML(g, L, false)}<div class="inner"><div class="manual"><div class="mt">${esc(g.title)}</div><div class="ml"><i></i><i></i><i></i><i style="width:60%"></i></div><div class="mthumb">${img(g)}</div></div></div>${split ? `<div class="lsp">${spineHTML(g, L)}</div><i class="edge lw lw-l"></i><i class="edge lw lw-r"></i><i class="edge lw lw-t"></i><i class="edge lw lw-b"></i>` : ''}</div></div>
       <div class="fc f-back">${backHTML(g, L)}</div>
       <div class="fc f-left">${spineHTML(g, L)}</div>
+      ${split ? '<div class="fc f-lin"><div class="edge"></div></div>' : ''}
       <div class="fc f-right"><div class="edge"></div></div>
       <div class="fc f-top"><div class="edge"></div></div>
       <div class="fc f-bot"><div class="edge"></div></div>
     </div>`);
     assemble(b, L);
-    if (isCart(g) && L.kind === 'keep') b.querySelector('.f-tray').style.transform = 'translateZ(calc(var(--sd) / -2 + 1px))';
+    if (split) {
+      // the back half's spine and walls, from the back to the seam; the inside of the spine; the tray on the back, inside them
+      const D = 'var(--sd)', Q = `translateZ(calc(${D} / -4)) `;
+      const set = (sel, st) => Object.assign(b.querySelector(sel).style, st);
+      set('.f-left', { width: `calc(${D} / 2)`, left: `calc(${W / 2}px - ${D} / 4)`, transform: Q + `rotateY(-90deg) translateZ(${W / 2}px)` });
+      set('.f-right', { width: `calc(${D} / 2)`, left: `calc(${W / 2}px - ${D} / 4)`, transform: Q + `rotateY(90deg) translateZ(${W / 2}px)` });
+      set('.f-top', { height: `calc(${D} / 2)`, top: `calc(${H / 2}px - ${D} / 4)`, transform: Q + `rotateX(90deg) translateZ(${H / 2}px)` });
+      set('.f-bot', { height: `calc(${D} / 2)`, top: `calc(${H / 2}px - ${D} / 4)`, transform: Q + `rotateX(-90deg) translateZ(${H / 2}px)` });
+      set('.f-lin', { width: `calc(${D} / 2)`, height: H + 'px', left: `calc(${W / 2}px - ${D} / 4)`, top: 0, transform: Q + `rotateY(90deg) translateZ(${-W / 2 + 0.5}px)` });
+      set('.f-tray', { transform: `translateZ(calc(${D} / -2 + 1px))` });
+    }
     // taking it out of a cardboard box: the box shrinks to the bottom of its outline and the
     // cartridge rises three quarters out of the top, so the open box needs no more room than the closed one
     if (L.kind === 'box') {
@@ -509,17 +524,20 @@
      A SNES cartridge carries its title on the top edge, where the label wraps over. Lying in a pile
      with that edge facing out, this is what shows: the raised middle with the black top label and
      the title on it, the lower ridged sides either end. Its size is the cartridge's width by its thickness.
-     Standing on its side (side = true) it is turned upright, so the title reads down like a book's spine. */
-  function topHTML(g, s, side) {
+     Standing on its side (side = true) it is turned upright, so the title reads down like a book's spine.
+     thick: how thick to draw it, in px, when that is not its real thickness (the shelf and the rows draw it
+     thicker, as they do the spines beside it, so its title can be read) */
+  function topHTML(g, s, side, thick) {
     const T = CART[mediaType(g)];
     const c = /^#[0-9a-f]{6}$/i.test(g.cartColor || '') ? g.cartColor : T.c;
-    const strip = `<div class="ctop c-${mediaType(g)}" style="--cw:${px(T.w * s)};--ch:${px(T.dp * s)};--cc:${c}">
+    const t = thick || T.dp * s;
+    const strip = `<div class="ctop c-${mediaType(g)}" style="--cw:${px(T.w * s)};--ch:${px(t)};--cc:${c}">
       <i class="side"></i><i class="mid"><b>${esc(g.title)}</b></i><i class="side"></i>
     </div>`;
-    return side ? `<div class="cside" style="width:${px(T.dp * s)};height:${px(T.w * s)}">${strip}</div>` : strip;
+    return side ? `<div class="cside" style="width:${px(t)};height:${px(T.w * s)}">${strip}</div>` : strip;
   }
-  const top = (g, s, side) => el(topHTML(g, s, side));
-  const topSize = (g, s, side) => { const T = CART[mediaType(g)]; return !T ? [0, 0] : side ? [T.dp * s, T.w * s] : [T.w * s, T.dp * s]; };
+  const top = (g, s, side, thick) => el(topHTML(g, s, side, thick));
+  const topSize = (g, s, side, thick) => { const T = CART[mediaType(g)], t = thick || (T && T.dp * s); return !T ? [0, 0] : side ? [t, T.w * s] : [T.w * s, t]; };
 
   // a cartridge's size in px at scale s, for laying one out
   const cartSize = (g, s) => { const T = CART[mediaType(g)]; return T ? [T.w * s, T.h * s] : [0, 0]; };

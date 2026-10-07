@@ -39,7 +39,6 @@
     return `
       <header class="hero">
         <div>
-          <div class="eyebrow">Bruno's Games</div>
           <h1>Grand Theft <em>Auto</em></h1>
           <p>Every GTA I have, from the top-down original in ${Math.min(...years)} to The Definitive Edition, on every platform I have it on. A dashed outline is a version still to find.</p>
         </div>

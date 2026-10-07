@@ -7,7 +7,7 @@
 /* ---------- the checklist: a view of its own beside the shelf, grid and list ---------- */
 #checklist { display: none; padding-bottom: 30px; }
 body[data-view="checklist"] #checklist { display: block; }
-body[data-view="checklist"] :is(.case-wrap, .tools, .filters .consoles, .filters .search, .filters #sort, .filters .pills, .filters .count) { display: none; }
+body[data-view="checklist"] :is(.case-wrap, .tools, .consoles-bar, .filters .search, .filters .dd, .count) { display: none; }
 
 /* ---------- jump to a game ---------- */
 .series-nav .in { max-width: var(--page); margin: 0 auto; padding: 10px 20px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }

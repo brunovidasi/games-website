@@ -155,7 +155,8 @@
 .sttl { flex: 1; min-height: 0; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start; padding: .5em 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   font: 600 .74em/1 'Space Grotesk', sans-serif; letter-spacing: .02em; }
 .kind-box .sttl { font: 700 .62em/1 'Fraunces', serif; letter-spacing: 0; }
-.sbot { flex: none; padding-bottom: .4em; font: 600 .45em/1 'Space Grotesk', sans-serif; opacity: .7; writing-mode: vertical-rl; transform: rotate(180deg); }
+/* turned to read upwards, so the room under it is a margin: padding would turn over with it, to its top */
+.sbot { flex: none; margin-bottom: 1.1em; font: 600 .45em/1 'Space Grotesk', sans-serif; opacity: .7; writing-mode: vertical-rl; transform: rotate(180deg); }
 .kind-box .sbot { font-size: .38em; }
 
 /* a digital copy: no case, just its outline */
@@ -208,20 +209,41 @@
   linear-gradient(90deg, rgba(0,0,0,.35), rgba(255,255,255,.14) 18%, rgba(0,0,0,.08) 40%, rgba(0,0,0,.55) 48% 52%, rgba(0,0,0,.08) 60%, rgba(255,255,255,.12) 82%, rgba(0,0,0,.35)),
   var(--pl); }
 .bx.kind-keep .f-top .edge, .bx.kind-keep .f-bot .edge { filter: brightness(.85); }
+/* opened, it comes apart at that seam: each half keeps its own lip (js/cases.js, box) */
+.bx.kind-keep:not(.slab) .f-right .edge { background:
+  linear-gradient(90deg, rgba(0,0,0,.55) 0 4%, rgba(0,0,0,.08) 20%, rgba(255,255,255,.12) 64%, rgba(0,0,0,.35)), var(--pl); }
+.bx .leaf .lw { position: absolute; display: block; }
+/* the lid's half of the spine: the front half of the whole spine, cut down the middle (the back keeps the other) */
+.bx .leaf .lsp { position: absolute; top: 0; left: calc(var(--sd) / -4); width: calc(var(--sd) / 2); height: 100%; overflow: hidden; backface-visibility: hidden;
+  transform: translateZ(calc(var(--sd) / -4)) rotateY(-90deg); }
+.bx .leaf .lsp > .sp { margin-left: calc(var(--sd) / -2); box-shadow: none; }
+.bx:not(.kind-box):not(.slab) .f-left { overflow: hidden; }
+.bx .leaf .lw-l { width: calc(var(--sd) / 2); height: 100%; left: calc(var(--sd) / -4); top: 0; backface-visibility: hidden; filter: brightness(.7);
+  transform: translateZ(calc(var(--sd) / -4)) translateX(.5px) rotateY(90deg); }
+.bx .leaf .lw-r { width: calc(var(--sd) / 2); height: 100%; left: calc(100% - var(--sd) / 4); top: 0; transform: translateZ(calc(var(--sd) / -4)) rotateY(90deg); }
+.bx .leaf .lw-t, .bx .leaf .lw-b { width: 100%; height: calc(var(--sd) / 2); left: 0; }
+.bx .leaf .lw-t { top: calc(var(--sd) / -4); transform: translateZ(calc(var(--sd) / -4)) rotateX(90deg); }
+.bx .leaf .lw-b { top: calc(100% - var(--sd) / 4); transform: translateZ(calc(var(--sd) / -4)) rotateX(-90deg); }
+.bx.kind-keep .leaf .lw-r { background:
+  linear-gradient(90deg, rgba(0,0,0,.35), rgba(255,255,255,.14) 36%, rgba(0,0,0,.08) 80%, rgba(0,0,0,.55) 96%), var(--pl); }
+.bx.kind-keep .leaf .lw-t, .bx.kind-keep .leaf .lw-b { filter: brightness(.85); }
+/* open, the walls are seen from inside too */
+.bx:not(.kind-box):not(.slab) :is(.f-right, .f-top, .f-bot), .bx:not(.kind-box) .f-right .edge, .bx:not(.kind-box) .f-top .edge, .bx:not(.kind-box) .f-bot .edge { backface-visibility: visible; }
+.bx .f-lin .edge { filter: brightness(.7); }
 .bx.kind-jewel .edge { background: linear-gradient(90deg, rgba(220,228,236,.85), rgba(170,180,190,.85)); }
 .bx.k-ps1 .edge { background: linear-gradient(90deg, #2a2b2f, #0d0d0f); }
 .bx.k-ps1 .leaf .inner { background: #141416; }
 .bx.kind-box .edge { background: linear-gradient(90deg, color-mix(in srgb, var(--sb) 80%, #000), var(--sb)); }
 .bx.kind-box .f-top .edge::after { content: ""; display: block; height: 100%; background: linear-gradient(rgba(255,255,255,.12), transparent); }
-.bx .f-front .leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0 50%; transition: transform .9s cubic-bezier(.3,.9,.3,1); }
+.bx .f-front .leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0 50% calc(var(--sd) / -2); transition: transform .9s cubic-bezier(.3,.9,.3,1); }
 .bx .leaf > .cv { backface-visibility: hidden; box-shadow: none; }
-.bx .leaf .inner { position: absolute; inset: 0; transform: rotateY(180deg); backface-visibility: hidden; background: color-mix(in srgb, var(--pl) 70%, #000); border-radius: calc(var(--w) * .025); padding: calc(var(--w) * .03); }
+.bx .leaf .inner { position: absolute; inset: 0; transform: rotateY(180deg); backface-visibility: hidden; background: color-mix(in srgb, var(--pl) 70%, #000); padding: calc(var(--w) * .03); }
 .bx.kind-jewel .leaf .inner { background: rgba(200,210,220,.6); }
 .manual { width: 100%; height: 100%; background: #f4efe4; color: #2a251c; padding: 10%; display: flex; flex-direction: column; gap: .5em; font-size: calc(var(--w) / 12); }
 .mt { font: 700 .7em/1.1 'Fraunces', serif; }
 .ml { display: flex; flex-direction: column; gap: .3em; }
 .ml i { display: block; height: .16em; background: currentColor; opacity: .25; border-radius: 1px; }
-.mthumb { position: relative; flex: 1; border-radius: 2px; overflow: hidden; background: linear-gradient(160deg, var(--ph1), var(--ph2)); }
+.mthumb { position: relative; flex: 1; overflow: hidden; background: linear-gradient(160deg, var(--ph1), var(--ph2)); }
 .mthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bx.open .leaf { transform: rotateY(-155deg); }
 .bx.kind-keep.open, .bx.kind-jewel.open { translate: calc(var(--w) * .42) 0; scale: .82; }
@@ -229,7 +251,7 @@
 .bx.kind-box.open { translate: 0 var(--oy); scale: var(--os); }
 .bx.kind-box .f-front .leaf { transition: none; }
 .bx.kind-box.open .leaf { transform: none; }
-.bx .f-tray .tray { position: absolute; inset: 2%; border-radius: 3px; display: grid; place-items: center;
+.bx .f-tray .tray { position: absolute; inset: 0; display: grid; place-items: center;
   background: radial-gradient(circle at 55% 50%, rgba(255,255,255,.08), transparent 60%), color-mix(in srgb, var(--pl) 85%, #000); }
 .bx.kind-jewel .f-tray .tray { background: #121212; }
 .bx.kind-box .f-tray .tray { background: none; overflow: visible; }
@@ -240,11 +262,11 @@
 .bx .f-tray .tray, .bx .f-tray .holder { transform-style: preserve-3d; }
 .bx .f-tray .tray:has(.holder) { place-items: start center; padding-top: 9%;
   background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.07), transparent 65%), color-mix(in srgb, var(--pl) 80%, #000); }
-.holder { position: relative; width: var(--hw); height: var(--hh); display: grid; place-items: center; border-radius: 6% / 5%;
+.holder { position: relative; width: var(--hw); height: var(--hh); display: grid; place-items: center;
   background: color-mix(in srgb, var(--pl) 70%, #000);
   box-shadow: inset 0 2px 5px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.12), 0 1px 0 rgba(255,255,255,.1); }
 /* the two clips that hold it, top and bottom */
-.holder::before, .holder::after { content: ""; position: absolute; left: 32%; right: 32%; height: 7%; border-radius: 2px; background: color-mix(in srgb, var(--pl) 90%, #fff); box-shadow: 0 1px 2px rgba(0,0,0,.4); transform: translateZ(calc(var(--cd, 4px) + 1px)); }
+.holder::before, .holder::after { content: ""; position: absolute; left: 32%; right: 32%; height: 7%; background: color-mix(in srgb, var(--pl) 90%, #fff); box-shadow: 0 1px 2px rgba(0,0,0,.4); transform: translateZ(calc(var(--cd, 4px) + 1px)); }
 .holder::before { top: -2%; } .holder::after { bottom: -2%; }
 .holder .cart { transform: translateZ(calc(var(--cd) / 2)); }
 .bx.kind-box.open .f-tray .tray > * { translate: 0 calc(var(--ty) * -1); }
@@ -305,8 +327,9 @@
 .ctop .side { width: 15.9%; flex: none; background: linear-gradient(color-mix(in srgb, var(--cc) 92%, #000), color-mix(in srgb, var(--cc) 80%, #000)); }
 .ctop .mid { position: relative; flex: 1; background: linear-gradient(color-mix(in srgb, var(--cc) 100%, #fff 12%), var(--cc) 40%, color-mix(in srgb, var(--cc) 80%, #000)); }
 /* the top label: black, with the title in white */
-.ctop .mid b { position: absolute; left: 4.1%; right: 4.2%; top: 16%; bottom: 16%; display: flex; align-items: center; justify-content: center; padding: 0 4%;
-  background: #121214; border-radius: 1px; color: #fff; font: 700 calc(var(--ch) * .32)/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase;
+/* (as big as the strip's thickness allows, but small enough for most titles to fit its length) */
+.ctop .mid b { position: absolute; left: 4.1%; right: 4.2%; top: 16%; bottom: 16%; display: block; text-align: center; padding: 0 4%;
+  background: #121214; border-radius: 1px; color: #fff; font: 700 min(calc(var(--ch) * .32), calc(var(--cw) * .075))/calc(var(--ch) * .68) var(--font-ui); letter-spacing: .06em; text-transform: uppercase;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
 .c-gb .clab, .c-gbc .clab { border-radius: 1px; }
 /* a GBA label: the box art small in the middle over a soft wash of its colours, the seal and the code */
