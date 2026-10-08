@@ -37,6 +37,7 @@ One entry per copy on the shelf:
 | `console` | `"ps2"` | which shelf it sits on. Ids are in `js/consoles.js` |
 | `title` | `"Final Fantasy X"` | the official title |
 | `listedAs` | `"Nárnia"` | how it was written on the original list, when different |
+| `sortAs` | `"Rock Band"` | optional: where it files when sorted by title, when that isn't its title. Titles already file without a leading The, A or An (The Sims under S), so this is only for the rest: LEGO Rock Band and The Beatles: Rock Band with the Rock Band games, Disney's Tarzan under T. Games that file under the same name stand in the order they came out |
 | `edition` | `"Nintendo Switch 2 Edition"` | optional |
 | `region` | `"AUS"` | the region code on the box: `AUS`, `EUR`, `HOL` (Netherlands), `USA` or `JPN`. When it isn't known, just `PAL`, `NTSC-U` or `NTSC-J` |
 | `released` | `"2001-07-19"` | first release on that console. Can be `"2001-07"` or `"2001"` |
@@ -44,9 +45,10 @@ One entry per copy on the shelf:
 | `publisher`, `developer`, `genre` | | |
 | `format` | `"boxed"` | `boxed`, `cartridge-only` (stands loose on the shelf) or `digital` (an outline) |
 | `kinect` | `true` | optional: a Kinect game, drawn in a purple case |
-| `platinum` | `true` | PS2 only: a Platinum copy, with the silver band across its cover and a silver spine. Every PS2 game has it, `false` until set |
-| `caseColor` | `"#d8000f"` | optional: a case in another colour than its console's usual one (a red Wii case, a white Wii U one). It colours the plastic and the spine, and the spine's writing turns light or dark to suit |
+| `platinum` | `true` | PS2 and PS3: a Platinum copy. On the PS2, the silver band across its cover and a silver spine. On the PS3 it comes in a silver case instead of the clear one, and its `cover` should be the Platinum insert (yellow, with the Platinum band). Every PS2 game has it, `false` until set |
+| `caseColor` | `"#d8000f"` | optional: a case in another colour than its console's usual one (a red Wii case, a white Wii U one). It colours the plastic and the spine, and the spine's writing turns light or dark to suit. PS2 cases are blue by default; give the black ones `"#121212"` (only the plastic changes, the white paper spine stays) |
 | `cartColor` | `"#f2c318"` | optional: a cartridge in its own colour (a yellow Pokémon Yellow, a black Game Boy Color cartridge). It colours the plastic all round; Game Boy and Game Boy Color cartridges are grey without it |
+| `steelbook` | `true` | optional: a SteelBook (tin case). Drawn as metal with rounded corners and no plastic rim, its art to the edge, and a metal spine tinted in the cover's colour. Its `cover` is the tin's own art, not the box's, and `cover.back` (any game can have one) is a picture of its back, shown on the back of the case |
 | `caseStyle` | `"ps4"` | optional: drawn in another console's case (a PS4 disc on the PS5 shelf) |
 | `note` | `"No guitar controller"` | shown under the details |
 | `fav` | `true` | optional: faces out on the shelf in "One cover per console" |
@@ -66,7 +68,7 @@ To add a game, copy an entry, change it, and set `cover` and `colors` to `null`.
 
 ## Cases and cartridges
 
-Each case is drawn at its console's real height from `js/consoles.js`, so a DS case is shorter than a PS2 one and a PS3 case sits between them. The case is built around its cover scan: it takes its width from the scan, so the scan always shows whole and fills the front, with just the case's rim and hinge round it. Cardboard boxes (SNES, Game Boy) simply are their scan. A game without a scan gets its case's real width.
+Each case is drawn at its console's real height from `js/consoles.js`, so a DS case is shorter than a PS2 one and a PS3 case sits between them. A PS3 case is clear plastic with a faint blue tint, with the moulded strip across its top above the cover (the Blu-ray Disc logo and PLAYSTATION 3 raised in it), as on the real ones; the strip carries on over the top of the spine. The case is built around its cover scan: it takes its width from the scan, so the scan always shows whole and fills the front, with just the case's rim and hinge round it. Cardboard boxes (SNES, Game Boy) simply are their scan. A game without a scan gets its case's real width.
 
 The cartridges and game cards (SNES, Game Boy, GBA, DS, 3DS, Switch, Switch 2) are drawn in `js/cases.js` with their real outlines and label areas. The label shows the box art without the console-name strip that Western boxes have down one side.
 

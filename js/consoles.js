@@ -23,7 +23,7 @@ window.CONSOLES = [
   { id: 'ps3',     name: 'PlayStation 3',     short: 'PS3',      fam: 'playstation', w: 135, h: 171, d: 12, kind: 'keep',  media: 'bd',      spineArt: true },
   { id: 'ps2',     name: 'PlayStation 2',     short: 'PS2',      fam: 'playstation', w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: false },
   { id: 'ps1',     name: 'PlayStation',       short: 'PS1',      fam: 'playstation', w: 142, h: 125, d: 10, kind: 'jewel', media: 'cd',      spineArt: true },
-  { id: 'switch2', name: 'Nintendo Switch 2', short: 'Switch 2', fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch2', spineArt: false },
+  { id: 'switch2', name: 'Nintendo Switch 2', short: 'Switch 2', fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch2', spineArt: true },
   { id: 'switch',  name: 'Nintendo Switch',   short: 'Switch',   fam: 'nintendo',    w: 105, h: 170, d: 11, kind: 'keep',  media: 'switch',  spineArt: false },
   { id: 'wiiu',    name: 'Wii U',             short: 'Wii U',    fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wiiu',    spineArt: false },
   { id: '3ds',     name: 'Nintendo 3DS',      short: '3DS',      fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: '3ds',     spineArt: false },
@@ -73,4 +73,5 @@ window.FORMATS = {
   'boxed':          'Boxed',
   'cartridge-only': 'Cartridge only',
   'digital':        'Digital copy',
+  'code-in-box':    'Code in a box',
 };

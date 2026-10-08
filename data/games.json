@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03",
+  "updated": "2026-10-08",
   "games": [
     {
       "id": "ps5-avatar-frontiers-of-pandora",
@@ -30,6 +30,7 @@
       "console": "ps5",
       "title": "Grand Theft Auto V",
       "listedAs": "Grand Theft Auto 5",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2022-03-15",
       "dateSource": "manual",
@@ -54,6 +55,7 @@
       "console": "ps5",
       "title": "Hogwarts Legacy",
       "listedAs": "Hogwarts",
+      "edition": "Deluxe Edition",
       "region": "PAL",
       "released": "2023-02-10",
       "dateSource": "manual",
@@ -61,16 +63,17 @@
       "developer": "Avalanche Software",
       "genre": "Action role-playing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ps5/hogwarts-legacy.jpg",
-        "ratio": 0.7981,
-        "source": "thegamesdb.net",
-        "ref": "Hogwarts Legacy · PAL · TheGamesDB #113447"
+        "source": "manual",
+        "ref": "Hogwarts Legacy [Deluxe Edition] · NTSC (United States of America) · TheGamesDB #109798, case rim cropped off",
+        "ratio": 0.8
       },
       "colors": [
-        "#c5c1ae",
-        "#404e4f",
-        "#7f8783"
+        "#4d7c74",
+        "#254544",
+        "#83aca2"
       ]
     },
     {
@@ -78,6 +81,7 @@
       "console": "ps5",
       "title": "Mortal Kombat 11",
       "listedAs": "Mortal Kombat 11 (PS4 Upgraded)",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2019-04-23",
       "dateSource": "manual",
@@ -86,23 +90,26 @@
       "genre": "Fighting",
       "format": "boxed",
       "caseStyle": "ps4",
+      "steelbook": true,
       "note": "PS4 copy, upgraded to PS5",
       "cover": {
-        "file": "covers/ps5/mortal-kombat-11.jpg",
-        "ratio": 0.8154,
-        "source": "thegamesdb.net",
-        "ref": "Mortal Kombat 11 · NTSC (United States of America) · TheGamesDB #62524"
+        "file": "covers/ps5/mortal-kombat-11-steelbook.jpg",
+        "back": "covers/ps5/mortal-kombat-11-steelbook-back.jpg",
+        "source": "manual",
+        "ref": "Mortal Kombat 11 SteelBook Edition (PAL, yellow, Scorpion), front and back flattened from a seller's photos, eBay UK #128069489488",
+        "ratio": 0.7904
       },
       "colors": [
-        "#e0b247",
-        "#734a18",
-        "#f2dd98"
+        "#c1ab76",
+        "#9c785b",
+        "#5b4339"
       ]
     },
     {
       "id": "ps5-mortal-kombat-1",
       "console": "ps5",
       "title": "Mortal Kombat 1",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2023-09-19",
       "dateSource": "manual",
@@ -133,22 +140,25 @@
       "developer": "Volition",
       "genre": "Action",
       "format": "boxed",
+      "steelbook": true,
       "cover": {
-        "file": "covers/ps4/agents-of-mayhem.jpg",
-        "ratio": 0.8,
-        "source": "thegamesdb.net",
-        "ref": "Agents of Mayhem · NTSC (United States of America) · TheGamesDB #49326"
+        "file": "covers/ps4/agents-of-mayhem-steelbook.jpg",
+        "back": "covers/ps4/agents-of-mayhem-steelbook-back.jpg",
+        "source": "manual",
+        "ref": "Agents of Mayhem SteelBook (Day One Edition), front and back flattened from a seller's photos, eBay UK #188098647066",
+        "ratio": 0.7904
       },
       "colors": [
-        "#3d2449",
-        "#935c6f",
-        "#c4a4aa"
+        "#212221",
+        "#32363a",
+        "#41546c"
       ]
     },
     {
       "id": "ps4-call-of-duty-advanced-warfare",
       "console": "ps4",
       "title": "Call of Duty: Advanced Warfare",
+      "sortAs": "Call of Duty",
       "region": "PAL",
       "released": "2014-11-04",
       "dateSource": "manual",
@@ -156,16 +166,18 @@
       "developer": "Sledgehammer Games",
       "genre": "Shooter",
       "format": "boxed",
+      "steelbook": true,
       "cover": {
-        "file": "covers/ps4/call-of-duty-advanced-warfare.jpg",
-        "ratio": 0.8,
-        "source": "thegamesdb.net",
-        "ref": "Call of Duty: Advanced Warfare · NTSC (United States of America) · TheGamesDB #21407"
+        "file": "covers/ps4/call-of-duty-advanced-warfare-steelbook.jpg",
+        "back": "covers/ps4/call-of-duty-advanced-warfare-steelbook-back.jpg",
+        "source": "manual",
+        "ref": "Call of Duty: Advanced Warfare Atlas SteelBook, front and back flattened from a seller's photos, eBay UK #358614861326",
+        "ratio": 0.7904
       },
       "colors": [
-        "#e7e4db",
-        "#3d3634",
-        "#988d7e"
+        "#5b554e",
+        "#2a2721",
+        "#d5d7cb"
       ]
     },
     {
@@ -195,6 +207,7 @@
       "id": "ps4-grand-theft-auto-v",
       "console": "ps4",
       "title": "Grand Theft Auto V",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2014-11-18",
       "dateSource": "manual",
@@ -202,6 +215,7 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ps4/grand-theft-auto-v.jpg",
         "ratio": 0.8071,
@@ -219,6 +233,7 @@
       "console": "ps4",
       "title": "Grand Theft Auto: The Trilogy – The Definitive Edition",
       "listedAs": "Grand Theft Auto The Trilogy",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2021-11-11",
       "dateSource": "manual",
@@ -239,32 +254,10 @@
       ]
     },
     {
-      "id": "ps4-mortal-kombat-11",
-      "console": "ps4",
-      "title": "Mortal Kombat 11",
-      "region": "PAL",
-      "released": "2019-04-23",
-      "dateSource": "manual",
-      "publisher": "Warner Bros. Interactive",
-      "developer": "NetherRealm Studios",
-      "genre": "Fighting",
-      "format": "boxed",
-      "cover": {
-        "file": "covers/ps4/mortal-kombat-11.jpg",
-        "ratio": 0.8154,
-        "source": "thegamesdb.net",
-        "ref": "Mortal Kombat 11 · NTSC (United States of America) · TheGamesDB #62524"
-      },
-      "colors": [
-        "#e0b247",
-        "#734a18",
-        "#f2dd98"
-      ]
-    },
-    {
       "id": "ps4-mortal-kombat-11-ultimate",
       "console": "ps4",
       "title": "Mortal Kombat 11 Ultimate",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2020-11-17",
       "dateSource": "manual",
@@ -313,6 +306,7 @@
       "id": "ps4-rock-band-4",
       "console": "ps4",
       "title": "Rock Band 4",
+      "sortAs": "Rock Band",
       "region": "PAL",
       "released": "2015-10-06",
       "dateSource": "manual",
@@ -384,6 +378,7 @@
       "console": "ps4",
       "title": "The Sims 4 Plus Cats & Dogs",
       "listedAs": "The Sims 4 Bundle Cats and Dogs",
+      "sortAs": "The Sims 4",
       "edition": "Bundle with the Cats & Dogs expansion",
       "region": "PAL",
       "released": "2017-11-17",
@@ -393,8 +388,17 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
-      "cover": null,
-      "colors": null,
+      "cover": {
+        "file": "covers/ps4/the-sims-4-plus-cats-and-dogs.jpg",
+        "source": "manual",
+        "ref": "The Sims 4 Plus Cats & Dogs Bundle, the 2018 box with the green band, NTSC-U scan supplied by Bruno",
+        "ratio": 0.7942
+      },
+      "colors": [
+        "#f1f3f3",
+        "#b5c4bb",
+        "#3a84a5"
+      ],
       "series": "The Sims 4"
     },
     {
@@ -448,6 +452,7 @@
       "id": "ps3-call-of-duty-ghosts",
       "console": "ps3",
       "title": "Call of Duty: Ghosts",
+      "sortAs": "Call of Duty",
       "region": "PAL",
       "released": "2013-11-05",
       "dateSource": "manual",
@@ -455,22 +460,25 @@
       "developer": "Infinity Ward",
       "genre": "Shooter",
       "format": "boxed",
+      "steelbook": true,
       "cover": {
-        "file": "covers/ps3/call-of-duty-ghosts.jpg",
-        "ratio": 0.8667,
-        "source": "aldostools/resources",
-        "ref": "BLES01945 · Call of Duty® Ghosts"
+        "file": "covers/ps3/call-of-duty-ghosts-steelbook.jpg",
+        "back": "covers/ps3/call-of-duty-ghosts-steelbook-back.jpg",
+        "source": "manual",
+        "ref": "Call of Duty: Ghosts SteelBook Edition (UK), front and back flattened from a seller's photo, eBay UK #287552296803",
+        "ratio": 0.7904
       },
       "colors": [
-        "#191616",
-        "#393438",
-        "#635e61"
+        "#5c88a9",
+        "#30445b",
+        "#456583"
       ]
     },
     {
       "id": "ps3-call-of-duty-modern-warfare-2",
       "console": "ps3",
       "title": "Call of Duty: Modern Warfare 2",
+      "sortAs": "Call of Duty",
       "region": "PAL",
       "released": "2009-11-10",
       "dateSource": "manual",
@@ -564,6 +572,7 @@
       "id": "ps3-grand-theft-auto-iv",
       "console": "ps3",
       "title": "Grand Theft Auto IV",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2008-04-29",
       "dateSource": "manual",
@@ -571,22 +580,24 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
+      "platinum": true,
       "cover": {
-        "file": "covers/ps3/grand-theft-auto-iv.jpg",
-        "ratio": 0.8667,
-        "source": "aldostools/resources",
-        "ref": "BLES00229 · Grand Theft Auto IV"
+        "file": "covers/ps3/grand-theft-auto-iv-platinum.jpg",
+        "source": "manual",
+        "ref": "Grand Theft Auto IV Platinum (PAL), the insert flattened from a seller's photo, eBay UK #116604016201",
+        "ratio": 0.8596
       },
       "colors": [
-        "#867e6e",
-        "#565246",
-        "#292727"
+        "#4f4842",
+        "#867c71",
+        "#b0b4b6"
       ]
     },
     {
       "id": "ps3-grand-theft-auto-san-andreas",
       "console": "ps3",
       "title": "Grand Theft Auto: San Andreas",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2015-12",
       "dateSource": "manual",
@@ -611,6 +622,7 @@
       "id": "ps3-guitar-hero-5",
       "console": "ps3",
       "title": "Guitar Hero 5",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2009-09-01",
       "dateSource": "manual",
@@ -634,6 +646,7 @@
       "id": "ps3-guitar-hero-iii-legends-of-rock",
       "console": "ps3",
       "title": "Guitar Hero III: Legends of Rock",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2007-10-28",
       "dateSource": "manual",
@@ -657,6 +670,7 @@
       "id": "ps3-guitar-hero-metallica",
       "console": "ps3",
       "title": "Guitar Hero: Metallica",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2009-03-29",
       "dateSource": "manual",
@@ -680,6 +694,7 @@
       "id": "ps3-guitar-hero-van-halen",
       "console": "ps3",
       "title": "Guitar Hero: Van Halen",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2009-12-22",
       "dateSource": "manual",
@@ -703,6 +718,7 @@
       "id": "ps3-guitar-hero-warriors-of-rock",
       "console": "ps3",
       "title": "Guitar Hero: Warriors of Rock",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2010-09-28",
       "dateSource": "manual",
@@ -727,6 +743,7 @@
       "console": "ps3",
       "title": "Guitar Hero World Tour",
       "listedAs": "Guitar Hero: World Tour",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2008-10-26",
       "dateSource": "manual",
@@ -750,6 +767,7 @@
       "id": "ps3-guitar-hero-live",
       "console": "ps3",
       "title": "Guitar Hero Live",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2015-10-20",
       "dateSource": "manual",
@@ -757,6 +775,7 @@
       "developer": "FreeStyleGames",
       "genre": "Rhythm",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ps3/guitar-hero-live.jpg",
         "ratio": 0.8667,
@@ -826,22 +845,24 @@
       "developer": "Guerrilla Games",
       "genre": "Shooter",
       "format": "boxed",
+      "platinum": true,
       "cover": {
-        "file": "covers/ps3/killzone-3.jpg",
-        "ratio": 0.8667,
-        "source": "aldostools/resources",
-        "ref": "BCES01007 · Killzone®3"
+        "file": "covers/ps3/killzone-3-platinum.jpg",
+        "source": "manual",
+        "ref": "Killzone 3 Platinum (PAL), the insert flattened from a seller's photo, eBay UK #307173911299",
+        "ratio": 0.8596
       },
       "colors": [
-        "#5e4938",
-        "#e9f2f4",
-        "#918e88"
+        "#7d7369",
+        "#543b2c",
+        "#cfb53c"
       ]
     },
     {
       "id": "ps3-lego-rock-band",
       "console": "ps3",
       "title": "Lego Rock Band",
+      "sortAs": "Rock Band",
       "region": "PAL",
       "released": "2009-11-03",
       "dateSource": "manual",
@@ -864,7 +885,7 @@
     {
       "id": "ps3-lost-via-domus",
       "console": "ps3",
-      "title": "Lost: Via Domus",
+      "title": "Lost",
       "region": "PAL",
       "released": "2008-02-26",
       "dateSource": "manual",
@@ -958,6 +979,7 @@
       "id": "ps3-mortal-kombat-komplete-edition",
       "console": "ps3",
       "title": "Mortal Kombat: Komplete Edition",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2012-02-28",
       "dateSource": "manual",
@@ -981,6 +1003,7 @@
       "id": "ps3-mortal-kombat-vs-dc-universe",
       "console": "ps3",
       "title": "Mortal Kombat vs. DC Universe",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2008-11-16",
       "dateSource": "manual",
@@ -1076,6 +1099,7 @@
       "id": "ps3-rock-band",
       "console": "ps3",
       "title": "Rock Band",
+      "sortAs": "Rock Band",
       "region": "PAL",
       "released": "2007",
       "dateSource": "manual",
@@ -1083,6 +1107,7 @@
       "developer": "Harmonix",
       "genre": "Rhythm",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ps3/rock-band.jpg",
         "ratio": 0.8667,
@@ -1099,6 +1124,7 @@
       "id": "ps3-rock-band-2",
       "console": "ps3",
       "title": "Rock Band 2",
+      "sortAs": "Rock Band",
       "region": "PAL",
       "released": "2008-10",
       "dateSource": "manual",
@@ -1123,6 +1149,7 @@
       "console": "ps3",
       "title": "The Beatles: Rock Band",
       "listedAs": "Rock Band: The Beatles",
+      "sortAs": "Rock Band",
       "region": "PAL",
       "released": "2009-09-09",
       "dateSource": "manual",
@@ -1190,6 +1217,31 @@
       ]
     },
     {
+      "id": "ps3-warhammer-40000-space-marine",
+      "console": "ps3",
+      "title": "Warhammer 40,000: Space Marine",
+      "listedAs": "Space Marine",
+      "sortAs": "Space Marine",
+      "region": "PAL",
+      "released": "2011-09-06",
+      "dateSource": "manual",
+      "publisher": "THQ",
+      "developer": "Relic Entertainment",
+      "genre": "Action",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ps3/warhammer-40000-space-marine.jpg",
+        "ratio": 0.8667,
+        "source": "aldostools/resources",
+        "ref": "BLES01347 · Warhammer 40,000: Space Marine"
+      },
+      "colors": [
+        "#2a2321",
+        "#9c9a9b",
+        "#e5e4e4"
+      ]
+    },
+    {
       "id": "ps3-street-fighter-x-tekken",
       "console": "ps3",
       "title": "Street Fighter X Tekken",
@@ -1216,6 +1268,7 @@
       "id": "ps3-the-elder-scrolls-v-skyrim",
       "console": "ps3",
       "title": "The Elder Scrolls V: Skyrim",
+      "sortAs": "Skyrim",
       "region": "PAL",
       "released": "2011-11-11",
       "dateSource": "manual",
@@ -1248,20 +1301,21 @@
       "format": "boxed",
       "cover": {
         "file": "covers/ps3/the-last-of-us.jpg",
-        "ratio": 0.8667,
-        "source": "aldostools/resources",
-        "ref": "BCES01584 · The Last of Us™"
+        "source": "manual",
+        "ref": "The Last of Us · PAL (United Kingdom) · TheGamesDB #103667",
+        "ratio": 0.8731
       },
       "colors": [
-        "#070605",
-        "#504a3c",
-        "#25211a"
+        "#67564a",
+        "#a48a6e",
+        "#333030"
       ]
     },
     {
       "id": "ps3-the-sims-3",
       "console": "ps3",
       "title": "The Sims 3",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2010-10-26",
       "dateSource": "manual",
@@ -1283,6 +1337,31 @@
       "series": "The Sims 3"
     },
     {
+      "id": "ps2-canis-canem-edit",
+      "console": "ps2",
+      "title": "Canis Canem Edit",
+      "region": "PAL",
+      "released": "2006-10-25",
+      "dateSource": "manual",
+      "publisher": "Rockstar Games",
+      "developer": "Rockstar Vancouver",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "platinum": false,
+      "coverMatch": "SLES-53561",
+      "cover": {
+        "file": "covers/ps2/canis-canem-edit.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-53561"
+      },
+      "colors": [
+        "#053a6a",
+        "#40504a",
+        "#877530"
+      ]
+    },
+    {
       "id": "ps2-crazy-frog-racer",
       "console": "ps2",
       "title": "Crazy Frog Racer",
@@ -1293,17 +1372,19 @@
       "developer": "Neko Entertainment",
       "genre": "Kart racing",
       "format": "boxed",
+      "fav": true,
       "platinum": false,
+      "coverMatch": "SLES-53869",
       "cover": {
         "file": "covers/ps2/crazy-frog-racer.jpg",
-        "ratio": 0.7091,
-        "source": "libretro-thumbnails",
-        "ref": "Crazy Frog Racer (Europe) (En,Fr,De,Es,It)"
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-53869"
       },
       "colors": [
-        "#0d58a5",
-        "#74606f",
-        "#17182e"
+        "#5d4e4f",
+        "#b2ada9",
+        "#b86b3f"
       ]
     },
     {
@@ -1342,18 +1423,18 @@
       "developer": "Hitmaker",
       "genre": "Racing",
       "format": "boxed",
-      "platinum": false,
+      "platinum": true,
       "note": "Maluma",
       "cover": {
-        "file": "covers/ps2/crazy-taxi.jpg",
+        "file": "covers/ps2/crazy-taxi-platinum.jpg",
         "ratio": 0.7058,
-        "source": "libretro-thumbnails",
-        "ref": "Crazy Taxi (Europe, Australia) (En,Fr,De,Es)"
+        "source": "manual",
+        "ref": "Crazy Taxi Platinum (PAL), the insert flattened from a seller's photo, Amazon UK (m.media-amazon.com/images/I/91IRjUpx7wL)"
       },
       "colors": [
-        "#fcf101",
-        "#584d37",
-        "#c9945b"
+        "#9f760b",
+        "#696660",
+        "#39332f"
       ]
     },
     {
@@ -1368,6 +1449,7 @@
       "genre": "Racing",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/driving-emotion-type-s.jpg",
         "ratio": 0.7038,
@@ -1392,6 +1474,7 @@
       "genre": "Role-playing",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/final-fantasy-x.jpg",
         "ratio": 0.7058,
@@ -1416,47 +1499,49 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "platinum": false,
-      "coverMatch": "Disney-Pixar Finding Nemo (Europe)",
       "cover": {
-        "file": "covers/ps2/finding-nemo.jpg",
-        "ratio": 0.7154,
-        "source": "libretro-thumbnails",
-        "ref": "Disney-Pixar Finding Nemo (Europe)"
+        "file": "covers/ps2/finding-nemo-australia.jpg",
+        "ratio": 0.7077,
+        "source": "manual",
+        "ref": "Finding Nemo (PAL, Australian print with Sydney across the top, OFLC G), the insert flattened from a seller's photo, eBay (i.ebayimg.com/images/g/~DcAAOSwdnhlxjIr)"
       },
       "colors": [
-        "#1e2e5b",
-        "#3a5a8d",
-        "#14131d"
+        "#3b3c41",
+        "#82979b",
+        "#626c6f"
       ]
     },
     {
-      "id": "ps2-gran-turismo-4",
+      "id": "ps2-gran-turismo-4-prologue",
       "console": "ps2",
-      "title": "Gran Turismo 4",
+      "title": "Gran Turismo 4 Prologue",
       "region": "PAL",
-      "released": "2004-12-28",
+      "released": "2004-05-26",
       "dateSource": "manual",
       "publisher": "Sony Computer Entertainment",
       "developer": "Polyphony Digital",
       "genre": "Racing",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
+      "coverMatch": "SCES-52438",
       "cover": {
-        "file": "covers/ps2/gran-turismo-4.jpg",
-        "ratio": 0.7096,
-        "source": "libretro-thumbnails",
-        "ref": "Gran Turismo 4 (Europe, Australia) (En,Fr,De,Es,It)"
+        "file": "covers/ps2/gran-turismo-4-prologue.jpg",
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SCES-52438"
       },
       "colors": [
-        "#fafaf9",
-        "#181917",
-        "#bebcba"
+        "#dbe3f1",
+        "#c5cbda",
+        "#88858a"
       ]
     },
     {
       "id": "ps2-grand-theft-auto-iii",
       "console": "ps2",
       "title": "Grand Theft Auto III",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2001-10-22",
       "dateSource": "manual",
@@ -1465,6 +1550,7 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/grand-theft-auto-iii.jpg",
         "ratio": 0.7058,
@@ -1481,6 +1567,7 @@
       "id": "ps2-grand-theft-auto-liberty-city-stories",
       "console": "ps2",
       "title": "Grand Theft Auto: Liberty City Stories",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2006-06-06",
       "dateSource": "manual",
@@ -1505,6 +1592,7 @@
       "id": "ps2-grand-theft-auto-vice-city",
       "console": "ps2",
       "title": "Grand Theft Auto: Vice City",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2002-10-27",
       "dateSource": "manual",
@@ -1529,6 +1617,7 @@
       "id": "ps2-grand-theft-auto-vice-city-stories",
       "console": "ps2",
       "title": "Grand Theft Auto: Vice City Stories",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2007-03-06",
       "dateSource": "manual",
@@ -1553,6 +1642,7 @@
       "id": "ps2-guitar-hero",
       "console": "ps2",
       "title": "Guitar Hero",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2005-11-08",
       "dateSource": "manual",
@@ -1577,6 +1667,7 @@
       "id": "ps2-guitar-hero-rocks-the-80s",
       "console": "ps2",
       "title": "Guitar Hero: Rocks the 80s",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2007-07-24",
       "dateSource": "manual",
@@ -1602,6 +1693,7 @@
       "id": "ps2-guitar-hero-ii",
       "console": "ps2",
       "title": "Guitar Hero II",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2006-11-07",
       "dateSource": "manual",
@@ -1626,6 +1718,7 @@
       "id": "ps2-guitar-hero-iii-legends-of-rock",
       "console": "ps2",
       "title": "Guitar Hero III: Legends of Rock",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2007-10-28",
       "dateSource": "manual",
@@ -1633,6 +1726,7 @@
       "developer": "Neversoft",
       "genre": "Rhythm",
       "format": "boxed",
+      "fav": true,
       "platinum": false,
       "cover": {
         "file": "covers/ps2/guitar-hero-iii-legends-of-rock.jpg",
@@ -1650,6 +1744,7 @@
       "id": "ps2-guitar-hero-world-tour",
       "console": "ps2",
       "title": "Guitar Hero World Tour",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2008",
       "dateSource": "manual",
@@ -1682,16 +1777,17 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "platinum": false,
+      "coverMatch": "SLES-53726",
       "cover": {
         "file": "covers/ps2/harry-potter-and-the-goblet-of-fire.jpg",
-        "ratio": 0.7154,
-        "source": "libretro-thumbnails",
-        "ref": "Harry Potter and the Goblet of Fire (Europe)"
+        "ratio": 0.6962,
+        "source": "xlenore/ps2-covers",
+        "ref": "SLES-53726"
       },
       "colors": [
-        "#1e1a15",
-        "#503428",
-        "#815942"
+        "#171410",
+        "#482e20",
+        "#7e5538"
       ]
     },
     {
@@ -1706,6 +1802,7 @@
       "genre": "Action",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/hulk.jpg",
         "ratio": 0.7154,
@@ -1778,17 +1875,18 @@
       "developer": "Remedy Entertainment",
       "genre": "Shooter",
       "format": "boxed",
-      "platinum": false,
+      "platinum": true,
+      "caseColor": "#16171a",
       "cover": {
-        "file": "covers/ps2/max-payne.jpg",
-        "ratio": 0.7154,
-        "source": "libretro-thumbnails",
-        "ref": "Max Payne (Europe)"
+        "file": "covers/ps2/max-payne-platinum.jpg",
+        "ratio": 0.7058,
+        "source": "manual",
+        "ref": "Max Payne Platinum (PAL, UK print with BBFC 15 and BAFTA badge), the insert flattened from a seller's photo, uplister (d2q7r0rjkm1t8k.cloudfront.net/uplister/images/cd89e727ee47c801d92594efdf4930b7.png)"
       },
       "colors": [
-        "#0a0806",
-        "#431b0f",
-        "#695345"
+        "#30221c",
+        "#bbbdbb",
+        "#838381"
       ]
     },
     {
@@ -1828,6 +1926,7 @@
       "genre": "Racing",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/need-for-speed-underground.jpg",
         "ratio": 0.7154,
@@ -1904,6 +2003,7 @@
       "genre": "Sports",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "check": "On PS2 only Round 2 exists. Is it Round 2, or the PS1 original?",
       "cover": {
         "file": "covers/ps2/ready-2-rumble-boxing-round-2.jpg",
@@ -1954,6 +2054,7 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/the-getaway.jpg",
         "ratio": 0.7154,
@@ -1978,6 +2079,7 @@
       "genre": "Action-adventure",
       "format": "boxed",
       "platinum": false,
+      "caseColor": "#16171a",
       "cover": {
         "file": "covers/ps2/the-getaway-black-monday.jpg",
         "ratio": 0.7154,
@@ -1994,6 +2096,7 @@
       "id": "ps2-the-sims",
       "console": "ps2",
       "title": "The Sims",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2003-01-14",
       "dateSource": "manual",
@@ -2021,6 +2124,7 @@
       "console": "ps2",
       "title": "The Sims Bustin' Out",
       "listedAs": "The Sims: Bustin’ Out",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2003-12-15",
       "dateSource": "manual",
@@ -2048,6 +2152,7 @@
       "console": "ps2",
       "title": "The Sims 2: Pets",
       "listedAs": "The Sims 2 Pets",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-10-17",
       "dateSource": "manual",
@@ -2071,9 +2176,38 @@
       "series": "The Sims 2"
     },
     {
+      "id": "ps2-the-sims-2-pets-platinum",
+      "console": "ps2",
+      "title": "The Sims 2: Pets",
+      "listedAs": "The Sims 2 Pets",
+      "sortAs": "The Sims 2",
+      "region": "PAL",
+      "released": "2006-10-17",
+      "dateSource": "manual",
+      "publisher": "Electronic Arts",
+      "developer": "Maxis",
+      "genre": "Life simulation",
+      "format": "boxed",
+      "platinum": true,
+      "caseColor": "#16171a",
+      "cover": {
+        "file": "covers/ps2/the-sims-2-pets-platinum.jpg",
+        "ratio": 0.6981,
+        "source": "manual",
+        "ref": "The Sims 2 Pets Platinum (PAL, UK print), Amazon UK (m.media-amazon.com/images/I/71aI0jYCeUL)"
+      },
+      "series": "The Sims 2",
+      "colors": [
+        "#7d9096",
+        "#4b5c5b",
+        "#2f2f33"
+      ]
+    },
+    {
       "id": "ps2-the-urbz-sims-in-the-city",
       "console": "ps2",
       "title": "The Urbz: Sims in the City",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2004-11",
       "dateSource": "manual",
@@ -2100,6 +2234,7 @@
       "id": "ps2-grand-theft-auto-san-andreas",
       "console": "ps2",
       "title": "Grand Theft Auto: San Andreas",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2004-10-29",
       "dateSource": "manual",
@@ -2107,7 +2242,9 @@
       "developer": "Rockstar North",
       "genre": "Action-adventure",
       "format": "boxed",
+      "fav": true,
       "platinum": false,
+      "caseColor": "#16171a",
       "coverMatch": "SLES-52541",
       "cover": {
         "file": "covers/ps2/grand-theft-auto-san-andreas.jpg",
@@ -2132,17 +2269,17 @@
       "developer": "Traveller's Tales",
       "genre": "Platformer",
       "format": "boxed",
-      "coverMatch": "Disney-Pixar A Bug's Life (Europe)",
+      "platinum": true,
       "cover": {
-        "file": "covers/ps1/a-bugs-life.jpg",
+        "file": "covers/ps1/a-bugs-life-platinum.jpg",
         "ratio": 0.9824,
-        "source": "libretro-thumbnails",
-        "ref": "Disney-Pixar A Bug's Life (Europe)"
+        "source": "manual",
+        "ref": "A Bug's Life Platinum (PAL): the libretro-thumbnails scan of Disney-Pixar A Bug's Life (Europe) with its black PlayStation bar redrawn as the silver Platinum one, matched to a sealed copy on Amazon UK (m.media-amazon.com/images/I/813LLUnq2xL)"
       },
       "colors": [
-        "#90a359",
-        "#c9dada",
-        "#91b0a5"
+        "#9eb063",
+        "#a0b8b7",
+        "#d0dddd"
       ]
     },
     {
@@ -2181,23 +2318,47 @@
       "developer": "Traveller's Tales",
       "genre": "Kart racing",
       "format": "boxed",
-      "coverMatch": "Disney-Pixar Toy Story Racer (Europe)",
+      "fav": true,
       "cover": {
         "file": "covers/ps1/toy-story-racer.jpg",
-        "ratio": 1.0455,
+        "ratio": 1.0059,
         "source": "manual",
-        "ref": "libretro-thumbnails Disney-Pixar Toy Story Racer (USA scan, filed as Europe), the jewel case's hinge cropped off the left: the case draws its own"
+        "ref": "Toy Story Racer (PAL, SLES-03396), front scan from PSXDataCenter (psxdatacenter.com/images/covers/P/D/SLES-03396/SLES-03396-F-ALL.jpg)"
       },
       "colors": [
-        "#575964",
-        "#9f7b5e",
-        "#8a9fb1"
+        "#5d5458",
+        "#a27c57",
+        "#aeafb1"
+      ]
+    },
+    {
+      "id": "ps1-worms-world-party",
+      "console": "ps1",
+      "title": "Worms World Party",
+      "region": "PAL",
+      "released": "2001-12-14",
+      "dateSource": "manual",
+      "publisher": "Ubi Soft",
+      "developer": "Team17",
+      "genre": "Strategy",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ps1/worms-world-party.jpg",
+        "ratio": 1.0137,
+        "source": "manual",
+        "ref": "Worms World Party (PAL, SLES-03804, UK print with ELSPA 3+), front scan from PSXDataCenter (psxdatacenter.com/images/covers/P/W/SLES-03804/SLES-03804-F-ALL.jpg), a pixel of scanner edge trimmed"
+      },
+      "colors": [
+        "#251f33",
+        "#484868",
+        "#988f82"
       ]
     },
     {
       "id": "switch2-donkey-kong-bananza",
       "console": "switch2",
       "title": "Donkey Kong Bananza",
+      "sortAs": "Donkey Kong",
       "region": "PAL",
       "released": "2025-07-17",
       "dateSource": "manual",
@@ -2221,6 +2382,7 @@
       "id": "switch2-mario-kart-world",
       "console": "switch2",
       "title": "Mario Kart World",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2025-06-05",
       "dateSource": "manual",
@@ -2245,6 +2407,7 @@
       "console": "switch2",
       "title": "Super Mario Party Jamboree + Jamboree TV",
       "listedAs": "Mario Party Jamberoo + Jamberoo TV",
+      "sortAs": "Mario",
       "edition": "Nintendo Switch 2 Edition",
       "region": "PAL",
       "released": "2025-07-24",
@@ -2270,6 +2433,7 @@
       "console": "switch2",
       "title": "Pokémon Legends: Z-A",
       "listedAs": "Pokémon Legends Z-A",
+      "sortAs": "Pokémon",
       "edition": "Nintendo Switch 2 Edition",
       "region": "PAL",
       "released": "2025-10-16",
@@ -2278,8 +2442,18 @@
       "developer": "Game Freak",
       "genre": "Role-playing",
       "format": "boxed",
-      "cover": null,
-      "colors": null
+      "fav": true,
+      "cover": {
+        "file": "covers/switch2/pokemon-legends-z-a.jpg",
+        "source": "manual",
+        "ref": "Pokémon Legends: Z-A Nintendo Switch 2 Edition · UK · legends.pokemon.com/en-gb",
+        "ratio": 0.6103
+      },
+      "colors": [
+        "#2f374c",
+        "#596778",
+        "#a8a4a2"
+      ]
     },
     {
       "id": "switch-animal-crossing-new-horizons",
@@ -2332,13 +2506,14 @@
       "id": "switch-cuphead",
       "console": "switch",
       "title": "Cuphead",
+      "listedAs": "Cuphead (Cartridge Only)",
       "region": "PAL",
       "released": "2019-04-18",
       "dateSource": "manual",
       "publisher": "StudioMDHR",
       "developer": "StudioMDHR",
       "genre": "Run and gun",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/switch/cuphead.jpg",
         "ratio": 0.6135,
@@ -2355,6 +2530,7 @@
       "id": "switch-donkey-kong-country-tropical-freeze",
       "console": "switch",
       "title": "Donkey Kong Country: Tropical Freeze",
+      "sortAs": "Donkey Kong",
       "region": "PAL",
       "released": "2018-05-04",
       "dateSource": "manual",
@@ -2379,6 +2555,7 @@
       "console": "switch",
       "title": "Donkey Kong Country Returns HD",
       "listedAs": "Donkey Kong Returns HD (Maluma)",
+      "sortAs": "Donkey Kong",
       "region": "PAL",
       "released": "2025-01-16",
       "dateSource": "manual",
@@ -2405,6 +2582,7 @@
       "console": "switch",
       "title": "Grand Theft Auto: The Trilogy – The Definitive Edition",
       "listedAs": "Grand Theft Auto: The Trilogy",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2021-11-11",
       "dateSource": "manual",
@@ -2412,16 +2590,17 @@
       "developer": "Grove Street Games",
       "genre": "Action-adventure",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/switch/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
-        "ratio": 0.6192,
-        "source": "thegamesdb.net",
-        "ref": "Grand Theft Auto: The Trilogy - The Definitive Edition · PAL (Australia) · TheGamesDB #125887"
+        "source": "manual",
+        "ref": "Grand Theft Auto: The Trilogy - The Definitive Edition · PAL (Australia), R18+ · TheGamesDB #125887, case rim cropped off",
+        "ratio": 0.6115
       },
       "colors": [
-        "#c3a68f",
-        "#9c755d",
-        "#353633"
+        "#c39275",
+        "#7d6352",
+        "#c6c9c0"
       ]
     },
     {
@@ -2474,14 +2653,14 @@
       "id": "switch-jumanji-the-video-game",
       "console": "switch",
       "title": "Jumanji: The Video Game",
-      "listedAs": "Jumanji",
+      "listedAs": "Jumanji (Cartridge Only)",
       "region": "PAL",
       "released": "2019-11-08",
       "dateSource": "manual",
       "publisher": "Outright Games",
       "developer": "Funsolve",
       "genre": "Action",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/switch/jumanji-the-video-game.jpg",
         "ratio": 0.6173,
@@ -2530,14 +2709,14 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/just-dance-2018.jpg",
-        "ratio": 0.6173,
-        "source": "thegamesdb.net",
-        "ref": "Just Dance 2018 · PAL · TheGamesDB #49989"
+        "source": "manual",
+        "ref": "Just Dance 2018 · PAL (United Kingdom; the Australian box has the same art with a G rating) · GameTDB HAC-P-ADEBA",
+        "ratio": 0.6173
       },
       "colors": [
-        "#c0b0d3",
-        "#733d88",
-        "#3c51cc"
+        "#223a5d",
+        "#7c6f7b",
+        "#db7258"
       ]
     },
     {
@@ -2693,16 +2872,19 @@
       "developer": "TT Games",
       "genre": "Action-adventure",
       "format": "boxed",
+      "steelbook": true,
+      "spineColor": "#141414",
       "cover": {
-        "file": "covers/switch/lego-dc-super-villains.jpg",
-        "ratio": 0.6135,
-        "source": "thegamesdb.net",
-        "ref": "LEGO DC Super-Villains · NTSC (United States of America) · TheGamesDB #60940"
+        "file": "covers/switch/lego-dc-super-villains-steelbook.jpg",
+        "back": "covers/switch/lego-dc-super-villains-steelbook-back.jpg",
+        "source": "manual",
+        "ref": "LEGO DC Super-Villains SteelBook (Switch size, Harley Quinn), front and back flattened from sellers' photos, eBay #267304346085 and Core Gaming NH",
+        "ratio": 0.6173
       },
       "colors": [
-        "#3f9222",
-        "#a7b33c",
-        "#50385b"
+        "#2a1a34",
+        "#503943",
+        "#65675e"
       ]
     },
     {
@@ -2710,6 +2892,7 @@
       "console": "switch",
       "title": "Let's Sing Queen",
       "listedAs": "Let’s Sing: Queen",
+      "sortAs": "Let's Sing",
       "region": "PAL",
       "released": "2023",
       "dateSource": "manual",
@@ -2720,20 +2903,21 @@
       "check": "Release date not confirmed.",
       "cover": {
         "file": "covers/switch/lets-sing-queen.jpg",
-        "ratio": 0.6346,
-        "source": "thegamesdb.net",
-        "ref": "Let's Sing Queen · PAL · TheGamesDB #80082"
+        "source": "manual",
+        "ref": "Let's Sing Queen · PAL · TheGamesDB #80082, white margin cropped off",
+        "ratio": 0.6192
       },
       "colors": [
-        "#0c0a08",
-        "#4b473a",
-        "#a09b8d"
+        "#030302",
+        "#241f18",
+        "#4c412e"
       ]
     },
     {
       "id": "switch-lets-sing-2024",
       "console": "switch",
       "title": "Let's Sing 2024",
+      "sortAs": "Let's Sing",
       "region": "PAL",
       "released": "2023-11",
       "dateSource": "manual",
@@ -2742,13 +2926,23 @@
       "genre": "Karaoke",
       "format": "boxed",
       "check": "Release date not confirmed.",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/lets-sing-2024.jpg",
+        "source": "manual",
+        "ref": "Let's Sing 2024 · PAL (Australia), G · EB Games Australia packshot",
+        "ratio": 0.6019
+      },
+      "colors": [
+        "#8c6397",
+        "#4e3e89",
+        "#c296b1"
+      ]
     },
     {
       "id": "switch-lets-sing-2025",
       "console": "switch",
       "title": "Let's Sing 2025",
+      "sortAs": "Let's Sing",
       "region": "PAL",
       "released": "2024-11",
       "dateSource": "manual",
@@ -2757,13 +2951,23 @@
       "genre": "Karaoke",
       "format": "boxed",
       "check": "Release date not confirmed.",
-      "cover": null,
-      "colors": null
+      "cover": {
+        "file": "covers/switch/lets-sing-2025.jpg",
+        "source": "manual",
+        "ref": "Let's Sing 2025 · PAL (Australia), PG · BIG W product photo, case rim cropped off",
+        "ratio": 0.6173
+      },
+      "colors": [
+        "#c253b6",
+        "#5d3eb7",
+        "#e5c5da"
+      ]
     },
     {
       "id": "switch-mario-kart-8-deluxe",
       "console": "switch",
       "title": "Mario Kart 8 Deluxe",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2017-04-28",
       "dateSource": "manual",
@@ -2771,6 +2975,7 @@
       "developer": "Nintendo EPD",
       "genre": "Kart racing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/switch/mario-kart-8-deluxe.jpg",
         "ratio": 0.6154,
@@ -2784,16 +2989,44 @@
       ]
     },
     {
+      "id": "switch-mario-kart-live-home-circuit",
+      "console": "switch",
+      "title": "Mario Kart Live: Home Circuit",
+      "listedAs": "Mario Kart Live Home Circuit (digital copy)",
+      "sortAs": "Mario",
+      "region": "PAL",
+      "released": "2020-10-16",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Velan Studios",
+      "genre": "Kart racing",
+      "format": "digital",
+      "cover": {
+        "file": "covers/switch/mario-kart-live-home-circuit.jpg",
+        "plain": true,
+        "source": "manual",
+        "ref": "Mario Kart Live: Home Circuit · Nintendo UK eShop square art · SQ_NSwitchDS_MarioKartLiveHomeCircuit_image500w.jpg",
+        "ratio": 1
+      },
+      "colors": [
+        "#bf7d66",
+        "#c2ada3",
+        "#ece4dc"
+      ]
+    },
+    {
       "id": "switch-mario-party-superstars",
       "console": "switch",
       "title": "Mario Party Superstars",
+      "listedAs": "Mario Party Superstars (Cartridge Only)",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2021-10-29",
       "dateSource": "manual",
       "publisher": "Nintendo",
       "developer": "NDcube",
       "genre": "Party",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/switch/mario-party-superstars.jpg",
         "ratio": 0.6192,
@@ -2811,6 +3044,7 @@
       "console": "switch",
       "title": "Mario + Rabbids Kingdom Battle",
       "listedAs": "Mario + Rabbids: Kingdom Battle",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2017-08-29",
       "dateSource": "manual",
@@ -2835,6 +3069,7 @@
       "console": "switch",
       "title": "Mario + Rabbids Sparks of Hope",
       "listedAs": "Mario + Rabbids: Sparks of Hope",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2022-10-20",
       "dateSource": "manual",
@@ -2858,6 +3093,7 @@
       "id": "switch-mortal-kombat-11",
       "console": "switch",
       "title": "Mortal Kombat 11",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2019-04-23",
       "dateSource": "manual",
@@ -2901,6 +3137,30 @@
       ]
     },
     {
+      "id": "switch-moving-out-code",
+      "console": "switch",
+      "title": "Moving Out",
+      "listedAs": "Moving Out (Code in a Box)",
+      "region": "PAL",
+      "released": "2020-04-28",
+      "dateSource": "manual",
+      "publisher": "Team17",
+      "developer": "SMG Studio",
+      "genre": "Party",
+      "format": "code-in-box",
+      "cover": {
+        "file": "covers/switch/moving-out-code-in-box.jpg",
+        "source": "manual",
+        "ref": "Moving Out (Code in a Box) · PAL (Europe), PEGI 3, \"Download Code Only\" tag · Mapo Nus Gaming product photo, case rim cropped off",
+        "ratio": 0.6154
+      },
+      "colors": [
+        "#bb9c79",
+        "#c2d2c6",
+        "#71514f"
+      ]
+    },
+    {
       "id": "switch-moving-out-2",
       "console": "switch",
       "title": "Moving Out 2",
@@ -2936,9 +3196,18 @@
       "genre": "Life simulation",
       "format": "boxed",
       "wikiCover": false,
-      "cover": null,
-      "colors": null,
-      "series": "MySims"
+      "cover": {
+        "file": "covers/switch/mysims-cozy-bundle.jpg",
+        "source": "manual",
+        "ref": "MySims: Cozy Bundle · PAL (Australia), G · EB Games Australia packshot",
+        "ratio": 0.6173
+      },
+      "series": "MySims",
+      "colors": [
+        "#ceac92",
+        "#a9c8e5",
+        "#62895d"
+      ]
     },
     {
       "id": "switch-need-for-speed-hot-pursuit-remastered",
@@ -2969,6 +3238,7 @@
       "console": "switch",
       "title": "Overcooked: Special Edition",
       "listedAs": "Overcooked (digital copy)",
+      "sortAs": "Overcooked",
       "region": "PAL",
       "released": "2017-07-27",
       "dateSource": "manual",
@@ -2993,6 +3263,7 @@
       "console": "switch",
       "title": "Overcooked! 2",
       "listedAs": "Overcooked 2",
+      "sortAs": "Overcooked",
       "region": "PAL",
       "released": "2018-08-07",
       "dateSource": "manual",
@@ -3017,6 +3288,7 @@
       "console": "switch",
       "title": "Overcooked! All You Can Eat",
       "listedAs": "Overcooked All You Can Eat",
+      "sortAs": "Overcooked",
       "region": "PAL",
       "released": "2021-03-23",
       "dateSource": "manual",
@@ -3065,6 +3337,7 @@
       "console": "switch",
       "title": "Pokémon: Let's Go, Pikachu!",
       "listedAs": "Pokemon Let’s Go Pikachu",
+      "sortAs": "Pokémon",
       "region": "PAL",
       "released": "2018-11-16",
       "dateSource": "manual",
@@ -3085,10 +3358,36 @@
       ]
     },
     {
+      "id": "switch-pokemon-lets-go-pikachu-digital",
+      "console": "switch",
+      "title": "Pokémon: Let's Go, Pikachu!",
+      "listedAs": "Pokemon Let’s Go Pikachu (digital copy)",
+      "sortAs": "Pokémon",
+      "region": "PAL",
+      "released": "2018-11-16",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "digital",
+      "cover": {
+        "file": "covers/switch/pokemon-lets-go-pikachu.jpg",
+        "ratio": 0.6172,
+        "source": "thegamesdb.net",
+        "ref": "Pokemon: Let's Go, Pikachu! · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #117971"
+      },
+      "colors": [
+        "#e8ca4f",
+        "#ac7e4a",
+        "#b9bdc0"
+      ]
+    },
+    {
       "id": "switch-pokemon-brilliant-diamond",
       "console": "switch",
       "title": "Pokémon Brilliant Diamond",
       "listedAs": "Pokemon Brilliant Diamond",
+      "sortAs": "Pokémon",
       "region": "PAL",
       "released": "2021-11-19",
       "dateSource": "manual",
@@ -3098,14 +3397,14 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/pokemon-brilliant-diamond.jpg",
-        "ratio": 0.6192,
-        "source": "thegamesdb.net",
-        "ref": "Pokémon Brilliant Diamond · PAL · TheGamesDB #111505"
+        "source": "manual",
+        "ref": "Pokémon Brilliant Diamond · PAL · TheGamesDB #111505, case rim cropped off",
+        "ratio": 0.6135
       },
       "colors": [
-        "#1f304d",
-        "#3770a2",
-        "#9eb6c8"
+        "#2d5c8d",
+        "#19243c",
+        "#699ec3"
       ]
     },
     {
@@ -3113,6 +3412,7 @@
       "console": "switch",
       "title": "Pokémon Sword",
       "listedAs": "Pokemon Sword",
+      "sortAs": "Pokémon",
       "region": "PAL",
       "released": "2019-11-15",
       "dateSource": "manual",
@@ -3136,6 +3436,7 @@
       "id": "switch-pokemon-violet",
       "console": "switch",
       "title": "Pokémon Violet",
+      "sortAs": "Pokémon",
       "region": "PAL",
       "released": "2022-11-18",
       "dateSource": "manual",
@@ -3143,16 +3444,17 @@
       "developer": "Game Freak",
       "genre": "Role-playing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/switch/pokemon-violet.jpg",
-        "ratio": 0.6173,
-        "source": "thegamesdb.net",
-        "ref": "Pokemon Violet · PAL · TheGamesDB #111724"
+        "source": "manual",
+        "ref": "Pokemon Violet · PAL · TheGamesDB #111724, case rim cropped off",
+        "ratio": 0.6154
       },
       "colors": [
-        "#5f336e",
-        "#c2c2cc",
-        "#9873a4"
+        "#83438f",
+        "#4c2b5f",
+        "#b2b4c6"
       ]
     },
     {
@@ -3160,6 +3462,7 @@
       "console": "switch",
       "title": "Pokémon Legends: Arceus",
       "listedAs": "Pokemon Arceus",
+      "sortAs": "Pokémon",
       "region": "PAL",
       "released": "2022-01-28",
       "dateSource": "manual",
@@ -3208,6 +3511,7 @@
       "console": "switch",
       "title": "RollerCoaster Tycoon Adventures",
       "listedAs": "Roller Coaster Tycoon Adventures",
+      "sortAs": "RollerCoaster Tycoon",
       "region": "PAL",
       "released": "2018-11-13",
       "dateSource": "manual",
@@ -3217,14 +3521,14 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/rollercoaster-tycoon-adventures.jpg",
-        "ratio": 0.6212,
-        "source": "thegamesdb.net",
-        "ref": "RollerCoaster Tycoon Adventures · no region · TheGamesDB #63097"
+        "source": "manual",
+        "ref": "RollerCoaster Tycoon Adventures · no region · TheGamesDB #63097, case rim cropped off",
+        "ratio": 0.6058
       },
       "colors": [
-        "#575136",
-        "#8a959a",
-        "#d2ccc0"
+        "#554f34",
+        "#a67654",
+        "#8598a6"
       ]
     },
     {
@@ -3232,6 +3536,7 @@
       "console": "switch",
       "title": "RollerCoaster Tycoon Adventures Deluxe",
       "listedAs": "Roller Coaster Tycoon Adventures Deluxe",
+      "sortAs": "RollerCoaster Tycoon",
       "region": "PAL",
       "released": "2023",
       "dateSource": "manual",
@@ -3242,14 +3547,14 @@
       "check": "Release date not confirmed.",
       "cover": {
         "file": "covers/switch/rollercoaster-tycoon-adventures-deluxe.jpg",
-        "ratio": 0.6173,
-        "source": "thegamesdb.net",
-        "ref": "RollerCoaster Tycoon Adventures Deluxe · NTSC-U · TheGamesDB #120484"
+        "source": "manual",
+        "ref": "RollerCoaster Tycoon Adventures Deluxe · NTSC-U · TheGamesDB #120484, case rim cropped off",
+        "ratio": 0.6173
       },
       "colors": [
-        "#64753f",
-        "#839397",
-        "#c0bdb7"
+        "#938570",
+        "#627537",
+        "#a4aeb3"
       ]
     },
     {
@@ -3257,6 +3562,7 @@
       "console": "switch",
       "title": "RollerCoaster Tycoon Classic",
       "listedAs": "Roller Coaster Tycoon Classic",
+      "sortAs": "RollerCoaster Tycoon",
       "region": "PAL",
       "released": null,
       "dateSource": null,
@@ -3264,17 +3570,18 @@
       "developer": null,
       "genre": "Simulation",
       "format": "boxed",
+      "fav": true,
       "check": "Release date unknown for the Switch version.",
       "cover": {
         "file": "covers/switch/rollercoaster-tycoon-classic.jpg",
-        "ratio": 0.6667,
-        "source": "en.wikipedia.org",
-        "ref": "RollerCoaster Tycoon Classic · RollerCoaster_Tycoon_Classic.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "source": "manual",
+        "ref": "RollerCoaster Tycoon Classic · PAL (Europe), PEGI 3, Atari · The Game World product photo, case rim cropped off",
+        "ratio": 0.6154
       },
       "colors": [
-        "#b59119",
-        "#5d6526",
-        "#e8cd4e"
+        "#9e982d",
+        "#6d6c41",
+        "#e4bb34"
       ]
     },
     {
@@ -3282,6 +3589,7 @@
       "console": "switch",
       "title": "RollerCoaster Tycoon 3: Complete Edition",
       "listedAs": "Roller Coaster Tycoon 3 Complete Edition",
+      "sortAs": "RollerCoaster Tycoon",
       "region": "PAL",
       "released": "2020-09-24",
       "dateSource": "manual",
@@ -3291,14 +3599,14 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/rollercoaster-tycoon-3-complete-edition.jpg",
-        "ratio": 0.5385,
-        "source": "thegamesdb.net",
-        "ref": "RollerCoaster Tycoon 3: Complete Edition · NTSC-U (United States of America) · TheGamesDB #125965"
+        "source": "manual",
+        "ref": "RollerCoaster Tycoon 3: Complete Edition · PAL (Europe), PEGI 3, Frontier / Limited Run Games · eMAG product render, flattened from its angled view",
+        "ratio": 0.6173
       },
       "colors": [
-        "#686140",
-        "#af734e",
-        "#919d9d"
+        "#948a5a",
+        "#645839",
+        "#b9b7b4"
       ]
     },
     {
@@ -3375,6 +3683,7 @@
       "console": "switch",
       "title": "Super Mario 3D All-Stars",
       "listedAs": "Super Mario 3D All Stars",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2020-09-18",
       "dateSource": "manual",
@@ -3398,6 +3707,7 @@
       "id": "switch-super-mario-3d-world-bowsers-fury",
       "console": "switch",
       "title": "Super Mario 3D World + Bowser's Fury",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2021-02-12",
       "dateSource": "manual",
@@ -3407,20 +3717,21 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/super-mario-3d-world-bowsers-fury.jpg",
-        "ratio": 0.6173,
-        "source": "thegamesdb.net",
-        "ref": "Super Mario 3D World + Bowser's Fury · PAL · TheGamesDB #111507"
+        "source": "manual",
+        "ref": "Super Mario 3D World + Bowser's Fury · PAL · TheGamesDB #111507, case rim cropped off",
+        "ratio": 0.6115
       },
       "colors": [
-        "#a7a49b",
-        "#e3e4e0",
-        "#ae7537"
+        "#9e9d94",
+        "#e7e5de",
+        "#b77630"
       ]
     },
     {
       "id": "switch-super-mario-bros-wonder",
       "console": "switch",
       "title": "Super Mario Bros. Wonder",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2023-10-20",
       "dateSource": "manual",
@@ -3445,6 +3756,7 @@
       "console": "switch",
       "title": "New Super Mario Bros. U Deluxe",
       "listedAs": "Super Mario Bros. U Deluxe",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2019-01-11",
       "dateSource": "manual",
@@ -3469,6 +3781,7 @@
       "console": "switch",
       "title": "Super Mario Galaxy + Super Mario Galaxy 2",
       "listedAs": "Super Mario Galaxy 1 & 2",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2025-10-02",
       "dateSource": "manual",
@@ -3492,6 +3805,7 @@
       "id": "switch-super-mario-odyssey",
       "console": "switch",
       "title": "Super Mario Odyssey",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2017-10-27",
       "dateSource": "manual",
@@ -3515,6 +3829,7 @@
       "id": "switch-super-mario-maker-2",
       "console": "switch",
       "title": "Super Mario Maker 2",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2019-06-28",
       "dateSource": "manual",
@@ -3539,6 +3854,7 @@
       "console": "switch",
       "title": "Super Mario Party",
       "listedAs": "Super Mario Party (Cartridge Only)",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2018-10-05",
       "dateSource": "manual",
@@ -3562,6 +3878,7 @@
       "id": "switch-super-mario-rpg",
       "console": "switch",
       "title": "Super Mario RPG",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2023-11-17",
       "dateSource": "manual",
@@ -3595,14 +3912,14 @@
       "format": "boxed",
       "cover": {
         "file": "covers/switch/super-smash-bros-ultimate.jpg",
-        "ratio": 0.6173,
-        "source": "thegamesdb.net",
-        "ref": "Super Smash Bros. Ultimate · PAL · TheGamesDB #111829"
+        "source": "manual",
+        "ref": "Super Smash Bros. Ultimate · PAL · TheGamesDB #111829, case rim cropped off",
+        "ratio": 0.6115
       },
       "colors": [
-        "#809aa7",
-        "#dedfe0",
-        "#c08566"
+        "#7e96a0",
+        "#bf815c",
+        "#dedddd"
       ]
     },
     {
@@ -3653,6 +3970,52 @@
       ]
     },
     {
+      "id": "switch-tony-hawks-pro-skater-1-2",
+      "console": "switch",
+      "title": "Tony Hawk's Pro Skater 1 + 2",
+      "region": "PAL",
+      "released": "2021-06-25",
+      "dateSource": "manual",
+      "publisher": "Activision",
+      "developer": "Vicarious Visions",
+      "genre": "Sports",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/switch/tony-hawks-pro-skater-1-2.jpg",
+        "source": "manual",
+        "ref": "Tony Hawk's Pro Skater 1 + 2 · PAL (Europe), PEGI 12 · Pointer-IT product photo",
+        "ratio": 0.6115
+      },
+      "colors": [
+        "#393337",
+        "#16161b",
+        "#766160"
+      ]
+    },
+    {
+      "id": "switch-two-point-campus",
+      "console": "switch",
+      "title": "Two Point Campus",
+      "region": "PAL",
+      "released": "2022-08-09",
+      "dateSource": "manual",
+      "publisher": "Sega",
+      "developer": "Two Point Studios",
+      "genre": "Simulation",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/switch/two-point-campus.jpg",
+        "ratio": 0.6154,
+        "source": "thegamesdb.net",
+        "ref": "Two Point Campus · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #98808"
+      },
+      "colors": [
+        "#74645d",
+        "#abaca6",
+        "#0bafd2"
+      ]
+    },
+    {
       "id": "xone-fifa-19",
       "console": "xone",
       "title": "FIFA 19",
@@ -3680,6 +4043,7 @@
       "console": "xone",
       "title": "Guitar Hero Live",
       "listedAs": "Guitar Hero Live (No Guitar)",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2015-10-20",
       "dateSource": "manual",
@@ -3755,6 +4119,7 @@
       "console": "xone",
       "title": "The Sims 4",
       "listedAs": "Sims 4",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-11-17",
       "dateSource": "manual",
@@ -3900,6 +4265,7 @@
       "console": "x360",
       "title": "Grand Theft Auto: Episodes from Liberty City",
       "listedAs": "Grand Theft Auto IV: Episodes From Liberty City",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2009-10-29",
       "dateSource": "manual",
@@ -3923,6 +4289,7 @@
       "id": "x360-grand-theft-auto-v",
       "console": "x360",
       "title": "Grand Theft Auto V",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2013-09-17",
       "dateSource": "manual",
@@ -3946,6 +4313,7 @@
       "id": "x360-guitar-hero-ii",
       "console": "x360",
       "title": "Guitar Hero II",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2007-04-03",
       "dateSource": "manual",
@@ -3970,6 +4338,7 @@
       "id": "x360-guitar-hero-iii-legends-of-rock",
       "console": "x360",
       "title": "Guitar Hero III: Legends of Rock",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2007-10-28",
       "dateSource": "manual",
@@ -3993,6 +4362,7 @@
       "id": "x360-guitar-hero-metallica",
       "console": "x360",
       "title": "Guitar Hero: Metallica",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2009-03-29",
       "dateSource": "manual",
@@ -4017,6 +4387,7 @@
       "console": "x360",
       "title": "Guitar Hero World Tour",
       "listedAs": "Guitar Hero: World Tour",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2008-10-26",
       "dateSource": "manual",
@@ -4040,6 +4411,7 @@
       "id": "x360-guitar-hero-5",
       "console": "x360",
       "title": "Guitar Hero 5",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2009-09-01",
       "dateSource": "manual",
@@ -4159,6 +4531,7 @@
       "id": "x360-mortal-kombat",
       "console": "x360",
       "title": "Mortal Kombat",
+      "sortAs": "Mortal Kombat",
       "region": "PAL",
       "released": "2011-04-19",
       "dateSource": "manual",
@@ -4198,6 +4571,7 @@
       "id": "x360-grand-theft-auto-iv",
       "console": "x360",
       "title": "Grand Theft Auto IV",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2008-04-29",
       "dateSource": "manual",
@@ -4274,16 +4648,18 @@
       "developer": "Retro Studios",
       "genre": "Platformer",
       "format": "boxed",
+      "edition": "Nintendo Selects",
+      "fav": true,
       "cover": {
-        "file": "covers/wiiu/donkey-kong-country-tropical-freeze.jpg",
-        "ratio": 0.7135,
-        "source": "libretro-thumbnails",
-        "ref": "Donkey Kong Country - Tropical Freeze (Europe) (En,Fr,De,Es,It)"
+        "file": "covers/wiiu/donkey-kong-country-tropical-freeze-nintendo-selects.jpg",
+        "source": "manual",
+        "ref": "Donkey Kong Country: Tropical Freeze Nintendo Selects (PAL, German print), Super Mario Wiki",
+        "ratio": 0.7111
       },
       "colors": [
-        "#a59674",
-        "#bdd5db",
-        "#824d32"
+        "#b9cdd0",
+        "#9a977b",
+        "#9c583e"
       ]
     },
     {
@@ -4336,6 +4712,7 @@
       "id": "wiiu-mario-kart-8",
       "console": "wiiu",
       "title": "Mario Kart 8",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2014-05-29",
       "dateSource": "manual",
@@ -4359,6 +4736,7 @@
       "id": "wiiu-new-super-mario-bros-u",
       "console": "wiiu",
       "title": "New Super Mario Bros. U",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2012-11-18",
       "dateSource": "manual",
@@ -4451,6 +4829,7 @@
       "id": "wiiu-super-mario-3d-world",
       "console": "wiiu",
       "title": "Super Mario 3D World",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2013-11-21",
       "dateSource": "manual",
@@ -4458,6 +4837,7 @@
       "developer": "Nintendo EAD",
       "genre": "Platformer",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/wiiu/super-mario-3d-world.jpg",
         "ratio": 0.7135,
@@ -4474,6 +4854,7 @@
       "id": "wiiu-super-mario-maker",
       "console": "wiiu",
       "title": "Super Mario Maker",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2015-09-10",
       "dateSource": "manual",
@@ -4481,16 +4862,17 @@
       "developer": "Nintendo EAD",
       "genre": "Platformer",
       "format": "boxed",
+      "caseColor": "#f4c400",
       "cover": {
         "file": "covers/wiiu/super-mario-maker.jpg",
-        "ratio": 0.7135,
-        "source": "libretro-thumbnails",
-        "ref": "Super Mario Maker (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "source": "manual",
+        "ref": "Super Mario Maker (PAL), the yellow print for the yellow case, Super Mario Wiki",
+        "ratio": 0.7111
       },
       "colors": [
-        "#818fb7",
-        "#926435",
-        "#edc049"
+        "#d3ae27",
+        "#d8c36c",
+        "#969b99"
       ]
     },
     {
@@ -4569,6 +4951,7 @@
       "console": "wii",
       "title": "James Cameron's Avatar: The Game",
       "listedAs": "Avatar",
+      "sortAs": "Avatar: The Game",
       "region": "PAL",
       "released": "2009-12-01",
       "dateSource": "manual",
@@ -4646,6 +5029,7 @@
       "developer": "Retro Studios",
       "genre": "Platformer",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/wii/donkey-kong-country-returns.jpg",
         "ratio": 0.7154,
@@ -4733,6 +5117,7 @@
       "id": "wii-mario-kart-wii",
       "console": "wii",
       "title": "Mario Kart Wii",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2008-04-10",
       "dateSource": "manual",
@@ -4828,6 +5213,7 @@
       "console": "wii",
       "title": "New Super Mario Bros. Wii",
       "listedAs": "Super Mario Bros. Wii",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2009-11-12",
       "dateSource": "manual",
@@ -4835,6 +5221,7 @@
       "developer": "Nintendo EAD",
       "genre": "Platformer",
       "format": "boxed",
+      "caseColor": "#d8000f",
       "cover": {
         "file": "covers/wii/new-super-mario-bros-wii.jpg",
         "ratio": 0.7096,
@@ -4851,6 +5238,7 @@
       "id": "wii-super-mario-galaxy",
       "console": "wii",
       "title": "Super Mario Galaxy",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2007-11-01",
       "dateSource": "manual",
@@ -4858,16 +5246,18 @@
       "developer": "Nintendo EAD",
       "genre": "Platformer",
       "format": "boxed",
+      "edition": "Nintendo Selects",
+      "fav": true,
       "cover": {
-        "file": "covers/wii/super-mario-galaxy.jpg",
-        "ratio": 0.7154,
-        "source": "libretro-thumbnails",
-        "ref": "Super Mario Galaxy (Europe, Australia) (En,Fr,De,Es,It)"
+        "file": "covers/wii/super-mario-galaxy-nintendo-selects.jpg",
+        "source": "manual",
+        "ref": "Super Mario Galaxy Nintendo Selects (PAL, PEGI 3), Super Mario Wiki",
+        "ratio": 0.7083
       },
       "colors": [
-        "#36353b",
-        "#5a617d",
-        "#9d9189"
+        "#252c3d",
+        "#aa3c2b",
+        "#5f707c"
       ]
     },
     {
@@ -4943,6 +5333,7 @@
       "id": "wii-the-sims-2-castaway",
       "console": "wii",
       "title": "The Sims 2: Castaway",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-10-22",
       "dateSource": "manual",
@@ -5084,6 +5475,7 @@
       "id": "gbc-grand-theft-auto-2",
       "console": "gbc",
       "title": "Grand Theft Auto 2",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2000-11",
       "dateSource": "libretro-database",
@@ -5183,6 +5575,7 @@
       "console": "gbc",
       "title": "Super Mario Bros. Deluxe",
       "listedAs": "Super Mario Deluxe",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "1999-05",
       "dateSource": "manual",
@@ -5207,6 +5600,7 @@
       "console": "gbc",
       "title": "Super Mario Land 2: 6 Golden Coins",
       "listedAs": "Super Mario Land G Golden Coins",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "1992-10",
       "dateSource": "libretro-database",
@@ -5232,6 +5626,7 @@
       "console": "gbc",
       "title": "Disney's Tarzan",
       "listedAs": "Tarzan",
+      "sortAs": "Tarzan",
       "region": "USA",
       "released": "1999-10",
       "dateSource": "libretro-database",
@@ -5400,6 +5795,7 @@
       "console": "gba",
       "title": "Mario Kart: Super Circuit",
       "listedAs": "Mario Kart Super Circuit",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2001-07-21",
       "dateSource": "manual",
@@ -5470,6 +5866,7 @@
       "id": "gba-super-mario-advance",
       "console": "gba",
       "title": "Super Mario Advance",
+      "sortAs": "Mario",
       "region": "PAL",
       "released": "2001-03-21",
       "dateSource": "libretro-database",
@@ -5517,6 +5914,7 @@
       "console": "gba",
       "title": "Grand Theft Auto Advance",
       "listedAs": "Grand Theft Auto: Advance",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2004-10-29",
       "dateSource": "manual",
@@ -5586,6 +5984,7 @@
       "id": "ds-grand-theft-auto-chinatown-wars",
       "console": "ds",
       "title": "Grand Theft Auto: Chinatown Wars",
+      "sortAs": "Grand Theft Auto",
       "region": "EUR",
       "released": "2009-03-17",
       "dateSource": "libretro-database",
@@ -5610,6 +6009,7 @@
       "console": "ds",
       "title": "Guitar Hero: On Tour",
       "listedAs": "Guitar Hero On Tour",
+      "sortAs": "Guitar Hero",
       "region": "AUS",
       "released": "2007-06-22",
       "dateSource": "manual",
@@ -5633,6 +6033,7 @@
       "id": "ds-guitar-hero-on-tour-decades",
       "console": "ds",
       "title": "Guitar Hero On Tour: Decades",
+      "sortAs": "Guitar Hero",
       "region": "PAL",
       "released": "2008-11",
       "dateSource": "manual",
@@ -5680,6 +6081,7 @@
       "id": "ds-new-super-mario-bros",
       "console": "ds",
       "title": "New Super Mario Bros.",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "2006-05-15",
       "dateSource": "libretro-database",
@@ -5703,6 +6105,7 @@
       "id": "ds-lego-rock-band",
       "console": "ds",
       "title": "Lego Rock Band",
+      "sortAs": "Rock Band",
       "region": "EUR",
       "released": "2009-11-03",
       "dateSource": "manual",
@@ -5727,6 +6130,7 @@
       "console": "ds",
       "title": "LEGO Rock Band",
       "listedAs": "Lego Rock Band 2",
+      "sortAs": "Rock Band",
       "region": "USA",
       "released": "2009-11-03",
       "dateSource": "manual",
@@ -5750,6 +6154,7 @@
       "id": "ds-mario-kart-ds",
       "console": "ds",
       "title": "Mario Kart DS",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2005-11-14",
       "dateSource": "libretro-database",
@@ -5924,6 +6329,7 @@
       "console": "ds",
       "title": "Pokémon Black Version",
       "listedAs": "Pokemon Black",
+      "sortAs": "Pokémon",
       "region": "USA",
       "released": "2010-09-18",
       "dateSource": "manual",
@@ -5970,6 +6376,7 @@
       "id": "ds-rock-band-3",
       "console": "ds",
       "title": "Rock Band 3",
+      "sortAs": "Rock Band",
       "region": "AUS",
       "released": "2010-10-26",
       "dateSource": "manual",
@@ -6066,6 +6473,7 @@
       "id": "ds-super-mario-64-ds",
       "console": "ds",
       "title": "Super Mario 64 DS",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2004-11-21",
       "dateSource": "manual",
@@ -6089,6 +6497,7 @@
       "id": "ds-the-sims-2",
       "console": "ds",
       "title": "The Sims 2",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2005-10-24",
       "dateSource": "manual",
@@ -6114,6 +6523,7 @@
       "console": "ds",
       "title": "The Sims 2: Pets",
       "listedAs": "The Sims 2 Pets",
+      "sortAs": "The Sims 2",
       "region": "EUR",
       "released": "2006-10-17",
       "dateSource": "manual",
@@ -6139,6 +6549,7 @@
       "console": "ds",
       "title": "The Sims 2: Apartment Pets",
       "listedAs": "The Sims 2 Apartment Pets",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008",
       "dateSource": "manual",
@@ -6164,6 +6575,7 @@
       "console": "ds",
       "title": "The Sims 2: Castaway",
       "listedAs": "The Sims 2 Castaway",
+      "sortAs": "The Sims 2",
       "region": "EUR",
       "released": "2007-10-22",
       "dateSource": "manual",
@@ -6188,6 +6600,7 @@
       "id": "ds-the-sims-3",
       "console": "ds",
       "title": "The Sims 3",
+      "sortAs": "The Sims 3",
       "region": "EUR",
       "released": "2010-10-26",
       "dateSource": "manual",
@@ -6308,6 +6721,7 @@
       "id": "3ds-mario-kart-7",
       "console": "3ds",
       "title": "Mario Kart 7",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2011-12-01",
       "dateSource": "manual",
@@ -6315,6 +6729,7 @@
       "developer": "Nintendo EAD",
       "genre": "Kart racing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/3ds/mario-kart-7.jpg",
         "ratio": 1.1228,
@@ -6331,6 +6746,7 @@
       "id": "3ds-new-super-mario-bros-2",
       "console": "3ds",
       "title": "New Super Mario Bros. 2",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2012-07-28",
       "dateSource": "manual",
@@ -6351,9 +6767,10 @@
       ]
     },
     {
-      "id": "3ds-pokemon-alpha-sapphire",
+      "id": "3ds-pokemon-omega-ruby",
       "console": "3ds",
-      "title": "Pokémon Alpha Sapphire",
+      "title": "Pokémon Omega Ruby",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2014-11-21",
       "dateSource": "manual",
@@ -6361,6 +6778,32 @@
       "developer": "Game Freak",
       "genre": "Role-playing",
       "format": "boxed",
+      "caseColor": "#c8102e",
+      "cover": {
+        "file": "covers/3ds/pokemon-omega-ruby.jpg",
+        "source": "manual",
+        "ref": "Pokemon Omega Ruby (Europe) (En,Ja,Fr,De,Es,It,Ko) (Rev 2), libretro-thumbnails",
+        "ratio": 1.1228
+      },
+      "colors": [
+        "#b3926e",
+        "#f0eac3",
+        "#b6373c"
+      ]
+    },
+    {
+      "id": "3ds-pokemon-alpha-sapphire",
+      "console": "3ds",
+      "title": "Pokémon Alpha Sapphire",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2014-11-21",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "caseColor": "#1d5bc4",
       "cover": {
         "file": "covers/3ds/pokemon-alpha-sapphire.jpg",
         "ratio": 1.1364,
@@ -6377,6 +6820,7 @@
       "id": "3ds-pokemon-sun",
       "console": "3ds",
       "title": "Pokémon Sun",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2016-11-18",
       "dateSource": "manual",
@@ -6384,6 +6828,7 @@
       "developer": "Game Freak",
       "genre": "Role-playing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/3ds/pokemon-sun.jpg",
         "ratio": 1.1149,
@@ -6400,6 +6845,7 @@
       "id": "3ds-pokemon-moon",
       "console": "3ds",
       "title": "Pokémon Moon",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2016-11-18",
       "dateSource": "manual",
@@ -6423,6 +6869,7 @@
       "id": "3ds-pokemon-ultra-sun",
       "console": "3ds",
       "title": "Pokémon Ultra Sun",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2017-11-17",
       "dateSource": "manual",
@@ -6446,6 +6893,7 @@
       "id": "3ds-pokemon-ultra-moon",
       "console": "3ds",
       "title": "Pokémon Ultra Moon",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2017-11-17",
       "dateSource": "manual",
@@ -6469,6 +6917,7 @@
       "id": "3ds-pokemon-x",
       "console": "3ds",
       "title": "Pokémon X",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2013-10-12",
       "dateSource": "manual",
@@ -6492,6 +6941,7 @@
       "id": "3ds-pokemon-y",
       "console": "3ds",
       "title": "Pokémon Y",
+      "sortAs": "Pokémon",
       "region": "AUS",
       "released": "2013-10-12",
       "dateSource": "manual",
@@ -6515,6 +6965,7 @@
       "id": "3ds-super-mario-3d-land",
       "console": "3ds",
       "title": "Super Mario 3D Land",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2011-11-03",
       "dateSource": "manual",
@@ -6539,6 +6990,7 @@
       "console": "3ds",
       "title": "Super Mario Maker for Nintendo 3DS",
       "listedAs": "Super Mario Maker 3DS",
+      "sortAs": "Mario",
       "region": "AUS",
       "released": "2016-12-01",
       "dateSource": "manual",
@@ -6609,6 +7061,7 @@
       "id": "3ds-the-sims-3",
       "console": "3ds",
       "title": "The Sims 3",
+      "sortAs": "The Sims 3",
       "region": "EUR",
       "released": "2011-03-27",
       "dateSource": "manual",
@@ -6634,6 +7087,7 @@
       "console": "3ds",
       "title": "The Sims 3: Pets",
       "listedAs": "The Sims 3 Pets",
+      "sortAs": "The Sims 3",
       "region": "EUR",
       "released": "2011-10-18",
       "dateSource": "manual",
@@ -6705,6 +7159,7 @@
       "id": "3ds-mario-kart-7-usa",
       "console": "3ds",
       "title": "Mario Kart 7",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "2011-12-01",
       "dateSource": "manual",
@@ -6728,6 +7183,7 @@
       "id": "3ds-new-super-mario-bros-2-usa",
       "console": "3ds",
       "title": "New Super Mario Bros. 2",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "2012-07-28",
       "dateSource": "manual",
@@ -6751,6 +7207,7 @@
       "id": "3ds-super-mario-3d-land-usa",
       "console": "3ds",
       "title": "Super Mario 3D Land",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "2011-11-03",
       "dateSource": "manual",
@@ -6822,6 +7279,7 @@
       "id": "snes-super-mario-world",
       "console": "snes",
       "title": "Super Mario World",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "1990-11-21",
       "dateSource": "libretro-database",
@@ -6845,6 +7303,7 @@
       "id": "snes-super-mario-kart",
       "console": "snes",
       "title": "Super Mario Kart",
+      "sortAs": "Mario",
       "region": "USA",
       "released": "1992-08-27",
       "dateSource": "libretro-database",
@@ -6868,6 +7327,7 @@
       "id": "pc-the-sims",
       "console": "pc",
       "title": "The Sims",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2000-02-04",
       "dateSource": "manual",
@@ -6893,6 +7353,7 @@
       "id": "pc-the-sims-complete-collection",
       "console": "pc",
       "title": "The Sims Complete Collection",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2005-11-01",
       "dateSource": "manual",
@@ -6918,6 +7379,7 @@
       "id": "pc-the-sims-deluxe-edition",
       "console": "pc",
       "title": "The Sims Deluxe Edition",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2002-09-17",
       "dateSource": "manual",
@@ -6943,6 +7405,7 @@
       "id": "pc-the-sims-legacy-collection",
       "console": "pc",
       "title": "The Sims Legacy Collection",
+      "sortAs": "The Sims",
       "edition": "The base game and every expansion",
       "region": "PAL",
       "released": "2025-01-31",
@@ -6961,6 +7424,7 @@
       "id": "pc-the-sims-livin-large",
       "console": "pc",
       "title": "The Sims: Livin' Large",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2000-08-27",
       "dateSource": "manual",
@@ -6986,6 +7450,7 @@
       "id": "pc-the-sims-house-party",
       "console": "pc",
       "title": "The Sims: House Party",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2001-03-28",
       "dateSource": "manual",
@@ -7011,6 +7476,7 @@
       "id": "pc-the-sims-hot-date",
       "console": "pc",
       "title": "The Sims: Hot Date",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2001-11-14",
       "dateSource": "manual",
@@ -7036,6 +7502,7 @@
       "id": "pc-the-sims-vacation",
       "console": "pc",
       "title": "The Sims: Vacation",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2002-03-25",
       "dateSource": "manual",
@@ -7061,6 +7528,7 @@
       "id": "pc-the-sims-unleashed",
       "console": "pc",
       "title": "The Sims: Unleashed",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2002-07-23",
       "dateSource": "manual",
@@ -7086,6 +7554,7 @@
       "id": "pc-the-sims-superstar",
       "console": "pc",
       "title": "The Sims: Superstar",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2003-05-12",
       "dateSource": "manual",
@@ -7111,6 +7580,7 @@
       "id": "pc-the-sims-makin-magic",
       "console": "pc",
       "title": "The Sims: Makin' Magic",
+      "sortAs": "The Sims",
       "region": "PAL",
       "released": "2003-10-28",
       "dateSource": "manual",
@@ -7136,6 +7606,7 @@
       "id": "pc-the-sims-2",
       "console": "pc",
       "title": "The Sims 2",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2004-09-14",
       "dateSource": "manual",
@@ -7161,6 +7632,7 @@
       "id": "pc-the-sims-2-deluxe",
       "console": "pc",
       "title": "The Sims 2 Deluxe",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006",
       "dateSource": "manual",
@@ -7186,6 +7658,7 @@
       "id": "pc-the-sims-2-double-deluxe",
       "console": "pc",
       "title": "The Sims 2 Double Deluxe",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2009",
       "dateSource": "manual",
@@ -7211,6 +7684,7 @@
       "id": "pc-the-sims-2-legacy-collection",
       "console": "pc",
       "title": "The Sims 2 Legacy Collection",
+      "sortAs": "The Sims 2",
       "edition": "The base game and every expansion",
       "region": "PAL",
       "released": "2025-01-31",
@@ -7229,6 +7703,7 @@
       "id": "pc-the-sims-2-university",
       "console": "pc",
       "title": "The Sims 2: University",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2005-03-01",
       "dateSource": "manual",
@@ -7254,6 +7729,7 @@
       "id": "pc-the-sims-2-nightlife",
       "console": "pc",
       "title": "The Sims 2: Nightlife",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2005-09-13",
       "dateSource": "manual",
@@ -7279,6 +7755,7 @@
       "id": "pc-the-sims-2-open-for-business",
       "console": "pc",
       "title": "The Sims 2: Open for Business",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-03-02",
       "dateSource": "manual",
@@ -7304,6 +7781,7 @@
       "id": "pc-the-sims-2-pets",
       "console": "pc",
       "title": "The Sims 2: Pets",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-10-17",
       "dateSource": "manual",
@@ -7329,6 +7807,7 @@
       "id": "pc-the-sims-2-seasons",
       "console": "pc",
       "title": "The Sims 2: Seasons",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-03-01",
       "dateSource": "manual",
@@ -7354,6 +7833,7 @@
       "id": "pc-the-sims-2-bon-voyage",
       "console": "pc",
       "title": "The Sims 2: Bon Voyage",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-09-04",
       "dateSource": "manual",
@@ -7379,6 +7859,7 @@
       "id": "pc-the-sims-2-freetime",
       "console": "pc",
       "title": "The Sims 2: FreeTime",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008-02-26",
       "dateSource": "manual",
@@ -7404,6 +7885,7 @@
       "id": "pc-the-sims-2-apartment-life",
       "console": "pc",
       "title": "The Sims 2: Apartment Life",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008-08-27",
       "dateSource": "manual",
@@ -7430,6 +7912,7 @@
       "console": "pc",
       "title": "The Sims 2: Christmas Party Pack",
       "listedAs": "The Sims 2: ChristmasParty Pack",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2005-11-17",
       "dateSource": "manual",
@@ -7455,6 +7938,7 @@
       "id": "pc-the-sims-2-family-fun-stuff",
       "console": "pc",
       "title": "The Sims 2: Family Fun Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-04-13",
       "dateSource": "manual",
@@ -7480,6 +7964,7 @@
       "id": "pc-the-sims-2-glamour-life-stuff",
       "console": "pc",
       "title": "The Sims 2: Glamour Life Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-08-31",
       "dateSource": "manual",
@@ -7505,6 +7990,7 @@
       "id": "pc-the-sims-2-happy-holiday-stuff",
       "console": "pc",
       "title": "The Sims 2: Happy Holiday Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2006-11-07",
       "dateSource": "manual",
@@ -7531,6 +8017,7 @@
       "id": "pc-the-sims-2-celebration-stuff",
       "console": "pc",
       "title": "The Sims 2: Celebration! Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-04-03",
       "dateSource": "manual",
@@ -7556,6 +8043,7 @@
       "id": "pc-the-sims-2-h-and-m-fashion-stuff",
       "console": "pc",
       "title": "The Sims 2: H&M Fashion Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-06-05",
       "dateSource": "manual",
@@ -7581,6 +8069,7 @@
       "id": "pc-the-sims-2-teen-style-stuff",
       "console": "pc",
       "title": "The Sims 2: Teen Style Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2007-11-05",
       "dateSource": "manual",
@@ -7606,6 +8095,7 @@
       "id": "pc-the-sims-2-kitchen-and-bath-interior-design-stuff",
       "console": "pc",
       "title": "The Sims 2: Kitchen & Bath Interior Design Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008-04-15",
       "dateSource": "manual",
@@ -7631,6 +8121,7 @@
       "id": "pc-the-sims-2-ikea-home-stuff",
       "console": "pc",
       "title": "The Sims 2: IKEA Home Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008-06-24",
       "dateSource": "manual",
@@ -7656,6 +8147,7 @@
       "id": "pc-the-sims-2-mansion-and-garden-stuff",
       "console": "pc",
       "title": "The Sims 2: Mansion & Garden Stuff",
+      "sortAs": "The Sims 2",
       "region": "PAL",
       "released": "2008-11-17",
       "dateSource": "manual",
@@ -7759,6 +8251,7 @@
       "id": "pc-the-sims-3",
       "console": "pc",
       "title": "The Sims 3",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2009-06-02",
       "dateSource": "manual",
@@ -7787,6 +8280,7 @@
       "id": "pc-the-sims-3-world-adventures",
       "console": "pc",
       "title": "The Sims 3: World Adventures",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2009-11-17",
       "dateSource": "manual",
@@ -7815,6 +8309,7 @@
       "id": "pc-the-sims-3-ambitions",
       "console": "pc",
       "title": "The Sims 3: Ambitions",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2010-06-01",
       "dateSource": "manual",
@@ -7843,6 +8338,7 @@
       "id": "pc-the-sims-3-late-night",
       "console": "pc",
       "title": "The Sims 3: Late Night",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2010-10-26",
       "dateSource": "manual",
@@ -7871,6 +8367,7 @@
       "id": "pc-the-sims-3-generations",
       "console": "pc",
       "title": "The Sims 3: Generations",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-05-31",
       "dateSource": "manual",
@@ -7899,6 +8396,7 @@
       "id": "pc-the-sims-3-pets",
       "console": "pc",
       "title": "The Sims 3: Pets",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-10-18",
       "dateSource": "manual",
@@ -7927,6 +8425,7 @@
       "id": "pc-the-sims-3-showtime",
       "console": "pc",
       "title": "The Sims 3: Showtime",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-03-06",
       "dateSource": "manual",
@@ -7956,6 +8455,7 @@
       "console": "pc",
       "title": "The Sims 3: Showtime Katy Perry Collector's Edition",
       "listedAs": "The Sims 3: Showtime Katy Perry",
+      "sortAs": "The Sims 3",
       "edition": "Katy Perry Collector's Edition",
       "region": "PAL",
       "released": "2012-03-06",
@@ -7976,6 +8476,7 @@
       "id": "pc-the-sims-3-supernatural",
       "console": "pc",
       "title": "The Sims 3: Supernatural",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-09-04",
       "dateSource": "manual",
@@ -8004,6 +8505,7 @@
       "id": "pc-the-sims-3-seasons",
       "console": "pc",
       "title": "The Sims 3: Seasons",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-11-13",
       "dateSource": "manual",
@@ -8032,6 +8534,7 @@
       "id": "pc-the-sims-3-university-life",
       "console": "pc",
       "title": "The Sims 3: University Life",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2013-03-05",
       "dateSource": "manual",
@@ -8060,6 +8563,7 @@
       "id": "pc-the-sims-3-island-paradise",
       "console": "pc",
       "title": "The Sims 3: Island Paradise",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2013-06-25",
       "dateSource": "manual",
@@ -8088,6 +8592,7 @@
       "id": "pc-the-sims-3-into-the-future",
       "console": "pc",
       "title": "The Sims 3: Into the Future",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2013-10-22",
       "dateSource": "manual",
@@ -8116,6 +8621,7 @@
       "id": "pc-the-sims-3-high-end-loft-stuff",
       "console": "pc",
       "title": "The Sims 3: High-End Loft Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2010-02-02",
       "dateSource": "manual",
@@ -8144,6 +8650,7 @@
       "id": "pc-the-sims-3-fast-lane-stuff",
       "console": "pc",
       "title": "The Sims 3: Fast Lane Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2010-07-07",
       "dateSource": "manual",
@@ -8172,6 +8679,7 @@
       "id": "pc-the-sims-3-outdoor-living-stuff",
       "console": "pc",
       "title": "The Sims 3: Outdoor Living Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-02-01",
       "dateSource": "manual",
@@ -8200,6 +8708,7 @@
       "id": "pc-the-sims-3-town-life-stuff",
       "console": "pc",
       "title": "The Sims 3: Town Life Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-07-26",
       "dateSource": "manual",
@@ -8228,6 +8737,7 @@
       "id": "pc-the-sims-3-master-suite-stuff",
       "console": "pc",
       "title": "The Sims 3: Master Suite Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-01-24",
       "dateSource": "manual",
@@ -8257,6 +8767,7 @@
       "console": "pc",
       "title": "The Sims 3: Katy Perry's Sweet Treats",
       "listedAs": "The Sims 3: Katy Perry Sweet Treats",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-06-05",
       "dateSource": "manual",
@@ -8283,6 +8794,7 @@
       "id": "pc-the-sims-3-diesel-stuff",
       "console": "pc",
       "title": "The Sims 3: Diesel Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2012-07-10",
       "dateSource": "manual",
@@ -8311,6 +8823,7 @@
       "id": "pc-the-sims-3-70s-80s-and-90s-stuff",
       "console": "pc",
       "title": "The Sims 3: 70s, 80s, & 90s Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2013-01-22",
       "dateSource": "manual",
@@ -8339,6 +8852,7 @@
       "id": "pc-the-sims-3-movie-stuff",
       "console": "pc",
       "title": "The Sims 3: Movie Stuff",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2013-07-10",
       "dateSource": "manual",
@@ -8367,6 +8881,7 @@
       "id": "pc-the-sims-3-create-a-sim",
       "console": "pc",
       "title": "The Sims 3: Create a Sim",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2009",
       "dateSource": "manual",
@@ -8393,6 +8908,7 @@
       "id": "pc-the-sims-3-hidden-springs",
       "console": "pc",
       "title": "The Sims 3: Hidden Springs",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-01",
       "dateSource": "manual",
@@ -8420,6 +8936,7 @@
       "id": "pc-the-sims-3-monte-vista",
       "console": "pc",
       "title": "The Sims 3: Monte Vista",
+      "sortAs": "The Sims 3",
       "region": "PAL",
       "released": "2011-11",
       "dateSource": "manual",
@@ -8532,6 +9049,7 @@
       "id": "pc-the-sims-4",
       "console": "pc",
       "title": "The Sims 4",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2014-09-02",
       "dateSource": "manual",
@@ -8560,6 +9078,7 @@
       "id": "pc-the-sims-4-get-to-work",
       "console": "pc",
       "title": "The Sims 4: Get to Work",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-03-31",
       "dateSource": "manual",
@@ -8589,6 +9108,7 @@
       "id": "pc-the-sims-4-get-together",
       "console": "pc",
       "title": "The Sims 4: Get Together",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-12-08",
       "dateSource": "manual",
@@ -8618,6 +9138,7 @@
       "id": "pc-the-sims-4-city-living",
       "console": "pc",
       "title": "The Sims 4: City Living",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-11-01",
       "dateSource": "manual",
@@ -8647,6 +9168,7 @@
       "id": "pc-the-sims-4-cats-and-dogs",
       "console": "pc",
       "title": "The Sims 4: Cats & Dogs",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-11-10",
       "dateSource": "manual",
@@ -8675,6 +9197,7 @@
       "id": "pc-the-sims-4-seasons",
       "console": "pc",
       "title": "The Sims 4: Seasons",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2018-06-22",
       "dateSource": "manual",
@@ -8703,6 +9226,7 @@
       "id": "pc-the-sims-4-get-famous",
       "console": "pc",
       "title": "The Sims 4: Get Famous",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2018-11-16",
       "dateSource": "manual",
@@ -8731,6 +9255,7 @@
       "id": "pc-the-sims-4-island-living",
       "console": "pc",
       "title": "The Sims 4: Island Living",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2019-06-21",
       "dateSource": "manual",
@@ -8759,6 +9284,7 @@
       "id": "pc-the-sims-4-cottage-living",
       "console": "pc",
       "title": "The Sims 4: Cottage Living",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2021-07-22",
       "dateSource": "manual",
@@ -8787,6 +9313,7 @@
       "id": "pc-the-sims-4-horse-ranch",
       "console": "pc",
       "title": "The Sims 4: Horse Ranch",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2023-07-20",
       "dateSource": "manual",
@@ -8815,6 +9342,7 @@
       "id": "pc-the-sims-4-for-rent",
       "console": "pc",
       "title": "The Sims 4: For Rent",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2023-12-07",
       "dateSource": "manual",
@@ -8843,6 +9371,7 @@
       "id": "pc-the-sims-4-outdoor-retreat",
       "console": "pc",
       "title": "The Sims 4: Outdoor Retreat",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-01-13",
       "dateSource": "manual",
@@ -8871,6 +9400,7 @@
       "id": "pc-the-sims-4-spa-day",
       "console": "pc",
       "title": "The Sims 4: Spa Day",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-07-14",
       "dateSource": "manual",
@@ -8899,6 +9429,7 @@
       "id": "pc-the-sims-4-dine-out",
       "console": "pc",
       "title": "The Sims 4: Dine Out",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-06-07",
       "dateSource": "manual",
@@ -8927,6 +9458,7 @@
       "id": "pc-the-sims-4-vampires",
       "console": "pc",
       "title": "The Sims 4: Vampires",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-01-24",
       "dateSource": "manual",
@@ -8955,6 +9487,7 @@
       "id": "pc-the-sims-4-parenthood",
       "console": "pc",
       "title": "The Sims 4: Parenthood",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-05-30",
       "dateSource": "manual",
@@ -8984,6 +9517,7 @@
       "console": "pc",
       "title": "The Sims 4: Jungle Adventure",
       "listedAs": "The Sims 4: Jungle Adventures",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2018-02-27",
       "dateSource": "manual",
@@ -9012,6 +9546,7 @@
       "id": "pc-the-sims-4-luxury-party-stuff",
       "console": "pc",
       "title": "The Sims 4: Luxury Party Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-05-19",
       "dateSource": "manual",
@@ -9040,6 +9575,7 @@
       "id": "pc-the-sims-4-perfect-patio-stuff",
       "console": "pc",
       "title": "The Sims 4: Perfect Patio Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-06-16",
       "dateSource": "manual",
@@ -9068,6 +9604,7 @@
       "id": "pc-the-sims-4-cool-kitchen-stuff",
       "console": "pc",
       "title": "The Sims 4: Cool Kitchen Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-08-11",
       "dateSource": "manual",
@@ -9096,6 +9633,7 @@
       "id": "pc-the-sims-4-spooky-stuff",
       "console": "pc",
       "title": "The Sims 4: Spooky Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2015-09-29",
       "dateSource": "manual",
@@ -9124,6 +9662,7 @@
       "id": "pc-the-sims-4-movie-hangout-stuff",
       "console": "pc",
       "title": "The Sims 4: Movie Hangout Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-01-12",
       "dateSource": "manual",
@@ -9152,6 +9691,7 @@
       "id": "pc-the-sims-4-romantic-garden-stuff",
       "console": "pc",
       "title": "The Sims 4: Romantic Garden Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-02-09",
       "dateSource": "manual",
@@ -9180,6 +9720,7 @@
       "id": "pc-the-sims-4-kids-room-stuff",
       "console": "pc",
       "title": "The Sims 4: Kids Room Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-06-28",
       "dateSource": "manual",
@@ -9208,6 +9749,7 @@
       "id": "pc-the-sims-4-backyard-stuff",
       "console": "pc",
       "title": "The Sims 4: Backyard Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-07-19",
       "dateSource": "manual",
@@ -9236,6 +9778,7 @@
       "id": "pc-the-sims-4-vintage-glamour-stuff",
       "console": "pc",
       "title": "The Sims 4: Vintage Glamour Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2016-12-06",
       "dateSource": "manual",
@@ -9264,6 +9807,7 @@
       "id": "pc-the-sims-4-bowling-night-stuff",
       "console": "pc",
       "title": "The Sims 4: Bowling Night Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-03-29",
       "dateSource": "manual",
@@ -9292,6 +9836,7 @@
       "id": "pc-the-sims-4-fitness-stuff",
       "console": "pc",
       "title": "The Sims 4: Fitness Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-06-20",
       "dateSource": "manual",
@@ -9320,6 +9865,7 @@
       "id": "pc-the-sims-4-toddler-stuff",
       "console": "pc",
       "title": "The Sims 4: Toddler Stuff",
+      "sortAs": "The Sims 4",
       "region": "PAL",
       "released": "2017-08-24",
       "dateSource": "manual",
@@ -9585,6 +10131,7 @@
       "id": "pc-grand-theft-auto",
       "console": "pc",
       "title": "Grand Theft Auto",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "1997-11",
       "dateSource": "manual",
@@ -9609,6 +10156,7 @@
       "id": "pc-grand-theft-auto-london-1969",
       "console": "pc",
       "title": "Grand Theft Auto: London 1969",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "1999-03-31",
       "dateSource": "manual",
@@ -9633,6 +10181,7 @@
       "id": "pc-grand-theft-auto-iii",
       "console": "pc",
       "title": "Grand Theft Auto III",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2002-05-21",
       "dateSource": "manual",
@@ -9656,6 +10205,7 @@
       "id": "pc-grand-theft-auto-vice-city",
       "console": "pc",
       "title": "Grand Theft Auto: Vice City",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2003-05-16",
       "dateSource": "manual",
@@ -9679,6 +10229,7 @@
       "id": "pc-grand-theft-auto-san-andreas",
       "console": "pc",
       "title": "Grand Theft Auto: San Andreas",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2005-06-10",
       "dateSource": "manual",
@@ -9702,6 +10253,7 @@
       "id": "pc-grand-theft-auto-iv",
       "console": "pc",
       "title": "Grand Theft Auto IV",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2008-12-03",
       "dateSource": "manual",
@@ -9727,6 +10279,7 @@
       "console": "pc",
       "title": "Grand Theft Auto: Episodes from Liberty City",
       "listedAs": "Grand Theft Auto: Episodes From Liberty City",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2010-04-16",
       "dateSource": "manual",
@@ -9751,6 +10304,7 @@
       "id": "pc-grand-theft-auto-v",
       "console": "pc",
       "title": "Grand Theft Auto V",
+      "sortAs": "Grand Theft Auto",
       "region": "PAL",
       "released": "2015-04-14",
       "dateSource": "manual",

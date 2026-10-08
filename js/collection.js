@@ -39,6 +39,7 @@
     if (g.console !== 'pc' && platformTag) tags.push(`<span class="tag">${esc(c.short)}</span>`);
     if (g.format === 'boxed') tags.push('<span class="tag disc">Disc</span>');
     if (g.format === 'cartridge-only') tags.push('<span class="tag disc">Cart</span>');
+    if (g.format === 'code-in-box') tags.push('<span class="tag dl">Code</span>');
     if (g.format === 'digital' || g.alsoDigital) {
       const L = LAUNCHERS[g.launcher];
       tags.push(`<span class="tag dl"${L ? ` style="--lb:${L.bg};--lf:${L.fg}"` : ''}>${esc(L && g.launcher !== 'none' ? L.name : 'Digital')}</span>`);

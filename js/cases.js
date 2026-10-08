@@ -17,6 +17,7 @@
   }
   const year = g => (g.released || '').slice(0, 4) || '—';
   const styleOf = g => g.caseStyle || g.console;
+  const ps3Case = g => styleOf(g) === 'ps3' && !g.big && !g.steelbook;
 
   /* ---------- the case's shape ----------
      A case keeps its console's real height and is built around its cover scan,
@@ -24,7 +25,8 @@
      keeps a thin rim and its hinge round the scan; a cardboard box simply is its
      scan. Without a scan the case has its real width, and so has a case whose
      picture is only the game's key art (cover.plain): the console's band is
-     printed across its top and the art fills the rest. */
+     printed across its top and the art fills the rest. A SteelBook (a tin case) is metal right to its edge,
+     with no rim: it keeps its real width and its own art fills it. */
   function layout(g, s) {
     const c = C()[styleOf(g)];
     const m = g.big ? window.BIGBOX : c;
@@ -32,11 +34,13 @@
     const h = m.h * s, d = m.d * s;
     const r = g.cover && g.cover.ratio;
     let rim = [0, 0, 0, 0]; // top, right, bottom, left
-    if (kind === 'keep') { const t = m.w * s * 0.018; rim = [t, t, t, m.w * s * 0.045]; }
+    if (kind === 'keep' && !g.steelbook) { const t = m.w * s * 0.018; rim = [t, t, t, m.w * s * 0.045]; }
+    // a PS3 case is clear, with a moulded strip across its top above the cover (Blu-ray Disc and PLAYSTATION 3 raised in it)
+    if (ps3Case(g)) rim[0] = h * 0.065;
     // a PlayStation jewel case shows its black tray down a wide hinge on the left
     if (kind === 'jewel') { const t = m.w * s * 0.012; rim = [t, t, t, m.w * s * (styleOf(g) === 'ps1' ? 0.1 : 0.07)]; }
     const ih = h - rim[0] - rim[2];
-    const iw = r && !g.cover.plain ? ih * r : m.w * s - rim[1] - rim[3];
+    const iw = r && !g.cover.plain && !g.steelbook ? ih * r : m.w * s - rim[1] - rim[3];
     return { w: iw + rim[1] + rim[3], h, d, kind, c, ix: rim[3], iy: rim[0], iw, ih };
   }
   const dims = layout;
@@ -68,7 +72,7 @@
     ps1: '<i class="psd"><b></b><b></b><b></b><b></b></i>', ps2: 'PS2', ps3: 'PS3', ps4: 'PS4', ps5: 'PS5',
     xbox: 'XBOX', x360: '360', xone: 'ONE', snes: 'SNES', gb: 'GB', gbc: rainbow('GBC'), gba: 'GBA',
     ds: 'DS', '3ds': '3DS', wii: 'Wii', wiiu: 'Wii U',
-    switch: '<i class="joy"><b></b><b></b></i>', switch2: '<i class="joy"><b></b><b></b></i>2', pc: 'PC',
+    switch: '<i class="joy"><b></b><b></b></i>', switch2: '<span class="s2l"><i class="joy"><b></b><b></b></i><b>2</b></span>', pc: 'PC',
   };
 
   const px = v => v.toFixed(1) + 'px';
@@ -77,16 +81,22 @@
     // a case that came in another colour than its console's usual one (a red Wii case, a white Wii U one)
     if (/^#[0-9a-f]{6}$/i.test(g.caseColor || '')) {
       const c = g.caseColor, f = ink(c);
+      // a PS2 spine is the white paper sleeve, so only the plastic takes the colour
+      if (styleOf(g) === 'ps2') return v + `;--pl:${c}`;
       return v + `;--pl:${c};--sb:${c};--sf:${f};--st:${c};--stf:${f}`;
     }
-    // spines that carry the game's own colours take them from the cover (Kinect games keep their purple)
-    if (L.c.spineArt && g.colors && !g.kinect) {
+    // a spine printed in its own colour (a SteelBook's black spine)
+    if (/^#[0-9a-f]{6}$/i.test(g.spineColor || '')) return v + `;--sb:${g.spineColor};--sf:${ink(g.spineColor)}`;
+    // spines that carry the game's own colours take them from the cover (Kinect games keep their purple, PS1 Platinum ones their silver)
+    if (L.c.spineArt && g.colors && !g.kinect && !(g.platinum && styleOf(g) === 'ps1')) {
       const [a, b] = g.colors;
-      v += L.kind === 'box' ? `;--sb:linear-gradient(${a},${b || a});--sf:${ink(a)}` : `;--sb:${a};--sf:${ink(a)}`;
+      // a Switch 2 cover's art wraps round the spine, so it shows all the cover's colours down it
+      if (styleOf(g) === 'switch2') v += `;--sb:linear-gradient(${g.colors.join(',')}${g.colors.length > 1 ? '' : ',' + a});--sf:${ink(a)}`;
+      else v += L.kind === 'box' ? `;--sb:linear-gradient(${a},${b || a});--sf:${ink(a)}` : `;--sb:${a};--sf:${ink(a)}`;
     }
     return v;
   }
-  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''}${g.kinect ? ' kinect' : ''}${g.platinum ? ' platinum' : ''}${g.caseColor ? ' tinted' : ''} kind-${L.kind}`;
+  const cls = (g, L) => `k-${styleOf(g)}${g.big ? ' big' : ''}${g.kinect ? ' kinect' : ''}${g.platinum ? ' platinum' : ''}${g.caseColor ? ' tinted' : ''}${g.steelbook ? ' steel' : ''}${g.spineColor ? ' own-spine' : ''} kind-${L.kind}`;
   const img = (g, c = '', lazy = true) => g.cover ? `<img class="${c}" src="${esc(g.cover.file)}" alt="" ${lazy ? 'loading="lazy"' : ''} decoding="async" draggable="false">` : '';
   function el(html) {
     const t = document.createElement('template');
@@ -101,17 +111,21 @@
   }
 
   /* ---------- front ---------- */
+  // the clear strip across the top of a PS3 case, with the Blu-ray Disc logo and PLAYSTATION 3 moulded in it
+  const PS3_HEAD = '<div class="hdr"><i class="bdl"><b></b><span>Blu-ray Disc</span></i><span class="ps3w">PLAYSTATION 3</span></div>';
   // a Platinum copy's silver band across the top of the cover, over the black one on the scan
+  // (left off when the scan is already of the Platinum print, named *-platinum.jpg)
   const PLAT = '<div class="plat"><em>PlayStation<sup>®</sup><b>2</b></em><span>Platinum</span></div>';
+  const drawPlat = g => g.platinum && styleOf(g) === 'ps2' && !/-platinum\.\w+$/.test(g.cover.file);
   function frontHTML(g, L, lazy) {
     const inner = g.cover
-      ? `<div class="ins${g.cover.plain ? ' plain' : ''}">${g.cover.plain ? `<div class="band">${LOGO[styleOf(g)]}</div>` : ''}${img(g, 'scan', lazy)}${g.platinum ? PLAT : ''}</div>`
+      ? `<div class="ins${g.cover.plain ? ' plain' : ''}">${g.cover.plain ? `<div class="band">${LOGO[styleOf(g)]}</div>` : ''}${img(g, 'scan', lazy)}${drawPlat(g) ? PLAT : ''}</div>`
       : `<div class="ins ph">
           <div class="band">${LOGO[styleOf(g)]}</div>
           <div class="phc"><b class="pht">${esc(g.title)}</b><i class="phr"></i><span class="phs">${year(g)}${g.publisher ? ' · ' + esc(g.publisher) : ''}</span></div>
           <i class="phn">Cover to come</i>${launcherStrip(g)}
         </div>`;
-    return `<div class="cv ${cls(g, L)}" style="${vars(g, L)}">${inner}<div class="gl"></div></div>`;
+    return `<div class="cv ${cls(g, L)}" style="${vars(g, L)}">${inner}${ps3Case(g) ? PS3_HEAD : ''}<div class="gl"></div></div>`;
   }
   const front = (g, s, lazy = true) => el(frontHTML(g, layout(g, s), lazy));
 
@@ -129,6 +143,8 @@
   /* ---------- back ---------- */
   function backHTML(g, L) {
     const R = window.REGIONS[g.region] || { name: g.region };
+    // a picture of the real back (a SteelBook's), else a back printed from the game's details
+    if (g.cover && g.cover.back) return `<div class="bk ${cls(g, L)}" style="${vars(g, L)}"><div class="ins"><img class="scan" src="${esc(g.cover.back)}" alt="" loading="lazy" decoding="async" draggable="false"></div><div class="gl"></div></div>`;
     return `<div class="bk ${cls(g, L)}" style="${vars(g, L)}">
       <div class="ins${g.cover ? '' : ' ph'}">${img(g, 'blur')}
         <div class="band">${LOGO[styleOf(g)]}</div>
@@ -433,11 +449,13 @@
   function mediaHTML(g, s) {
     const type = mediaType(g);
     if (!CART[type]) return discHTML(g, s, type);
-    // in a plastic case the card sits in the moulded holder at the top of the inside, as it does in a real
-    // DS, 3DS or Switch case; out of a cardboard box it stands on its own
+    // in a plastic case the card sits in the moulded holder inside, at the top in a DS or 3DS case and
+    // low down in a Switch one (css/cases.css); out of a cardboard box it stands on its own
     if (C()[styleOf(g)].kind !== 'keep') return cartHTML(g, s, type);
     const T = CART[type];
-    return `<div class="holder" style="--hw:${px((T.w + 5) * s)};--hh:${px((T.h + 5) * s)}">${cartHTML(g, s, type)}</div>`;
+    // a case sold with a download code instead of the card: the holder empty, the code's slip of paper lying above it
+    const code = g.format === 'code-in-box';
+    return `${code ? '<div class="codeslip"><b>Download code</b><i></i><i></i></div>' : ''}<div class="holder${code ? ' empty' : ''}" style="--hw:${px((T.w + 5) * s)};--hh:${px((T.h + 5) * s)}">${code ? '' : cartHTML(g, s, type)}</div>`;
   }
   function discHTML(g, s, type) {
     const D = 120 * s;

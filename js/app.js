@@ -43,8 +43,14 @@
   };
 
   /* ---------- sorting: the menu and the list's headers set the same sort ---------- */
+  // where a game files by title: without a leading article (The Sims under S), or where its sortAs says
+  // (LEGO Rock Band with the Rock Band games). Games filed under the same name go in the order they came out
+  const fileAs = g => (g.sortAs || g.title).replace(/^(the|a|an)\s+/i, '');
+  const byTitle = (a, b) => collator.compare(fileAs(a), fileAs(b))
+    || ((a.sortAs || b.sortAs) && (a.released || '9999').localeCompare(b.released || '9999'))
+    || collator.compare(a.title, b.title);
   const SORT_BY = {
-    title:     { label: 'Title',     value: g => g.title },
+    title:     { label: 'Title',     value: g => g.title, cmp: byTitle },
     console:   { label: 'Console',   value: g => String(ORDER[g.console]).padStart(2, '0'), plain: true },
     released:  { label: 'Released',  value: g => g.released || '', plain: true },
     region:    { label: 'Region',    value: g => g.region },
@@ -64,7 +70,8 @@
     const { value, plain } = SORT_BY[key];
     const sign = dir === 'desc' ? -1 : 1;
     const cmp = (x, y) => plain ? (x < y ? -1 : x > y ? 1 : 0) : collator.compare(x, y);
-    const tie = (a, b) => ORDER[a.console] - ORDER[b.console] || collator.compare(a.title, b.title);
+    const tie = (a, b) => ORDER[a.console] - ORDER[b.console] || byTitle(a, b);
+    if (SORT_BY[key].cmp) return [...list].sort((a, b) => sign * SORT_BY[key].cmp(a, b) || ORDER[a.console] - ORDER[b.console]);
     return [...list].sort((a, b) => {
       const x = value(a), y = value(b);
       if (!x || !y) return (!x - !y) || tie(a, b); // nothing in the column goes last either way
@@ -73,7 +80,7 @@
   }
 
   const VIEWS = ['shelf', 'rows', 'grid', 'showcase', 'list', ...(CFG && CFG.checklist ? ['checklist'] : [])];
-  const flat = v => v === 'list' || v === 'checklist'; // views with no cases to carry across
+  const flat = v => v === 'checklist'; // views with no cases to carry across
   const state = {
     view: VIEWS.includes(store.get('view')) ? store.get('view') : 'shelf',
     mode: ['mixed', 'spines', 'covers'].includes(store.get('mode')) ? store.get('mode') : 'mixed',
@@ -321,6 +328,26 @@
 
   // the part of a shelf item, grid cell or list row that is the game itself
   const faceOf = item => item.querySelector('.lcase > *, .gt > *') || item.firstElementChild;
+  // where a game stands on the page: a case turned on the shelf by the box it stands in, not as turned
+  const rectOf = el => (footed(el) ? el.parentElement : el).getBoundingClientRect();
+  // a case facing out on the shelf: turned, and seen from its foot (css/site.css, .item.face)
+  const footed = el => !!el && el.classList.contains('bx') && !!el.parentElement && el.parentElement.matches('.item.face');
+  // how far it is turned as it shows right now (less while the pointer is over it), in degrees
+  const liveRy = el => { const m = new DOMMatrix(getComputedStyle(el).transform); return Math.atan2(-m.m13, m.m11) * 180 / Math.PI; };
+  // how a case flying to or from the shelf is seen at scale s (its own size 1): from its foot, with the shelf's
+  // perspective, so it leaves and lands looking just as it stands there; anywhere else from its middle with persp
+  const footView = (el, s, persp) => footed(el)
+    ? { perspective: (parseFloat(getComputedStyle(el.parentElement).perspective) / s).toFixed(1) + 'px', perspectiveOrigin: '50% 100%' }
+    : { perspective: persp, perspectiveOrigin: '50% 50%' };
+  // how far a game leaning on the shelf is tipped over, in degrees (0 standing straight): as it is drawn
+  // right now (live, so a lean eased back on hover counts), or where it comes to rest
+  const tiltOf = (el, live = true) => {
+    const item = el && el.closest('.item.lean');
+    if (!item) return 0;
+    if (!live) return -parseFloat(item.style.getPropertyValue('--lean')) || 0;
+    const m = new DOMMatrix(getComputedStyle(item).transform);
+    return Math.atan2(m.b, m.a) * 180 / Math.PI;
+  };
 
   function render(animate) {
     tipEl.classList.remove('vis');
@@ -337,7 +364,7 @@
       host.innerHTML = `<div class="empty-msg"><b>Nothing on this shelf</b>No games match those filters. Try another console or clear the search.</div>`;
       return;
     }
-    if (state.view === 'list') renderList(); else if (state.view === 'grid') renderGrid(animate); else if (state.view === 'rows') renderRows(animate); else if (state.view === 'showcase') renderShowcase(animate); else renderShelf(animate);
+    if (state.view === 'list') renderList(animate); else if (state.view === 'grid') renderGrid(animate); else if (state.view === 'rows') renderRows(animate); else if (state.view === 'showcase') renderShowcase(animate); else renderShelf(animate);
     Detail.rehome();
   }
 
@@ -349,6 +376,8 @@
   const cartK = g => Case.cartSize(g, 1)[0] > 100 ? 1 : 1.6;
   // a loose cartridge stands facing out, or, on a console whose cartridges stand sideways (the SNES), on its
   // side with its top label out like a book's spine, all but the one that faces out ("All covers" faces them all out)
+  // how far a case facing out on the shelf is turned to show its spine, in degrees
+  const FACE_RY = 16;
   const looseKind = (g, lead) => CONSOLE_BY_ID[g.console].stack && state.mode !== 'covers' && !lead.has(g.id) ? 'stack' : 'loose';
   function shelfItem(g, kind, animate, n) {
     const btn = document.createElement('button');
@@ -468,7 +497,9 @@
         if (it.end) { const b = document.createElement('div'); b.className = 'bookend'; bay.append(b); return; }
         const { g, kind } = it;
         const btn = shelfItem(g, kind, animate, n++);
-        btn.append(kind === 'face' ? Case.front(g, s) : kind === 'loose' ? Case.cart(g, s * cartK(g)) : kind === 'stack' ? Case.top(g, s * cartK(g), true, thick(g)) : Case.spine(g, s));
+        // one facing out is a solid case, turned a little so its spine and depth show (css/site.css)
+        if (kind === 'face') { btn.dataset.ry = FACE_RY; btn.style.setProperty('--ry', FACE_RY); }
+        btn.append(kind === 'face' ? Case.slab(g, s, true) : kind === 'loose' ? Case.cart(g, s * cartK(g)) : kind === 'stack' ? Case.top(g, s * cartK(g), true, thick(g)) : Case.spine(g, s));
         if (kind === 'spine') {
           const sp = btn.firstElementChild;
           sp.style.setProperty('--d', it.bw.toFixed(1) + 'px');
@@ -506,9 +537,9 @@
 
   /* ---------- the list ---------- */
   const COLS = ['title', 'console', 'released', 'region', 'publisher', 'genre'];
-  function renderList() {
+  function renderList(animate) {
     const wrap = document.createElement('div');
-    wrap.className = 'list';
+    wrap.className = 'list' + (animate ? ' enter' : '');
     const head = document.createElement('div');
     head.className = 'lrow lhead';
     head.innerHTML = '<span></span>' + COLS.map(key => {
@@ -517,11 +548,12 @@
     }).join('');
     wrap.append(head);
 
-    games.forEach(g => {
+    games.forEach((g, i) => {
       const c = CONSOLE_BY_ID[g.console];
       const row = document.createElement('div');
       row.className = 'lrow';
       row.dataset.id = g.id;
+      row.style.setProperty('--i', Math.min(i, 24));
       row.tabIndex = 0;
       row.setAttribute('role', 'button');
       row.setAttribute('aria-label', `${g.title}, ${c.name}. Open details`);
@@ -909,7 +941,7 @@
     // how tall it shows: in the showcase one to the side stands further back, so smaller than it is drawn
     const hOf = face => face.closest('.sc-it') ? face.getBoundingClientRect().height : face.offsetHeight;
     // how it is turned where it stands (one to the side in the showcase turns in towards the middle)
-    const ryOf = item => +(item.dataset.ry || 0);
+    const ryOf = item => footed(item.firstElementChild) ? liveRy(item.firstElementChild) : +(item.dataset.ry || 0);
     const kindOf = el => el.classList.contains('sp') ? 'spine' : el.classList.contains('cart') ? 'cart' : el.classList.contains('cside') ? 'side' : 'front';
     // a spine's width and the size of its lettering, as drawn (the rows draw them wider than real ones)
     const spineOf = el => el.classList.contains('sp') ? { sw: el.offsetWidth, sf: parseFloat(getComputedStyle(el).fontSize) } : {};
@@ -920,8 +952,8 @@
     // how it is turned: on its side with the top label out, leaning on the shelf, or straight
     // (on its side it is pushed back by half its height, so its top label sits where the shelf showed it, not nearer)
     const cartTurn = (kind, view, back) => kind === 'side' ? `translateZ(${-back}px) rotateY(-90deg) rotateZ(90deg)` : `translateZ(0px) rotateY(0deg) rotateZ(${view === 'shelf' ? -6 : 0}deg)`;
-    // the part of the page that waits while its case is in the air
-    const spotOf = (item, face) => face.closest('.gt') || item;
+    // the part of the page that waits while its case is in the air (in the list, the row's thumbnail)
+    const spotOf = (item, face) => face.closest('.gt, .lcase') || item;
 
     /** Where every game on screen is now. Called just before the view is drawn again. */
     function capture() {
@@ -929,8 +961,8 @@
       const spots = new Map();
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item), kind = kindOf(face);
-        const r = face.getBoundingClientRect();
-        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: hOf(face), ry: ryOf(item), z: +item.style.zIndex || 0, kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0, ...spineOf(face) });
+        const r = rectOf(face);
+        if (onScreen(r)) spots.set(item.dataset.id, { cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: hOf(face), ry: ryOf(item), foot: footed(face) && footView(face, 1).perspective, z: +item.style.zIndex || 0, tilt: tiltOf(face), kind, u: cartish(kind) ? unitOf(face, kind, byId.get(item.dataset.id)) : 0, ...spineOf(face) });
       }
       return { view: state.view, spots };
     }
@@ -940,7 +972,7 @@
       clearTimeout(run.timer);
       run.layer.remove();
       run.hidden.forEach(el => { el.style.visibility = ''; });
-      host.querySelector('.grid')?.classList.remove('morphing');
+      host.querySelector('.grid, .list')?.classList.remove('morphing');
       run = null;
     }
 
@@ -958,7 +990,7 @@
       const arrivals = [];
       for (const item of host.querySelectorAll('[data-id]')) {
         const face = faceOf(item);
-        const r = face.getBoundingClientRect();
+        const r = rectOf(face);
         if (onScreen(r)) arrivals.push({ item, face, r, from: snap.spots.get(item.dataset.id), kind: kindOf(face) });
       }
       arrivals.sort((a, b) => (a.r.top - b.r.top) || (a.r.left - b.r.left));
@@ -988,17 +1020,25 @@
         const duration = 760 + Math.min(340, dist * 0.3);
         const delay = Math.min(i, 48) * 14;
         longest = Math.max(longest, delay + duration);
-        const at = (x, y, sc) => `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${sc.toFixed(3)})`;
+        // a game leaning on the shelf tips over or straightens up on the way
+        const z0 = a.from.tilt || 0, z1 = tiltOf(a.face, false);
+        const at = (x, y, sc, z) => `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${sc.toFixed(3)}) rotate(${z.toFixed(2)}deg)`;
         const anim = wrap.animate([
-          { transform: at(dx, dy, k) },
-          { transform: at(dx / 2, dy / 2 - lift, ((k + 1) / 2) * 1.06), offset: 0.5 },
-          { transform: at(0, 0, 1) },
+          { transform: at(dx, dy, k, z0) },
+          { transform: at(dx / 2, dy / 2 - lift, ((k + 1) / 2) * 1.06, (z0 + z1) / 2), offset: 0.5 },
+          { transform: at(0, 0, 1, z1) },
         ], { duration, delay, easing: 'cubic-bezier(.35,0,.25,1)', fill: 'both' });
         // a case turns between its spine and its cover; a cartridge turns from its side to its front, or straightens up or leans back
         const turn = cart
           ? [cartTurn(a.from.kind, snap.view, H / 2), cartTurn(a.kind, state.view, H / 2)]
           : [`rotateY(${a.from.kind === 'spine' ? 90 : a.from.ry}deg)`, `rotateY(${a.kind === 'spine' ? 90 : ryOf(a.item)}deg)`];
         fly.animate(turn.map(transform => ({ transform })), { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
+        // to or from a case turned on the shelf: seen from its foot there, as it stands, and from its middle anywhere else
+        if (a.from.foot || footed(a.face)) {
+          const mid = { perspective: '900px', perspectiveOrigin: '50% 50%' };
+          const v0 = a.from.foot ? { perspective: (parseFloat(a.from.foot) / k).toFixed(1) + 'px', perspectiveOrigin: '50% 100%' } : mid;
+          wrap.animate([v0, footView(a.face, 1, mid.perspective)], { duration: duration * 0.8, delay: delay + duration * 0.1, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' });
+        }
         // a spine as wide as it was where it took off, widening or narrowing to the one it lands on
         if (!cart) {
           const d1 = parseFloat(fly.style.getPropertyValue('--sd')), f1 = parseFloat(fly.style.getPropertyValue('--sfs'));
@@ -1018,8 +1058,8 @@
       arrivals.filter(a => !flying.has(a)).forEach(a => {
         spotOf(a.item, a.face).animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, delay: 350, easing: 'ease-out', fill: 'backwards' });
       });
-      // the grid's captions come in once the cases are nearly home
-      host.querySelector('.grid')?.classList.add('morphing');
+      // the grid's captions and the list's rows come in once the cases are nearly home
+      host.querySelector('.grid, .list')?.classList.add('morphing');
       run = { layer, hidden, timer: setTimeout(stop, longest + 300) };
     }
 
@@ -1057,7 +1097,7 @@
     const isOpen = () => !!cur && !cur.closing;
     const shape = g => g.format === 'cartridge-only' ? 'cart' : g.format === 'digital' ? 'card' : 'box';
     // how it stood where it was picked from: a spine turned side on, a cartridge on its side with its top label out, or facing out
-    const fromPose = el => el && el.classList.contains('peek') ? [0, el._pose.ry, 0] : el && el.classList.contains('sp') ? [0, 90, 0] : el && el.classList.contains('cside') ? [0, -90, 90]
+    const fromPose = el => el && el.classList.contains('peek') ? [0, el._pose.ry, 0] : footed(el) ? [0, liveRy(el), 0] : el && el.classList.contains('sp') ? [0, 90, 0] : el && el.classList.contains('cside') ? [0, -90, 90]
       : [0, el && el.closest('[data-ry]') ? +el.closest('[data-ry]').dataset.ry : 0, 0];
     const rot = ([x, y, z = 0]) => `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
 
@@ -1107,7 +1147,7 @@
       const c = CONSOLE_BY_ID[g.console];
       const made = g.developer && g.developer !== g.publisher ? `Developed by ${g.developer}` : '';
       const pack = g.pack && g.pack !== 'Base game' ? [g.pack, g.packCode].filter(Boolean).join(' ') : '';
-      const rest = [pack, g.genre, FORMATS[g.format], g.platinum && 'Platinum', g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
+      const rest = [pack, g.genre, FORMATS[g.format], g.platinum && 'Platinum', g.steelbook && 'SteelBook', g.alsoDigital && 'Also in the EA app', g.edition, made].filter(Boolean);
       const q = encodeURIComponent(`${g.title} ${c.name} ${REGIONS[g.region]?.name || g.region} box art`);
       let n = 2;
       return `
@@ -1172,8 +1212,10 @@
 
     /* ---------- where a game is on the page ---------- */
     function poseOf(el) {
-      const r = el.getBoundingClientRect();
-      return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w: r.width, h: r.height, seen: r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && r.width > 0 };
+      const r = rectOf(el), z = tiltOf(el);
+      // a leaning one's box is widened by its tilt: its own size is what it is drawn at
+      const w = z ? el.offsetWidth : r.width, h = z ? el.offsetHeight : r.height;
+      return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w, h, z, seen: r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && r.width > 0 };
     }
     // the element that shows this game now: on the shelf, in the grid or in the list
     function homeOf(g) {
@@ -1182,7 +1224,8 @@
     }
     // what a flight scales against: a spine is matched by height, anything else by its size
     const scaleFrom = (el, p, w, h) => el.closest('.sc-it') ? p.h / h : el.classList.contains('peek') ? el._pose.h / h : el.classList.contains('sp') ? p.h / h : el.classList.contains('cside') ? p.h / w : Math.min(p.w / w, p.h / h);
-    const piecePose = (L, cx, cy, s) => `translate(${(cx - L.w / 2).toFixed(1)}px,${(cy - L.h / 2).toFixed(1)}px) scale(${s.toFixed(4)})`;
+    // (z: tipped over that far, as a game leaning on the shelf)
+    const piecePose = (L, cx, cy, s, z = 0) => `translate(${(cx - L.w / 2).toFixed(1)}px,${(cy - L.h / 2).toFixed(1)}px) scale(${s.toFixed(4)}) rotate(${z.toFixed(2)}deg)`;
     // a place just off the screen on the way to (x, y)
     const offscreen = (L, x, y) => [clamp(x, L.w / 2, L.vw - L.w / 2), y < L.vh / 2 ? -L.h * 0.75 : L.vh + L.h * 0.75];
 
@@ -1199,6 +1242,7 @@
 
     function hide(a, el) {
       if (el && el.closest('.sc-it')) el = el.closest('.gt'); // in the showcase its reflection goes with it
+      if (footed(el)) el = el.parentElement; // on the shelf its shadow on the board goes with it
       if (el && !a.hidden.includes(el)) { el.style.visibility = 'hidden'; a.hidden.push(el); }
     }
     function unhide(a) { a.hidden.forEach(el => { el.style.visibility = ''; }); a.hidden = []; }
@@ -1327,11 +1371,13 @@
         const lift = beside ? 0 : 50 + Math.min(110, dist * 0.12);
         const duration = beside ? 720 : 820 + Math.min(320, dist * 0.25);
         a.flight = piece.animate([
-          { transform: piecePose(L, from.cx, from.cy, s0) },
-          { transform: piecePose(L, (from.cx + L.cx) / 2, (from.cy + L.cy) / 2 - lift, (s0 + 1) / 2), offset: 0.45 },
+          { transform: piecePose(L, from.cx, from.cy, s0, from.z) },
+          { transform: piecePose(L, (from.cx + L.cx) / 2, (from.cy + L.cy) / 2 - lift, (s0 + 1) / 2, from.z * 0.4), offset: 0.45 },
           { transform: rest },
         ], { duration, easing: 'cubic-bezier(.3,.05,.2,1)', fill: 'backwards' });
         turn.animate([{ transform: rot(fromPose(a.source)) }, { transform: rot(restPose) }], { duration: duration * 0.9, easing: 'cubic-bezier(.4,.1,.2,1)', fill: 'backwards' });
+        // off the shelf facing out, it starts seen from its foot as it stood there
+        if (footed(a.source)) piece.animate([footView(a.source, s0), { perspective: getComputedStyle(piece).perspective, perspectiveOrigin: '50% 50%' }], { duration: duration * 0.9, easing: 'cubic-bezier(.4,.1,.2,1)', fill: 'backwards' });
         depth(a, a.source, s0, duration * 0.9, 'backwards', true);
       } else {
         // its place is off the screen (or it has none): it comes in from that side
@@ -1429,15 +1475,15 @@
       a.obj.classList.remove('open');
       const L = a.L;
       // where it is right now, which is not its resting place if it was still flying in
-      let from = { cx: L.cx, cy: L.cy, s: 1 };
+      let from = { cx: L.cx, cy: L.cy, s: 1, z: 0 };
       if (a.flight && a.flight.playState === 'running') {
         const m = new DOMMatrix(getComputedStyle(a.piece).transform);
-        from = { cx: m.e + L.w / 2, cy: m.f + L.h / 2, s: Math.hypot(m.a, m.b) };
+        from = { cx: m.e + L.w / 2, cy: m.f + L.h / 2, s: Math.hypot(m.a, m.b), z: Math.atan2(m.b, m.a) * 180 / Math.PI };
       }
       a.piece.getAnimations().forEach(x => x.cancel());
       a.turn.getAnimations().forEach(x => x.cancel());
       a.obj.getAnimations().forEach(x => { if (x.effect?.getKeyframes?.()[0]?.['--sd'] !== undefined) x.cancel(); });
-      a.piece.style.transform = piecePose(L, from.cx, from.cy, from.s);
+      a.piece.style.transform = piecePose(L, from.cx, from.cy, from.s, from.z);
 
       if (peek) {
         const P = peek._pose;
@@ -1445,7 +1491,7 @@
         a.turn.style.transition = 'transform .72s cubic-bezier(.4,0,.2,1)';
         a.turn.style.transform = rot([0, P.ry]);
         a.flight = a.piece.animate([
-          { transform: piecePose(L, from.cx, from.cy, from.s) },
+          { transform: piecePose(L, from.cx, from.cy, from.s, from.z) },
           { transform: piecePose(L, P.cx, P.cy, P.h / L.h) },
         ], { duration: 720, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
         const land = () => { if (peek.isConnected && !peek.classList.contains('gone')) peek.style.visibility = ''; finish(a); };
@@ -1465,6 +1511,12 @@
         const duration = 760 + Math.min(300, dist * 0.22);
         a.turn.style.transition = `transform ${duration * 0.85}ms cubic-bezier(.4,0,.2,1)`;
         a.turn.style.transform = rot(fromPose(home));
+        // and going back to stand facing out on the shelf, it ends seen from its foot, as it stands there
+        if (footed(home)) {
+          const ease = `${(duration * 0.85).toFixed(0)}ms cubic-bezier(.4,0,.2,1)`;
+          a.piece.style.transition = `perspective ${ease}, perspective-origin ${ease}`;
+          Object.assign(a.piece.style, footView(home, scaleFrom(home, to, L.w, L.h)));
+        }
         depth(a, home, scaleFrom(home, to, L.w, L.h), duration * 0.85, 'forwards', false);
         const t0 = performance.now();
         let goal = to;
@@ -1473,7 +1525,7 @@
           if (a.done) return;
           const t = clamp((now - t0) / duration, 0, 1), u = easeInOut(t);
           if (home.isConnected) goal = poseOf(home);
-          a.piece.style.transform = piecePose(L, lerp(from.cx, goal.cx, u), lerp(from.cy, goal.cy, u) - lift * Math.sin(Math.PI * u), lerp(from.s, scaleFrom(home, goal, L.w, L.h), u));
+          a.piece.style.transform = piecePose(L, lerp(from.cx, goal.cx, u), lerp(from.cy, goal.cy, u) - lift * Math.sin(Math.PI * u), lerp(from.s, scaleFrom(home, goal, L.w, L.h), u), lerp(from.z, goal.z, u));
           if (t < 1) a.raf = requestAnimationFrame(frame); else finish(a);
         };
         a.raf = requestAnimationFrame(frame);
@@ -1488,7 +1540,7 @@
       a.turn.style.transition = 'transform .6s cubic-bezier(.4,0,.2,1)';
       a.turn.style.transform = rot(to && !side ? fromPose(home) : [a.rx, a.ry + (side || 1) * 40]);
       a.flight = a.piece.animate([
-        { transform: piecePose(L, from.cx, from.cy, from.s) },
+        { transform: piecePose(L, from.cx, from.cy, from.s, from.z) },
         { transform: piecePose(L, end[0], end[1], s1) },
       ], { duration: 650, easing: 'cubic-bezier(.5,0,.75,.4)', fill: 'forwards' });
       a.flight.finished.then(() => finish(a), () => {});
@@ -1582,7 +1634,7 @@
       ALL = CFG ? CFG.games(db, ...more) : db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
-        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.platinum && 'Platinum', g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
+        g._hay = fold([g.title, g.listedAs, g.publisher, g.developer, g.genre, g.released, g.region, REGIONS[g.region]?.std !== g.region && REGIONS[g.region]?.long, CONSOLE_BY_ID[g.console].name, CONSOLE_BY_ID[g.console].short, g.note, g.edition, g.platinum && 'Platinum', g.steelbook && 'SteelBook tin', g.series, g.pack, g.packCode, g.mac && 'Mac'].join(' | '));
       });
       shell();
       const h = location.hash.slice(1);

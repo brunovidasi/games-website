@@ -172,9 +172,21 @@ a { color: inherit; }
 .item:hover, .item:focus-visible { transform: translateY(-16px); z-index: 4; outline: none; filter: brightness(1.12); }
 .item:focus-visible > * { box-shadow: 0 0 0 2px var(--gold); }
 .item .sp:not(.ghost) { box-shadow: inset 1px 0 0 rgba(255,255,255,.18), inset -2px 0 0 rgba(0,0,0,.28), 2px 0 3px rgba(0,0,0,.35); }
-.item.face { margin: 0 6px; transform: perspective(600px) rotateY(-4deg); }
-.item.face:hover, .item.face:focus-visible { transform: perspective(600px) rotateY(0) translateY(-10px) scale(1.03); }
-.item.face::after { content: ""; position: absolute; left: 4%; right: -4%; bottom: -3px; height: 8px; background: rgba(0,0,0,.5); filter: blur(4px); z-index: -1; }
+/* a case facing out is a solid one, turned a little so its spine and depth show (js/app.js, FACE_RY). It is seen
+   from its foot, as the flights between the views see it (.mf), so its bottom edge stays flat on the board and only
+   its top runs away from the eye; on hover it turns nearly square on as it lifts */
+.item.face { margin: 0 8px 0 10px; perspective: 900px; perspective-origin: 50% 100%; }
+.item.face > .bx { transform: rotateY(calc(var(--ry) * 1deg)); transition: transform .45s cubic-bezier(.3,1.2,.5,1); }
+.item.face:hover > .bx, .item.face:focus-visible > .bx { transform: rotateY(4deg); }
+.item.face:hover, .item.face:focus-visible { transform: translateY(-10px); }
+/* the spine on its side in the shade, the top and bottom edges darker still, and a gloss on the plastic over the cover */
+.item.face .bx .fc { transform-style: flat; }
+.item.face .bx .fc::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.item.face .bx .f-left::after { background: linear-gradient(90deg, rgba(0,0,0,.45), rgba(0,0,0,.2)); }
+.item.face .bx :is(.f-top, .f-bot)::after { background: rgba(0,0,0,.45); }
+.item.face .bx .f-front::after { background: linear-gradient(105deg, rgba(255,255,255,.14), rgba(255,255,255,0) 38%, rgba(255,255,255,0) 70%, rgba(255,255,255,.06)); }
+/* its shadow on the board, falling back and to the right, away from the light */
+.item.face::after { content: ""; position: absolute; left: 2%; right: -10%; bottom: -4px; height: 10px; border-radius: 50%; background: rgba(0,0,0,.6); filter: blur(5px); z-index: -1; }
 /* a loose cartridge stands on a little clear acrylic stand */
 .item.loose { margin: 0 8px; align-self: flex-end; padding-bottom: 9px; }
 .item.loose .cart { transform: rotate(-6deg); transition: transform .3s; }
@@ -217,6 +229,11 @@ a { color: inherit; }
 .lcase .cv { box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 3px 6px rgba(0,0,0,.45); }
 .lrow:hover .lcase > * { transform: translateY(-2px) rotate(-2deg); }
 .lcase > * { transition: transform .25s cubic-bezier(.3,1.4,.5,1); }
+/* coming into the list: the rows slide in one after another (beside the cases flying to their thumbnails, just their words) */
+.list.enter .lrow, .list.morphing .lrow > :not(.lcase) { animation: rowIn .45s cubic-bezier(.2,.8,.25,1) backwards; animation-delay: calc(var(--i, 0) * 22ms); }
+.list.morphing .lrow > :not(.lcase) { animation-delay: calc(.3s + var(--i, 0) * 22ms); }
+.list.morphing .lhead > * { animation-delay: .25s; }
+@keyframes rowIn { from { opacity: 0; transform: translateX(-14px); } }
 .ltitle { min-width: 0; font-family: var(--font-ui); font-weight: 600; font-size: 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
 .ltitle b { display: block; max-width: 100%; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ltitle small { display: none; font: 400 0.8rem var(--font-ui); opacity: 0.65; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
