@@ -372,11 +372,13 @@ for (const g of db.games) {
   if (DRY) continue;
   try {
     const buf = await download(url);
-    // a box is taller than it is wide: a wide picture is a photo of the box, or of something else
+    // a box is taller than it is wide (a DS or 3DS case a little wider than tall, a SNES box wide, 180 by 128 mm):
+    // a wider picture is a photo of the box, or of something else
     const meta = await sharp(buf).metadata();
-    if (meta.width / meta.height > 0.95) { report.missing.push(`${g.id}  (only a wide picture: ${hit.ref})`); continue; }
+    if (meta.width / meta.height > ({ ds: 1.2, '3ds': 1.2, snes: 1.6 }[g.console] || 0.95)) { report.missing.push(`${g.id}  (only a wide picture: ${hit.ref})`); continue; }
     const out = await save(buf, g);
-    g.cover = { file: out.rel, ratio: out.ratio, source, ref: hit.ref };
+    // a sticker cut from a photo of the copy itself stays with the new scan
+    g.cover = { file: out.rel, ratio: out.ratio, source, ref: hit.ref, ...(had && had.label && { label: had.label }) };
     // Wikipedia's PS5 and Switch 2 pictures are the game's key art, without the console's band: the site prints the band over it
     if (source === 'en.wikipedia.org' && PLAIN_ART.includes(sys)) g.cover.plain = true;
     g.colors = out.colors;

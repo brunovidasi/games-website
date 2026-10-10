@@ -68,7 +68,10 @@ a { color: inherit; }
 .consoles { display: flex; align-items: flex-end; gap: 10px; }
 /* the consoles scroll sideways beside "All" and fade out at an edge with more past it (js/app.js) */
 .cscroll { flex: 1; min-width: 0; display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; padding: 0 2px;
-  --fl: 0px; --fr: 0px; -webkit-mask: linear-gradient(90deg, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent); mask: linear-gradient(90deg, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent); }
+  --fl: 0px; --fr: 0px;
+  /* only the consoles fade: a solid band over the top keeps the family names clear */
+  -webkit-mask: linear-gradient(#000, #000) top / 100% 18px no-repeat, linear-gradient(90deg, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent);
+  mask: linear-gradient(#000, #000) top / 100% 18px no-repeat, linear-gradient(90deg, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent); }
 .cscroll::-webkit-scrollbar { display: none; }
 @media (pointer: fine) { .cscroll { cursor: grab; } }
 .cscroll.dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
@@ -76,7 +79,8 @@ a { color: inherit; }
 .cscroll.more-l { --fl: 28px; }
 .cscroll.more-r { --fr: 28px; }
 .fam { display: flex; flex-direction: column; gap: 6px; flex: none; }
-.famname { align-self: flex-start; background: none; border: 0; padding: 0 2px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--fc); cursor: pointer; display: flex; align-items: center; gap: 6px; }
+/* a family's name stays in view at the left while its consoles scroll past */
+.famname { position: sticky; left: 0; align-self: flex-start; background: none; border: 0; padding: 0 2px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--fc); cursor: pointer; display: flex; align-items: center; gap: 6px; }
 .famname::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--fc); }
 .famname.on { text-decoration: underline; text-underline-offset: 3px; }
 .fam .row { display: flex; gap: 6px; }

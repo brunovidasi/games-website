@@ -23,6 +23,8 @@
 .k-gbc    { --pl: transparent; --bb: #111; --bf: #fff;                               --sb: #262626; --sf: #fff; --st: #111; --stf: #fff;       --ph1: #1c1c1c; --ph2: #3c3c3c; }
 .k-gba    { --pl: transparent; --bb: #2c2a86; --bf: #fff;                            --sb: #2c2a86; --sf: #fff; --st: #2c2a86; --stf: #fff;    --ph1: #1c1b52; --ph2: #3b39a8; }
 .k-ds     { --pl: #2b2b30; --bb: #ececec; --bf: #555;                                --sb: #f2f2f2; --sf: #222; --st: #d9d9d9; --stf: #444;    --ph1: #ececec; --ph2: #d4d4d8; --phf: #222; }
+/* most DS games came in a black case; some in clear plastic, tagged with clearCase */
+.k-ds.clear { --pl: rgba(214,222,230,.5); }
 .k-3ds    { --pl: #f3f3f3; --bb: #ffffff; --bf: #444;                                --sb: #fbfbfb; --sf: #222; --st: #ffffff; --stf: #d0021b; --ph1: #ffffff; --ph2: #e9e9ec; --phf: #222; }
 .k-wii    { --pl: #f7f7f7; --bb: #ffffff; --bf: #8a8f94;                             --sb: #fbfbfb; --sf: #333; --st: #ffffff; --stf: #8a8f94; --ph1: #ffffff; --ph2: #e8eaec; --phf: #2a2d30; }
 .k-wiiu   { --pl: #1c9bd1; --bb: #009ac7; --bf: #fff;                                --sb: #009ac7; --sf: #fff;  --st: #009ac7; --stf: #fff;    --ph1: #e9f5fa; --ph2: #c6e4f1; --phf: #12384a; }
@@ -76,10 +78,10 @@
 .k-ps3.kind-keep:not(.steel):is(.cv, .bk) { background:
   linear-gradient(160deg, rgba(255,255,255,.5), rgba(255,255,255,.12) 35%, rgba(255,255,255,.04) 60%, rgba(255,255,255,.25)), rgba(178,198,216,.55); }
 .k-ps3.kind-keep:not(.steel).cv::before { background: linear-gradient(90deg, rgba(255,255,255,.45), rgba(150,170,190,.35) 40%, rgba(255,255,255,.3) 70%, rgba(120,140,160,.4)); }
-/* a Switch case: clear plastic, untinted, round the insert */
-.k-switch.kind-keep:not(.steel):not(.tinted):is(.cv, .bk) { background:
+/* a Switch case (and a clear DS one): clear plastic, untinted, round the insert */
+:is(.k-switch, .k-ds.clear).kind-keep:not(.steel):not(.tinted):is(.cv, .bk) { background:
   linear-gradient(160deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 35%, rgba(255,255,255,.03) 60%, rgba(255,255,255,.22)), rgba(205,212,220,.45); }
-.k-switch.kind-keep:not(.steel):not(.tinted).cv::before { background: linear-gradient(90deg, rgba(255,255,255,.45), rgba(170,178,188,.35) 40%, rgba(255,255,255,.3) 70%, rgba(130,138,148,.4)); }
+:is(.k-switch, .k-ds.clear).kind-keep:not(.steel):not(.tinted).cv::before { background: linear-gradient(90deg, rgba(255,255,255,.45), rgba(170,178,188,.35) 40%, rgba(255,255,255,.3) 70%, rgba(130,138,148,.4)); }
 .hdr { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: var(--iy); display: flex; align-items: center; justify-content: space-between;
   padding: 0 5% 0 calc(var(--ix) + 2.5%); white-space: nowrap; color: rgba(95,118,140,.75);
   background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.18) 45%, rgba(255,255,255,.05) 80%, rgba(80,100,120,.25));
@@ -189,6 +191,8 @@
   display: grid; place-items: center; font: 700 .62em/1 'Space Grotesk', sans-serif; letter-spacing: .02em; white-space: nowrap; overflow: hidden; }
 .stop > span { display: flex; align-items: center; justify-content: center; gap: 1px; }
 .kind-box .stop { height: 16%; font-size: .5em; }
+/* a box with a thick spine (a bundle with a controller in it): the console's name a strip at the top, lettered like the cases beside it */
+.kind-box:not(.big) .stop { min-height: 0; height: 13%; font-size: .62em; }
 .k-ps3 .stop { background: linear-gradient(#2a2c31, #0c0c0e); }
 .k-xbox .stop, .k-x360 .stop, .k-xone .stop { font-family: Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400; letter-spacing: .06em; }
 .k-wii .stop, .k-wiiu .stop { font-family: 'Arial Rounded MT Bold', 'Space Grotesk', sans-serif; }
@@ -204,9 +208,135 @@
 .sttl { flex: 1; min-height: 0; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start; padding: .5em 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   font: 600 .74em/1 'Space Grotesk', sans-serif; letter-spacing: .02em; }
 .kind-box .sttl { font: 700 .62em/1 'Fraunces', serif; letter-spacing: 0; }
+.kind-box:not(.big) .sttl { font: 600 .74em/1 'Space Grotesk', sans-serif; letter-spacing: .02em; }
+.kind-box:not(.big) .sbot { font-size: .45em; }
 /* turned to read upwards, so the room under it is a margin: padding would turn over with it, to its top */
 .sbot { flex: none; margin-bottom: 1.1em; font: 600 .45em/1 'Space Grotesk', sans-serif; opacity: .7; writing-mode: vertical-rl; transform: rotate(180deg); }
 .kind-box .sbot { font-size: .38em; }
+
+/* ---------- printed spines (js/cases.js, printedSpineHTML) ---------- */
+.sp.printed { --band: #f3f3f1; --bandf: #1a1a1a; background: var(--band); color: var(--bandf); }
+.ptop, .pfoot { position: relative; z-index: 1; flex: none; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ptop { height: 10%; }
+.pfoot { gap: calc(var(--d) * .12); padding: calc(var(--d) * .2) 0 calc(var(--d) * .3); }
+.pmid { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+.pttl { position: relative; z-index: 1; flex: 1; min-height: 0; width: 100%; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start;
+  gap: .3em; padding: .8em 0 .45em; overflow: hidden; }
+/* a thin line in the copy's colour under the top (green for The Sims Stories, red for Pets) */
+.pstripe { flex: none; width: 100%; height: 2.6%; background: var(--stripe); }
+
+/* the title in small capitals, as on the white spines; a long one set smaller to fit */
+.stext { font: 700 calc(.9em * var(--fit, 1))/1.15 'Exo 2', sans-serif; font-variant: small-caps; letter-spacing: .06em;
+  white-space: nowrap; color: var(--bandf); text-align: center; }
+.stext small { font-size: .62em; letter-spacing: .08em; }
+.stext sup { font-size: .45em; vertical-align: baseline; position: relative; left: .5em; letter-spacing: 0; margin-block-end: .1em; }
+/* some years set it in capitals throughout (THE SIMS™2 NIGHTLIFE EXPANSION PACK) */
+.stext.caps { text-transform: uppercase; font-variant: normal; font-size: calc(.74em * var(--fit, 1)); letter-spacing: .07em; }
+.stext.caps small { font-size: 1em; letter-spacing: inherit; }
+.stext.f-plain { font-family: 'Arial Rounded MT Bold', 'Exo 2', sans-serif; font-variant: normal; letter-spacing: 0; font-size: calc(.8em * var(--fit, 1)); }
+.stext.f-serif, .ssub.f-serif b { font-family: 'Trajan Pro', 'Fraunces', serif; }
+
+/* the series logo, turned to read down the spine (logos/), and the pack's name after it */
+.slogo { flex: 0 1 auto; min-height: 0; width: calc(var(--d) * .86); height: auto; max-height: 64%; object-fit: contain; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); }
+.pttl .slogo { writing-mode: horizontal-tb; }
+.ssub { display: flex; flex-direction: column; align-items: center; text-align: center; white-space: nowrap; }
+.ssub.long { white-space: normal; max-inline-size: 6.5em; }
+.ssub b { font: 700 .9em/1 'Arial Rounded MT Bold', 'Exo 2', sans-serif; color: #fff; text-shadow: 0 0 .25em rgba(0,0,0,.55), .05em .05em 0 rgba(0,0,0,.4); }
+.ssub small { margin-right: .3em; font: 700 .34em/1 'Exo 2', sans-serif; letter-spacing: .12em; white-space: nowrap; opacity: .9; text-shadow: 0 0 .3em rgba(0,0,0,.7); }
+.solid .ssub b, .ps-white .ssub b { color: var(--bandf); text-shadow: none; }
+.ps-white .ssub small { text-shadow: none; }
+.ps-white .ssub.f-serif small, .ps-white .ssub small { font-family: 'Trajan Pro', 'Fraunces', serif; letter-spacing: .3em; font-size: .42em; }
+
+/* EA's thick PC cases: black ends, the cover's art squeezed down the middle and blurred to its colours */
+.sp.ps-ea-pcgame { --band: #121212; color: #fff; }
+.ps-ea-pcgame .ptop { height: 11%; background: linear-gradient(#0b0b0b, #1b1b1b); }
+.ps-ea-pcgame .pfoot { height: 15%; padding: 0; background: linear-gradient(#1b1b1b, #0b0b0b); }
+.ps-ea-pcgame .pmid { background: var(--sb); box-shadow: inset 0 1px 0 rgba(0,0,0,.6), inset 0 -1px 0 rgba(0,0,0,.6); }
+.ps-ea-pcgame.solid .pmid { background: var(--band); }
+.ps-ea-pcgame.solid .pfoot { background: var(--band); color: var(--bandf); }
+.ps-ea-pcgame .slogo { width: calc(var(--d) * .9); }
+.ps-ea-pcgame .stext { font-size: .72em; }
+.art .pmid::before, .ps-art.art::before { content: ""; position: absolute; inset: -15%; background: var(--cv) center / 100% 100% no-repeat; filter: blur(calc(var(--d) * .035)) saturate(1.25); }
+.art .pmid::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,.32)); }
+
+/* the cover's art right down the spine (SimCity, 2013), the title over it in white */
+.sp.ps-art { color: #fff; }
+.ps-art.art::before { inset: -6%; filter: blur(calc(var(--d) * .02)) saturate(1.15); }
+.ps-art .pmid::before, .ps-art .pmid::after { content: none; }
+.ps-art .stext { color: #fff; font: 900 calc(1.05em * var(--fit, 1))/1 'Arial Black', 'Exo 2', sans-serif; letter-spacing: .02em; font-variant: normal;
+  text-shadow: 0 0 .25em rgba(0,0,0,.6), .04em .06em 0 #b3121b; }
+.ps-art .ptop { padding-top: calc(var(--d) * .15); }
+
+/* the platforms' logos at the top */
+.pt-pcgame { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.pt-pcgame b { font: 400 1.25em/1 'Arial Rounded MT Bold', 'Exo 2', sans-serif; color: transparent; -webkit-text-stroke: .06em #e8a14a; letter-spacing: -.12em; }
+.pt-pcgame b i { font-style: normal; position: relative; top: .18em; }
+.pt-pcgame small { margin-top: .25em; font: italic 700 .36em/1 'Exo 2', sans-serif; letter-spacing: .08em; color: #d8d8d8; }
+.pt-tile { display: flex; align-items: center; gap: .12em; font: 800 .62em/1 'Arial Black', 'Exo 2', sans-serif; letter-spacing: -.02em; color: #fff; }
+.pt-tile b { padding: .1em .12em; background: #d8452b; border-radius: .08em; font-weight: inherit; }
+.ps-white.top-pccd-tile .ptop, .ps-ea-pcgame.solid .ptop { height: 8%; background: #121212; }
+/* PC CD: white on a black strip, PC over CD */
+.top-pccd .ptop { background: #141414; }
+.pt-pccd { display: flex; flex-direction: column; align-items: center; color: #fff; font: 900 .56em/1.02 'Arial Black', 'Exo 2', sans-serif; letter-spacing: .02em; }
+/* PC DVD-ROM: grey on the white, PC over the DVD logo over ROM */
+.pt-dvd { display: flex; flex-direction: column; align-items: center; color: #6f6f6f; line-height: 1; }
+.pt-dvd b { font: 900 .5em/1 'Arial Black', 'Exo 2', sans-serif; }
+.pt-dvd b.dvd { margin-top: .12em; font: italic 900 .42em/1 'Arial Black', 'Exo 2', sans-serif; letter-spacing: -.04em; border-bottom: .12em solid currentColor; border-radius: 0 0 50% 50% / 0 0 .2em .2em; }
+.pt-dvd small { margin-top: .12em; font: 700 .2em/1 'Exo 2', sans-serif; letter-spacing: .15em; }
+/* a white box round the logos (PC DVD and Mac; PC/MAC with the download arrow) */
+.pt-box { display: flex; flex-direction: column; align-items: center; gap: .18em; padding: .25em .15em; border: max(1px, .06em) solid #9a9a9a; border-radius: .12em; background: #fff; color: #555; }
+.pt-box em { font: 700 .4em/1 'Exo 2', sans-serif; font-style: normal; color: #6f6f6f; }
+.pt-box .dl { font: 700 .17em/1.1 'Exo 2', sans-serif; text-align: center; max-width: 5em; color: #6f6f6f; }
+.pt-pcmac small { font: 900 .24em/1 'Arial Black', 'Exo 2', sans-serif; color: #444; letter-spacing: -.02em; }
+.pt-pcmac .arrow { width: .5em; height: .4em; background: #444; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+
+/* the badges at the foot, turned to read down the spine like the title */
+.sbg { flex: none; display: grid; place-items: center; width: calc(var(--d) * .64); aspect-ratio: 1; font-style: normal; transform: rotate(90deg); line-height: 1; }
+/* Australia's ratings: a white letter in a ring on a coloured square */
+.rate { border-radius: 14%; color: #fff; }
+.rate b { display: grid; place-items: center; width: 74%; aspect-ratio: 1; border-radius: 50%; border: max(1px, calc(var(--d) * .04)) solid #fff; font: 900 calc(var(--d) * .3)/1 'Arial Black', 'Exo 2', sans-serif; }
+.rate-M { background: #1d8fd8; }
+.rate-G { background: #3aa94a; }
+.rate-G b { border-radius: 0; border: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); background: #fff; color: #3aa94a; padding-top: 22%; }
+.rate-PG { background: #f2c21b; }
+.rate-MA15 { background: #e0312c; }
+/* a British 12: white numbers in a red ring */
+.pegi { border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 calc(var(--d) * .07) #d42a28; color: #d42a28; }
+.pegi b { font: 900 calc(var(--d) * .26)/1 'Arial Black', 'Exo 2', sans-serif; }
+/* EA's round logo: a white disc in a ring, the ring in the year's colour */
+.ea { border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, #e9ecef 60%, #c3cad1); box-shadow: inset 0 0 0 calc(var(--d) * .06) var(--ear, #5fa536), 0 1px 1px rgba(0,0,0,.35); color: #1b1b1b; }
+.ea b { font: italic 900 calc(var(--d) * .25)/1 'Arial Black', 'Exo 2', sans-serif; letter-spacing: -.08em; }
+.ea-gold { --ear: #c9a03a; }
+.ea-silver { --ear: #9aa3ab; }
+.ea-red { background: radial-gradient(circle at 40% 35%, #ff5148, #d4171c 70%); box-shadow: none; color: #fff; }
+.ea-green { background: radial-gradient(circle at 40% 35%, #8ccf3f, #3c9a1f 70%); box-shadow: none; color: #fff; }
+.ea-yellow { --ear: #b9c932; }
+.ea-games { border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, #e3e8ee 55%, #9aa6b3); box-shadow: 0 0 0 calc(var(--d) * .04) #2b3b63, 0 1px 2px rgba(0,0,0,.6); color: #1f3f8f; width: calc(var(--d) * .68); transform: none; align-content: center; }
+.ea-games b { font: italic 900 .95em/.9 'Arial Black', 'Exo 2', sans-serif; letter-spacing: -.06em; }
+.ea-games small { font: 700 .3em/1 'Exo 2', sans-serif; letter-spacing: .08em; }
+.ea-mark { width: auto; aspect-ratio: auto; transform: none; font: italic 900 1em/1 'Arial Black', 'Exo 2', sans-serif; letter-spacing: -.06em; color: inherit; }
+.ps-white .ea-mark { color: #1a1a1a; }
+
+/* SimCity 4's Classics band: a blue swoosh under the top */
+.pclassics { flex: none; width: 100%; height: 22%; display: grid; place-items: center; font-style: normal; background: linear-gradient(90deg, #b9cde6, #e3edf8 50%, #9db7da);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+.pclassics b { writing-mode: vertical-rl; font: italic 700 .5em/1 'Exo 2', sans-serif; letter-spacing: .2em; color: #4a78b8; }
+
+/* The Sims 4: the pack's colour at both ends, white round the logo between them */
+.sp.ps-sims4 { background: #fff; }
+.s4-a, .s4-c { position: relative; z-index: 1; flex: none; width: 100%; background: var(--acc); color: #fff; display: flex; flex-direction: column; align-items: center; }
+.s4-a { height: 26%; clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%); }
+.s4-a .ptop { height: auto; padding-top: calc(var(--d) * .12); }
+.s4-label { margin-top: .5em; font-size: .42em !important; writing-mode: vertical-rl; font: 700 .48em/1 'Exo 2', sans-serif; letter-spacing: .14em; white-space: nowrap; }
+.s4-b { flex: 1; min-height: 0; display: grid; place-items: center; }
+.s4-b .slogo { width: calc(var(--d) * .72); max-height: 92%; filter: none; }
+.s4-c { flex: none; height: 44%; padding-top: calc(var(--d) * .32); clip-path: polygon(0 0, 50% calc(var(--d) * .25), 100% 0, 100% 100%, 0 100%); }
+.s4-icon { flex: none; width: calc(var(--d) * .5); fill: #fff; transform: rotate(90deg); margin-bottom: .35em; }
+.s4-name { flex: 1; min-height: 0; writing-mode: vertical-rl; font: 700 .42em/1 'Exo 2', sans-serif; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; overflow: hidden; }
+.s4-c .pfoot { padding: calc(var(--d) * .12) 0 calc(var(--d) * .2); }
+.s4-c .sbg { width: calc(var(--d) * .56); }
+.s4-c .ea-green { box-shadow: 0 0 0 max(1px, calc(var(--d) * .03)) #fff; }
+.s4-short .s4-a { height: 13%; }
 
 /* a SteelBook's spine: metal tinted with the cover's colour, the console's name pressed into it */
 .sp.steel { background: var(--metal), color-mix(in srgb, var(--sb) 60%, #8b9197); border-radius: 2px;
@@ -296,8 +426,8 @@
   linear-gradient(90deg, rgba(255,255,255,.35), rgba(196,212,226,.45) 40%, rgba(120,140,160,.4) 50%, rgba(196,212,226,.45) 60%, rgba(255,255,255,.3)), rgba(178,198,216,.4); }
 .bx.k-ps3.platinum.kind-keep:not(.steel) .edge, .bx.k-ps3.platinum.kind-keep:not(.steel) .f-right .edge, .bx.k-ps3.platinum.kind-keep:not(.steel) .leaf .lw-r { background:
   linear-gradient(90deg, rgba(0,0,0,.25), rgba(255,255,255,.35) 30%, rgba(0,0,0,.12) 50%, rgba(255,255,255,.2) 70%, rgba(0,0,0,.3)), #a9aeb4; }
-/* and a Switch case's, untinted */
-.bx.k-switch.kind-keep:not(.steel):not(.tinted) .edge, .bx.k-switch.kind-keep:not(.steel):not(.tinted) .f-right .edge, .bx.k-switch.kind-keep:not(.steel):not(.tinted) .leaf .lw-r { background:
+/* and a Switch case's (or a clear DS one's), untinted */
+.bx:is(.k-switch, .k-ds.clear).kind-keep:not(.steel):not(.tinted) :is(.edge, .f-right .edge, .leaf .lw-r) { background:
   linear-gradient(90deg, rgba(255,255,255,.35), rgba(205,212,220,.45) 40%, rgba(130,138,148,.4) 50%, rgba(205,212,220,.45) 60%, rgba(255,255,255,.3)), rgba(190,198,206,.4); }
 /* a SteelBook's edges are its metal, folded round */
 .bx.steel .edge, .bx.steel.kind-keep .f-right .edge, .bx.steel.kind-keep:not(.slab) .f-right .edge, .bx.steel.kind-keep .leaf .lw-r {
@@ -309,7 +439,8 @@
 .bx.kind-jewel .edge { background: linear-gradient(90deg, rgba(220,228,236,.85), rgba(170,180,190,.85)); }
 .bx.k-ps1 .edge { background: linear-gradient(90deg, #2a2b2f, #0d0d0f); }
 .bx.k-ps1 .leaf .inner { background: #141416; }
-.bx.kind-box .edge { background: linear-gradient(90deg, color-mix(in srgb, var(--sb) 80%, #000), var(--sb)); }
+/* (shaded over the spine's colour rather than mixed from it: a box's --sb can be a gradient, which color-mix() can't take) */
+.bx.kind-box .edge { background: linear-gradient(90deg, rgba(0,0,0,.2), rgba(0,0,0,0)), var(--sb); }
 .bx.kind-box .f-top .edge::after { content: ""; display: block; height: 100%; background: linear-gradient(rgba(255,255,255,.12), transparent); }
 .bx .f-front .leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0 50% calc(var(--sd) / -2); transition: transform .9s cubic-bezier(.3,.9,.3,1); }
 .bx .leaf > .cv { backface-visibility: hidden; box-shadow: none; }
@@ -334,12 +465,9 @@
 .bx.kind-box .f-tray { transform-style: preserve-3d; }
 .bx.kind-box .f-tray .tray > * { transition: translate .9s cubic-bezier(.3,.9,.3,1); }
 .bx.kind-box .f-tray .cart { transform: translateZ(calc(var(--d) * -.5)); }
-/* a case that holds a card: the inside lies at the back of the case, the card in its moulded holder (at the top in a DS or 3DS case) */
+/* a case that holds a card: the inside lies at the back of the case, the card in its moulded holder low down the inside */
 .bx .f-tray .tray, .bx .f-tray .holder { transform-style: preserve-3d; }
-.bx .f-tray .tray:has(.holder) { place-items: start center; padding-top: 9%;
-  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.07), transparent 65%), color-mix(in srgb, var(--pl) 80%, #000); }
-/* a Switch or Switch 2 case holds its card low down the inside, not at the top */
-.bx:is(.k-switch, .k-switch2) .f-tray .tray:has(.holder) { place-items: end center; padding-top: 0; padding-bottom: 9%;
+.bx .f-tray .tray:has(.holder) { place-items: end center; padding-bottom: 9%;
   background: radial-gradient(ellipse at 50% 70%, rgba(255,255,255,.07), transparent 65%), color-mix(in srgb, var(--pl) 80%, #000); }
 .holder { position: relative; width: var(--hw); height: var(--hh); display: grid; place-items: center;
   background: color-mix(in srgb, var(--pl) 70%, #000);
@@ -356,23 +484,75 @@
 .codeslip i { display: block; height: 14%; background: repeating-linear-gradient(90deg, #555 0 6%, transparent 6% 9%); opacity: .6; }
 .codeslip i + i { width: 60%; }
 .bx.kind-box.open .f-tray .tray > * { translate: 0 calc(var(--ty) * -1); }
-.bx.kind-box .f-top { transition: opacity .4s; }
-.bx.kind-box.open .f-top { opacity: 0; }
+/* its top is a flap hinged on the back edge: opened, it swings up and leans back, its grey inside facing forward */
+.bx.kind-box .flap { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 50% 0; transition: transform .9s cubic-bezier(.3,.9,.3,1); }
+.bx.kind-box .flap > * { position: absolute; inset: 0; backface-visibility: hidden; }
+.bx.kind-box .flap .fin { transform: rotateY(180deg); }
+.bx.kind-box.open .flap { transform: rotateX(112deg); }
+/* the inside: plain grey-white card, shadowed into the corners, the floor darkest */
+.bx.kind-box :is(.fi, .flap .fin, .leaf .inner) { background: linear-gradient(#cfc9bb, #bdb6a7); box-shadow: inset 0 0 calc(var(--sd) * .5) rgba(40,30,15,.35); }
+.bx.kind-box .fi-s { filter: brightness(.86); }
+.bx.kind-box .fi-b { filter: brightness(.7); }
+.bx.kind-box .leaf .inner { padding: 0; }
+.bx.kind-box .leaf .inner .manual { display: none; }
 
-/* ---------- discs ---------- */
-.disc { position: relative; width: var(--dd); height: var(--dd); border-radius: 50%; overflow: hidden;
-  -webkit-mask: radial-gradient(circle, transparent 0 6%, #000 6.3%); mask: radial-gradient(circle, transparent 0 6%, #000 6.3%);
-  box-shadow: 0 4px 14px rgba(0,0,0,.5); background: linear-gradient(160deg, var(--ph1), var(--ph2)); }
-.disc .dlab { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; }
-.disc .dlab img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.disc .dlab span { position: absolute; left: 0; right: 0; bottom: 20%; text-align: center; color: #fff; font: 700 calc(var(--dd) * .062)/1.1 'Fraunces', serif; text-shadow: 0 1px 3px rgba(0,0,0,.7); padding: 0 20%; }
-.disc .hub { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(230,235,240,.92) 0 15%, rgba(255,255,255,.25) 15.5% 18%, transparent 18.5%); }
-.disc .mark { position: absolute; left: 50%; top: 9%; transform: translateX(-50%); padding: .2em .6em; border-radius: .3em; font: 700 calc(var(--dd) * .045)/1 'Space Grotesk', sans-serif; letter-spacing: .08em; background: rgba(0,0,0,.6); color: #fff; }
-.disc::after { content: ""; position: absolute; inset: 0; border-radius: 50%; mix-blend-mode: screen; pointer-events: none;
-  background: conic-gradient(from 30deg, rgba(255,60,140,.16), rgba(255,210,60,.14), rgba(60,255,170,.16), rgba(60,150,255,.16), rgba(255,60,140,.16)); }
-.disc.m-cd .hub { background: radial-gradient(circle, rgba(30,30,30,.95) 0 15%, rgba(255,255,255,.2) 15.5% 18%, transparent 18.5%); }
-.disc.m-wii .dlab::after, .disc.m-wiiu .dlab::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, transparent 0 46%, rgba(255,255,255,.9) 46.5% 52%, transparent 52.5%); }
-.bx.open .disc { animation: spin 6s linear infinite; }
+/* ---------- the Pokéwalker (drawn in js/cases.js) ----------
+   Out of a HeartGold or SoulSilver box beside the card, bottoms level, a little askew; its sides are strips
+   round the middle, its front and back two discs */
+.duo { display: flex; align-items: flex-end; gap: var(--gap); transform-style: preserve-3d; }
+.pw { position: relative; width: var(--pw); height: var(--pw); flex: none; transform-style: preserve-3d; rotate: -7deg; }
+.bx.kind-box .f-tray .xtra { transform: translateZ(calc(var(--d) * -.5)); }
+.pw > * { position: absolute; left: 50%; top: 50%; display: block; backface-visibility: hidden; }
+.pwf, .pwb { border-radius: 50%; overflow: hidden; backface-visibility: hidden; }
+.pwf { background:
+  radial-gradient(circle at 34% 24%, rgba(255,255,255,.45), rgba(255,255,255,0) 38%),
+  radial-gradient(circle, rgba(0,0,0,0) 62%, rgba(0,0,0,.16)),
+  linear-gradient(#d3261f 0 47.5%, #141416 47.5% 52.5%, #ecebe7 52.5%); }
+.pwb { background: radial-gradient(circle at 62% 26%, rgba(255,255,255,.14), rgba(255,255,255,0) 45%), #1c1c1f; }
+.pwf > svg, .pwb > svg { width: 100%; height: 100%; display: block; }
+/* the Guitar Grip: blocks of faces round a middle (js/cases.js, cuboid), stood up and leant back so the buttons on top show */
+.gg { position: relative; width: var(--gw); height: var(--gh); flex: none; transform-style: preserve-3d; }
+.gg .ggi { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(-22deg); }
+.gg .xc { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+.gg .xf { position: absolute; left: 0; top: 0; backface-visibility: hidden; overflow: hidden; }
+.gg .xf > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ---------- discs (drawn in js/cases.js) ----------
+   The data side up, in rings out from the hole (as % of the radius): the clear hub to 27%, its stacking ring,
+   the mirror band to 37.5%, the data to 97.5%, a clear rim. --da1/--da2: the data's colour in and out,
+   --mb1/--mb2 the mirror band's, --mo the moulded lettering; a still glint and rainbow sheen lie over it
+   while the disc turns under them. */
+.disc { position: relative; width: var(--dd); height: var(--dd); flex: none; filter: drop-shadow(0 3px 7px rgba(0,0,0,.5));
+  --hub: rgba(214,224,236,.24); --rim: rgba(225,233,242,.45); --edge: linear-gradient(transparent, transparent);
+  --mb1: #e4e7ea; --mb2: #c1c5cb; --da1: #c6cad0; --da2: #e0e3e7; --mo: rgba(40,44,52,.55); --glint: .55; --sheen: .5; }
+.disc .dfa { position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+  -webkit-mask: radial-gradient(circle closest-side, transparent 12.5%, #000 12.8%); mask: radial-gradient(circle closest-side, transparent 12.5%, #000 12.8%);
+  background: var(--edge), radial-gradient(circle closest-side, transparent 12.5%, var(--hub) 12.6% 27.1%, rgba(255,255,255,.42) 27.4% 28.1%, var(--hub) 28.4% 29%,
+    var(--mb1) 29.2%, var(--mb2) 37.3%, var(--da1) 37.7%, var(--da2) 97.2%, var(--rim) 97.6% 99.4%, rgba(255,255,255,.7) 99.7%); }
+.disc .dfa::before, .disc .dfa::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; z-index: 1; }
+/* the light caught across the metal, brighter and darker wedges that stay put as it turns */
+.disc .dfa::before { opacity: var(--glint); mix-blend-mode: overlay;
+  -webkit-mask: radial-gradient(circle closest-side, transparent 29.2%, #000 29.4% 97.2%, transparent 97.4%); mask: radial-gradient(circle closest-side, transparent 29.2%, #000 29.4% 97.2%, transparent 97.4%);
+  background: conic-gradient(from 115deg, #fff, #333 14%, #fff 26%, #555 40%, #fff 52%, #222 64%, #fff 76%, #444 88%, #fff); }
+/* the rainbow the pits split the light into, over the data only */
+.disc .dfa::after { opacity: var(--sheen); mix-blend-mode: screen;
+  -webkit-mask: radial-gradient(circle closest-side, transparent 37.7%, #000 39% 96%, transparent 97.2%); mask: radial-gradient(circle closest-side, transparent 37.7%, #000 39% 96%, transparent 97.2%);
+  background: conic-gradient(from 210deg, transparent 0 4%, rgba(255,50,120,.5) 9%, rgba(255,200,40,.45) 14%, rgba(60,255,160,.45) 19%, rgba(60,140,255,.5) 24%, rgba(170,70,255,.4) 29%, transparent 35% 54%,
+    rgba(255,50,120,.5) 59%, rgba(255,200,40,.45) 64%, rgba(60,255,160,.45) 69%, rgba(60,140,255,.5) 74%, rgba(170,70,255,.4) 79%, transparent 85%); }
+.disc .dsp { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.disc .mo { fill: var(--mo); font-family: 'Exo 2', sans-serif; font-weight: 600; }
+.disc .bca { stroke: rgba(30,34,42,.5); }
+.disc .hl { fill: rgba(255,255,255,.7); font-family: 'Orbitron', sans-serif; font-weight: 700; }
+.disc .hlr { opacity: .38; mix-blend-mode: screen; }
+/* the PlayStation: black dyed polycarbonate, the mirror band a dark gunmetal */
+.disc.d-black { --mb1: #5a5d64; --mb2: #303238; --da1: #17171a; --da2: #0a0a0c; --mo: rgba(230,235,245,.4); --glint: .35; --sheen: .28; --rim: rgba(200,210,225,.3); }
+/* the PS2's blue-violet */
+.disc.d-violet { --mb1: #9c97d8; --mb2: #615aae; --da1: #3a2fa0; --da2: #1f1668; --mo: rgba(235,235,255,.45); --glint: .4; --sheen: .45; }
+/* a Blu-ray: its hard coat a cooler, darker silver with a blue-violet cast */
+.disc.d-bd { --mb1: #cdd2dc; --mb2: #9ca3b2; --da1: #8890a4; --da2: #aab1c3; --mo: rgba(30,34,50,.55); --glint: .5; --sheen: .4; }
+/* a Wii U disc's edges are rounded, at the rim and round the hole, so both catch the light */
+.disc.round { --edge: radial-gradient(circle closest-side, transparent 12.5%, rgba(255,255,255,.55) 13%, rgba(0,0,0,.18) 14.6%, transparent 16% 94%, rgba(255,255,255,.5) 97%, rgba(0,0,0,.28) 99.6%); }
+.bx.open .disc .dsp { animation: spin 6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ---------- cartridges and game cards (drawn in js/cases.js) ---------- */
@@ -383,7 +563,19 @@
 .cart .cf { transform: translateZ(calc(var(--cd) / 2)); }
 .cart .cb { transform: rotateY(180deg) translateZ(calc(var(--cd) / 2)); }
 .cart .cf > svg, .cart .cb > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+/* inside a clear cartridge: the board in the middle of its thickness, and the far side of the shell seen through the near one */
+.cart .cpcb, .cart .cin { position: absolute; inset: 0; backface-visibility: hidden; pointer-events: none; }
+.cart .cpcb > svg, .cart .cin > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cart .cpcb { transform: translateZ(.3px); }
+.cart .cpcb-b { transform: rotateY(180deg) translateZ(.3px); }
+.cart .cin { transform: translateZ(calc(var(--cd) / -2 + .4px)); }
+.cart .cin-b { transform: rotateY(180deg) translateZ(calc(var(--cd) / -2 + .4px)); }
+.cart.clr .ce { opacity: .82; }
 .cart .ce { position: absolute; transform-origin: 0 50%; display: block; }
+/* a raised rim across the front (the GBA's top): its face, and the strips of its ramp and walls (js/cases.js rimHTML) */
+.cart .crim { position: absolute; inset: 0; backface-visibility: hidden; pointer-events: none; }
+.cart .crim > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.cart .crp { position: absolute; left: 0; top: 0; transform-origin: 0 0; display: block; }
 /* the opening in the bottom edge, with the board's gold edge connector inside it */
 /* the top label on a SNES cartridge's top edge, as on the cartridge lying on its side (Case.top) */
 .cart .ce .tl { position: absolute; top: 16%; bottom: 16%; display: flex; align-items: center; justify-content: center; background: #121214; border-radius: 1px; overflow: hidden; }
@@ -397,11 +589,20 @@
 .flat .cart, .bx .cart { filter: none; }
 .flat .cart .cf, .flat .cart .cb { filter: drop-shadow(0 14px 18px rgba(0,0,0,.45)); }
 .bx .cart .cf { filter: drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
+/* the real sticker, in the label recess, with a little sheen over it */
+/* glittery plastic (the Gold and Silver Pokémon cartridges): specks of light over the edges and the top */
+.cart.glit .ce { background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,.85) 0 .5px, transparent 1px), radial-gradient(circle at 70% 60%, rgba(255,255,255,.6) 0 .4px, transparent .9px), radial-gradient(circle at 45% 85%, rgba(255,255,255,.75) 0 .45px, transparent 1px) !important; background-size: 5px 4px, 7px 6px, 6px 5px !important; }
+.ctop.glit i { position: relative; }
+.ctop.glit .mid b { z-index: 1; }
+.ctop.glit i::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 20% 30%, rgba(255,255,255,.85) 0 .5px, transparent 1px), radial-gradient(circle at 70% 60%, rgba(255,255,255,.6) 0 .4px, transparent .9px), radial-gradient(circle at 45% 85%, rgba(255,255,255,.75) 0 .45px, transparent 1px); background-size: 5px 4px, 7px 6px, 6px 5px; }
+.cart .cstk { position: absolute; overflow: hidden; box-shadow: 0 0 0 .5px rgba(0,0,0,.3); }
+.cart .cstk img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.cart .cstk::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(125deg, rgba(255,255,255,.18), rgba(255,255,255,0) 35%, rgba(0,0,0,0) 75%, rgba(0,0,0,.06)); }
 .cart .clab { position: absolute; overflow: hidden; border-radius: 4% / 5%; background: linear-gradient(160deg, var(--ph1), var(--ph2)); box-shadow: 0 0 0 .5px rgba(0,0,0,.35); }
 .cart .clab img { position: relative; top: var(--liy, 0); width: var(--liw, 100%); max-width: none; height: var(--lih, 100%); margin-left: var(--lix, 0); object-fit: cover; object-position: var(--lp, center); display: block; }
 .cart .clab::after { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, rgba(255,255,255,.28), rgba(255,255,255,0) 40%); pointer-events: none; }
 .cart .clab span { position: absolute; left: 9%; right: 9%; top: 50%; transform: translateY(-50%); color: var(--phf, #fff); font: 700 calc(var(--cw) * .1)/1.05 'Fraunces', serif; text-align: center; overflow-wrap: anywhere; }
-.c-snes .clab span { font-size: calc(var(--cw) * .07); }
+.c-snes .clab span, .c-sfc .clab span { font-size: calc(var(--cw) * .07); }
 .c-switch .clab span, .c-switch2 .clab span { font-size: calc(var(--cw) * .13); }
 
 /* ---------- the top of a cartridge, its title on the label (js/cases.js, Case.top) ---------- */

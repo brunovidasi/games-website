@@ -153,16 +153,23 @@
     dropdown($('#sort'));
     searchBox();
 
+    // a click picks just that console (or family); with shift, ctrl or cmd held it's added to or taken from what's picked
+    const multi = e => e.shiftKey || e.metaKey || e.ctrlKey;
     $$('.chip[data-c]').forEach(b => b.addEventListener('click', e => {
       const id = b.dataset.c;
-      if (e.shiftKey || e.metaKey || e.ctrlKey) state.sel.has(id) ? state.sel.delete(id) : state.sel.add(id);
+      if (multi(e)) state.sel.has(id) ? state.sel.delete(id) : state.sel.add(id);
       else state.sel = (state.sel.size === 1 && state.sel.has(id)) ? new Set() : new Set([id]);
       changed();
     }));
-    $$('.famname').forEach(b => b.addEventListener('click', () => {
+    $$('.famname').forEach(b => b.addEventListener('click', e => {
       const ids = consoles.filter(c => c.fam === b.dataset.fam).map(c => c.id);
-      const same = ids.length === state.sel.size && ids.every(i => state.sel.has(i));
-      state.sel = same ? new Set() : new Set(ids);
+      if (multi(e)) {
+        const all = ids.every(i => state.sel.has(i));
+        ids.forEach(i => all ? state.sel.delete(i) : state.sel.add(i));
+      } else {
+        const same = ids.length === state.sel.size && ids.every(i => state.sel.has(i));
+        state.sel = same ? new Set() : new Set(ids);
+      }
       changed();
     }));
     $('[data-all]').addEventListener('click', () => { state.sel = new Set(); changed(); });
@@ -208,6 +215,16 @@
     $$('#covers button').forEach(b => b.addEventListener('click', () => { state.covers = b.dataset.cv; changed(); }));
   }
 
+  // scroll the consoles sideways to the first picked one, from its family's name if that fits too
+  function showPicked() {
+    const cs = $('.cscroll'), chip = cs && $('.chip.on[data-c]', cs);
+    if (!chip) return;
+    const box = cs.getBoundingClientRect(), c = chip.getBoundingClientRect(), f = chip.closest('.fam').getBoundingClientRect();
+    if (c.left >= box.left && c.right <= box.right) return;
+    const from = c.right - f.left <= box.width ? f.left : c.left;
+    cs.scrollLeft += from - box.left - 2;
+  }
+
   /* The search: a field in the bar; on a phone a magnifying glass that opens the field across the bar,
      as on the record site. .searching on the bar means it is open; .has-query on the box means something is typed. */
   function searchBox() {
@@ -248,7 +265,7 @@
     $('[data-all]').classList.toggle('on', !state.sel.size);
     $$('.famname').forEach(f => {
       const ids = $$('.chip[data-c]', f.parentElement).map(c => c.dataset.c);
-      f.classList.toggle('on', ids.length === state.sel.size && ids.every(i => state.sel.has(i)));
+      f.classList.toggle('on', ids.every(i => state.sel.has(i)));
     });
     $$('#view button').forEach(x => x.classList.toggle('on', x.dataset.view === state.view));
     $$('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === state.mode));
@@ -375,10 +392,12 @@
   // a loose cartridge beside the cases: a big one (the SNES) at its real size, a small card larger so it can be seen
   const cartK = g => Case.cartSize(g, 1)[0] > 100 ? 1 : 1.6;
   // a loose cartridge stands facing out, or, on a console whose cartridges stand sideways (the SNES), on its
-  // side with its top label out like a book's spine, all but the one that faces out ("All covers" faces them all out)
+  // side with its top label out like a book's spine, all but the one that faces out ("All covers" faces them all out).
+  // One with nothing on its top edge (a PAL cartridge, an unofficial one) faces out, so it can be told from the rest,
+  // unless it is marked faceOut false (it is then given a title on its top, js/cases.js)
   // how far a case facing out on the shelf is turned to show its spine, in degrees
   const FACE_RY = 16;
-  const looseKind = (g, lead) => CONSOLE_BY_ID[g.console].stack && state.mode !== 'covers' && !lead.has(g.id) ? 'stack' : 'loose';
+  const looseKind = (g, lead) => CONSOLE_BY_ID[g.console].stack && Case.showsTop(g) && state.mode !== 'covers' && !lead.has(g.id) ? 'stack' : 'loose';
   function shelfItem(g, kind, animate, n) {
     const btn = document.createElement('button');
     btn.className = `item ${kind}` + (animate ? ' enter' : '');
@@ -388,7 +407,7 @@
     return btn;
   }
 
-  // In "one cover per console" (or game), one per console faces out: a favourite if marked, else the newest with a cover.
+  // In "one cover per console" (or game), one per console faces out: a favourite (or one marked to) if any, else the newest with a cover.
   function leaders() {
     const out = new Set(), by = {};
     games.forEach(g => (by[groupOf(g).key] = by[groupOf(g).key] || []).push(g));
@@ -396,7 +415,8 @@
       // a console whose games are all loose cartridges (the SNES) faces one of those out
       let pool = gs.filter(g => g.format === 'boxed');
       if (!pool.length) pool = gs.filter(g => g.format === 'cartridge-only' && CONSOLE_BY_ID[g.console].stack);
-      const favs = pool.filter(g => g.fav);
+      // faceOut, where a game has it, says whether it faces out over its being a favourite
+      const favs = pool.filter(g => g.faceOut ?? g.fav);
       if (favs.length) { favs.forEach(g => out.add(g.id)); continue; }
       const pick = [...pool].sort((a, b) => (!!b.cover - !!a.cover) || (b.released || '').localeCompare(a.released || ''))[0];
       if (pick) out.add(pick.id);
@@ -1624,13 +1644,15 @@
     if (byId.has(h)) { if (Detail.current()?.id !== h) Detail.open(byId.get(h), null, true); return; }
     if (Detail.isOpen()) Detail.close(true);
     // a console typed into the address, or a link to one: the shelf shows that console
-    if (CONSOLE_BY_ID[h] && !(state.sel.size === 1 && state.sel.has(h))) { state.sel = new Set([h]); changed(); }
+    if (CONSOLE_BY_ID[h] && !(state.sel.size === 1 && state.sel.has(h))) { state.sel = new Set([h]); changed(); showPicked(); }
   });
 
   /* ---------- start ---------- */
   const json = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
   Promise.all(['data/games.json', ...(CFG && CFG.data || [])].map(json))
     .then(([db, ...more]) => {
+      // games marked hidden stay in the list, but off every shelf and count
+      db.games = db.games.filter(g => !g.hidden);
       ALL = CFG ? CFG.games(db, ...more) : db.games;
       ALL.forEach(g => {
         byId.set(g.id, g);
@@ -1641,6 +1663,7 @@
       if (CONSOLE_BY_ID[h]) state.sel = new Set([h]);
       games = list();
       sync();
+      showPicked();
       render(true);
       // a collection page's link to one of its checklist's sections opens the checklist there
       if (h && VIEWS.includes('checklist') && !byId.has(h) && !CONSOLE_BY_ID[h]) {

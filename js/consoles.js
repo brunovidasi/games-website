@@ -28,9 +28,9 @@ window.CONSOLES = [
   { id: 'wiiu',    name: 'Wii U',             short: 'Wii U',    fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wiiu',    spineArt: false },
   { id: '3ds',     name: 'Nintendo 3DS',      short: '3DS',      fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: '3ds',     spineArt: false },
   { id: 'wii',     name: 'Wii',               short: 'Wii',      fam: 'nintendo',    w: 135, h: 190, d: 14, kind: 'keep',  media: 'wii',     spineArt: false },
-  { id: 'ds',      name: 'Nintendo DS',       short: 'DS',       fam: 'nintendo',    w: 136, h: 125, d: 15, kind: 'keep',  media: 'ds',      spineArt: false },
-  { id: 'gba',     name: 'Game Boy Advance',  short: 'GBA',      fam: 'nintendo',    w: 128, h: 124, d: 32, kind: 'box',   media: 'gba',     spineArt: true },
-  { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true },
+  { id: 'ds',      name: 'Nintendo DS',       short: 'DS',       fam: 'nintendo',    w: 136, h: 125, d: 15, dClear: 17, kind: 'keep',  media: 'ds',      spineArt: false },
+  { id: 'gba',     name: 'Game Boy Advance',  short: 'GBA',      fam: 'nintendo',    w: 128, h: 124, d: 32, kind: 'box',   media: 'gba',     spineArt: true,  stack: true },
+  { id: 'gbc',     name: 'Game Boy Color',    short: 'GBC',      fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gbc',     spineArt: true,  stack: true },
   { id: 'snes',    name: 'Super Nintendo',    short: 'SNES',     fam: 'nintendo',    w: 180, h: 128, d: 38, kind: 'box',   media: 'snes',    spineArt: true,  stack: true },
   { id: 'gb',      name: 'Game Boy',          short: 'GB',       fam: 'nintendo',    w: 118, h: 124, d: 30, kind: 'box',   media: 'gb',      spineArt: true,  hidden: true },
   { id: 'pc',      name: 'PC',                short: 'PC',       fam: 'pc',          w: 135, h: 190, d: 14, kind: 'keep',  media: 'dvd',     spineArt: true },
@@ -42,6 +42,9 @@ window.CONSOLE_BY_ID = Object.fromEntries(window.CONSOLES.map(c => [c.id, c]));
 
 /* Big-box PC games are cardboard, much bigger than a DVD case. */
 window.BIGBOX = { w: 190, h: 235, d: 50 };
+
+/* The thick plastic PC cases of the early 2000s (EA's PC GAME and PC CD ones): a DVD case's height, twice its depth. */
+window.PCBIGCASE = { w: 135, h: 190, d: 28 };
 
 /* Where a PC copy activates — for the PC games still to come. */
 window.LAUNCHERS = {
@@ -55,13 +58,14 @@ window.LAUNCHERS = {
   none:      { name: 'DRM-free disc',   bg: '#3a3a3a', fg: '#ffffff', glyph: '◌' },
 };
 
-/* Where a copy was sold: the code printed on the box (AUS, EUR, HOL, USA, JPN) when it is
+/* Where a copy was sold: the code printed on the box (AUS, EUR, HOL, UK, USA, JPN) when it is
    known, else just the standard it plays on. std groups them for the filter: a PAL copy wants
    a PAL console, and a 3DS only plays games from its own region. */
 window.REGIONS = {
   'AUS':    { name: 'AUS',    long: 'Australia',                 std: 'PAL' },
   'EUR':    { name: 'EUR',    long: 'Europe',                    std: 'PAL' },
   'HOL':    { name: 'HOL',    long: 'Netherlands',               std: 'PAL' },
+  'UK':     { name: 'UK',     long: 'United Kingdom',            std: 'PAL' },
   'PAL':    { name: 'PAL',    long: 'PAL — Europe or Australia', std: 'PAL' },
   'USA':    { name: 'USA',    long: 'United States',             std: 'NTSC-U' },
   'NTSC-U': { name: 'NTSC-U', long: 'NTSC-U — the Americas',     std: 'NTSC-U' },

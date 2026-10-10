@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "games": [
     {
       "id": "ps5-avatar-frontiers-of-pandora",
@@ -2370,7 +2370,9 @@
         "file": "covers/switch2/donkey-kong-bananza.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Donkey Kong Bananza · PAL · TheGamesDB #131371"
+        "ref": "Donkey Kong Bananza · PAL · TheGamesDB #131371",
+        "label": "covers/switch2/donkey-kong-bananza-label.jpg",
+        "labelRef": "Photo of my own card (LB-AAACA-EUR-0)"
       },
       "colors": [
         "#bd915c",
@@ -2394,7 +2396,9 @@
         "file": "covers/switch2/mario-kart-world.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Mario Kart World · PAL · TheGamesDB #131367"
+        "ref": "Mario Kart World · PAL · TheGamesDB #131367",
+        "label": "covers/switch2/mario-kart-world-label.jpg",
+        "labelRef": "Photo of my own card (LB-AAAAA-EUR-0)"
       },
       "colors": [
         "#c49d73",
@@ -2420,7 +2424,9 @@
         "file": "covers/switch2/super-mario-party-jamboree-jamboree-tv.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Party Jamboree + Jamboree TV · NTSC (United States of America) · TheGamesDB #131873"
+        "ref": "Super Mario Party Jamboree + Jamboree TV · NTSC (United States of America) · TheGamesDB #131873",
+        "label": "covers/switch2/super-mario-party-jamboree-jamboree-tv-label.jpg",
+        "labelRef": "Photo of my own card (LN-A7HLB-EUR-0)"
       },
       "colors": [
         "#685c56",
@@ -2447,7 +2453,9 @@
         "file": "covers/switch2/pokemon-legends-z-a.jpg",
         "source": "manual",
         "ref": "Pokémon Legends: Z-A Nintendo Switch 2 Edition · UK · legends.pokemon.com/en-gb",
-        "ratio": 0.6103
+        "ratio": 0.6103,
+        "label": "covers/switch2/pokemon-legends-z-a-label.jpg",
+        "labelRef": "Photo of my own card (LN-ALZLB-EUR-0)"
       },
       "colors": [
         "#2f374c",
@@ -2470,7 +2478,9 @@
         "file": "covers/switch/animal-crossing-new-horizons.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Animal Crossing: New Horizons · PAL · TheGamesDB #97354"
+        "ref": "Animal Crossing: New Horizons · PAL · TheGamesDB #97354",
+        "label": "covers/switch/animal-crossing-new-horizons-label.jpg",
+        "labelRef": "Animal Crossing: New Horizons · Europe · LaunchBox Games Database #166313"
       },
       "colors": [
         "#c2a560",
@@ -2494,7 +2504,9 @@
         "file": "covers/switch/crash-team-racing-nitro-fueled.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Crash Team Racing: Nitro-Fueled · PAL (Australia) · TheGamesDB #118905"
+        "ref": "Crash Team Racing: Nitro-Fueled · PAL (Australia) · TheGamesDB #118905",
+        "label": "covers/switch/crash-team-racing-nitro-fueled-label.jpg",
+        "labelRef": "Crash Team Racing: Nitro-Fueled · Switch [Europe] · VGCollect #155785"
       },
       "colors": [
         "#399cc2",
@@ -2507,7 +2519,7 @@
       "console": "switch",
       "title": "Cuphead",
       "listedAs": "Cuphead (Cartridge Only)",
-      "region": "PAL",
+      "region": "USA",
       "released": "2019-04-18",
       "dateSource": "manual",
       "publisher": "StudioMDHR",
@@ -2518,7 +2530,9 @@
         "file": "covers/switch/cuphead.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Cuphead · PAL · TheGamesDB #106932"
+        "ref": "Cuphead · PAL · TheGamesDB #106932",
+        "label": "covers/switch/cuphead-label.jpg",
+        "labelRef": "Cuphead · North America · LaunchBox Games Database #164336"
       },
       "colors": [
         "#f9ce19",
@@ -2542,7 +2556,9 @@
         "file": "covers/switch/donkey-kong-country-tropical-freeze.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Donkey Kong Country: Tropical Freeze · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118599"
+        "ref": "Donkey Kong Country: Tropical Freeze · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118599",
+        "label": "covers/switch/donkey-kong-country-tropical-freeze-label.jpg",
+        "labelRef": "Donkey Kong Country: Tropical Freeze · Europe · LaunchBox Games Database #150081"
       },
       "colors": [
         "#8d5d3d",
@@ -2569,7 +2585,9 @@
         "file": "covers/switch/donkey-kong-country-returns-hd.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Donkey Kong Country Returns HD · PAL · TheGamesDB #127344"
+        "ref": "Donkey Kong Country Returns HD · PAL · TheGamesDB #127344",
+        "label": "covers/switch/donkey-kong-country-returns-hd-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BDLWA-EUR)"
       },
       "colors": [
         "#503b1b",
@@ -2595,7 +2613,9 @@
         "file": "covers/switch/grand-theft-auto-the-trilogy-the-definitive-edition.jpg",
         "source": "manual",
         "ref": "Grand Theft Auto: The Trilogy - The Definitive Edition · PAL (Australia), R18+ · TheGamesDB #125887, case rim cropped off",
-        "ratio": 0.6115
+        "ratio": 0.6115,
+        "label": "covers/switch/grand-theft-auto-the-trilogy-the-definitive-edition-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A5RBA-EUR1)"
       },
       "colors": [
         "#c39275",
@@ -2618,7 +2638,9 @@
         "file": "covers/switch/hogwarts-legacy.jpg",
         "ratio": 0.6019,
         "source": "thegamesdb.net",
-        "ref": "Hogwarts Legacy · PAL · TheGamesDB #110954"
+        "ref": "Hogwarts Legacy · PAL · TheGamesDB #110954",
+        "label": "covers/switch/hogwarts-legacy-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AR3XA-EUR)"
       },
       "colors": [
         "#374549",
@@ -2665,7 +2687,9 @@
         "file": "covers/switch/jumanji-the-video-game.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Jumanji: The Video Game · no region · TheGamesDB #66886"
+        "ref": "Jumanji: The Video Game · no region · TheGamesDB #66886",
+        "label": "covers/switch/jumanji-the-video-game-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AR5FA-EUR)"
       },
       "colors": [
         "#b2a295",
@@ -2688,7 +2712,9 @@
         "file": "covers/switch/just-dance-2017.jpg",
         "ratio": 0.6178,
         "source": "thegamesdb.net",
-        "ref": "Just Dance 2017 · no region · TheGamesDB #44683"
+        "ref": "Just Dance 2017 · no region · TheGamesDB #44683",
+        "label": "covers/switch/just-dance-2017-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BAAAA-EUR)"
       },
       "colors": [
         "#c4c2c2",
@@ -2711,7 +2737,9 @@
         "file": "covers/switch/just-dance-2018.jpg",
         "source": "manual",
         "ref": "Just Dance 2018 · PAL (United Kingdom; the Australian box has the same art with a G rating) · GameTDB HAC-P-ADEBA",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/just-dance-2018-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-ADEBA-EUR)"
       },
       "colors": [
         "#223a5d",
@@ -2735,7 +2763,9 @@
         "file": "covers/switch/just-dance-2019.jpg",
         "ratio": 0.6192,
         "source": "thegamesdb.net",
-        "ref": "Just Dance 2019 · no region · TheGamesDB #60338"
+        "ref": "Just Dance 2019 · no region · TheGamesDB #60338",
+        "label": "covers/switch/just-dance-2019-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AP2NA-EUR)"
       },
       "colors": [
         "#e4e6e8",
@@ -2758,7 +2788,9 @@
         "file": "covers/switch/just-dance-2020.jpg",
         "ratio": 0.618,
         "source": "thegamesdb.net",
-        "ref": "Just Dance 2020 · PAL · TheGamesDB #98623"
+        "ref": "Just Dance 2020 · PAL · TheGamesDB #98623",
+        "label": "covers/switch/just-dance-2020-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-ATPDA-EUR)"
       },
       "colors": [
         "#de7745",
@@ -2781,7 +2813,9 @@
         "file": "covers/switch/just-dance-2021.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Just Dance 2021 · PAL (Australia) · TheGamesDB #118840"
+        "ref": "Just Dance 2021 · PAL (Australia) · TheGamesDB #118840",
+        "label": "covers/switch/just-dance-2021-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AX3GA-EUR)"
       },
       "colors": [
         "#c9b8af",
@@ -2804,7 +2838,9 @@
         "file": "covers/switch/just-dance-2022.jpg",
         "ratio": 0.6192,
         "source": "thegamesdb.net",
-        "ref": "Just Dance 2022 · NTSC (United States of America) · TheGamesDB #87534"
+        "ref": "Just Dance 2022 · NTSC (United States of America) · TheGamesDB #87534",
+        "label": "covers/switch/just-dance-2022-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A389A-EUR)"
       },
       "colors": [
         "#182576",
@@ -2828,7 +2864,9 @@
         "file": "covers/switch/kirby-star-allies.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Kirby Star Allies · PAL · TheGamesDB #105793"
+        "ref": "Kirby Star Allies · PAL · TheGamesDB #105793",
+        "label": "covers/switch/kirby-star-allies-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AH26A-EUR)"
       },
       "colors": [
         "#e2a7c8",
@@ -2852,7 +2890,9 @@
         "file": "covers/switch/la-noire.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "L.A. Noire · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118974"
+        "ref": "L.A. Noire · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118974",
+        "label": "covers/switch/la-noire-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AFQMA-EUR)"
       },
       "colors": [
         "#dddad1",
@@ -2879,7 +2919,9 @@
         "back": "covers/switch/lego-dc-super-villains-steelbook-back.jpg",
         "source": "manual",
         "ref": "LEGO DC Super-Villains SteelBook (Switch size, Harley Quinn), front and back flattened from sellers' photos, eBay #267304346085 and Core Gaming NH",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/lego-dc-super-villains-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-ANW7A-EUR)"
       },
       "colors": [
         "#2a1a34",
@@ -2905,7 +2947,9 @@
         "file": "covers/switch/lets-sing-queen.jpg",
         "source": "manual",
         "ref": "Let's Sing Queen · PAL · TheGamesDB #80082, white margin cropped off",
-        "ratio": 0.6192
+        "ratio": 0.6192,
+        "label": "covers/switch/lets-sing-queen-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AXZZA-EUR)"
       },
       "colors": [
         "#030302",
@@ -2930,7 +2974,9 @@
         "file": "covers/switch/lets-sing-2024.jpg",
         "source": "manual",
         "ref": "Let's Sing 2024 · PAL (Australia), G · EB Games Australia packshot",
-        "ratio": 0.6019
+        "ratio": 0.6019,
+        "label": "covers/switch/lets-sing-2024-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A8H6A-EUR)"
       },
       "colors": [
         "#8c6397",
@@ -2955,7 +3001,9 @@
         "file": "covers/switch/lets-sing-2025.jpg",
         "source": "manual",
         "ref": "Let's Sing 2025 · PAL (Australia), PG · BIG W product photo, case rim cropped off",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/lets-sing-2025-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BHVQA-EUR)"
       },
       "colors": [
         "#c253b6",
@@ -2968,7 +3016,7 @@
       "console": "switch",
       "title": "Mario Kart 8 Deluxe",
       "sortAs": "Mario",
-      "region": "PAL",
+      "region": "AUS",
       "released": "2017-04-28",
       "dateSource": "manual",
       "publisher": "Nintendo",
@@ -2980,7 +3028,9 @@
         "file": "covers/switch/mario-kart-8-deluxe.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Mario Kart 8 Deluxe · PAL (Australia) · TheGamesDB #118847"
+        "ref": "Mario Kart 8 Deluxe · PAL (Australia) · TheGamesDB #118847",
+        "label": "covers/switch/mario-kart-8-deluxe-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AABPA-AUS)"
       },
       "colors": [
         "#908891",
@@ -3031,7 +3081,9 @@
         "file": "covers/switch/mario-party-superstars.jpg",
         "ratio": 0.6192,
         "source": "thegamesdb.net",
-        "ref": "Mario Party Superstars · PAL · TheGamesDB #93207"
+        "ref": "Mario Party Superstars · PAL · TheGamesDB #93207",
+        "label": "covers/switch/mario-party-superstars-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AZ82A-EUR)"
       },
       "colors": [
         "#849557",
@@ -3056,7 +3108,9 @@
         "file": "covers/switch/mario-rabbids-kingdom-battle.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Mario + Rabbids Kingdom Battle · PAL (Australia) · TheGamesDB #118846"
+        "ref": "Mario + Rabbids Kingdom Battle · PAL (Australia) · TheGamesDB #118846",
+        "label": "covers/switch/mario-rabbids-kingdom-battle-label.jpg",
+        "labelRef": "Mario + Rabbids: Kingdom Battle · World · LaunchBox Games Database #132685"
       },
       "colors": [
         "#4d8891",
@@ -3081,7 +3135,9 @@
         "file": "covers/switch/mario-rabbids-sparks-of-hope.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Mario + Rabbids: Sparks of Hope · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #102091"
+        "ref": "Mario + Rabbids: Sparks of Hope · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #102091",
+        "label": "covers/switch/mario-rabbids-sparks-of-hope-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A2G7A-EUR)"
       },
       "colors": [
         "#617db8",
@@ -3105,7 +3161,9 @@
         "file": "covers/switch/mortal-kombat-11.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Mortal Kombat 11 · no region · TheGamesDB #62526"
+        "ref": "Mortal Kombat 11 · no region · TheGamesDB #62526",
+        "label": "covers/switch/mortal-kombat-11-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-ASADA-EUR)"
       },
       "colors": [
         "#f2cd5e",
@@ -3128,7 +3186,9 @@
         "file": "covers/switch/moving-out.jpg",
         "ratio": 0.6135,
         "source": "thegamesdb.net",
-        "ref": "Moving Out · no region · TheGamesDB #71614"
+        "ref": "Moving Out · no region · TheGamesDB #71614",
+        "label": "covers/switch/moving-out-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AUMSA-EUR)"
       },
       "colors": [
         "#bcc7b7",
@@ -3164,7 +3224,7 @@
       "id": "switch-moving-out-2",
       "console": "switch",
       "title": "Moving Out 2",
-      "region": "PAL",
+      "region": "USA",
       "released": "2023-08-15",
       "dateSource": "manual",
       "publisher": "Team17",
@@ -3175,7 +3235,9 @@
         "file": "covers/switch/moving-out-2.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Moving Out 2 · PAL (Australia) · TheGamesDB #117654"
+        "ref": "Moving Out 2 · PAL (Australia) · TheGamesDB #117654",
+        "label": "covers/switch/moving-out-2-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A8MQA-USA)"
       },
       "colors": [
         "#c4cec1",
@@ -3200,7 +3262,9 @@
         "file": "covers/switch/mysims-cozy-bundle.jpg",
         "source": "manual",
         "ref": "MySims: Cozy Bundle · PAL (Australia), G · EB Games Australia packshot",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/mysims-cozy-bundle-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BK4KA-EUR)"
       },
       "series": "MySims",
       "colors": [
@@ -3225,7 +3289,9 @@
         "file": "covers/switch/need-for-speed-hot-pursuit-remastered.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Need for Speed: Hot Pursuit Remastered · PAL (Australia) · TheGamesDB #118850"
+        "ref": "Need for Speed: Hot Pursuit Remastered · PAL (Australia) · TheGamesDB #118850",
+        "label": "covers/switch/need-for-speed-hot-pursuit-remastered-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AXVXA-EUR)"
       },
       "colors": [
         "#2a1d20",
@@ -3275,7 +3341,9 @@
         "file": "covers/switch/overcooked-2.jpg",
         "ratio": 0.6231,
         "source": "thegamesdb.net",
-        "ref": "Overcooked! 2 · no region · TheGamesDB #60779"
+        "ref": "Overcooked! 2 · no region · TheGamesDB #60779",
+        "label": "covers/switch/overcooked-2-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AKXEA-EUR)"
       },
       "colors": [
         "#ad8c5a",
@@ -3300,7 +3368,9 @@
         "file": "covers/switch/overcooked-all-you-can-eat.jpg",
         "ratio": 0.6192,
         "source": "thegamesdb.net",
-        "ref": "Overcooked! All You Can Eat · no region · TheGamesDB #84435"
+        "ref": "Overcooked! All You Can Eat · no region · TheGamesDB #84435",
+        "label": "covers/switch/overcooked-all-you-can-eat-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AXU5A-EUR)"
       },
       "colors": [
         "#7d7760",
@@ -3324,7 +3394,9 @@
         "file": "covers/switch/pac-man-world-re-pac.jpg",
         "ratio": 0.5981,
         "source": "thegamesdb.net",
-        "ref": "Pac-Man World: Re-PAC · NTSC-U · TheGamesDB #104622"
+        "ref": "Pac-Man World: Re-PAC · NTSC-U · TheGamesDB #104622",
+        "label": "covers/switch/pac-man-world-re-pac-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A46TC-EUR1)"
       },
       "colors": [
         "#97b2d0",
@@ -3349,7 +3421,9 @@
         "file": "covers/switch/pokemon-lets-go-pikachu.jpg",
         "ratio": 0.6172,
         "source": "thegamesdb.net",
-        "ref": "Pokemon: Let's Go, Pikachu! · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #117971"
+        "ref": "Pokemon: Let's Go, Pikachu! · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #117971",
+        "label": "covers/switch/pokemon-lets-go-pikachu-label.jpg",
+        "labelRef": "Pokémon: Let's Go, Pikachu! · Europe · LaunchBox Games Database #157867"
       },
       "colors": [
         "#e8ca4f",
@@ -3399,7 +3473,9 @@
         "file": "covers/switch/pokemon-brilliant-diamond.jpg",
         "source": "manual",
         "ref": "Pokémon Brilliant Diamond · PAL · TheGamesDB #111505, case rim cropped off",
-        "ratio": 0.6135
+        "ratio": 0.6135,
+        "label": "covers/switch/pokemon-brilliant-diamond-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AX7QA-EUR)"
       },
       "colors": [
         "#2d5c8d",
@@ -3424,7 +3500,9 @@
         "file": "covers/switch/pokemon-sword.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Pokémon Sword · PAL (Australia) · TheGamesDB #118789"
+        "ref": "Pokémon Sword · PAL (Australia) · TheGamesDB #118789",
+        "label": "covers/switch/pokemon-sword-label.jpg",
+        "labelRef": "Pokémon Sword · Europe · LaunchBox Games Database #172520"
       },
       "colors": [
         "#907e6c",
@@ -3449,7 +3527,9 @@
         "file": "covers/switch/pokemon-violet.jpg",
         "source": "manual",
         "ref": "Pokemon Violet · PAL · TheGamesDB #111724, case rim cropped off",
-        "ratio": 0.6154
+        "ratio": 0.6154,
+        "label": "covers/switch/pokemon-violet-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-ALZYA-EUR)"
       },
       "colors": [
         "#83438f",
@@ -3474,7 +3554,9 @@
         "file": "covers/switch/pokemon-legends-arceus.jpg",
         "ratio": 0.6096,
         "source": "thegamesdb.net",
-        "ref": "Pokémon Legends: Arceus · PAL (Australia) · TheGamesDB #118854"
+        "ref": "Pokémon Legends: Arceus · PAL (Australia) · TheGamesDB #118854",
+        "label": "covers/switch/pokemon-legends-arceus-label.jpg",
+        "labelRef": "Pokémon Legends: Arceus · Switch [Australia] · VGCollect #232900"
       },
       "colors": [
         "#939881",
@@ -3498,7 +3580,9 @@
         "file": "covers/switch/rayman-legends-definitive-edition.jpg",
         "ratio": 0.6096,
         "source": "thegamesdb.net",
-        "ref": "Rayman Legends: Definitive Edition · PAL · TheGamesDB #115445"
+        "ref": "Rayman Legends: Definitive Edition · PAL · TheGamesDB #115445",
+        "label": "covers/switch/rayman-legends-definitive-edition-label.jpg",
+        "labelRef": "Rayman Legends: Definitive Edition · Switch [Europe] · VGCollect #143639"
       },
       "colors": [
         "#96773a",
@@ -3523,7 +3607,9 @@
         "file": "covers/switch/rollercoaster-tycoon-adventures.jpg",
         "source": "manual",
         "ref": "RollerCoaster Tycoon Adventures · no region · TheGamesDB #63097, case rim cropped off",
-        "ratio": 0.6058
+        "ratio": 0.6058,
+        "label": "covers/switch/rollercoaster-tycoon-adventures-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AQSNA-EUR)"
       },
       "colors": [
         "#554f34",
@@ -3549,7 +3635,9 @@
         "file": "covers/switch/rollercoaster-tycoon-adventures-deluxe.jpg",
         "source": "manual",
         "ref": "RollerCoaster Tycoon Adventures Deluxe · NTSC-U · TheGamesDB #120484, case rim cropped off",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/rollercoaster-tycoon-adventures-deluxe-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BDXXA-EUR)"
       },
       "colors": [
         "#938570",
@@ -3576,7 +3664,9 @@
         "file": "covers/switch/rollercoaster-tycoon-classic.jpg",
         "source": "manual",
         "ref": "RollerCoaster Tycoon Classic · PAL (Europe), PEGI 3, Atari · The Game World product photo, case rim cropped off",
-        "ratio": 0.6154
+        "ratio": 0.6154,
+        "label": "covers/switch/rollercoaster-tycoon-classic-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BKPGA-EUR)"
       },
       "colors": [
         "#9e982d",
@@ -3590,7 +3680,7 @@
       "title": "RollerCoaster Tycoon 3: Complete Edition",
       "listedAs": "Roller Coaster Tycoon 3 Complete Edition",
       "sortAs": "RollerCoaster Tycoon",
-      "region": "PAL",
+      "region": "USA",
       "released": "2020-09-24",
       "dateSource": "manual",
       "publisher": "Atari",
@@ -3601,7 +3691,9 @@
         "file": "covers/switch/rollercoaster-tycoon-3-complete-edition.jpg",
         "source": "manual",
         "ref": "RollerCoaster Tycoon 3: Complete Edition · PAL (Europe), PEGI 3, Frontier / Limited Run Games · eMAG product render, flattened from its angled view",
-        "ratio": 0.6173
+        "ratio": 0.6173,
+        "label": "covers/switch/rollercoaster-tycoon-3-complete-edition-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AXP4A-USA)"
       },
       "colors": [
         "#948a5a",
@@ -3613,7 +3705,7 @@
       "id": "switch-splatoon-2",
       "console": "switch",
       "title": "Splatoon 2",
-      "region": "PAL",
+      "region": "AUS",
       "released": "2017-07-21",
       "dateSource": "manual",
       "publisher": "Nintendo",
@@ -3624,7 +3716,9 @@
         "file": "covers/switch/splatoon-2.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Splatoon 2 · PAL · TheGamesDB #115266"
+        "ref": "Splatoon 2 · PAL · TheGamesDB #115266",
+        "label": "covers/switch/splatoon-2-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AAB6B-AUS)"
       },
       "colors": [
         "#7ca375",
@@ -3647,7 +3741,9 @@
         "file": "covers/switch/super-bomberman-r.jpg",
         "ratio": 0.6115,
         "source": "thegamesdb.net",
-        "ref": "Super Bomberman R · PAL · TheGamesDB #111834"
+        "ref": "Super Bomberman R · PAL · TheGamesDB #111834",
+        "label": "covers/switch/super-bomberman-r-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AAB8A-EUR)"
       },
       "colors": [
         "#9b9286",
@@ -3659,7 +3755,7 @@
       "id": "switch-super-bomberman-r-2",
       "console": "switch",
       "title": "Super Bomberman R 2",
-      "region": "PAL",
+      "region": "USA",
       "released": "2023-09-13",
       "dateSource": "manual",
       "publisher": "Konami",
@@ -3670,7 +3766,9 @@
         "file": "covers/switch/super-bomberman-r-2.jpg",
         "ratio": 0.6365,
         "source": "thegamesdb.net",
-        "ref": "Super Bomberman R 2 · NTSC · TheGamesDB #118753"
+        "ref": "Super Bomberman R 2 · NTSC · TheGamesDB #118753",
+        "label": "covers/switch/super-bomberman-r-2-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A79SA-USA)"
       },
       "colors": [
         "#87818e",
@@ -3695,7 +3793,9 @@
         "file": "covers/switch/super-mario-3d-all-stars.jpg",
         "ratio": 0.6173,
         "source": "thegamesdb.net",
-        "ref": "Super Mario 3D All-Stars · PAL · TheGamesDB #76848"
+        "ref": "Super Mario 3D All-Stars · PAL · TheGamesDB #76848",
+        "label": "covers/switch/super-mario-3d-all-stars-label.jpg",
+        "labelRef": "Super Mario 3D All-Stars · Europe · LaunchBox Games Database #189051"
       },
       "colors": [
         "#ac8767",
@@ -3719,7 +3819,9 @@
         "file": "covers/switch/super-mario-3d-world-bowsers-fury.jpg",
         "source": "manual",
         "ref": "Super Mario 3D World + Bowser's Fury · PAL · TheGamesDB #111507, case rim cropped off",
-        "ratio": 0.6115
+        "ratio": 0.6115,
+        "label": "covers/switch/super-mario-3d-world-bowsers-fury-label.jpg",
+        "labelRef": "Super Mario 3D World + Bowser's Fury · Europe · LaunchBox Games Database #195306"
       },
       "colors": [
         "#9e9d94",
@@ -3743,7 +3845,9 @@
         "file": "covers/switch/super-mario-bros-wonder.jpg",
         "ratio": 0.6058,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Bros. Wonder · PAL (Australia) · TheGamesDB #118908"
+        "ref": "Super Mario Bros. Wonder · PAL (Australia) · TheGamesDB #118908",
+        "label": "covers/switch/super-mario-bros-wonder-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AQMXA-EUR)"
       },
       "colors": [
         "#d9d6d4",
@@ -3768,7 +3872,9 @@
         "file": "covers/switch/new-super-mario-bros-u-deluxe.jpg",
         "ratio": 0.6096,
         "source": "thegamesdb.net",
-        "ref": "New Super Mario Bros. U Deluxe · PAL (Australia) · TheGamesDB #118851"
+        "ref": "New Super Mario Bros. U Deluxe · PAL (Australia) · TheGamesDB #118851",
+        "label": "covers/switch/new-super-mario-bros-u-deluxe-label.jpg",
+        "labelRef": "New Super Mario Bros. U Deluxe · Europe · LaunchBox Games Database #162252"
       },
       "colors": [
         "#b3ac80",
@@ -3793,7 +3899,9 @@
         "file": "covers/switch/super-mario-galaxy-super-mario-galaxy-2.jpg",
         "ratio": 0.6308,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Galaxy + Super Mario Galaxy 2 · NTSC · TheGamesDB #134911"
+        "ref": "Super Mario Galaxy + Super Mario Galaxy 2 · NTSC · TheGamesDB #134911",
+        "label": "covers/switch/super-mario-galaxy-super-mario-galaxy-2-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-BPDPA-EUR)"
       },
       "colors": [
         "#83bde2",
@@ -3817,7 +3925,9 @@
         "file": "covers/switch/super-mario-odyssey.jpg",
         "ratio": 0.614,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Odyssey · PAL (Australia) · TheGamesDB #106553"
+        "ref": "Super Mario Odyssey · PAL (Australia) · TheGamesDB #106553",
+        "label": "covers/switch/super-mario-odyssey-label.jpg",
+        "labelRef": "Super Mario Odyssey · Europe · LaunchBox Games Database #136132"
       },
       "colors": [
         "#5d6362",
@@ -3841,7 +3951,9 @@
         "file": "covers/switch/super-mario-maker-2.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Maker 2 · PAL (Australia) · TheGamesDB #106886"
+        "ref": "Super Mario Maker 2 · PAL (Australia) · TheGamesDB #106886",
+        "label": "covers/switch/super-mario-maker-2-label.jpg",
+        "labelRef": "Super Mario Maker 2 · Europe · LaunchBox Games Database #166418"
       },
       "colors": [
         "#ccaa2e",
@@ -3866,7 +3978,9 @@
         "file": "covers/switch/super-mario-party.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Super Mario Party · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #98980"
+        "ref": "Super Mario Party · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #98980",
+        "label": "covers/switch/super-mario-party-label.jpg",
+        "labelRef": "Super Mario Party · Europe · LaunchBox Games Database #156264"
       },
       "colors": [
         "#a2a29b",
@@ -3891,7 +4005,9 @@
         "file": "covers/switch/super-mario-rpg.jpg",
         "ratio": 0.5981,
         "source": "thegamesdb.net",
-        "ref": "Super Mario RPG · PAL (Australia) · TheGamesDB #118909"
+        "ref": "Super Mario RPG · PAL (Australia) · TheGamesDB #118909",
+        "label": "covers/switch/super-mario-rpg-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-A8LUA-EUR)"
       },
       "colors": [
         "#fbf8f5",
@@ -3914,7 +4030,9 @@
         "file": "covers/switch/super-smash-bros-ultimate.jpg",
         "source": "manual",
         "ref": "Super Smash Bros. Ultimate · PAL · TheGamesDB #111829, case rim cropped off",
-        "ratio": 0.6115
+        "ratio": 0.6115,
+        "label": "covers/switch/super-smash-bros-ultimate-label.jpg",
+        "labelRef": "Super Smash Bros. Ultimate · Europe · LaunchBox Games Database #158007"
       },
       "colors": [
         "#7e96a0",
@@ -3937,7 +4055,9 @@
         "file": "covers/switch/team-sonic-racing.jpg",
         "ratio": 0.5923,
         "source": "thegamesdb.net",
-        "ref": "Team Sonic Racing · no region · TheGamesDB #61030"
+        "ref": "Team Sonic Racing · no region · TheGamesDB #61030",
+        "label": "covers/switch/team-sonic-racing-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AMKCB-EUR)"
       },
       "colors": [
         "#5f97c6",
@@ -3950,7 +4070,7 @@
       "console": "switch",
       "title": "The Legend of Zelda: Breath of the Wild",
       "listedAs": "Zelda: Breath of the Wild (Cartridge Only)",
-      "region": "PAL",
+      "region": "AUS",
       "released": "2017-03-03",
       "dateSource": "manual",
       "publisher": "Nintendo",
@@ -3961,7 +4081,9 @@
         "file": "covers/switch/the-legend-of-zelda-breath-of-the-wild.jpg",
         "ratio": 0.6096,
         "source": "thegamesdb.net",
-        "ref": "The Legend of Zelda: Breath of the Wild · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118601"
+        "ref": "The Legend of Zelda: Breath of the Wild · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #118601",
+        "label": "covers/switch/the-legend-of-zelda-breath-of-the-wild-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AAAAA-AUS)"
       },
       "colors": [
         "#628a46",
@@ -3984,7 +4106,9 @@
         "file": "covers/switch/tony-hawks-pro-skater-1-2.jpg",
         "source": "manual",
         "ref": "Tony Hawk's Pro Skater 1 + 2 · PAL (Europe), PEGI 12 · Pointer-IT product photo",
-        "ratio": 0.6115
+        "ratio": 0.6115,
+        "label": "covers/switch/tony-hawks-pro-skater-1-2-label.jpg",
+        "labelRef": "Tony Hawk's Pro Skater 1 + 2 · Europe · LaunchBox Games Database #202972"
       },
       "colors": [
         "#393337",
@@ -4007,7 +4131,9 @@
         "file": "covers/switch/two-point-campus.jpg",
         "ratio": 0.6154,
         "source": "thegamesdb.net",
-        "ref": "Two Point Campus · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #98808"
+        "ref": "Two Point Campus · PAL (United Kingdom of Great Britain and Northern Ireland) · TheGamesDB #98808",
+        "label": "covers/switch/two-point-campus-label.jpg",
+        "labelRef": "Photo of my own card (LA-H-AZTYA-EUR)"
       },
       "colors": [
         "#74645d",
@@ -5434,14 +5560,19 @@
       "publisher": "Vatical Entertainment",
       "developer": "Hudson",
       "genre": "Action",
-      "format": "boxed",
-      "check": "Assumed Blue Champion (there was also Red Challenger).",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
+      "reproduction": true,
+      "check": "Looks like a reproduction: a Game Boy Color-only game in an opaque blue Game Boy shell (real ones are clear), and no code on the label.",
       "cover": {
         "file": "covers/gbc/bomberman-max-blue-champion.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Bomberman Max - Blue Champion (USA)"
+        "ref": "Bomberman Max - Blue Champion (USA)",
+        "label": "covers/gbc/bomberman-max-blue-champion-label.jpg",
+        "labelRef": "Photo of my own cartridge (no code on the label)"
       },
+      "cartColor": "#22378f",
       "colors": [
         "#757a95",
         "#2f376b",
@@ -5458,13 +5589,17 @@
       "publisher": "Nintendo",
       "developer": "Rareware",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "fav": true,
       "cover": {
         "file": "covers/gbc/donkey-kong-country.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Donkey Kong Country (USA, Europe) (En,Fr,De,Es,It)"
+        "ref": "Donkey Kong Country (USA, Europe) (En,Fr,De,Es,It)",
+        "label": "covers/gbc/donkey-kong-country-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-BDDP-AUS)"
       },
+      "cartBattery": true,
       "colors": [
         "#88331b",
         "#636f6f",
@@ -5482,18 +5617,27 @@
       "publisher": "Rockstar Games",
       "developer": "Tarantula Studios",
       "genre": "Action",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
       "cover": {
         "file": "covers/gbc/grand-theft-auto-2.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It)"
+        "ref": "Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/gbc/grand-theft-auto-2-label.jpg",
+        "labelRef": "Photo of my own cartridge (\"CGB-BWSE MSA\")"
       },
+      "cartColor": "#3a3c43",
+      "cartMould": "GAME",
+      "cartBack": "pat-pend",
+      "cartScrew": "phillips",
       "colors": [
         "#351515",
         "#696473",
         "#adafc1"
-      ]
+      ],
+      "reproduction": true,
+      "check": "Looks like a reproduction: GAME (not Nintendo GAME BOY) moulded on the front, PAT. PEND. alone on the back, a cross-head screw, a Game Boy Color-only game in a black Game Boy shell, and the code \"CGB-BWSE MSA\" is not a real one."
     },
     {
       "id": "gbc-harry-potter-and-the-philosophers-stone",
@@ -5505,14 +5649,18 @@
       "publisher": "Electronic Arts",
       "developer": "Griptonite Games",
       "genre": "Role-playing",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "launchboxId": 21997,
       "coverMatch": "Harry Potter and the Sorcerer's Stone (USA, Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi)",
       "cover": {
         "file": "covers/gbc/harry-potter-and-the-philosophers-stone.jpg",
         "ratio": 1.0159,
         "source": "libretro-thumbnails",
-        "ref": "Harry Potter and the Sorcerer's Stone (USA, Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi)"
+        "ref": "Harry Potter and the Sorcerer's Stone (USA, Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi)",
+        "label": "covers/gbc/harry-potter-and-the-philosophers-stone-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-BHVP-EUR)"
       },
+      "cartBattery": true,
       "colors": [
         "#233855",
         "#63799c",
@@ -5531,15 +5679,22 @@
       "publisher": "Capcom",
       "developer": "Capcom",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "caseStyle": "gb",
-      "check": "A Japanese Game Boy cart (Rockman World 4 is the Japanese name).",
+      "reproduction": true,
+      "check": "An unofficial cartridge: GAME AMY moulded on the front, a plain back with no MADE IN JAPAN, a cross-head screw, and a \"GAME BOY\" label with US GOLD! on it.",
       "cover": {
         "file": "covers/gbc/rockman-world-4.jpg",
         "ratio": 0.8613,
         "source": "libretro-thumbnails",
-        "ref": "Rockman World 4 (Japan)"
+        "ref": "Rockman World 4 (Japan)",
+        "label": "covers/gbc/rockman-world-4-label.jpg",
+        "labelRef": "Photo of my own cartridge (no code on the label)"
       },
+      "cartColor": "#b0607a",
+      "cartMould": "GAME AMY",
+      "cartBack": "bare",
+      "cartScrew": "phillips",
       "colors": [
         "#527bbf",
         "#b2aeb8",
@@ -5557,12 +5712,14 @@
       "publisher": "THQ",
       "developer": "Tiertex",
       "genre": "Action",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gbc/rugrats-totally-angelica.jpg",
         "ratio": 1.0039,
         "source": "libretro-thumbnails",
-        "ref": "Rugrats - Totally Angelica (USA, Europe)"
+        "ref": "Rugrats - Totally Angelica (USA, Europe)",
+        "label": "covers/gbc/rugrats-totally-angelica-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-BAGP-EUR)"
       },
       "colors": [
         "#6e5477",
@@ -5576,19 +5733,22 @@
       "title": "Super Mario Bros. Deluxe",
       "listedAs": "Super Mario Deluxe",
       "sortAs": "Mario",
-      "region": "PAL",
+      "region": "AUS",
       "released": "1999-05",
       "dateSource": "manual",
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gbc/super-mario-bros-deluxe.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario Bros. Deluxe (USA, Europe)"
+        "ref": "Super Mario Bros. Deluxe (USA, Europe)",
+        "label": "covers/gbc/super-mario-bros-deluxe-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-AHYP-AUS)"
       },
+      "cartBattery": true,
       "colors": [
         "#9e9e9b",
         "#3f588c",
@@ -5607,14 +5767,17 @@
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "caseStyle": "gb",
       "cover": {
         "file": "covers/gbc/super-mario-land-2-6-golden-coins.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario Land 2 - 6 Golden Coins (USA, Europe)"
+        "ref": "Super Mario Land 2 - 6 Golden Coins (USA, Europe)",
+        "label": "covers/gbc/super-mario-land-2-6-golden-coins-label.jpg",
+        "labelRef": "Photo of my own cartridge (DMG-MQ-USA)"
       },
+      "cartColor": "#a69b86",
       "colors": [
         "#276698",
         "#c0873d",
@@ -5633,13 +5796,44 @@
       "publisher": "Activision",
       "developer": "Digital Eclipse",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "coverMatch": "Tarzan (USA, Europe)",
+      "fav": true,
+      "cover": {
+        "file": "covers/gbc/disneys-tarzan.jpg",
+        "ratio": 1,
+        "source": "libretro-thumbnails",
+        "ref": "Tarzan (USA, Europe)",
+        "label": "covers/gbc/disneys-tarzan-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-ATHE-USA)"
+      },
+      "colors": [
+        "#39544b",
+        "#a9b7b7",
+        "#9b8065"
+      ]
+    },
+    {
+      "id": "gbc-disneys-tarzan-2",
+      "console": "gbc",
+      "title": "Disney's Tarzan",
+      "listedAs": "Tarzan",
+      "sortAs": "Tarzan",
+      "region": "USA",
+      "released": "1999-10",
+      "dateSource": "libretro-database",
+      "publisher": "Activision",
+      "developer": "Digital Eclipse",
+      "genre": "Platformer",
+      "format": "cartridge-only",
       "coverMatch": "Tarzan (USA, Europe)",
       "cover": {
         "file": "covers/gbc/disneys-tarzan.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Tarzan (USA, Europe)"
+        "ref": "Tarzan (USA, Europe)",
+        "label": "covers/gbc/disneys-tarzan-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-ATHE-USA)"
       },
       "colors": [
         "#39544b",
@@ -5651,23 +5845,144 @@
       "id": "gbc-wacky-races",
       "console": "gbc",
       "title": "Wacky Races",
-      "region": "PAL",
+      "region": "UK",
       "released": "2000",
       "dateSource": "manual",
       "publisher": "Infogrames",
       "developer": "Velez & Dubail",
       "genre": "Racing",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "fav": true,
       "cover": {
         "file": "covers/gbc/wacky-races.jpg",
         "ratio": 0.9961,
         "source": "libretro-thumbnails",
-        "ref": "Wacky Races (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Wacky Races (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/gbc/wacky-races-label.jpg",
+        "labelRef": "Photo of my own cartridge (CGB-AW9P-UKV)"
       },
       "colors": [
         "#ad7e48",
         "#3e276e",
         "#d6d5d4"
+      ]
+    },
+    {
+      "id": "gbc-pokemon-blue-version",
+      "console": "gbc",
+      "title": "Pokémon Blue Version",
+      "sortAs": "Pokémon",
+      "region": "USA",
+      "released": "1998-09-28",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
+      "fav": true,
+      "cover": {
+        "file": "covers/gbc/pokemon-blue-version.jpg",
+        "ratio": 1,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Blue Version (USA, Europe) (SGB Enhanced)",
+        "label": "covers/gbc/pokemon-blue-version-label.jpg",
+        "labelRef": "Photo of my own cartridge (DMG-APEE-USA)"
+      },
+      "cartColor": "#1c46a8",
+      "colors": [
+        "#9fb2c8",
+        "#5a6a98",
+        "#1f2b6a"
+      ]
+    },
+    {
+      "id": "gbc-pokemon-yellow-version",
+      "console": "gbc",
+      "title": "Pokémon Yellow Version: Special Pikachu Edition",
+      "sortAs": "Pokémon",
+      "region": "USA",
+      "released": "1999-10-18",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
+      "fav": true,
+      "cover": {
+        "file": "covers/gbc/pokemon-yellow-version.jpg",
+        "ratio": 1,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (CGB+SGB Enhanced)",
+        "label": "covers/gbc/pokemon-yellow-version-label.jpg",
+        "labelRef": "Photo of my own cartridge (DMG-APSE-USA-1)"
+      },
+      "cartColor": "#e8b23e",
+      "colors": [
+        "#82652e",
+        "#dfbc5a",
+        "#cec7c2"
+      ]
+    },
+    {
+      "id": "gbc-pokemon-gold-version",
+      "console": "gbc",
+      "title": "Pokémon Gold Version",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2000-10-15",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
+      "fav": true,
+      "cover": {
+        "file": "covers/gbc/pokemon-gold-version.jpg",
+        "ratio": 1,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible)",
+        "label": "covers/gbc/pokemon-gold-version-label.jpg",
+        "labelRef": "Photo of my own cartridge (DMG-AAUP-AUS)"
+      },
+      "cartColor": "#c3a45c",
+      "cartGlitter": true,
+      "colors": [
+        "#b6963e",
+        "#686c79",
+        "#b4af98"
+      ]
+    },
+    {
+      "id": "gbc-pokemon-silver-version",
+      "console": "gbc",
+      "title": "Pokémon Silver Version",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2000-10-13",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "cartridge-only",
+      "caseStyle": "gb",
+      "fav": true,
+      "cover": {
+        "file": "covers/gbc/pokemon-silver-version.jpg",
+        "ratio": 1,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Silver Version (USA, Europe) (SGB Enhanced) (GB Compatible)",
+        "label": "covers/gbc/pokemon-silver-version-label.jpg",
+        "labelRef": "Photo of my own cartridge (DMG-AAXP-AUS)"
+      },
+      "cartColor": "#b4b6b3",
+      "cartGlitter": true,
+      "colors": [
+        "#445165",
+        "#7e90a0",
+        "#ced9dd"
       ]
     },
     {
@@ -5681,18 +5996,24 @@
       "publisher": "THQ",
       "developer": "THQ",
       "genre": "Adventure",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/bratz-babyz.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Bratz - Babyz (USA)"
+        "ref": "Bratz - Babyz (USA)",
+        "label": "covers/gba/bratz-babyz-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-BI4E-USA"
       },
       "colors": [
         "#6f2c3b",
         "#87666f",
         "#aa9097"
-      ]
+      ],
+      "cardPhoto": false,
+      "reproduction": true,
+      "hidden": true,
+      "note": "Reproduction cartridge: its label reads AGB-BI4E-USA, not an official code"
     },
     {
       "id": "gba-dogz-fashion",
@@ -5705,18 +6026,24 @@
       "publisher": "Ubisoft",
       "developer": "Ubisoft",
       "genre": "Simulation",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/dogz-fashion.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Dogz - Fashion (USA)"
+        "ref": "Dogz - Fashion (USA)",
+        "label": "covers/gba/dogz-fashion-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-BKXE-USA"
       },
       "colors": [
         "#8ca3b2",
         "#d3cfd1",
         "#c69852"
-      ]
+      ],
+      "cardPhoto": false,
+      "reproduction": true,
+      "hidden": true,
+      "note": "Reproduction cartridge: its label reads AGB-BKXE-USA, not an official code"
     },
     {
       "id": "gba-donkey-kong-country",
@@ -5728,18 +6055,21 @@
       "publisher": "Nintendo",
       "developer": "Rareware",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/donkey-kong-country.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Donkey Kong Country (Europe) (En,Fr,De,Es,It)"
+        "ref": "Donkey Kong Country (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/gba/donkey-kong-country-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-A5NU-AUS"
       },
       "colors": [
         "#3e6446",
         "#b97752",
         "#7f9ba0"
-      ]
+      ],
+      "cardPhoto": false
     },
     {
       "id": "gba-f-zero-maximum-velocity",
@@ -5752,19 +6082,22 @@
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Racing",
-      "format": "boxed",
-      "check": "Assumed Maximum Velocity (2001). The notes say 2004, which would be F-Zero: GP Legend: check the cartridge.",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/f-zero-maximum-velocity.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "F-Zero - Maximum Velocity (USA, Europe)"
+        "ref": "F-Zero - Maximum Velocity (USA, Europe)",
+        "label": "covers/gba/f-zero-maximum-velocity-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-AFZP-AUS"
       },
       "colors": [
         "#804c5b",
         "#2b1713",
         "#ad8e99"
-      ]
+      ],
+      "fav": true,
+      "cardPhoto": false
     },
     {
       "id": "gba-hello-kitty-happy-party-pals",
@@ -5777,18 +6110,24 @@
       "publisher": "THQ",
       "developer": "Webfoot Technologies",
       "genre": "Party",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/hello-kitty-happy-party-pals.jpg",
         "ratio": 1.1179,
         "source": "libretro-thumbnails",
-        "ref": "Hello Kitty - Happy Party Pals (USA)"
+        "ref": "Hello Kitty - Happy Party Pals (USA)",
+        "label": "covers/gba/hello-kitty-happy-party-pals-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-BBXE-USA"
       },
       "colors": [
         "#97afc6",
         "#877a75",
         "#dfa86f"
-      ]
+      ],
+      "cardPhoto": false,
+      "reproduction": true,
+      "hidden": true,
+      "note": "Reproduction cartridge: its label reads AGB-BBXE-USA, not an official code"
     },
     {
       "id": "gba-mario-kart-super-circuit",
@@ -5802,18 +6141,22 @@
       "publisher": "Nintendo",
       "developer": "Intelligent Systems",
       "genre": "Kart racing",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/mario-kart-super-circuit.jpg",
         "ratio": 1.0059,
         "source": "libretro-thumbnails",
-        "ref": "Mario Kart - Super Circuit (Europe)"
+        "ref": "Mario Kart - Super Circuit (Europe)",
+        "label": "covers/gba/mario-kart-super-circuit-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-AMKP-NEU6"
       },
       "colors": [
         "#5d95c9",
         "#a77f6a",
         "#39363e"
-      ]
+      ],
+      "fav": true,
+      "cardPhoto": false
     },
     {
       "id": "gba-sonic-advance",
@@ -5825,18 +6168,21 @@
       "publisher": "SEGA",
       "developer": "Sonic Team",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/sonic-advance.jpg",
         "ratio": 0.9808,
         "source": "libretro-thumbnails",
-        "ref": "Sonic Advance (Europe) (En,Ja,Fr,De,Es)"
+        "ref": "Sonic Advance (Europe) (En,Ja,Fr,De,Es)",
+        "label": "covers/gba/sonic-advance-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-ASOP-HOL"
       },
       "colors": [
         "#bcac8b",
         "#8a7a72",
         "#d4d6d0"
-      ]
+      ],
+      "cardPhoto": false
     },
     {
       "id": "gba-spongebob-squarepants-lights-camera-pants",
@@ -5849,42 +6195,52 @@
       "publisher": "THQ",
       "developer": "Wayforward",
       "genre": "Party",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/spongebob-squarepants-lights-camera-pants.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "SpongeBob SquarePants - Lights, Camera, Pants! (USA)"
+        "ref": "SpongeBob SquarePants - Lights, Camera, Pants! (USA)",
+        "label": "covers/gba/spongebob-squarepants-lights-camera-pants-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-BSXE-USA"
       },
       "colors": [
         "#62717d",
         "#a1a092",
         "#314457"
-      ]
+      ],
+      "cardPhoto": false,
+      "reproduction": true,
+      "hidden": true,
+      "note": "Reproduction cartridge: its label reads AGB-BSXE-USA, not an official code"
     },
     {
       "id": "gba-super-mario-advance",
       "console": "gba",
       "title": "Super Mario Advance",
       "sortAs": "Mario",
-      "region": "PAL",
+      "region": "AUS",
       "released": "2001-03-21",
       "dateSource": "libretro-database",
       "publisher": "Nintendo",
       "developer": "Nintendo",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/super-mario-advance.jpg",
         "ratio": 1,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario Advance (USA, Europe)"
+        "ref": "Super Mario Advance (USA, Europe)",
+        "label": "covers/gba/super-mario-advance-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-AMAP-AUS"
       },
       "colors": [
         "#a1a1ab",
         "#72646e",
         "#e3e8ea"
-      ]
+      ],
+      "fav": true,
+      "cardPhoto": false
     },
     {
       "id": "gba-star-wars-jedi-power-battles",
@@ -5896,18 +6252,21 @@
       "publisher": "THQ",
       "developer": "HotGen Studios",
       "genre": "Action",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/gba/star-wars-jedi-power-battles.jpg",
         "ratio": 1.0199,
         "source": "libretro-thumbnails",
-        "ref": "Star Wars - Jedi Power Battles (Europe) (En,Fr,De,Es)"
+        "ref": "Star Wars - Jedi Power Battles (Europe) (En,Fr,De,Es)",
+        "label": "covers/gba/star-wars-jedi-power-battles-label.jpg",
+        "labelRef": "Photo of the cartridge in the collection · AGB-ASWX-EUR"
       },
       "colors": [
         "#a69996",
         "#b6654c",
         "#4a3737"
-      ]
+      ],
+      "cardPhoto": false
     },
     {
       "id": "gba-grand-theft-auto-advance",
@@ -5915,24 +6274,28 @@
       "title": "Grand Theft Auto Advance",
       "listedAs": "Grand Theft Auto: Advance",
       "sortAs": "Grand Theft Auto",
-      "region": "PAL",
+      "region": "USA",
       "released": "2004-10-29",
       "dateSource": "manual",
       "publisher": "Rockstar Games",
       "developer": "Digital Eclipse",
       "genre": "Action",
-      "format": "boxed",
+      "format": "cartridge-only",
+      "launchboxId": 3784,
       "cover": {
         "file": "covers/gba/grand-theft-auto-advance.jpg",
         "ratio": 1.1179,
         "source": "libretro-thumbnails",
-        "ref": "Grand Theft Auto Advance (Europe) (En,Fr,De,Es,It)"
+        "ref": "Grand Theft Auto Advance (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/gba/grand-theft-auto-advance-label.jpg",
+        "labelRef": "Grand Theft Auto · North America · LaunchBox Games Database #3784"
       },
       "colors": [
         "#121e23",
         "#3f4a4d",
         "#7f8078"
-      ]
+      ],
+      "fav": true
     },
     {
       "id": "ds-art-academy",
@@ -5949,7 +6312,9 @@
         "file": "covers/ds/art-academy.jpg",
         "ratio": 1.1179,
         "source": "libretro-thumbnails",
-        "ref": "Art Academy (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)"
+        "ref": "Art Academy (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)",
+        "label": "covers/ds/art-academy-label.jpg",
+        "labelRef": "Photo of my own card (TWL-VAAV-AUS)"
       },
       "colors": [
         "#743b28",
@@ -5972,12 +6337,39 @@
         "file": "covers/ds/crazy-frog-racer.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "Crazy Frog Racer (Europe) (En,Fr,De,Es,It)"
+        "ref": "Crazy Frog Racer (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/ds/crazy-frog-racer-label.jpg",
+        "labelRef": "Crazy Frog Racer · Europe · LaunchBox Games Database #132200"
       },
       "colors": [
         "#bc6d42",
         "#a7a29f",
         "#4d3936"
+      ]
+    },
+    {
+      "id": "ds-diddy-kong-racing-ds",
+      "console": "ds",
+      "title": "Diddy Kong Racing DS",
+      "region": "PAL",
+      "released": "2007-04-20",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Rare",
+      "genre": "Kart racing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/diddy-kong-racing-ds.jpg",
+        "ratio": 1.1155,
+        "source": "libretro-thumbnails",
+        "ref": "Diddy Kong Racing DS (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/ds/diddy-kong-racing-ds-label.jpg",
+        "labelRef": "Diddy Kong Racing DS · Europe · LaunchBox Games Database #6790"
+      },
+      "colors": [
+        "#75553b",
+        "#a79f7d",
+        "#3d82c0"
       ]
     },
     {
@@ -5992,11 +6384,14 @@
       "developer": "Rockstar Leeds",
       "genre": "Action-adventure",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ds/grand-theft-auto-chinatown-wars.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "Grand Theft Auto - Chinatown Wars (Europe) (En,Fr,De,Es,It)"
+        "ref": "Grand Theft Auto - Chinatown Wars (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/ds/grand-theft-auto-chinatown-wars-label.jpg",
+        "labelRef": "Grand Theft Auto: Chinatown Wars · Europe · LaunchBox Games Database #11056"
       },
       "colors": [
         "#8f8371",
@@ -6017,11 +6412,25 @@
       "developer": "Vicarious Visions",
       "genre": "Rhythm",
       "format": "boxed",
+      "fav": true,
+      "edition": "Guitar Grip bundle",
+      "extras": [
+        "guitargrip"
+      ],
+      "spineColor": "#f3a024",
+      "box": {
+        "w": 146,
+        "h": 113,
+        "d": 51
+      },
       "cover": {
-        "file": "covers/ds/guitar-hero-on-tour.jpg",
-        "ratio": 1.0825,
-        "source": "libretro-thumbnails",
-        "ref": "Guitar Hero - On Tour (Europe)"
+        "file": "covers/ds/guitar-hero-on-tour-bundle.jpg",
+        "back": "covers/ds/guitar-hero-on-tour-bundle-back.jpg",
+        "ratio": 1.294,
+        "source": "manual",
+        "ref": "Guitar Hero: On Tour Guitar Grip bundle box: front, NTSC (United States), retailer photo via gamehoard.com; back, Europe, LaunchBox Games Database #6517",
+        "label": "covers/ds/guitar-hero-on-tour-label.jpg",
+        "labelRef": "Guitar Hero: On Tour · Australia · LaunchBox Games Database #6809"
       },
       "colors": [
         "#e8762a",
@@ -6045,7 +6454,9 @@
         "file": "covers/ds/guitar-hero-on-tour-decades.jpg",
         "ratio": 1.1082,
         "source": "libretro-thumbnails",
-        "ref": "Guitar Hero - On Tour - Decades (Europe)"
+        "ref": "Guitar Hero - On Tour - Decades (Europe)",
+        "label": "covers/ds/guitar-hero-on-tour-decades-label.jpg",
+        "labelRef": "Photo of my own card (NTR-CGSP-UKV)"
       },
       "colors": [
         "#9c9875",
@@ -6065,11 +6476,14 @@
       "developer": null,
       "genre": "Platformer",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/ice-age-2-the-meltdown.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "Ice Age 2 - The Meltdown (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Ice Age 2 - The Meltdown (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/ice-age-2-the-meltdown-label.jpg",
+        "labelRef": "Ice Age 2: The Meltdown · Europe · LaunchBox Games Database #130052"
       },
       "colors": [
         "#7bbcc6",
@@ -6093,7 +6507,9 @@
         "file": "covers/ds/new-super-mario-bros.jpg",
         "ratio": 1.1082,
         "source": "libretro-thumbnails",
-        "ref": "New Super Mario Bros. (USA, Australia)"
+        "ref": "New Super Mario Bros. (USA, Australia)",
+        "label": "covers/ds/new-super-mario-bros-label.jpg",
+        "labelRef": "New Super Mario Bros. · North America · LaunchBox Games Database #6859"
       },
       "colors": [
         "#adaa76",
@@ -6117,7 +6533,9 @@
         "file": "covers/ds/lego-rock-band.jpg",
         "ratio": 1.1302,
         "source": "libretro-thumbnails",
-        "ref": "LEGO Rock Band (Europe) (En,Fr,De,Es,It,Da)"
+        "ref": "LEGO Rock Band (Europe) (En,Fr,De,Es,It,Da)",
+        "label": "covers/ds/lego-rock-band-label.jpg",
+        "labelRef": "Photo of my own card (NTR-BLRP-EUR)"
       },
       "colors": [
         "#a07f80",
@@ -6137,12 +6555,14 @@
       "publisher": "Warner Bros. Interactive",
       "developer": null,
       "genre": "Rhythm",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/ds/lego-rock-band-usa.jpg",
         "ratio": 1.1034,
         "source": "libretro-thumbnails",
-        "ref": "LEGO Rock Band (USA) (En,Fr,De,Es,It,Da)"
+        "ref": "LEGO Rock Band (USA) (En,Fr,De,Es,It,Da)",
+        "label": "covers/ds/lego-rock-band-usa-label.jpg",
+        "labelRef": "LEGO Rock Band · North America · LaunchBox Games Database #14567"
       },
       "colors": [
         "#725a61",
@@ -6162,11 +6582,14 @@
       "developer": "Nintendo EAD",
       "genre": "Kart racing",
       "format": "boxed",
+      "fav": true,
       "cover": {
         "file": "covers/ds/mario-kart-ds.jpg",
         "ratio": 1.1082,
         "source": "libretro-thumbnails",
-        "ref": "Mario Kart DS (USA, Australia) (En,Fr,De,Es,It)"
+        "ref": "Mario Kart DS (USA, Australia) (En,Fr,De,Es,It)",
+        "label": "covers/ds/mario-kart-ds-label.jpg",
+        "labelRef": "Mario Kart DS · Australia · LaunchBox Games Database #6837"
       },
       "colors": [
         "#f3f6f6",
@@ -6190,7 +6613,9 @@
         "file": "covers/ds/mysims.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "MySims (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "MySims (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/mysims-label.jpg",
+        "labelRef": "MySims · Europe · LaunchBox Games Database #14925"
       },
       "colors": [
         "#b2a68f",
@@ -6211,11 +6636,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/mysims-kingdom.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "MySims - Kingdom (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,Pl,Cs,Hu)"
+        "ref": "MySims - Kingdom (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,Pl,Cs,Hu)",
+        "label": "covers/ds/mysims-kingdom-label.jpg",
+        "labelRef": "MySims Kingdom · Europe · LaunchBox Games Database #14926"
       },
       "colors": [
         "#c1a580",
@@ -6236,11 +6664,14 @@
       "developer": null,
       "genre": "Party",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/mysims-party.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "MySims - Party (Europe) (En,Fr,De,Es,It,Nl,Pt)"
+        "ref": "MySims - Party (Europe) (En,Fr,De,Es,It,Nl,Pt)",
+        "label": "covers/ds/mysims-party-label.jpg",
+        "labelRef": "MySims Party · Europe · LaunchBox Games Database #20725"
       },
       "colors": [
         "#6b4e6a",
@@ -6265,7 +6696,9 @@
         "file": "covers/ds/mysims-agents.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "MySims - Agents (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da)"
+        "ref": "MySims - Agents (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da)",
+        "label": "covers/ds/mysims-agents-label.jpg",
+        "labelRef": "MySims Agents · Europe · LaunchBox Games Database #20724"
       },
       "colors": [
         "#253138",
@@ -6286,11 +6719,14 @@
       "developer": null,
       "genre": "Kart racing",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/mysims-racing.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "MySims - Racing (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "MySims - Racing (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/mysims-racing-label.jpg",
+        "labelRef": "MySims: Racing · Europe · LaunchBox Games Database #21286"
       },
       "colors": [
         "#556370",
@@ -6304,7 +6740,7 @@
       "console": "ds",
       "title": "MySims SkyHeroes",
       "listedAs": "My Sims Sky Heroes",
-      "region": "PAL",
+      "region": "USA",
       "released": "2010-09-28",
       "dateSource": "manual",
       "publisher": "Electronic Arts",
@@ -6315,7 +6751,9 @@
         "file": "covers/ds/mysims-skyheroes.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "MySims - SkyHeroes (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "MySims - SkyHeroes (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/mysims-skyheroes-label.jpg",
+        "labelRef": "Photo of my own card (NTR-BFLE-USA)"
       },
       "colors": [
         "#8c9898",
@@ -6323,6 +6761,190 @@
         "#f7f8f7"
       ],
       "series": "MySims"
+    },
+    {
+      "id": "ds-pokemon-diamond-version",
+      "console": "ds",
+      "title": "Pokémon Diamond Version",
+      "listedAs": "Pokemon Diamond",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2007-06-21",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-diamond-version.jpg",
+        "ratio": 1.1111,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Diamond Version (Europe) (Rev 5)",
+        "label": "covers/ds/pokemon-diamond-version-label.jpg",
+        "labelRef": "Photo of my own card (NTR-ADAE-AUS)"
+      },
+      "colors": [
+        "#717076",
+        "#353443",
+        "#a4aab0"
+      ]
+    },
+    {
+      "id": "ds-pokemon-diamond-version-2",
+      "console": "ds",
+      "title": "Pokémon Diamond Version",
+      "listedAs": "Pokemon Diamond (second copy)",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2007-06-21",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-diamond-version.jpg",
+        "ratio": 1.1111,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Diamond Version (Europe) (Rev 5)",
+        "label": "covers/ds/pokemon-diamond-version-2-label.jpg",
+        "labelRef": "Photo of my own card (NTR-ADAE-AUS)"
+      },
+      "colors": [
+        "#717076",
+        "#353443",
+        "#a4aab0"
+      ]
+    },
+    {
+      "id": "ds-pokemon-pearl-version",
+      "console": "ds",
+      "title": "Pokémon Pearl Version",
+      "listedAs": "Pokemon Pearl",
+      "sortAs": "Pokémon",
+      "region": "USA",
+      "released": "2007-06-21",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-pearl-version.jpg",
+        "ratio": 1.1111,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Pearl Version (Europe) (Rev 5)",
+        "label": "covers/ds/pokemon-pearl-version-label.jpg",
+        "labelRef": "Photo of my own card (NTR-APAE-USA)"
+      },
+      "colors": [
+        "#746864",
+        "#a5a0aa",
+        "#171a1c"
+      ]
+    },
+    {
+      "id": "ds-pokemon-platinum-version",
+      "console": "ds",
+      "title": "Pokémon Platinum Version",
+      "listedAs": "Pokemon Platinum",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2009-03-22",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-platinum-version.jpg",
+        "ratio": 1.113,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - Platinum Version (USA)",
+        "label": "covers/ds/pokemon-platinum-version-label.jpg",
+        "labelRef": "Photo of my own card (NTR-CPUE-AUS)"
+      },
+      "colors": [
+        "#9c7b6a",
+        "#50464a",
+        "#b3afaf"
+      ]
+    },
+    {
+      "id": "ds-pokemon-heartgold-version",
+      "console": "ds",
+      "title": "Pokémon HeartGold Version",
+      "listedAs": "Pokemon Heart Gold",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2010-03-25",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "fav": true,
+      "edition": "Pokéwalker bundle",
+      "extras": [
+        "pokewalker"
+      ],
+      "spineColor": "#c9a23f",
+      "box": {
+        "w": 140,
+        "h": 127,
+        "d": 38
+      },
+      "cover": {
+        "file": "covers/ds/pokemon-heartgold-version.jpg",
+        "ratio": 1.0987,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - HeartGold Version (Europe)",
+        "label": "covers/ds/pokemon-heartgold-version-label.jpg",
+        "labelRef": "Photo of my own card (NTR-IPKE-AUS)"
+      },
+      "colors": [
+        "#dba451",
+        "#aa6438",
+        "#eef1e4"
+      ]
+    },
+    {
+      "id": "ds-pokemon-soulsilver-version",
+      "console": "ds",
+      "title": "Pokémon SoulSilver Version",
+      "listedAs": "Pokemon Soul Silver",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2010-03-25",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "edition": "Pokéwalker bundle",
+      "extras": [
+        "pokewalker"
+      ],
+      "spineColor": "#b4b8c0",
+      "coverMatch": "Pokemon - SoulSilver Version (Europe)",
+      "box": {
+        "w": 140,
+        "h": 127,
+        "d": 38
+      },
+      "cover": {
+        "file": "covers/ds/pokemon-soulsilver-version.jpg",
+        "ratio": 1.094,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - SoulSilver Version (Europe)",
+        "label": "covers/ds/pokemon-soulsilver-version-label.jpg",
+        "labelRef": "Photo of my own card (NTR-IPGE-AUS)"
+      },
+      "colors": [
+        "#f4f4f5",
+        "#cfcfd3",
+        "#a9a79a"
+      ]
     },
     {
       "id": "ds-pokemon-black-version",
@@ -6341,7 +6963,9 @@
         "file": "covers/ds/pokemon-black-version.jpg",
         "ratio": 1.1106,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon - Black Version (USA, Europe) (NDSi Enhanced)"
+        "ref": "Pokemon - Black Version (USA, Europe) (NDSi Enhanced)",
+        "label": "covers/ds/pokemon-black-version-label.jpg",
+        "labelRef": "Pokémon Black Version · North America · LaunchBox Games Database #2370"
       },
       "colors": [
         "#0e0e0f",
@@ -6350,10 +6974,91 @@
       ]
     },
     {
+      "id": "ds-pokemon-white-version",
+      "console": "ds",
+      "title": "Pokémon White Version",
+      "listedAs": "Pokemon White",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2011-03-10",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-white-version.jpg",
+        "source": "manual",
+        "ref": "Pokémon White Version · PAL · TheGamesDB #102846",
+        "ratio": 1.1288,
+        "label": "covers/ds/pokemon-white-version-label.jpg",
+        "labelRef": "Photo of my own card (TWL-IRAO-AUS)"
+      },
+      "colors": [
+        "#f8f9f9",
+        "#382e29",
+        "#908d7a"
+      ]
+    },
+    {
+      "id": "ds-pokemon-black-version-2",
+      "console": "ds",
+      "title": "Pokémon Black Version 2",
+      "listedAs": "Pokemon Black 2",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2012-10-11",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-black-version-2.jpg",
+        "source": "manual",
+        "ref": "Pokémon Black Version 2 · PAL (United Kingdom) · TheGamesDB #98632",
+        "ratio": 1.1096,
+        "label": "covers/ds/pokemon-black-version-2-label.jpg",
+        "labelRef": "Pokémon Black Version 2 · Australia · LaunchBox Games Database #13556"
+      },
+      "colors": [
+        "#637b7f",
+        "#1b282c",
+        "#95b7c1"
+      ]
+    },
+    {
+      "id": "ds-pokemon-white-version-2",
+      "console": "ds",
+      "title": "Pokémon White Version 2",
+      "listedAs": "Pokemon White 2",
+      "sortAs": "Pokémon",
+      "region": "AUS",
+      "released": "2012-10-11",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Game Freak",
+      "genre": "Role-playing",
+      "format": "boxed",
+      "cover": {
+        "file": "covers/ds/pokemon-white-version-2.jpg",
+        "ratio": 1.1302,
+        "source": "libretro-thumbnails",
+        "ref": "Pokemon - White Version 2 (USA, Europe) (NDSi Enhanced)",
+        "label": "covers/ds/pokemon-white-version-2-label.jpg",
+        "labelRef": "Photo of my own card (TWL-IRDO-AUS)"
+      },
+      "colors": [
+        "#b89d8b",
+        "#f5f4f2",
+        "#7c6d5d"
+      ]
+    },
+    {
       "id": "ds-rayman-raving-rabbids-2",
       "console": "ds",
       "title": "Rayman Raving Rabbids 2",
-      "region": "AUS",
+      "region": "EUR",
       "released": "2007-11-13",
       "dateSource": "manual",
       "publisher": "Ubisoft",
@@ -6364,7 +7069,9 @@
         "file": "covers/ds/rayman-raving-rabbids-2.jpg",
         "ratio": 1.0825,
         "source": "libretro-thumbnails",
-        "ref": "Rayman - Raving Rabbids 2 (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Rayman - Raving Rabbids 2 (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/rayman-raving-rabbids-2-label.jpg",
+        "labelRef": "Rayman: Raving Rabbids 2 · Europe · LaunchBox Games Database #11399"
       },
       "colors": [
         "#958972",
@@ -6377,18 +7084,21 @@
       "console": "ds",
       "title": "Rock Band 3",
       "sortAs": "Rock Band",
-      "region": "AUS",
+      "region": "EUR",
       "released": "2010-10-26",
       "dateSource": "manual",
       "publisher": "MTV Games",
       "developer": "Backbone Entertainment",
       "genre": "Rhythm",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/rock-band-3.jpg",
         "ratio": 1.1313,
         "source": "libretro-thumbnails",
-        "ref": "Rock Band 3 (Europe) (En,Fr,De,Es,It)"
+        "ref": "Rock Band 3 (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/ds/rock-band-3-label.jpg",
+        "labelRef": "Rock Band 3 · Europe · LaunchBox Games Database #127154"
       },
       "colors": [
         "#312e33",
@@ -6408,11 +7118,14 @@
       "developer": null,
       "genre": "Simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/simanimals.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "SimAnimals (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da)"
+        "ref": "SimAnimals (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da)",
+        "label": "covers/ds/simanimals-label.jpg",
+        "labelRef": "SimAnimals · Europe · LaunchBox Games Database #29813"
       },
       "colors": [
         "#a9825c",
@@ -6436,7 +7149,9 @@
         "file": "covers/ds/simcity-ds.jpg",
         "ratio": 1.1179,
         "source": "libretro-thumbnails",
-        "ref": "SimCity DS (USA) (En,Fr,De,Es,It,Nl)"
+        "ref": "SimCity DS (USA) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/simcity-ds-label.jpg",
+        "labelRef": "SimCity DS · North America · LaunchBox Games Database #149025"
       },
       "colors": [
         "#e8902c",
@@ -6460,7 +7175,9 @@
         "file": "covers/ds/simcity-creator.jpg",
         "ratio": 1.113,
         "source": "libretro-thumbnails",
-        "ref": "SimCity - Creator (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "SimCity - Creator (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/simcity-creator-label.jpg",
+        "labelRef": "SimCity Creator · Europe · LaunchBox Games Database #11418"
       },
       "colors": [
         "#a38663",
@@ -6485,7 +7202,9 @@
         "file": "covers/ds/super-mario-64-ds.jpg",
         "ratio": 1.1179,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario 64 DS (USA, Australia) (Rev 1)"
+        "ref": "Super Mario 64 DS (USA, Australia) (Rev 1)",
+        "label": "covers/ds/super-mario-64-ds-label.jpg",
+        "labelRef": "Photo of my own card (NTR-ASME-AUS)"
       },
       "colors": [
         "#49606a",
@@ -6505,11 +7224,14 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/the-sims-2.jpg",
         "ratio": 1.1155,
         "source": "libretro-thumbnails",
-        "ref": "Sims 2, The (Europe) (En,Fr,De,Es,It)"
+        "ref": "Sims 2, The (Europe) (En,Fr,De,Es,It)",
+        "label": "covers/ds/the-sims-2-label.jpg",
+        "labelRef": "The Sims 2 · Europe · LaunchBox Games Database #127127"
       },
       "colors": [
         "#818079",
@@ -6531,11 +7253,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/the-sims-2-pets.jpg",
         "ratio": 1.1155,
         "source": "libretro-thumbnails",
-        "ref": "Sims 2, The - Pets (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Sims 2, The - Pets (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/the-sims-2-pets-label.jpg",
+        "labelRef": "The Sims 2: Pets · Europe · LaunchBox Games Database #127126"
       },
       "colors": [
         "#5b5f59",
@@ -6557,11 +7282,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/the-sims-2-apartment-pets.jpg",
         "ratio": 1.1155,
         "source": "libretro-thumbnails",
-        "ref": "Sims 2, The - Apartment Pets (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Sims 2, The - Apartment Pets (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/ds/the-sims-2-apartment-pets-label.jpg",
+        "labelRef": "The Sims 2: Apartment Pets · Europe · LaunchBox Games Database #95314"
       },
       "colors": [
         "#6e7780",
@@ -6583,11 +7311,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "clearCase": true,
       "cover": {
         "file": "covers/ds/the-sims-2-castaway.jpg",
         "ratio": 1.1204,
         "source": "libretro-thumbnails",
-        "ref": "Sims 2, The - Castaway (Europe) (En,Fr,De,Es,It,Nl,Pt)"
+        "ref": "Sims 2, The - Castaway (Europe) (En,Fr,De,Es,It,Nl,Pt)",
+        "label": "covers/ds/the-sims-2-castaway-label.jpg",
+        "labelRef": "The Sims 2: Castaway · Europe · LaunchBox Games Database #13456"
       },
       "colors": [
         "#566b55",
@@ -6612,7 +7343,9 @@
         "file": "covers/ds/the-sims-3.jpg",
         "ratio": 1.1155,
         "source": "libretro-thumbnails",
-        "ref": "Sims 3, The (Europe) (En,Fr,De,Es,It,Nl) (NDSi Enhanced)"
+        "ref": "Sims 3, The (Europe) (En,Fr,De,Es,It,Nl) (NDSi Enhanced)",
+        "label": "covers/ds/the-sims-3-label.jpg",
+        "labelRef": "The Sims 3 · Europe · LaunchBox Games Database #16549"
       },
       "colors": [
         "#fafaf8",
@@ -6622,9 +7355,36 @@
       "series": "The Sims 3"
     },
     {
+      "id": "ds-toy-story-3",
+      "console": "ds",
+      "title": "Toy Story 3",
+      "region": "PAL",
+      "released": "2010-07-16",
+      "dateSource": "manual",
+      "publisher": "Disney Interactive Studios",
+      "developer": "n-Space",
+      "genre": "Action-adventure",
+      "format": "boxed",
+      "clearCase": true,
+      "coverMatch": "Toy Story 3 (Europe) (En,Fr,De,Es,It,Nl) (NDSi Enhanced)",
+      "cover": {
+        "file": "covers/ds/toy-story-3.jpg",
+        "ratio": 1.0941,
+        "source": "libretro-thumbnails",
+        "ref": "Toy Story 3 (Europe) (En,Fr,De,Es,It,Nl) (NDSi Enhanced)",
+        "label": "covers/ds/toy-story-3-label.jpg",
+        "labelRef": "Toy Story 3 · Europe · LaunchBox Games Database #33506"
+      },
+      "colors": [
+        "#272e3b",
+        "#a89946",
+        "#9fa39d"
+      ]
+    },
+    {
       "id": "3ds-animal-crossing-new-leaf",
       "console": "3ds",
-      "title": "Animal Crossing: New Leaf",
+      "title": "Animal Crossing: New Leaf - Welcome amiibo",
       "listedAs": "Animal Crossing New Leaf",
       "region": "EUR",
       "released": "2012-11-08",
@@ -6633,16 +7393,19 @@
       "developer": "Nintendo EAD",
       "genre": "Life simulation",
       "format": "boxed",
+      "edition": "Nintendo Selects",
       "cover": {
-        "file": "covers/3ds/animal-crossing-new-leaf.jpg",
-        "ratio": 1.1364,
-        "source": "libretro-thumbnails",
-        "ref": "Animal Crossing - New Leaf (Europe) (En,Fr,De,Es,It)"
+        "file": "covers/3ds/animal-crossing-new-leaf-welcome-amiibo-nintendo-selects.jpg",
+        "source": "manual",
+        "ref": "Animal Crossing: New Leaf - Welcome amiibo Nintendo Selects (PAL, UK print), Nookipedia",
+        "ratio": 1.125,
+        "label": "covers/3ds/animal-crossing-new-leaf-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-EAAP-EUR)"
       },
       "colors": [
-        "#a29165",
-        "#c9d3ce",
-        "#4e8654"
+        "#b49164",
+        "#ae2713",
+        "#accfda"
       ]
     },
     {
@@ -6662,7 +7425,9 @@
         "file": "covers/3ds/new-art-academy.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "New Art Academy (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "New Art Academy (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/new-art-academy-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-AACP-AUS)"
       },
       "colors": [
         "#6c656d",
@@ -6682,16 +7447,19 @@
       "developer": "Monster Games",
       "genre": "Platformer",
       "format": "boxed",
+      "edition": "Nintendo Selects",
       "cover": {
-        "file": "covers/3ds/donkey-kong-country-returns-3d.jpg",
-        "ratio": 1.1228,
-        "source": "libretro-thumbnails",
-        "ref": "Donkey Kong Country Returns 3D (Europe) (En,Fr,De,Es,It)"
+        "file": "covers/3ds/donkey-kong-country-returns-3d-nintendo-selects.jpg",
+        "source": "manual",
+        "ref": "Donkey Kong Country Returns 3D Nintendo Selects (AUS), Super Mario Wiki",
+        "ratio": 1.1222,
+        "label": "covers/3ds/donkey-kong-country-returns-3d-label.jpg",
+        "labelRef": "Donkey Kong Country Returns 3D · Australia · LaunchBox Games Database #17109"
       },
       "colors": [
-        "#4d402d",
-        "#8b6845",
-        "#9ca27b"
+        "#545137",
+        "#a7987c",
+        "#a7382b"
       ]
     },
     {
@@ -6705,16 +7473,20 @@
       "developer": "Next Level Games",
       "genre": "Action-adventure",
       "format": "boxed",
+      "launchboxId": 15183,
+      "edition": "Nintendo Selects",
       "cover": {
-        "file": "covers/3ds/luigis-mansion-2.jpg",
-        "ratio": 1.1302,
-        "source": "libretro-thumbnails",
-        "ref": "Luigi's Mansion 2 (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "file": "covers/3ds/luigis-mansion-2-nintendo-selects.jpg",
+        "source": "manual",
+        "ref": "Luigi's Mansion 2 Nintendo Selects (AUS), Super Mario Wiki",
+        "ratio": 1.126,
+        "label": "covers/3ds/luigis-mansion-2-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-AGGP-AUS)"
       },
       "colors": [
-        "#121713",
-        "#434933",
-        "#7b865e"
+        "#252c22",
+        "#659153",
+        "#d8bfba"
       ]
     },
     {
@@ -6734,7 +7506,9 @@
         "file": "covers/3ds/mario-kart-7.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "Mario Kart 7 (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "Mario Kart 7 (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/mario-kart-7-label.jpg",
+        "labelRef": "Mario Kart 7 · Europe · LaunchBox Games Database #12733"
       },
       "colors": [
         "#f7f6f4",
@@ -6754,11 +7528,14 @@
       "developer": "Nintendo EAD",
       "genre": "Platformer",
       "format": "boxed",
+      "caseColor": "#f5c400",
       "cover": {
         "file": "covers/3ds/new-super-mario-bros-2.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "New Super Mario Bros. 2 (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "New Super Mario Bros. 2 (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/new-super-mario-bros-2-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-ABEP-AUS)"
       },
       "colors": [
         "#e2b214",
@@ -6783,7 +7560,9 @@
         "file": "covers/3ds/pokemon-omega-ruby.jpg",
         "source": "manual",
         "ref": "Pokemon Omega Ruby (Europe) (En,Ja,Fr,De,Es,It,Ko) (Rev 2), libretro-thumbnails",
-        "ratio": 1.1228
+        "ratio": 1.1228,
+        "label": "covers/3ds/pokemon-omega-ruby-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-ECRP-AUS)"
       },
       "colors": [
         "#b3926e",
@@ -6808,7 +7587,9 @@
         "file": "covers/3ds/pokemon-alpha-sapphire.jpg",
         "ratio": 1.1364,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Alpha Sapphire (Europe) (En,Ja,Fr,De,Es,It,Ko) (Rev 2)"
+        "ref": "Pokemon Alpha Sapphire (Europe) (En,Ja,Fr,De,Es,It,Ko) (Rev 2)",
+        "label": "covers/3ds/pokemon-alpha-sapphire-label.jpg",
+        "labelRef": "Pokémon Alpha Sapphire · Australia · LaunchBox Games Database #23587"
       },
       "colors": [
         "#4575a2",
@@ -6833,7 +7614,9 @@
         "file": "covers/3ds/pokemon-sun.jpg",
         "ratio": 1.1149,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Sun (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)"
+        "ref": "Pokemon Sun (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)",
+        "label": "covers/3ds/pokemon-sun-label.jpg",
+        "labelRef": "Pokémon Sun · Australia · LaunchBox Games Database #119662"
       },
       "colors": [
         "#e8e2d2",
@@ -6857,7 +7640,9 @@
         "file": "covers/3ds/pokemon-moon.jpg",
         "ratio": 1.1149,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Moon (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)"
+        "ref": "Pokemon Moon (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)",
+        "label": "covers/3ds/pokemon-moon-label.jpg",
+        "labelRef": "Pokémon Moon · Australia · LaunchBox Games Database #119661"
       },
       "colors": [
         "#6c88ab",
@@ -6870,7 +7655,7 @@
       "console": "3ds",
       "title": "Pokémon Ultra Sun",
       "sortAs": "Pokémon",
-      "region": "AUS",
+      "region": "EUR",
       "released": "2017-11-17",
       "dateSource": "manual",
       "publisher": "Nintendo",
@@ -6881,7 +7666,9 @@
         "file": "covers/3ds/pokemon-ultra-sun.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Ultra Sun (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)"
+        "ref": "Pokemon Ultra Sun (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)",
+        "label": "covers/3ds/pokemon-ultra-sun-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-A2AP-EUR)"
       },
       "colors": [
         "#a99677",
@@ -6894,7 +7681,7 @@
       "console": "3ds",
       "title": "Pokémon Ultra Moon",
       "sortAs": "Pokémon",
-      "region": "AUS",
+      "region": "EUR",
       "released": "2017-11-17",
       "dateSource": "manual",
       "publisher": "Nintendo",
@@ -6905,7 +7692,9 @@
         "file": "covers/3ds/pokemon-ultra-moon.jpg",
         "ratio": 1.1204,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Ultra Moon (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)"
+        "ref": "Pokemon Ultra Moon (Europe) (En,Ja,Fr,De,Es,It,Zh,Ko)",
+        "label": "covers/3ds/pokemon-ultra-moon-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-A2BP-EUR)"
       },
       "colors": [
         "#7c7e87",
@@ -6929,7 +7718,9 @@
         "file": "covers/3ds/pokemon-x.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon X (Europe) (En,Ja,Fr,De,Es,It,Ko)"
+        "ref": "Pokemon X (Europe) (En,Ja,Fr,De,Es,It,Ko)",
+        "label": "covers/3ds/pokemon-x-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-EKJP-AUS)"
       },
       "colors": [
         "#f1f7f7",
@@ -6953,7 +7744,9 @@
         "file": "covers/3ds/pokemon-y.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "Pokemon Y (Europe) (En,Ja,Fr,De,Es,It,Ko)"
+        "ref": "Pokemon Y (Europe) (En,Ja,Fr,De,Es,It,Ko)",
+        "label": "covers/3ds/pokemon-y-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-EK2P-AUS)"
       },
       "colors": [
         "#a68b80",
@@ -6977,7 +7770,9 @@
         "file": "covers/3ds/super-mario-3d-land.jpg",
         "ratio": 1.1155,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario 3D Land (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "Super Mario 3D Land (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/super-mario-3d-land-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-AREP-AUS)"
       },
       "colors": [
         "#505a37",
@@ -6998,11 +7793,14 @@
       "developer": "Nintendo EPD",
       "genre": "Platformer",
       "format": "boxed",
+      "caseColor": "#f5c400",
       "cover": {
         "file": "covers/3ds/super-mario-maker-for-nintendo-3ds.jpg",
         "ratio": 1.1364,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario Maker for Nintendo 3DS (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "Super Mario Maker for Nintendo 3DS (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/super-mario-maker-for-nintendo-3ds-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-AJHP-AUS)"
       },
       "colors": [
         "#e2af17",
@@ -7026,7 +7824,9 @@
         "file": "covers/3ds/super-smash-bros-for-nintendo-3ds.jpg",
         "ratio": 1.1253,
         "source": "libretro-thumbnails",
-        "ref": "Super Smash Bros. for Nintendo 3DS (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)"
+        "ref": "Super Smash Bros. for Nintendo 3DS (Europe) (En,Fr,De,Es,It,Nl,Pt,Ru)",
+        "label": "covers/3ds/super-smash-bros-for-nintendo-3ds-label.jpg",
+        "labelRef": "Super Smash Bros. for Nintendo 3DS · Australia · LaunchBox Games Database #23464"
       },
       "colors": [
         "#5e554c",
@@ -7049,7 +7849,9 @@
         "file": "covers/3ds/tetris-ultimate.jpg",
         "ratio": 1.0933,
         "source": "libretro-thumbnails",
-        "ref": "Tetris Ultimate (Europe)"
+        "ref": "Tetris Ultimate (Europe)",
+        "label": "covers/3ds/tetris-ultimate-label.jpg",
+        "labelRef": "Tetris Ultimate · Europe · LaunchBox Games Database #26707"
       },
       "colors": [
         "#0f2f62",
@@ -7073,7 +7875,9 @@
         "file": "covers/3ds/the-sims-3.jpg",
         "ratio": 1.1364,
         "source": "libretro-thumbnails",
-        "ref": "Sims 3, The (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Sims 3, The (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/3ds/the-sims-3-label.jpg",
+        "labelRef": "The Sims 3 · Europe · LaunchBox Games Database #12986"
       },
       "colors": [
         "#fcfdfc",
@@ -7099,7 +7903,9 @@
         "file": "covers/3ds/the-sims-3-pets.jpg",
         "ratio": 1.1364,
         "source": "libretro-thumbnails",
-        "ref": "Sims 3, The - Pets (Europe) (En,Fr,De,Es,It,Nl)"
+        "ref": "Sims 3, The - Pets (Europe) (En,Fr,De,Es,It,Nl)",
+        "label": "covers/3ds/the-sims-3-pets-label.jpg",
+        "labelRef": "The Sims 3: Pets · Europe · LaunchBox Games Database #12992"
       },
       "colors": [
         "#fafbfc",
@@ -7118,12 +7924,14 @@
       "publisher": "Activision",
       "developer": "Virtuos",
       "genre": "Kart racing",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/dreamworks-super-star-kartz.jpg",
         "ratio": 1.1364,
         "source": "libretro-thumbnails",
-        "ref": "DreamWorks Super Star Kartz (USA) (En,Fr)"
+        "ref": "DreamWorks Super Star Kartz (USA) (En,Fr)",
+        "label": "covers/3ds/dreamworks-super-star-kartz-label.jpg",
+        "labelRef": "DreamWorks Super Star Kartz · North America · LaunchBox Games Database #15452"
       },
       "colors": [
         "#969045",
@@ -7142,12 +7950,14 @@
       "publisher": "Disney Interactive Studios",
       "developer": "TT Fusion",
       "genre": "Action-adventure",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/lego-pirates-of-the-caribbean-the-video-game.jpg",
         "ratio": 1.1278,
         "source": "libretro-thumbnails",
-        "ref": "LEGO Pirates of the Caribbean - The Video Game (USA)"
+        "ref": "LEGO Pirates of the Caribbean - The Video Game (USA)",
+        "label": "covers/3ds/lego-pirates-of-the-caribbean-the-video-game-label.jpg",
+        "labelRef": "Photo of my own card (LNA-CTR-APCE-USA)"
       },
       "colors": [
         "#88705e",
@@ -7166,12 +7976,14 @@
       "publisher": "Nintendo",
       "developer": "Nintendo EAD",
       "genre": "Kart racing",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/mario-kart-7-usa.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "Mario Kart 7 (USA)"
+        "ref": "Mario Kart 7 (USA)",
+        "label": "covers/3ds/mario-kart-7-usa-label.jpg",
+        "labelRef": "Mario Kart 7 · North America · LaunchBox Games Database #12733"
       },
       "colors": [
         "#f9f8f8",
@@ -7190,12 +8002,14 @@
       "publisher": "Nintendo",
       "developer": "Nintendo EAD",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/new-super-mario-bros-2-usa.jpg",
         "ratio": 1.1228,
         "source": "libretro-thumbnails",
-        "ref": "New Super Mario Bros. 2 (USA) (En,Fr,Es)"
+        "ref": "New Super Mario Bros. 2 (USA) (En,Fr,Es)",
+        "label": "covers/3ds/new-super-mario-bros-2-usa-label.jpg",
+        "labelRef": "New Super Mario Bros. 2 · North America · LaunchBox Games Database #12504"
       },
       "colors": [
         "#e8b815",
@@ -7214,12 +8028,14 @@
       "publisher": "Nintendo",
       "developer": "Nintendo EAD",
       "genre": "Platformer",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/super-mario-3d-land-usa.jpg",
         "ratio": 1.1302,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario 3D Land (USA) (En,Fr,Es)"
+        "ref": "Super Mario 3D Land (USA) (En,Fr,Es)",
+        "label": "covers/3ds/super-mario-3d-land-usa-label.jpg",
+        "labelRef": "Super Mario 3D Land · North America · LaunchBox Games Database #10605"
       },
       "colors": [
         "#4c591d",
@@ -7238,12 +8054,14 @@
       "publisher": "Nintendo",
       "developer": "Hudson Soft",
       "genre": "Puzzle",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/tetris-axis.jpg",
         "ratio": 1.0933,
         "source": "libretro-thumbnails",
-        "ref": "Tetris Axis (USA)"
+        "ref": "Tetris Axis (USA)",
+        "label": "covers/3ds/tetris-axis-label.jpg",
+        "labelRef": "Tetris Axis · North America · LaunchBox Games Database #13305"
       },
       "colors": [
         "#3474a7",
@@ -7262,12 +8080,14 @@
       "publisher": "Nintendo",
       "developer": "Grezzo",
       "genre": "Action-adventure",
-      "format": "boxed",
+      "format": "cartridge-only",
       "cover": {
         "file": "covers/3ds/the-legend-of-zelda-ocarina-of-time-3d.jpg",
         "ratio": 1.1253,
         "source": "libretro-thumbnails",
-        "ref": "Legend of Zelda, The - Ocarina of Time 3D (USA) (En,Fr,Es)"
+        "ref": "Legend of Zelda, The - Ocarina of Time 3D (USA) (En,Fr,Es)",
+        "label": "covers/3ds/the-legend-of-zelda-ocarina-of-time-3d-label.jpg",
+        "labelRef": "The Legend of Zelda: Ocarina of Time 3D · North America · LaunchBox Games Database #12698"
       },
       "colors": [
         "#e7d976",
@@ -7287,11 +8107,14 @@
       "developer": "Nintendo",
       "genre": "Platformer",
       "format": "cartridge-only",
+      "fav": true,
       "cover": {
         "file": "covers/snes/super-mario-world.jpg",
         "ratio": 1.4342,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario World (USA)"
+        "ref": "Super Mario World (USA)",
+        "label": "covers/snes/super-mario-world-label.jpg",
+        "labelRef": "Super Mario World · North America · LaunchBox Games Database #136"
       },
       "colors": [
         "#30639e",
@@ -7311,17 +8134,274 @@
       "developer": "Nintendo",
       "genre": "Kart racing",
       "format": "cartridge-only",
+      "fav": true,
       "cover": {
         "file": "covers/snes/super-mario-kart.jpg",
         "ratio": 1.4342,
         "source": "libretro-thumbnails",
-        "ref": "Super Mario Kart (USA)"
+        "ref": "Super Mario Kart (USA)",
+        "label": "covers/snes/super-mario-kart-label.jpg",
+        "labelRef": "Super Mario Kart · North America · LaunchBox Games Database #41"
       },
       "colors": [
         "#99814f",
         "#8bb2c1",
         "#0a0a08"
       ]
+    },
+    {
+      "console": "snes",
+      "dateSource": "libretro-database",
+      "format": "cartridge-only",
+      "faceOut": false,
+      "cover": {
+        "file": "covers/snes/super-mario-kart-aus.jpg",
+        "ratio": 1.4545,
+        "source": "libretro-thumbnails",
+        "ref": "Super Mario Kart (Europe)",
+        "label": "covers/snes/super-mario-kart-aus-label.jpg",
+        "labelRef": "Photo of my own cartridge (SNSP-MK-AUS, the Mattel print)"
+      },
+      "colors": [
+        "#afab96",
+        "#4c3633",
+        "#3f8db2"
+      ],
+      "id": "snes-super-mario-kart-aus",
+      "title": "Super Mario Kart",
+      "sortAs": "Mario",
+      "region": "AUS",
+      "released": "1992-08-27",
+      "publisher": "Nintendo",
+      "developer": "Nintendo",
+      "genre": "Kart racing",
+      "note": "Distributed by Mattel, Nintendo's Australian distributor before Nintendo Australia (SNSP-MK-AUS)",
+      "cardPhoto": false
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "cover": {
+        "file": "covers/snes/donkey-kong-country.jpg",
+        "ratio": 1.4342,
+        "source": "libretro-thumbnails",
+        "ref": "Donkey Kong Country (USA)",
+        "label": "covers/snes/donkey-kong-country-label.jpg",
+        "labelRef": "Donkey Kong Country · North America · LaunchBox Games Database #131 (cut to the label by hand)"
+      },
+      "colors": [
+        "#704f3f",
+        "#29312a",
+        "#bf573c"
+      ],
+      "id": "snes-donkey-kong-country",
+      "title": "Donkey Kong Country",
+      "sortAs": "Donkey Kong Country",
+      "region": "USA",
+      "released": "1994-11-21",
+      "publisher": "Nintendo",
+      "developer": "Rare",
+      "genre": "Platformer"
+    },
+    {
+      "id": "snes-donkey-kong-country-2-diddys-kong-quest",
+      "console": "snes",
+      "title": "Donkey Kong Country 2: Diddy's Kong Quest",
+      "sortAs": "Donkey Kong Country 2",
+      "region": "USA",
+      "released": "1995-11-20",
+      "dateSource": "manual",
+      "publisher": "Nintendo",
+      "developer": "Rare",
+      "genre": "Platformer",
+      "format": "cartridge-only",
+      "note": "Made in Mexico (M/SNS-ADNE-USA)",
+      "fav": true,
+      "cover": {
+        "file": "covers/snes/donkey-kong-country-2-diddys-kong-quest.jpg",
+        "ratio": 1.4342,
+        "source": "libretro-thumbnails",
+        "ref": "Donkey Kong Country 2 - Diddy's Kong Quest (USA) (En,Fr)",
+        "label": "covers/snes/donkey-kong-country-2-diddys-kong-quest-label.jpg",
+        "labelRef": "Donkey Kong Country 2: Diddy's Kong Quest · North America · LaunchBox Games Database #1525 (cut to the label by hand; the Japanese-made SNS-ADNE-USA print, the same as the Mexican-made one but for its code line)"
+      },
+      "colors": [
+        "#926b4f",
+        "#603933",
+        "#15161b"
+      ]
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "cover": {
+        "file": "covers/snes/donkey-kong-country-3-dixie-kongs-double-trouble.jpg",
+        "ratio": 1.4342,
+        "source": "libretro-thumbnails",
+        "ref": "Donkey Kong Country 3 - Dixie Kong's Double Trouble! (USA) (En,Fr)",
+        "label": "covers/snes/donkey-kong-country-3-dixie-kongs-double-trouble-label.jpg",
+        "labelRef": "Photo of my own cartridge (SNS-A3CE-USA-1, Player's Choice)"
+      },
+      "colors": [
+        "#0f1113",
+        "#56393a",
+        "#517a92"
+      ],
+      "id": "snes-donkey-kong-country-3-dixie-kongs-double-trouble",
+      "title": "Donkey Kong Country 3: Dixie Kong's Double Trouble!",
+      "sortAs": "Donkey Kong Country 3",
+      "edition": "Player's Choice",
+      "region": "USA",
+      "released": "1996-11-22",
+      "publisher": "Nintendo",
+      "developer": "Rare",
+      "genre": "Platformer",
+      "cardPhoto": false
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "cover": {
+        "file": "covers/snes/super-mario-all-stars.jpg",
+        "ratio": 1.4342,
+        "source": "libretro-thumbnails",
+        "ref": "Super Mario All-Stars (USA)",
+        "label": "covers/snes/super-mario-all-stars-label.jpg",
+        "labelRef": "Super Mario All-Stars · North America · LaunchBox Games Database #2093 (cut to the label by hand)"
+      },
+      "colors": [
+        "#ab8051",
+        "#0e0d0d",
+        "#603736"
+      ],
+      "id": "snes-super-mario-all-stars",
+      "title": "Super Mario All-Stars",
+      "sortAs": "Mario All-Stars",
+      "region": "USA",
+      "released": "1993-07-14",
+      "publisher": "Nintendo",
+      "developer": "Nintendo",
+      "genre": "Platformer"
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "reproduction": true,
+      "hidden": true,
+      "cover": {
+        "file": "covers/snes/super-7-in-1-the-lion-king-label.jpg",
+        "source": "manual",
+        "label": "covers/snes/super-7-in-1-the-lion-king-label.jpg",
+        "labelRef": "Photo of my own cartridge",
+        "ratio": 1.9825
+      },
+      "colors": [
+        "#e7ca54",
+        "#ce9f5c",
+        "#bdbdab"
+      ],
+      "id": "snes-super-7-in-1-the-lion-king",
+      "title": "Super 7 in 1",
+      "edition": "The Lion King, Indiana Jones, Side Pocket, Animaniacs, Super Turrican, Ms. Pac-Man, Mr. Do!",
+      "region": "NTSC-U",
+      "released": null,
+      "publisher": null,
+      "developer": null,
+      "genre": "Compilation",
+      "cartColor": "#232326",
+      "cartScrew": "phillips",
+      "cardPhoto": false,
+      "note": "Unofficial multicart: The Lion King, Indiana Jones, Side Pocket, Animaniacs, Super Turrican, Ms. Pac-Man and Mr. Do!",
+      "check": "An unofficial multicart in a black shell with cross-head screws; its label is cut from a photo of the copy.",
+      "cartLabel": [
+        25.8,
+        3.2,
+        106.1,
+        43.7
+      ],
+      "topLabel": false
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "reproduction": true,
+      "hidden": true,
+      "cover": {
+        "file": "covers/snes/super-6-in-1-nba-live-97-label.jpg",
+        "source": "manual",
+        "label": "covers/snes/super-6-in-1-nba-live-97-label.jpg",
+        "labelRef": "Photo of my own cartridge",
+        "ratio": 3.0025
+      },
+      "colors": [
+        "#a89c86",
+        "#dbd662",
+        "#cad1c6"
+      ],
+      "id": "snes-super-6-in-1-nba-live-97",
+      "title": "Super 6 in 1",
+      "edition": "NBA Live 97, Sonic & Knuckles, Super Mario World, Super Chase H.Q., Galaxy Wars, Sonic Wings",
+      "region": "NTSC-U",
+      "released": null,
+      "publisher": null,
+      "developer": null,
+      "genre": "Compilation",
+      "cartColor": "#232326",
+      "cartScrew": "phillips",
+      "cardPhoto": false,
+      "note": "Unofficial multicart: NBA Live 97, Sonic & Knuckles (a pirate port, \"Sonic 4\"), Super Mario World, Super Chase H.Q., Galaxy Wars (Super Star Wars, retitled) and Sonic Wings",
+      "check": "An unofficial multicart in a black shell with cross-head screws; its label is cut from a photo of the copy. Its Sonic & Knuckles is a pirate port.",
+      "cartLabel": [
+        14.4,
+        3.8,
+        113.7,
+        36.8
+      ],
+      "topLabel": false
+    },
+    {
+      "console": "snes",
+      "dateSource": "manual",
+      "format": "cartridge-only",
+      "reproduction": true,
+      "hidden": true,
+      "cover": {
+        "file": "covers/snes/super-7-in-1-aladdin-label.jpg",
+        "source": "manual",
+        "label": "covers/snes/super-7-in-1-aladdin-label.jpg",
+        "labelRef": "Photo of my own cartridge",
+        "ratio": 2.41
+      },
+      "colors": [
+        "#babaab",
+        "#d19e80",
+        "#7d8590"
+      ],
+      "id": "snes-super-7-in-1-aladdin",
+      "title": "Super 7 in 1",
+      "edition": "Aladdin, Top Gear 2, Puzzle Bobble, Turtles in Time, Street Fighter II…",
+      "region": "NTSC-U",
+      "released": null,
+      "publisher": null,
+      "developer": null,
+      "genre": "Compilation",
+      "cartColor": "#232326",
+      "cartScrew": "phillips",
+      "cardPhoto": false,
+      "note": "Unofficial multicart: Aladdin, Top Gear 2, Puzzle Bobble, Teenage Mutant Ninja Turtles IV: Turtles in Time, Street Fighter II, Super Star Soccer and a space shooter",
+      "check": "Its label wraps over the top edge, out of the photo: the title is cut off. The space shooter (top middle) is still to name, and the fighting game (街頭霸王二代) is most likely Street Fighter II. A straight-on photo of the label and its top edge would settle both.",
+      "cartLabel": [
+        24.5,
+        0.4,
+        105.3,
+        33.3
+      ],
+      "topLabel": false
     },
     {
       "id": "pc-the-sims",
@@ -7335,18 +8415,23 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims.webp"
+      },
       "series": "The Sims",
       "pack": "Base game",
       "cover": {
         "file": "covers/pc/the-sims.jpg",
-        "ratio": 0.8,
-        "source": "sims.fandom.com",
-        "ref": "The Sims · TS1 boxcover.jpg"
+        "source": "manual",
+        "ref": "sims.fandom.com · The Sims Cover Alternate.jpeg",
+        "ratio": 0.7051
       },
       "colors": [
-        "#a67759",
-        "#7c828e",
-        "#dfcbcd"
+        "#ae806e",
+        "#7492a3",
+        "#4c5560"
       ]
     },
     {
@@ -7354,6 +8439,7 @@
       "console": "pc",
       "title": "The Sims Complete Collection",
       "sortAs": "The Sims",
+      "edition": "Red cover",
       "region": "PAL",
       "released": "2005-11-01",
       "dateSource": "manual",
@@ -7361,19 +8447,67 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "top": "pccd-tile",
+        "logo": "logos/the-sims.webp",
+        "sub": "Complete Collection",
+        "foot": [
+          "ea-mark"
+        ]
+      },
       "series": "The Sims",
       "pack": "Collection",
       "cover": {
         "file": "covers/pc/the-sims-complete-collection.jpg",
-        "ratio": 0.8366,
-        "source": "en.wikipedia.org",
-        "ref": "The Sims (video game) · The_Sims_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "source": "manual",
+        "ref": "LaunchBox · North America front (reconstructed)",
+        "ratio": 0.6981
       },
       "colors": [
-        "#566456",
-        "#a36943",
-        "#8b8f85"
+        "#b04c28",
+        "#bc8368",
+        "#453839"
       ]
+    },
+    {
+      "id": "pc-the-sims-complete-collection-yellow",
+      "console": "pc",
+      "title": "The Sims Complete Collection",
+      "sortAs": "The Sims",
+      "edition": "Yellow cover",
+      "region": "PAL",
+      "released": "2005-11-01",
+      "dateSource": "manual",
+      "publisher": "Electronic Arts",
+      "developer": "Maxis",
+      "genre": "Life simulation",
+      "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "top": "pccd-tile",
+        "color": "#e8e6e1",
+        "title": "The Sims Complete Collection",
+        "foot": [
+          "ea-mark"
+        ]
+      },
+      "series": "The Sims",
+      "pack": "Collection",
+      "cover": {
+        "file": "covers/pc/the-sims-complete-collection-yellow.jpg",
+        "source": "manual",
+        "ref": "chilloutgames.co.uk photo, straightened",
+        "ratio": 0.6981
+      },
+      "colors": [
+        "#957454",
+        "#c19840",
+        "#bca486"
+      ],
+      "check": "Release date: copied from the red one; the yellow one is a later European printing"
     },
     {
       "id": "pc-the-sims-deluxe-edition",
@@ -7387,18 +8521,24 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims.webp",
+        "sub": "Deluxe Edition"
+      },
       "series": "The Sims",
       "pack": "Collection",
       "cover": {
         "file": "covers/pc/the-sims-deluxe-edition.jpg",
-        "ratio": 0.8366,
-        "source": "en.wikipedia.org",
-        "ref": "The Sims (video game) · The_Sims_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "source": "manual",
+        "ref": "sims.fandom.com · TheSimsDeluxeEdition-1-.jpg",
+        "ratio": 0.6706
       },
       "colors": [
-        "#566456",
-        "#a36943",
-        "#8b8f85"
+        "#9d9eb6",
+        "#966a58",
+        "#e5e5e8"
       ]
     },
     {
@@ -7432,18 +8572,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-livin-large.webp",
+        "sub": "Livin' Large",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-livin-large.jpg",
-        "ratio": 0.6923,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Livin' Large · LivinLarge.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · front",
+        "ratio": 0.6924
       },
       "colors": [
-        "#90a0b5",
-        "#7a6674",
-        "#d69a59"
+        "#94a4b9",
+        "#796b7b",
+        "#d49757"
       ]
     },
     {
@@ -7458,18 +8605,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-house-party.webp",
+        "sub": "House Party",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-house-party.jpg",
-        "ratio": 0.7029,
-        "source": "en.wikipedia.org",
-        "ref": "The Sims: House Party · Sims_House_Party_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original"
+        "source": "manual",
+        "ref": "LaunchBox · United Kingdom front (purple)",
+        "ratio": 0.705
       },
       "colors": [
-        "#927764",
-        "#a0a7c1",
-        "#d2b968"
+        "#59396b",
+        "#7f6692",
+        "#3d1f42"
       ]
     },
     {
@@ -7484,18 +8638,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-hot-date.webp",
+        "sub": "Hot Date",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-hot-date.jpg",
-        "ratio": 0.6923,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Hot Date · The Sims Hot Date Cover.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · North America front",
+        "ratio": 0.6924
       },
       "colors": [
-        "#b93631",
-        "#692c31",
-        "#51738f"
+        "#bc3732",
+        "#6d2b2f",
+        "#4d6d89"
       ]
     },
     {
@@ -7510,18 +8671,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-vacation.webp",
+        "sub": "Vacation",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-vacation.jpg",
-        "ratio": 0.6981,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Vacation · SimsVacation.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · Australia front",
+        "ratio": 0.7086
       },
       "colors": [
-        "#edba3e",
-        "#6a6e7d",
-        "#e7d8b3"
+        "#e7a34c",
+        "#e1d0b8",
+        "#a4795a"
       ]
     },
     {
@@ -7536,18 +8704,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-unleashed.webp",
+        "sub": "Unleashed",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-unleashed.jpg",
-        "ratio": 0.7038,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Unleashed · 200px-The Sims Unleased.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · United Kingdom front",
+        "ratio": 0.705
       },
       "colors": [
-        "#53c2d1",
-        "#98ccd5",
-        "#29b2c3"
+        "#2cbad1",
+        "#94d0e0",
+        "#5b8fa3"
       ]
     },
     {
@@ -7562,18 +8737,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-superstar.webp",
+        "sub": "Superstar",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-superstar.jpg",
-        "ratio": 0.7038,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Superstar · The Sims EP 6.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · United Kingdom front",
+        "ratio": 0.7042
       },
       "colors": [
-        "#f29153",
-        "#e8c0a6",
-        "#828188"
+        "#f08f52",
+        "#e8bea3",
+        "#787e8c"
       ]
     },
     {
@@ -7588,18 +8770,25 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "bigCase": true,
+      "spine": {
+        "style": "ea-pcgame",
+        "logo": "logos/the-sims-makin-magic.webp",
+        "sub": "Makin' Magic",
+        "small": "EXPANSION PACK"
+      },
       "series": "The Sims",
       "pack": "Expansion Pack",
       "cover": {
         "file": "covers/pc/the-sims-makin-magic.jpg",
-        "ratio": 0.7058,
-        "source": "sims.fandom.com",
-        "ref": "The Sims: Makin' Magic · TSMakinMagic cover.jpg"
+        "source": "manual",
+        "ref": "LaunchBox · Australia front",
+        "ratio": 0.6969
       },
       "colors": [
-        "#0b3754",
-        "#236c90",
-        "#051421"
+        "#212a4a",
+        "#1b4594",
+        "#63677a"
       ]
     },
     {
@@ -7614,6 +8803,17 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™2",
+        "foot": [
+          "ea",
+          "M"
+        ],
+        "stripe": "#1a1a1a",
+        "caps": true
+      },
       "series": "The Sims 2",
       "pack": "Base game",
       "cover": {
@@ -7640,6 +8840,16 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 Deluxe",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "series": "The Sims 2",
       "pack": "Collection",
       "cover": {
@@ -7666,6 +8876,16 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 Double Deluxe*",
+        "foot": [
+          "12",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "series": "The Sims 2",
       "pack": "Collection",
       "cover": {
@@ -7711,6 +8931,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 University *expansion pack**",
+        "foot": [
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7737,6 +8965,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™2 Nightlife Expansion Pack",
+        "foot": [
+          "ea",
+          "M"
+        ],
+        "caps": true
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7763,6 +9001,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™2 Open for Business\nExpansion Pack*",
+        "foot": [
+          "ea",
+          "M"
+        ],
+        "caps": true
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7789,6 +9037,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 Pets *expansion pack**",
+        "foot": [
+          "ea"
+        ],
+        "stripe": "#d8262c"
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7815,6 +9072,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Seasons *expansion pack**",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7841,6 +9107,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Bon Voyage *expansion pack**",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7867,6 +9142,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 FreeTime *expansion pack**",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7893,6 +9178,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 Apartment Life *expansion pack**",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "series": "The Sims 2",
       "pack": "Expansion Pack",
       "cover": {
@@ -7920,6 +9215,14 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Christmas Party Pack*",
+        "foot": [
+          "ea-mark"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -7946,6 +9249,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™2 Family Fun Stuff",
+        "foot": [
+          "ea",
+          "M"
+        ],
+        "caps": true
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -7972,6 +9285,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™2 Glamour Life Stuff*",
+        "foot": [
+          "ea",
+          "M"
+        ],
+        "caps": true
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8025,6 +9348,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Celebration! Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8051,6 +9383,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Fashion Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8077,6 +9418,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Teen Style Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8103,6 +9453,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 Kitchen & Bath Interior Design Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8129,6 +9488,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "The Sims™ 2 IKEA® Home Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ]
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8155,6 +9523,16 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ 2 Mansion & Garden Stuff*",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "series": "The Sims 2",
       "pack": "Stuff Pack",
       "cover": {
@@ -8181,6 +9559,15 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ Life Stories",
+        "foot": [
+          "ea"
+        ],
+        "stripe": "#5aa83c"
+      },
       "series": "The Sims Stories",
       "pack": "Base game",
       "cover": {
@@ -8207,6 +9594,16 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ Pet Stories",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#5aa83c"
+      },
       "series": "The Sims Stories",
       "pack": "Base game",
       "cover": {
@@ -8233,6 +9630,16 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "The Sims™ Castaway Stories",
+        "foot": [
+          "M",
+          "ea"
+        ],
+        "stripe": "#5aa83c"
+      },
       "series": "The Sims Stories",
       "pack": "Base game",
       "cover": {
@@ -8944,6 +10351,15 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd-mac",
+        "logo": "logos/the-sims-3-monte-vista.webp",
+        "foot": [
+          "M",
+          "ea-yellow"
+        ]
+      },
       "mac": true,
       "series": "The Sims 3",
       "pack": "World",
@@ -9015,6 +10431,18 @@
       "developer": "The Sims Studio",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd-mac",
+        "color": "#ece4d0",
+        "logo": "logos/the-sims-medieval.webp",
+        "sub": " ",
+        "small": "LIMITED EDITION",
+        "foot": [
+          "M",
+          "ea-gold"
+        ]
+      },
       "series": "The Sims Medieval",
       "pack": "Base game",
       "cover": null,
@@ -9031,6 +10459,18 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd-mac",
+        "color": "#f1efe9",
+        "logo": "logos/the-sims-medieval-pirates-and-nobles.webp",
+        "sub": " ",
+        "small": "ADVENTURE PACK*",
+        "foot": [
+          "M",
+          "ea-gold"
+        ]
+      },
       "series": "The Sims Medieval",
       "pack": "Expansion Pack",
       "cover": {
@@ -9057,6 +10497,17 @@
       "developer": "Maxis",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcdvd",
+        "accent": "#8cc43f",
+        "logo": "logos/the-sims-4.webp",
+        "sub": "Limited Edition",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "mac": true,
@@ -9086,6 +10537,19 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcdvd-mac-dl",
+        "accent": "#ea7a26",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "work",
+        "sub": "Get to Work",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "mac": true,
@@ -9116,6 +10580,19 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcdvd-mac-dl",
+        "accent": "#5b3a8e",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "together",
+        "sub": "Get Together",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "mac": true,
@@ -9146,6 +10623,19 @@
       "developer": null,
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcdvd-mac-dl",
+        "accent": "#2b3f8f",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "city",
+        "sub": "City Living",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "mac": true,
@@ -9175,7 +10665,20 @@
       "publisher": "Electronic Arts",
       "developer": null,
       "genre": "Life simulation",
-      "format": "digital",
+      "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcmac",
+        "accent": "#c92f35",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "paw",
+        "sub": "Cats & Dogs",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "mac": true,
       "series": "The Sims 4",
@@ -9204,7 +10707,19 @@
       "publisher": "Electronic Arts",
       "developer": null,
       "genre": "Life simulation",
-      "format": "digital",
+      "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcmac",
+        "accent": "#2e6b38",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "seasons",
+        "sub": "Seasons",
+        "foot": [
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "mac": true,
       "series": "The Sims 4",
@@ -9233,7 +10748,19 @@
       "publisher": "Electronic Arts",
       "developer": null,
       "genre": "Life simulation",
-      "format": "digital",
+      "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcmac",
+        "accent": "#c4185a",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "famous",
+        "sub": "Get Famous",
+        "foot": [
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "mac": true,
       "series": "The Sims 4",
@@ -9262,7 +10789,20 @@
       "publisher": "Electronic Arts",
       "developer": null,
       "genre": "Life simulation",
-      "format": "digital",
+      "format": "boxed",
+      "spine": {
+        "style": "sims4",
+        "top": "pcmac",
+        "accent": "#f0b52e",
+        "label": "EXPANSION PACK*",
+        "logo": "logos/the-sims-4.webp",
+        "icon": "island",
+        "sub": "Island Living",
+        "foot": [
+          "M",
+          "ea-green"
+        ]
+      },
       "launcher": "ea",
       "mac": true,
       "series": "The Sims 4",
@@ -9953,6 +11493,17 @@
       "developer": "Maxis",
       "genre": "City-building",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pccd",
+        "title": "SimCity™ 4",
+        "foot": [
+          "ea-silver",
+          "G"
+        ],
+        "caps": true,
+        "band": "classics"
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "series": "SimCity",
@@ -9980,6 +11531,16 @@
       "developer": "Tilted Mill Entertainment",
       "genre": "City-building",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "SimCity™ Societies",
+        "foot": [
+          "G",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "series": "SimCity",
@@ -10007,6 +11568,16 @@
       "developer": "Tilted Mill Entertainment",
       "genre": "City-building",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "SimCity™ Societies: Deluxe Edition",
+        "foot": [
+          "G",
+          "ea"
+        ],
+        "stripe": "#1a1a1a"
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "series": "SimCity",
@@ -10042,6 +11613,15 @@
       "developer": "Maxis",
       "genre": "City-building",
       "format": "boxed",
+      "spine": {
+        "style": "art",
+        "top": "pcdvd",
+        "title": "SIMCITY",
+        "foot": [
+          "G",
+          "ea-red"
+        ]
+      },
       "series": "SimCity",
       "pack": "Base game",
       "note": "The 2013 SimCity",
@@ -10111,6 +11691,17 @@
       "developer": "EA Redwood Shores",
       "genre": "Life simulation",
       "format": "boxed",
+      "spine": {
+        "style": "white",
+        "top": "pcdvd",
+        "title": "MySims™",
+        "foot": [
+          "G",
+          "ea"
+        ],
+        "stripe": "#1a1a1a",
+        "font": "plain"
+      },
       "launcher": "ea",
       "alsoDigital": true,
       "series": "MySims",
